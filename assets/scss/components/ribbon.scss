@@ -1,0 +1,12 @@
+.v-ribbon {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+
+    &.content {
+        opacity: 0.7;
+    }
+}

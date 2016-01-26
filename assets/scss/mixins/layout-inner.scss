@@ -1,0 +1,8 @@
+/**
+ * Layout inner container
+ */
+@mixin layout-inner() {
+    margin: 0 auto;
+    max-width: $layout-width;
+    padding: $layout-margin;
+}

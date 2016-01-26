@@ -1,0 +1,6 @@
+.home-page {
+
+    p {
+        @include bp-prop(font-size, 24px, 36px, 48px);
+    }
+}

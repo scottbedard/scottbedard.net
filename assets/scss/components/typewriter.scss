@@ -1,0 +1,19 @@
+.v-typewriter {
+    border-right: 1px solid transparent;
+    &:empty:before { content: "\00a0" }
+    &:not(:empty) .caret { padding-right: 5px }
+
+    .caret {
+        border-right: 2px solid transparent;
+
+        @keyframes blinking {
+            from, to { border-color: transparent }
+            20% { border-color: transparent }
+            30% { border-color: #ccc }
+            70% { border-color: #ccc }
+            80% { border-color: transparent }
+        }
+
+        &.is-blinking { animation: blinking 1.4s infinite }
+    }
+}

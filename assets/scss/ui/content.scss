@@ -1,0 +1,41 @@
+//
+// Links
+//
+a {
+    color: darken($font-color, 10%);
+    text-decoration: none;
+    @include transition(color);
+
+    &:hover {
+        color: $link-color;
+    }
+}
+
+//
+// Headers
+//
+h1, h2, h3, h4, h5 {
+    font-weight: 200;
+    margin: 0;
+    @include transition(font-size);
+}
+
+h1 { @include bp-prop(font-size, 28px, 36px, 44px) }
+h2 { @include bp-prop(font-size, 24px, 32px, 40px) }
+h3 { @include bp-prop(font-size, 22px, 30px, 38px) }
+h4 { @include bp-prop(font-size, 16px, 26px, 32px) }
+h5 { @include bp-prop(font-size, 16px, 22px, 26px) }
+
+//
+// Paragraphs
+//
+p {
+    font-weight: 100;
+    margin: 10px 0;
+    @include bp-prop(font-size, 18px, 24px);
+    @include transition(font-size);
+
+    &:not(:first-child) {
+        margin-top: $layout-margin;
+    }
+}

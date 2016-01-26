@@ -1,0 +1,36 @@
+<header>
+    <div class="inner">
+
+        <!-- Site title -->
+        <div class="title">
+            <a v-link="{ name: 'home' }">
+                <v-typewriter message="scottbedard"></v-typewriter>
+            </a>
+            <v-typewriter
+                :blink-count="0"
+                :blink-forever="true"
+                :delay="3700"
+                :message="title"
+                class="subtitle">
+            </v-typewriter>
+        </div>
+
+        <!-- Navigation -->
+        <nav>
+            <ul>
+                <li v-for="link in navigation">
+                    <a v-link="{ name: link.name }">{{ link.text }}</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Mobile nav button -->
+        <a v-on:click="onMobileMenuClick"
+            v-bind:style="{ isExpanded: 'is-expanded' }"
+            href="#"
+            class="mobile-menu-btn">
+            <i class="fa fa-bars"></i>
+        </a>
+
+    </div>
+</header>

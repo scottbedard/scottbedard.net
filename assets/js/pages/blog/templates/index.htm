@@ -1,0 +1,26 @@
+<main class="page blog-page">
+    <v-ribbon></v-ribbon>
+
+    <!-- Most recent article -->
+    <article class="inner content link">
+        <a v-link="{ name: 'blog-show', params: { slug: first.slug }}">
+            <h2 class="title">{{ first.title }}</h2>
+            <p>{{{ first.excerpt }}}</p>
+            <footer>
+                <time datetime="{{ first.published_at }}">{{ first.published_at | moment 'MMM DD, YYYY' }}</time></div>
+            </footer>
+        </a>
+    </article>
+
+    <!-- List of other posts -->
+    <div class="inner content">
+        <h2 class="title">Older posts...</h2>
+        <ul>
+            <li v-for="post in posts">
+                <time datetime="{{ post.published_at }}">{{ post.published_at | moment 'MMM DD, YYYY' }}</time>
+                <h2><a v-link="{ name: 'blog-show', params: { slug: post.slug }}">{{ post.title }}</a></h2>
+            </li>
+        </ul>
+    </div>
+
+</main>

@@ -1,0 +1,15 @@
+//
+// Layout and breakpoint widths
+//
+$layout-margin: 12px;
+$layout-width: 1280px;
+$breakpoints: (
+    tablet: 'min-width: 768px',
+    desktop: 'min-width: 1024px',
+);
+
+//
+// Colors
+//
+$font-color: #111;
+$link-color: #F46A65;

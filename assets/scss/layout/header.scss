@@ -1,0 +1,64 @@
+//
+// Layout header
+//
+header {
+    background: #fff;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+
+    .inner {
+        padding: 0 $layout-margin;
+        @include bp-prop('height', 76px, 88px, 100px);
+        @include layout-inner();
+        @include transition('height');
+        @include valign-parent();
+    }
+
+    .title {
+        font-size: 34px;
+        width: 100%;
+        @include transition('font-size');
+        @include valign-child();
+
+        @include bp('tablet') {
+            font-size: 42px;
+        }
+
+        @include bp('desktop') {
+            font-size: 48px;
+        }
+
+        .subtitle {
+            margin-left: -8px;
+        }
+    }
+
+    nav {
+        right: $layout-margin;
+        @include valign-child();
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+            @include bp(tablet) {
+                li {
+                    display: inline-block;
+                    font-size: 24px;
+                    &:not(:first-of-type) { margin-left: 36px }
+
+                    a {
+                        padding: 12px;
+                        &.v-link-active { color: $link-color }
+                    }
+                }
+            }
+        }
+    }
+
+    .mobile-menu-btn {
+        font-size: 40px;
+        right: $layout-margin;
+        @include valign-child();
+    }
+}

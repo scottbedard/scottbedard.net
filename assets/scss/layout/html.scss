@@ -1,0 +1,28 @@
+//
+// Global styles
+//
+html {
+    box-sizing: border-box;
+    height: 100%;
+
+    *, *:before, *:after { box-sizing: inherit }
+
+    body {
+        background-color: #f9f9f9;
+        color: $font-color;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        min-height: 100%;
+    }
+
+    //
+    // Vue transitions
+    //
+    .fade-transition {
+        transition: opacity .2s ease;
+    }
+
+    .fade-enter, .fade-leave {
+        opacity: 0;
+    }
+}

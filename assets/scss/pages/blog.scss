@@ -1,0 +1,62 @@
+.blog-page {
+
+    //
+    // List of posts
+    //
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        @include bp-prop(width, 100%, auto);
+        @include bp(tablet) { display: table }
+
+        li {
+            @include bp(tablet) { display: table-row }
+
+            h2, time {
+                margin: 0 0;
+                padding: 12px 0;
+                width: auto;
+                @include bp(tablet) { display: table-cell }
+            }
+
+            h2 {
+                color: #333;
+                font-weight: 400;
+                @include bp-prop(font-size, 26px, 30px, 36px);
+                @include bp-prop(padding-left, 0, $layout-margin);
+            }
+
+            time {
+                color: #666;
+                // @include bp-prop(font-size, 20px, 24px, 30px);
+                @include bp-prop(padding-right, 0, $layout-margin);
+                @include transition(font-size);
+            }
+        }
+    }
+
+    //
+    // Individual posts
+    //
+    article {
+        &.link {
+            padding: 0;
+
+            a p, a:hover p {
+                color: $font-color;
+            }
+        }
+
+        a {
+            display: block;
+            padding: $layout-margin;
+        }
+
+        footer {
+            color: #999;
+            text-align: right;
+            @include bp-prop(font-size, 14px, 16px, 18px)
+        }
+    }
+}
