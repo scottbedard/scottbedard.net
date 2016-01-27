@@ -13,15 +13,6 @@ export default {
     },
 
     //
-    // About
-    //
-    '/about': {
-        name: 'about',
-        title: ' - about',
-        component: require('pages/about/about'),
-    },
-
-    //
     // Blog
     //
     '/blog': {
