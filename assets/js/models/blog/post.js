@@ -1,5 +1,4 @@
-import Vue from 'vue';
-import Model from 'app/model';
+import Model from 'classes/model';
 
 //
 // Blog post
@@ -7,24 +6,19 @@ import Model from 'app/model';
 export default class Post extends Model {
 
     /**
-     * @param  {Object} params
+     * @param  {Object|null}    params
+     * @param  {Object}         cache
      * @return {void}
      */
-    constructor(params) {
-        super(params);
-        this.resource = '/owl/rainlabblogapi/posts{/slug}';
-    }
+    constructor(cache = null) {
+        super();
 
-    /**
-     * Cache settings
-     *
-     * @return {Object}
-     */
-    cache() {
-        return {
-            lifespan: 1440,
-            id: this.params.slug,
+        this.resource = '/owl/rainlabblogapi/posts{/slug}';
+
+        this.cache = cache || {
+            id: 'slug',
             key: 'models.blog.post',
+            lifespan: 1440,
         };
     }
 };

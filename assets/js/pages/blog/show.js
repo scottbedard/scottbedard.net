@@ -1,4 +1,3 @@
-import HeaderModel from 'models/header';
 import Post from 'models/blog/post';
 
 //
@@ -17,16 +16,18 @@ module.exports = {
     route: {
 
         /**
+         * @type {Boolean}
+         */
+        waitForData: true,
+
+        /**
          * Fetch route data
          *
          * @return void
          */
-        activate(transition) {
-            new Post(this.$route.params).get()
-                .then(model => {
-                    this.post = model.data;
-                    transition.next();
-                })
+        data(transition) {
+            new Post().get(this.$route.params)
+                .then(model => transition.next({ post: model.data }))
                 .catch(error => transition.redirect('/blog'));
         },
     },
