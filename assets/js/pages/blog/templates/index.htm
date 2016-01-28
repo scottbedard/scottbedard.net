@@ -18,7 +18,7 @@
         <ul>
             <li v-for="post in posts">
                 <time datetime="{{ post.published_at }}">{{ post.published_at | moment 'MMM DD, YYYY' }}</time>
-                <h2><a v-link="{ name: 'blog-show', params: { slug: post.slug }}">{{ post.title }}</a></h2>
+                <h3><a v-link="{ name: 'blog-show', params: { slug: post.slug }}">{{ post.title }}</a></h3>
             </li>
         </ul>
     </div>

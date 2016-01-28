@@ -13,17 +13,14 @@
         li {
             @include bp(tablet) { display: table-row }
 
-            h2, time {
+            h3, time {
                 margin: 0 0;
                 padding: 12px 0;
                 width: auto;
                 @include bp(tablet) { display: table-cell }
             }
 
-            h2 {
-                color: #333;
-                font-weight: 400;
-                @include bp-prop(font-size, 26px, 30px, 36px);
+            h3 {
                 @include bp-prop(padding-left, 0, $layout-margin);
             }
 

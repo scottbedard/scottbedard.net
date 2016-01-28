@@ -15,27 +15,37 @@ a {
 // Headers
 //
 h1, h2, h3, h4, h5 {
-    font-weight: 200;
+    font-weight: 300;
     margin: 0;
     @include transition(font-size);
 }
 
-h1 { @include bp-prop(font-size, 28px, 36px, 44px) }
-h2 { @include bp-prop(font-size, 24px, 32px, 40px) }
-h3 { @include bp-prop(font-size, 22px, 30px, 38px) }
-h4 { @include bp-prop(font-size, 16px, 26px, 32px) }
-h5 { @include bp-prop(font-size, 16px, 22px, 26px) }
+h1 { @include bp-prop(font-size, 24px, 32px, 40px) }
+h2 { @include bp-prop(font-size, 22px, 30px, 38px) }
+h3 { @include bp-prop(font-size, 16px, 26px, 32px) }
+h4 { @include bp-prop(font-size, 16px, 22px, 26px) }
+h5 { @include bp-prop(font-size, 16px, 20px, 24px) }
 
 //
-// Paragraphs
+// Paragraphs & Code
 //
-p {
-    font-weight: 100;
-    margin: 10px 0;
-    @include bp-prop(font-size, 18px, 24px);
-    @include transition(font-size);
+pre {
+    border-radius: 3px;
+    font-family: 'Source Code Pro', monospace !important;
+    font-weight: 200;
+    margin: 25px 0;
+    padding: $layout-margin;
+    @include bp-prop(font-size, 16px, 18px);
+    @include transition('font-size, margin-top, margin-bottom');
 
-    &:not(:first-child) {
-        margin-top: $layout-margin;
+    @include bp(tablet) {
+        margin-top: 40px;
+        margin-bottom: 40px;
     }
+}
+
+p {
+    margin: 10px 0;
+    @include bp-prop(font-size, 18px, 20px, 22px);
+    @include transition(font-size);
 }

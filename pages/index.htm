@@ -12,7 +12,7 @@ is_hidden = 0
         {% component 'vuetoberCache' %}
         <title>scottbedard</title>
         <link rel="stylesheet" type="text/css" href="{{ 'assets/compiled/style.min.css'|theme }}">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300">
+        <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:200|Roboto:400,300' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     </head>
     <body>
@@ -20,7 +20,7 @@ is_hidden = 0
             <v-header></v-header>
             <router-view transition="fade" transition-mode="out-in"></router-view>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
+        <script src="{{ 'assets/js/vendor/prism.js'|theme }}"></script>
         <script src="{{ 'assets/compiled/app.min.js'|theme }}"></script>
     </body>
 </html>
