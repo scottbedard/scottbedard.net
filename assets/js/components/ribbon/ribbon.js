@@ -11,6 +11,7 @@ Vue.component('v-ribbon', {
      */
     props: {
         reset: { default: 120000 },
+        clear: { default: true },
     },
 
     /**
@@ -27,11 +28,11 @@ Vue.component('v-ribbon', {
         // First things first, we need to get our canvas ready to be drawn
         // on. While we're here, lets also create a few other neccessary
         // variables for drawing the ribbon, and how it should appear.
-        let canvas          = this.$el,
-            ctx             = canvas.getContext('2d');
-        canvas.width        = window.innerWidth;
-        canvas.height       = window.innerHeight;
+        let canvas = this.$el,
+            ctx = canvas.getContext('2d');
 
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
         this.draw(canvas, ctx);
 
         // Redraw the ribbon every couple of minutes
@@ -53,7 +54,9 @@ Vue.component('v-ribbon', {
         draw(canvas, ctx) {
 
             // Clear the canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (this.clear) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
 
             let opacity         = 0.4,  // The opacity of the ribbon
                 points          = [],   // Container for each ribbon point
@@ -103,7 +106,7 @@ Vue.component('v-ribbon', {
             // roughly in the center of the screen. We'll use this value with
             // the height of the window to determine an approximate offset.
             let offset = verticalCenter - (totalHeight / points.length);
-            points = points.map(function(point) {
+            points = points.map(point => {
                 point.y += offset;
                 return point;
             });
@@ -111,7 +114,7 @@ Vue.component('v-ribbon', {
             // Last step, we just need to play connect the dots with our points
             // to draw our triangles. After that, we can fill each one with a
             // color from our gradients array. Enjoy the colorful goodness!
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
             for (let i = 0, end = points.length; i < end; i++) {
                 let a = points[i], b = points[i + 1], c = points[i + 2];
                 ctx.fillStyle = `rgba(${ gradient[i].r }, ${ gradient[i].g }, ${ gradient[i].b }, ${ opacity })`;
