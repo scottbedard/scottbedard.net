@@ -18,10 +18,7 @@ module.exports = {
     route: {
         data(transition) {
             new Post().get()
-                .then(response => transition.next({
-                    first: response.data.shift(),
-                    posts: response.data,
-                }))
+                .then(response => transition.next({ posts: response.data }))
                 .catch(error => transition.redirect('/error'));
         },
 

@@ -18,7 +18,7 @@ export default {
     '/blog': {
         name: 'blog',
         title: ' - blog',
-        component: require('pages/blog/blog'),
+        component: require('pages/blog/index'),
     },
 
     '/blog/:slug': {
