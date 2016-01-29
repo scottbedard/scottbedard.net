@@ -1,4 +1,4 @@
-let HeaderModel = require('models/header');
+let Header = require('models/header');
 
 //
 // After route hook
@@ -6,6 +6,6 @@ let HeaderModel = require('models/header');
 module.exports = function({ from, to }) {
     if (typeof to.title !== 'undefined') {
         document.title = to.title;
-        HeaderModel.setTitle(to.title);
+        Header.setTitle(to.title);
     }
 };

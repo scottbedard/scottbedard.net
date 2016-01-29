@@ -1,7 +1,9 @@
-<main class="page blog-page show-page">
+<main class="page blog blog-show">
     <v-ribbon></v-ribbon>
-    <div class="inner content" data-link>
-        <h1 class="title">{{ post.title }}</h1>
-        {{{ post.content_html }}}
+    <div class="inner">
+        <article class="content" data-link>
+            <h1 class="title">{{ post.title }}</h1>
+            {{{ post.content_html }}}
+        </article>
     </div>
 </main>

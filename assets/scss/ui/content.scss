@@ -27,7 +27,7 @@ h4 { @include bp-prop(font-size, 16px, 22px, 26px) }
 h5 { @include bp-prop(font-size, 16px, 20px, 24px) }
 
 //
-// Paragraphs & Code
+// Code
 //
 pre {
     border-radius: 3px;
@@ -44,6 +44,9 @@ pre {
     }
 }
 
+//
+// Paragraphs
+//
 p {
     margin: 10px 0;
     @include bp-prop(font-size, 18px, 20px, 22px);

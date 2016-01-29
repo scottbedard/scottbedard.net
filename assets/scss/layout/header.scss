@@ -2,63 +2,118 @@
 // Layout header
 //
 header {
+    $mobile-height: 70px;
+    $tablet-height: 90px;
+    $desktop-height: 110px;
+
     background: #fff;
     border-bottom: 2px solid rgba(0, 0, 0, 0.15);
 
     .inner {
-        padding: 0 $layout-margin;
-        @include bp-prop('height', 76px, 88px, 100px);
+        padding: 0;
+        @include bp-prop(height, $mobile-height, $tablet-height, $desktop-height);
         @include layout-inner();
-        @include transition('height');
+        @include transition(height);
         @include valign-parent();
     }
 
     .title {
-        font-size: 34px;
+        left: $layout-margin;
         width: 100%;
-        @include transition('font-size');
+        @include bp-prop(font-size, 34px, 42px, 48px);
+        @include transition(font-size);
         @include valign-child();
 
-        @include bp('tablet') {
-            font-size: 42px;
-        }
-
-        @include bp('desktop') {
-            font-size: 48px;
-        }
-
         .subtitle {
-            margin-left: -8px;
+            @include bp-prop(margin-left, -18px, -8px);
+
+            .message {
+                @include bp-prop(display, none, inline);
+            }
         }
     }
 
     nav {
-        right: $layout-margin;
-        @include valign-child();
+
+        //
+        // Mobile
+        //
+        background-color: #f0f0f0;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+        max-height: 0vh;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+        position: absolute;
+        top: $mobile-height;
+        z-index: 1;
+        @include transition(max-height, 0.3s, ease-in-out);
+
+        &.is-expanded { max-height: 100vh }
 
         ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
 
-            @include bp(tablet) {
+            li {
+                height: 60px;
+                line-height: 60px;
+                font-size: 20px;
+
+                a {
+                    display: block;
+                    padding-left: $layout-margin;
+                    &.v-link-active { color: $link-color }
+                }
+            }
+        }
+
+        //
+        // Tablet & desktop
+        //
+        @include bp(tablet) {
+            background-color: transparent;
+            border: none;
+            left: auto;
+            max-height: none;
+            right: $layout-margin;
+            @include valign-child();
+
+            ul {
                 li {
                     display: inline-block;
-                    font-size: 24px;
-                    &:not(:first-of-type) { margin-left: 36px }
+                    @include transition(margin-left);
 
-                    a {
-                        padding: 12px;
-                        &.v-link-active { color: $link-color }
-                    }
+                    &:not(:first-of-type) { margin-left: 30px }
+                    a { padding: 0 }
                 }
+            }
+        }
+
+        @include bp(desktop) {
+            ul li:not(:first-of-type) {
+                margin-left: 80px;
             }
         }
     }
 
+    //
+    // Mobile menu button
+    //
     .mobile-menu-btn {
-        font-size: 40px;
+        color: #666;
+        font-size: 32px;
         right: $layout-margin;
+        @include transition(right, 0.3s);
         @include valign-child();
+
+        @include bp(tablet) {
+            right: -50px;
+        }
+
+        @include bp('min-width: #{ $layout-width }') {
+            display: none;
+        }
     }
 }

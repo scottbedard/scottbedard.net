@@ -1,14 +1,14 @@
-<main class="page blog-page">
+<main class="page blog blog-index">
     <v-ribbon></v-ribbon>
-
-    <article v-for="post in posts" class="inner content link">
-        <a v-link="{ name: 'blog-show', params: { slug: post.slug }}">
-            <h2 class="title">{{ post.title }}</h2>
-            <p>{{{ post.excerpt }}}</p>
-            <footer>
-                <time datetime="{{ post.published_at }}">{{ post.published_at | moment 'MMM DD, YYYY' }}</time></div>
-            </footer>
-        </a>
-    </article>
-
+    <div class="inner">
+        <article v-for="post in posts" class="content link">
+            <a v-link="{ name: 'blog-show', params: { slug: post.slug }}">
+                <h2 class="title">{{ post.title }}</h2>
+                <p>{{{ post.excerpt }}}</p>
+                <footer>
+                    <time datetime="{{ post.published_at }}">{{ post.published_at | moment 'MMM DD, YYYY' }}</time>
+                </footer>
+            </a>
+        </article>
+    </div>
 </main>

@@ -4,11 +4,14 @@
         <!-- Site title -->
         <div class="title">
             <a v-link="{ name: 'home' }">
-                <v-typewriter message="scottbedard"></v-typewriter>
+                <v-typewriter
+                    :blink-forever="false"
+                    message="scottbedard"
+                    class="scott">
+                </v-typewriter>
             </a>
             <v-typewriter
                 :blink-count="0"
-                :blink-forever="true"
                 :delay="3700"
                 :message="title"
                 class="subtitle">
@@ -16,7 +19,7 @@
         </div>
 
         <!-- Navigation -->
-        <nav>
+        <nav v-bind:class="{ 'is-expanded': isExpanded }">
             <ul>
                 <li v-for="link in navigation">
                     <a v-link="{ name: link.name }">{{ link.text }}</a>

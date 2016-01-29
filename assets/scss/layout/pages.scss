@@ -2,23 +2,32 @@
 // pages
 //
 .page {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 
     .inner {
-        @include layout-inner();
+        max-width: $layout-width;
+        padding: $layout-margin;
+        width: 100%;
+        @include bp-prop(font-size, 16px, 20px, 24px);
+        @include transition(font-size);
+    }
 
-        &.content {
-            border-bottom: 2px solid rgba(0, 0, 0, 0.15);
-            background-color: #fff;
-            margin: $layout-margin;
-            opacity: 0.97;
-            @include bp-prop(font-size, 16px, 20px, 24px);
-            @include transition(font-size);
-
-            @include bp('min-width: #{ $layout-width + ($layout-margin * 2) }') {
-                margin-left: auto;
-                margin-right: auto;
-            }
+    .no-content {
+        p {
+            color: darken($font-color, 25%);
+            font-weight: 200;
+            @include bp-prop(font-size, 32px, 40px, 44px);
         }
+    }
+
+    .content {
+        border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+        background-color: #fff;
+        opacity: 0.97;
+        width: 100%;
+        &:not(:last-of-type) { margin-bottom: $layout-margin }
 
         .title {
             border-bottom: 1px solid #ddd;

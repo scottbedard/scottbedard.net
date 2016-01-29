@@ -17,7 +17,7 @@ Vue.component('v-typewriter', {
         backspaceSpeed: { type: Number, default: 85 },
         blinkComma:     { type: Number, default: 0 },
         blinkCount:     { type: Number, default: 2 },
-        blinkForever:   { type: Boolean, default: false },
+        blinkForever:   { type: Boolean, default: true },
         blinkPeriod:    { type: Number, default: 0 },
         blinkSpeed:     { type: Number, default: 1400 },
         commaPause:     { type: Number, default: 0 },

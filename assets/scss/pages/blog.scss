@@ -1,59 +1,15 @@
-.blog-page {
-
-    //
-    // List of posts
-    //
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        @include bp-prop(width, 100%, auto);
-        @include bp(tablet) { display: table }
-
-        li {
-            @include bp(tablet) { display: table-row }
-
-            h3, time {
-                margin: 0 0;
-                padding: 12px 0;
-                width: auto;
-                @include bp(tablet) { display: table-cell }
-            }
-
-            h3 {
-                @include bp-prop(padding-left, 0, $layout-margin);
-            }
-
-            time {
-                color: #666;
-                // @include bp-prop(font-size, 20px, 24px, 30px);
-                @include bp-prop(padding-right, 0, $layout-margin);
-                @include transition(font-size);
-            }
-        }
-    }
-
-    //
-    // Individual posts
-    //
+//
+// Blog
+//
+.page.blog {
     article {
-        &.link {
-            padding: 0;
-
-            a p, a:hover p {
-                color: $font-color;
-            }
-        }
-
-        a {
-            display: block;
-            padding: $layout-margin;
-        }
+        padding: $layout-margin;
 
         footer {
-            color: #999;
+            color: #777;
             text-align: right;
-            @include bp-prop(font-size, 14px, 16px, 18px)
+            @include bp-prop(font-size, 14px, 16px, 18px);
+            @include transition(font-size);
         }
     }
 }
