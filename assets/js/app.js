@@ -1,6 +1,7 @@
 //
 // On your mark
 //
+require('es6-promise').polyfill();
 let Vue = require('vue'),
     VueRouter = require('vue-router'),
     VueResource = require('vue-resource');
