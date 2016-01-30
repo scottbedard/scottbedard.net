@@ -44,16 +44,15 @@ module.exports = {
      * @return {void}
      */
     attached() {
-
-        // Highlight any code blocks inside the post content
-        if (typeof Prism === 'object') {
-            Prism.highlightAll();
-        }
-
-        // Once attached to the DOM, find all links embedded in the content and
-        // attach a listener to hijack their click event. This will allow us
-        // to hand things off to the router, and work the same as v-link.
         this.$nextTick(() => {
+            // Highlight any code blocks inside the post content
+            if (typeof Prism === 'object') {
+                Prism.highlightAll();
+            }
+
+            // Once attached to the DOM, find all links embedded in the content and
+            // attach a listener to hijack their click event. This will allow us
+            // to hand things off to the router, and work the same as v-link.
             let links = this.$el.querySelectorAll('[data-link] a');
             for (let i = 0, len = links.length; i < len; i++) {
                 links[i].addEventListener('click', e => {

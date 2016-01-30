@@ -3,7 +3,7 @@ import Vue from 'vue';
 //
 // Infinite scroll
 //
-export default Vue.directive('infinite-scroll', {
+Vue.directive('infinite-scroll', {
 
     /**
      * Listen for scroll events and hit the VM's handler
@@ -11,17 +11,16 @@ export default Vue.directive('infinite-scroll', {
      * @return {void}
      */
     bind() {
-        // Start with a null infinite scrolling state
-        let isInfiniteScrolling = false;
+        let isLoading = false;
         window.onscroll = () => {
-            if (!isInfiniteScrolling) {
+            if (!isLoading) {
                 let buffer = Number(this.arg) || 0,
                     scrollPosition = window.innerHeight + window.scrollY,
                     bottomPosition = this.el.offsetHeight + this.el.offsetTop;
 
                 if (scrollPosition + buffer >= bottomPosition) {
-                    isInfiniteScrolling = true;
-                    this.vm[this.expression]().then(() => isInfiniteScrolling = false);
+                    isLoading = true;
+                    this.vm[this.expression]().then(() => isLoading = false);
                 }
             }
         };
