@@ -41,5 +41,6 @@ export default {
      */
     attached() {
         this.$el.addEventListener('click', e => e.stopPropagation());
+        window.addEventListener('scroll', e => this.isExpanded = false);
     },
 };
