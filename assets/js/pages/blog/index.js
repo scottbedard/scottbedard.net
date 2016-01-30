@@ -33,9 +33,9 @@ module.exports = {
      */
     data() {
         return {
+            isLoading: false,
             nextPage: 2,
             posts: [],
-            search: null,
         };
     },
 
@@ -59,7 +59,9 @@ module.exports = {
          * @return {void}
          */
         onLoadMorePosts() {
+            this.isLoading = true;
             return new Post().get({ page: this.nextPage }).then(response => {
+                this.isLoading = false;
                 if (response.data.length) {
                     this.nextPage++;
                     this.posts.push(...response.data);

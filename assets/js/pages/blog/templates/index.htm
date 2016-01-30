@@ -1,14 +1,22 @@
 <main class="page blog blog-index">
     <v-ribbon></v-ribbon>
-    <div class="inner" v-infinite-scroll:100="onLoadMorePosts">
+    <div v-infinite-scroll:100="onLoadMorePosts" class="inner">
+
+        <!-- Articles -->
         <article v-for="post in posts" class="content link">
             <a v-link="{ name: 'blog-show', params: { slug: post.slug }}">
                 <h2 class="title">{{ post.title }}</h2>
                 <p>{{{ post.excerpt }}}</p>
                 <footer>
-                    <time datetime="{{ post.published_at }}">{{ post.published_at | moment 'MMM DD, YYYY' }}</time>
+                    <time datetime="{{ post.published_at }}">
+                        {{ post.published_at | moment 'MMM DD, YYYY' }}
+                    </time>
                 </footer>
             </a>
         </article>
+
+        <!-- Spinner -->
+        <v-spinner v-bind:style="{ display: isLoading ? 'block' : 'none' }"></v-spinner>
+
     </div>
 </main>

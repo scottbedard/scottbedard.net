@@ -15,10 +15,10 @@ export default class Post extends Model {
 
         this.resource = '/owl/rainlabblogapi/posts{/slug}';
 
-        this.cache = cache || {
-            id: 'slug',
-            key: 'models.blog.post',
-            lifespan: 1440,
-        };
+        // this.cache = cache || {
+        //     id: 'slug',
+        //     key: 'models.blog.post',
+        //     lifespan: 1440,
+        // };
     }
 };

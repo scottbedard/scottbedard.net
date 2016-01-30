@@ -2,6 +2,7 @@
 // Blog
 //
 .page.blog {
+
     article {
         padding: 12px;
 
@@ -11,5 +12,10 @@
             @include bp-prop(font-size, 14px, 16px, 18px);
             @include transition(font-size);
         }
+    }
+
+    .v-spinner {
+        padding: 50px 0;
+        text-align: center;
     }
 }
