@@ -9,6 +9,7 @@ let Vue = require('vue'),
 Vue.use(VueRouter);
 Vue.use(VueResource);
 require('./app/filters');
+require('./app/directives/infiniteScroll');
 require('./components/ribbon/ribbon');
 require('./components/typewriter/typewriter');
 

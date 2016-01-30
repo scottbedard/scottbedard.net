@@ -33,8 +33,28 @@ module.exports = {
      */
     data() {
         return {
-            first: {},
+            nextPage: 2,
             posts: [],
         };
     },
+
+    /**
+     * @type {Object}
+     */
+    methods: {
+
+        /**
+         * Load more posts when the bottom of our document is reached
+         *
+         * @return {void}
+         */
+        onLoadMorePosts() {
+            return new Post().get({ page: this.nextPage }).then(response => {
+                if (response.data.length) {
+                    this.nextPage++;
+                    this.posts.push(...response.data);
+                }
+            });
+        }
+    }
 };
