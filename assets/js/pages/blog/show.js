@@ -26,7 +26,13 @@ module.exports = {
          * @return void
          */
         data(transition) {
-            new Post().get(this.$route.params)
+            let cache = {
+                id: 'slug',
+                key: 'models.blog.post',
+                lifespan: 302400, // one month
+            };
+
+            new Post(cache).get(this.$route.params)
                 .then(model => transition.next({ post: model.data }))
                 .catch(error => transition.redirect('/blog'));
         },

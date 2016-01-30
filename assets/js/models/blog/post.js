@@ -12,13 +12,10 @@ export default class Post extends Model {
      */
     constructor(cache = null) {
         super();
-
         this.resource = '/owl/rainlabblogapi/posts{/slug}';
 
-        // this.cache = cache || {
-        //     id: 'slug',
-        //     key: 'models.blog.post',
-        //     lifespan: 1440,
-        // };
+        if (cache) {
+            this.cache = cache;
+        }
     }
 };

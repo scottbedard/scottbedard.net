@@ -32,7 +32,7 @@
 
         .title {
             border-bottom: 1px solid #ddd;
-            @include bp-prop(padding-bottom, $layout-margin-mobile, $layout-margin-tablet);
+            padding-bottom: 12px;
         }
     }
 }
