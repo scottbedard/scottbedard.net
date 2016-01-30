@@ -6,7 +6,9 @@ import Vue from 'vue';
 Vue.directive('infinite-scroll', {
 
     /**
-     * Listen for scroll events and hit the VM's handler
+     * Listen for scroll events and hit the VM's handler. Returning true from
+     * the infinite scroll handler will instruct the directive to continue
+     * listening for scroll events. False will terminate the directive.
      *
      * @return {void}
      */
@@ -20,7 +22,13 @@ Vue.directive('infinite-scroll', {
 
                 if (scrollPosition + buffer >= bottomPosition) {
                     isLoading = true;
-                    this.vm[this.expression]().then(() => isLoading = false);
+                    this.vm[this.expression]().then(shouldContinue => {
+                        if (!shouldContinue) {
+                            window.onscroll = null;
+                        } else {
+                            isLoading = false;
+                        }
+                    });
                 }
             }
         };

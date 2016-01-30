@@ -1,6 +1,6 @@
 <main class="page blog blog-index">
     <v-ribbon></v-ribbon>
-    <div class="inner">
+    <div class="inner" v-infinite-scroll:100="onLoadMorePosts">
         <article v-for="post in posts" class="content link">
             <a v-link="{ name: 'blog-show', params: { slug: post.slug }}">
                 <h2 class="title">{{ post.title }}</h2>

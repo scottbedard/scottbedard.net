@@ -53,6 +53,7 @@ module.exports = {
                 if (response.data.length) {
                     this.nextPage++;
                     this.posts.push(...response.data);
+                    return true;
                 }
             });
         }
