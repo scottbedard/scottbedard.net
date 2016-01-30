@@ -39,6 +39,15 @@ module.exports = {
     },
 
     /**
+     * Let the infinite scroller know we're attached and ready to go
+     *
+     * @return {void}
+     */
+    attached() {
+        this.$nextTick(() => this.$emit('init-infinite-scroll'));
+    },
+
+    /**
      * @type {Object}
      */
     methods: {
@@ -56,6 +65,6 @@ module.exports = {
                     return true;
                 }
             });
-        }
-    }
+        },
+    },
 };
