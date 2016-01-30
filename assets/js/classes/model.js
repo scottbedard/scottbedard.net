@@ -12,15 +12,6 @@ let vuetoberCache = document.getElementsByTagName('meta')['vuetober-cache'],
 export default class Model {
 
     /**
-     * Constructor
-     *
-     * @return {void}
-     */
-    constructor() {
-        this.isCacheable = typeof(Storage) === 'undefined' || typeof this.cache === 'undefined';
-    }
-
-    /**
      * Fetch data from storage
      *
      * @param  {Object}     params
@@ -28,7 +19,7 @@ export default class Model {
      */
     fetchFromStorage(params) {
         return new Promise((resolve, reject) => {
-            if (this.isCacheable) {
+            if (this.isCacheable()) {
                 let data = JSON.parse(window.localStorage.getItem(this.getStorageKey(params)));
 
                 if (!!data &&
@@ -80,6 +71,15 @@ export default class Model {
     }
 
     /**
+     * Determines if the model is cacheable
+     *
+     * @return {Boolean}
+     */
+    isCacheable() {
+        return typeof(Storage) === 'function' && typeof this.cache === 'object'
+    }
+
+    /**
      * Save data to local storage
      *
      * @param  {Object}     params
@@ -87,11 +87,11 @@ export default class Model {
      * @return {void}
      */
     saveToStorage(params, data) {
-        let key = this.getStorageKey(params);
-
-        if (!! key && this.isCacheable) {
-            let cached_at = Date.now();
-            window.localStorage.setItem(key, JSON.stringify({ data, cached_at }));
+        if (this.isCacheable()) {
+            window.localStorage.setItem(this.getStorageKey(params), JSON.stringify({
+                data,
+                cached_at: Date.now(),
+            }));
         }
     }
 };
