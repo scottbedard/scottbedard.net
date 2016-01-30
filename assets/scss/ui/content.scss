@@ -27,24 +27,6 @@ h4 { @include bp-prop(font-size, 16px, 22px, 26px) }
 h5 { @include bp-prop(font-size, 16px, 20px, 24px) }
 
 //
-// Code
-//
-pre {
-    border-radius: 3px;
-    font-family: 'Source Code Pro', monospace !important;
-    font-weight: 200;
-    margin: 25px 0;
-    padding: $layout-margin;
-    @include bp-prop(font-size, 16px, 18px);
-    @include transition('font-size, margin-top, margin-bottom');
-
-    @include bp(tablet) {
-        margin-top: 40px;
-        margin-bottom: 40px;
-    }
-}
-
-//
 // Paragraphs
 //
 p {

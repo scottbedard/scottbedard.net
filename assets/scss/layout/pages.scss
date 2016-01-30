@@ -8,10 +8,11 @@
 
     .inner {
         max-width: $layout-width;
-        padding: $layout-margin;
+
         width: 100%;
+        @include bp-prop(padding, $layout-margin-mobile, $layout-margin-tablet);
         @include bp-prop(font-size, 16px, 20px, 24px);
-        @include transition(font-size);
+        @include transition(font-size, padding);
     }
 
     .no-content {
@@ -27,11 +28,11 @@
         background-color: #fff;
         opacity: 0.97;
         width: 100%;
-        &:not(:last-of-type) { margin-bottom: $layout-margin }
+        @include bp-prop(margin-bottom, $layout-margin-mobile, $layout-margin-tablet);
 
         .title {
             border-bottom: 1px solid #ddd;
-            padding-bottom: $layout-margin;
+            @include bp-prop(padding-bottom, $layout-margin-mobile, $layout-margin-tablet);
         }
     }
 }

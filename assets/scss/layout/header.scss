@@ -18,10 +18,10 @@ header {
     }
 
     .title {
-        left: $layout-margin;
         width: 100%;
+        @include bp-prop(left, $layout-margin-mobile, $layout-margin-tablet);
         @include bp-prop(font-size, 34px, 42px, 48px);
-        @include transition(font-size);
+        @include transition('left, font-size');
         @include valign-child();
 
         .subtitle {
@@ -63,7 +63,7 @@ header {
 
                 a {
                     display: block;
-                    padding-left: $layout-margin;
+                    @include bp-prop(padding-left, $layout-margin-mobile, $layout-margin-tablet);
                     &.v-link-active { color: $link-color }
                 }
             }
@@ -77,7 +77,7 @@ header {
             border: none;
             left: auto;
             max-height: none;
-            right: $layout-margin;
+            right: $layout-margin-tablet;
             @include valign-child();
 
             ul {
@@ -104,7 +104,7 @@ header {
     .mobile-menu-btn {
         color: #666;
         font-size: 32px;
-        right: $layout-margin;
+        right: $layout-margin-mobile;
         @include transition(right, 0.3s);
         @include valign-child();
 

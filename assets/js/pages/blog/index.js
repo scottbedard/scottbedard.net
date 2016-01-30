@@ -35,6 +35,7 @@ module.exports = {
         return {
             nextPage: 2,
             posts: [],
+            search: null,
         };
     },
 

@@ -1,7 +1,8 @@
 //
 // Layout and breakpoint widths
 //
-$layout-margin: 12px;
+$layout-margin-mobile: 12px;
+$layout-margin-tablet: 20px;
 $layout-width: 1280px;
 $breakpoints: (
     tablet: 'min-width: 768px',
@@ -13,3 +14,8 @@ $breakpoints: (
 //
 $font-color: #333;
 $link-color: #F46A65;
+
+//
+// Spinners
+//
+$spinner-default-color: #f00;

@@ -1,5 +1,4 @@
-let Vue = require('vue'),
-    HeaderModel = require('models/header');
+let HeaderModel = require('models/header');
 
 //
 // Site header

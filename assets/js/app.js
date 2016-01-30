@@ -11,6 +11,7 @@ Vue.use(VueResource);
 require('./app/filters');
 require('./app/directives/infiniteScroll');
 require('./components/ribbon/ribbon');
+require('./components/spinner/spinner');
 require('./components/typewriter/typewriter');
 
 //

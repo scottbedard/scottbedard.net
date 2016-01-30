@@ -1,0 +1,17 @@
+//
+// Code
+//
+pre {
+    border-radius: 3px;
+    font-family: 'Source Code Pro', monospace !important;
+    font-weight: 200;
+    margin: 25px 0;
+    @include bp-prop(font-size, 16px, 18px);
+    @include bp-prop(padding, $layout-margin-mobile, $layout-margin-tablet);
+    @include transition('font-size, margin-top, margin-bottom, padding');
+
+    @include bp(tablet) {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+}
