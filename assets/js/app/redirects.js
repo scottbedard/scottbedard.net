@@ -1,6 +1,0 @@
-//
-// Redirects
-//
-module.exports = {
-
-};

@@ -8,9 +8,9 @@ is_hidden = 0
 
 <!--
 
-    Hi there, my name is Scott. This website is a place where I get to play with
-    new code and work on exciting side projects. To take a look at the source
-    code, the repo lives at https://github.com/scottbedard/scottbedard.net
+    Hi, my name is Scott. This site is my place to play around with new tools and
+    experiment with random side projects. If you'd like to look under the hood
+    the source code lives at https://github.com/scottbedard/scottbedard.net
 
 -->
 
@@ -30,10 +30,8 @@ is_hidden = 0
                 <v-header></v-header>
                 <router-view transition="fade" transition-mode="out-in"></router-view>
             </div>
-            <script src="{{ [
-                'assets/js/vendor/prism.js',
-                'assets/compiled/app.min.js',
-            ]|theme }}.js"></script>
+            <script src="{{ 'assets/js/vendor/prism.js'|theme }}"></script>
+            <script src="{{ 'assets/compiled/app.min.js'|theme }}"></script>
         </body>
     </html>
 {% endspaceless %}

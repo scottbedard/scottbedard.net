@@ -1,4 +1,4 @@
-let HeaderModel = require('models/header');
+import Header from 'state/header';
 
 //
 // Site header
@@ -14,7 +14,7 @@ export default {
      * @return {Object}
      */
     data() {
-        return HeaderModel.state;
+        return Header.state;
     },
 
     /**
@@ -25,22 +25,20 @@ export default {
         /**
          * Toggle the mobile menu
          *
-         * @param  {Object} e
          * @return {void}
          */
-        onMobileMenuClick(e) {
-            e.preventDefault();
-            this.isExpanded = !this.isExpanded;
+        onMobileMenuClick() {
+            Header.toggleNavigation();
         },
     },
 
     /**
-     * Prevent local clicks from closing the mobile menu
+     * Set up event listeners to close the mobile navigation
      *
      * @return {void}
      */
     attached() {
         this.$el.addEventListener('click', e => e.stopPropagation());
-        window.addEventListener('scroll', e => this.isExpanded = false);
+        window.addEventListener('scroll', e => Header.hideNavigation());
     },
 };

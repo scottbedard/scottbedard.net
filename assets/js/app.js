@@ -1,31 +1,38 @@
 //
-// On your mark
+// Set up Vue
 //
-require('es6-promise').polyfill();
-let Vue = require('vue'),
-    VueRouter = require('vue-router'),
-    VueResource = require('vue-resource');
+import 'babel-polyfill';
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import VueResource from 'vue-resource';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
-require('./app/filters');
-require('./app/directives/infiniteScroll');
-require('./components/ribbon/ribbon');
-require('./components/spinner/spinner');
-require('./components/typewriter/typewriter');
 
 //
-// Get set
+// Import global components, directives, and filters
 //
-let App = require('./app/root'),
-    Router = new VueRouter(require('./app/config'));
-
-Router.map(require('./app/routes'));
-Router.redirect(require('./app/redirects'));
-Router.beforeEach(require('./app/beforeRoute'));
-Router.afterEach(require('./app/afterRoute'));
+import './components/ribbon/ribbon';
+import './components/spinner/spinner';
+import './components/typewriter/typewriter';
+import './app/directives/infiniteScroll';
+import './app/filters/moment';
 
 //
-// Go
+// Set up the router
 //
+let Router = new VueRouter(config);
+
+import { config, before, after } from './app/router';
+import { redirects, routes } from './app/routes';
+
+Router.map(routes);
+Router.redirect(redirects);
+Router.beforeEach(before);
+Router.afterEach(after);
+
+//
+// Load our root Vue instance into the DOM
+//
+import App from './app/root';
 Router.start(App, '#app')

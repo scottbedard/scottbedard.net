@@ -3,54 +3,69 @@
 //
 export default {
 
-    //
-    // Home
-    //
-    '/': {
-        name: 'home',
-        title: '',
-        component: require('pages/home/home'),
-    },
+    /**
+     * Redirects
+     *
+     * @type {Object}
+     */
+    redirects: { },
 
-    //
-    // Blog
-    //
-    '/blog': {
-        name: 'blog',
-        title: ' - blog',
-        component: require('pages/blog/index'),
-    },
+    /**
+     * Routes
+     *
+     * @type {Object}
+     */
+    routes: {
 
-    '/blog/:slug': {
-        name: 'blog-show',
-        title: ' - blog',
-        component: require('pages/blog/show'),
-    },
+        //
+        // Home
+        //
+        '/': {
+            name: 'home',
+            title: '',
+            component: require('pages/home/home'),
+        },
 
-    //
-    // Code
-    //
-    '/code': {
-        name: 'code',
-        title: ' - code',
-        component: require('pages/code/code'),
-    },
+        //
+        // Blog
+        //
+        '/blog': {
+            name: 'blog',
+            title: ' - blog',
+            component: require('pages/blog/index'),
+        },
 
-    //
-    // Contact
-    //
-    '/contact': {
-        name: 'contact',
-        title: ' - contact',
-        component: require('pages/contact/contact'),
-    },
+        '/blog/:slug': {
+            name: 'blog-show',
+            title: ' - blog',
+            component: require('pages/blog/show'),
+        },
 
-    //
-    // 404
-    //
-    '*': {
-        name: '404',
-        title: ' - 404',
-        component: require('pages/404/404'),
+        //
+        // Code
+        //
+        '/code': {
+            name: 'code',
+            title: ' - code',
+            component: require('pages/code/code'),
+        },
+
+        //
+        // Contact
+        //
+        '/contact': {
+            name: 'contact',
+            title: ' - contact',
+            component: require('pages/contact/contact'),
+        },
+
+        //
+        // 404
+        //
+        '*': {
+            name: '404',
+            title: ' - 404',
+            component: require('pages/404/404'),
+        },
     },
 };

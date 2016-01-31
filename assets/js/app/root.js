@@ -1,10 +1,10 @@
 import Vue from 'vue';
-import Header from 'models/header';
+import Header from 'state/header';
 
 //
 // Root Vue instance
 //
-module.exports = Vue.extend({
+export default Vue.extend({
 
     /**
      * Components
@@ -21,7 +21,7 @@ module.exports = Vue.extend({
      * @return {void}
      */
     attached() {
-        window.onresize = () => { Header.hideNavigation() };
+        window.addEventListener('resize', e => Header.hideNavigation());
         this.$el.parentElement.addEventListener('click', e => Header.hideNavigation());
     },
 });

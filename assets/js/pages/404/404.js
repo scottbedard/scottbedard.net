@@ -1,7 +1,7 @@
 //
 // Home page
 //
-module.exports = {
+export default {
 
     /**
      * @type {String}

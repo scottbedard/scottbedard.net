@@ -7,7 +7,7 @@ export default {
      * @type {Object}
      */
     state: {
-        title: '',
+        subtitle: '',
         isExpanded: false,
         navigation: [
             { name: 'blog', text: 'Thoughts' },
@@ -39,10 +39,10 @@ export default {
     /**
      * Set the main site title
      *
-     * @param {String} title
+     * @param {String} value
      */
-    setTitle(title) {
-        this.state.title = title;
+    setSubtitle(value) {
+        this.state.subtitle = value;
     },
 
     /**
@@ -50,7 +50,7 @@ export default {
      *
      * @return {void}
      */
-    toggleIsExpanded() {
+    toggleNavigation() {
         this.state.isExpanded = !this.state.isExpanded;
     },
 };

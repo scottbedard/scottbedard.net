@@ -1,7 +1,7 @@
 /*
  * Utility for converting colors, and calculating gradients
  */
-module.exports = class {
+export default class {
 
     /**
      * Calculate a gradient between two colors

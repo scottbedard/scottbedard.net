@@ -13,7 +13,7 @@
             <v-typewriter
                 :blink-count="0"
                 :delay="3700"
-                :message="title"
+                :message="subtitle"
                 class="subtitle">
             </v-typewriter>
         </div>
@@ -28,10 +28,11 @@
         </nav>
 
         <!-- Mobile nav button -->
-        <a v-on:click="onMobileMenuClick"
-            v-bind:style="{ isExpanded: 'is-expanded' }"
+        <a
             href="#"
-            class="mobile-menu-btn">
+            class="mobile-menu-btn"
+            v-on:click.prevent="onMobileMenuClick"
+            v-bind:style="{ isExpanded: 'is-expanded' }">
             <i class="fa fa-bars"></i>
         </a>
 

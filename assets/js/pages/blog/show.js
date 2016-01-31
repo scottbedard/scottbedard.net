@@ -3,7 +3,7 @@ import Post from 'models/blog/post';
 //
 // Blog-post
 //
-module.exports = {
+export default {
 
     /**
      * @type {String}
