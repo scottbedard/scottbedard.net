@@ -1,5 +1,5 @@
 .page.cube-page {
-    $sticker-size: 60px;
+    $sticker-size: 63px;
 
     .content {
         min-height: 320px;
@@ -7,27 +7,28 @@
     }
 
     .cube-outer {
-        border: 1px solid red;
         left: 50%;
         top: 50%;
-        perspective: 1500px;
+        perspective: 3000px;
         position: absolute;
     }
 
     .cube-inner {
-        perspective: 800px;
-        transform: rotateX(-25deg);
+        perspective: 1500px;
+        transform: rotateX(-23deg);
         transform-style: preserve-3d;
     }
 
     .cube-sticker {
-        border: 1px solid black;
-        border-radius: 3px;
+        border: 1px solid;
+        border-color: rgba(0, 0, 0, 0.5);
+        border-radius: 4px;
         height: $sticker-size;
         width: $sticker-size;
 
         position: absolute;
         top: calc(50% - #{ $sticker-size / 2});
         left: calc(50% - #{ $sticker-size / 2});
+        transition: transform 0.2s linear;
     }
 }

@@ -7,12 +7,18 @@
                 <div class="cube-inner">
                     <div
                         v-for="sticker in stickers"
-                        v-bind:style="{ transform: getTransform(sticker) }"
+                        v-bind:style="{
+                            backgroundColor: sticker.color,
+                            transform: getTransform(sticker),
+                        }"
                         class="cube-sticker">
                     </div>
                 </div>
             </div>
+        </div>
 
+        <div class="content">
+            <pre>{{ $data | json }}</pre>
         </div>
     </div>
 </div>
