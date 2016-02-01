@@ -59,10 +59,20 @@ export default {
                 return;
             }
 
+            // @temp
+            this.isTurning = true;
+            let turn = this.queue.shift();
             this.stickers.forEach(sticker => {
                 sticker.rotation.z += 90;
                 return sticker;
             });
+
+            // @todo: time out the below to not run until css transition is done
+            if (this.queue.length > 0) {
+                this.executeNextTurn();
+            } else {
+                this.isTurning = false;
+            }
         },
 
         /**
@@ -91,7 +101,6 @@ export default {
          */
         getTransform({ rotation, translation }) {
             let r = rotation, t = translation;
-            console.log (r.z);
             return `rotateX(${ r.x }deg) rotateY(${ r.y }deg) rotateZ(${ r.z }deg) translate3d(${ t.x }px, ${ t.y }px, ${ t.z }px)`;
         },
 
