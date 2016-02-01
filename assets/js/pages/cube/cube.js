@@ -73,12 +73,12 @@ export default {
          */
         getRotation(face) {
             switch (face) {
-                case 'U': return { x: 90, y: 0, z: 0 };
-                case 'L': return { x: 0, y: -90, z: 0 };
-                case 'F': return { x: 0, y: 0, z: 0 };
-                case 'R': return { x: 0, y: 90, z: 0 };
-                case 'B': return { x: 0, y: 180, z: 0 };
-                case 'D': return { x: -90, y: 0, z: 0 };
+                case 'U': return { x: 90,  y: 0,   z: 0 };
+                case 'L': return { x: 0,   y: -90, z: 0 };
+                case 'F': return { x: 0,   y: 0,   z: 0 };
+                case 'R': return { x: 0,   y: 90,  z: 0 };
+                case 'B': return { x: 0,   y: 180, z: 0 };
+                case 'D': return { x: -90, y: 0,   z: 0 };
             }
         },
 
@@ -98,22 +98,22 @@ export default {
         /**
          * Returns the translation value of a sticker
          *
-         * @param  {Integer}    Sticker index
+         * @param  {Integer} index
          * @return {Object}
          */
         getTranslation(index) {
             let translation, shift = 68, z = 104;
 
-            switch (Number(index)) {
-                case 0: translation = { x: -shift,  y: -shift,  z }; break;
-                case 1: translation = { x: 0,       y: -shift,  z }; break;
-                case 2: translation = { x: shift,   y: -shift,  z }; break;
-                case 3: translation = { x: -shift,  y: 0,       z }; break;
-                case 4: translation = { x: 0,       y: 0,       z }; break;
-                case 5: translation = { x: shift,   y: 0,       z }; break;
-                case 6: translation = { x: -shift,  y: shift,   z }; break;
-                case 7: translation = { x: 0,       y: shift,   z }; break;
-                case 8: translation = { x: shift,   y: shift,   z }; break;
+            switch (index) {
+                case 0: translation = { x: -shift, y: -shift, z }; break;
+                case 1: translation = { x: 0,      y: -shift, z }; break;
+                case 2: translation = { x: shift,  y: -shift, z }; break;
+                case 3: translation = { x: -shift, y: 0,      z }; break;
+                case 4: translation = { x: 0,      y: 0,      z }; break;
+                case 5: translation = { x: shift,  y: 0,      z }; break;
+                case 6: translation = { x: -shift, y: shift,  z }; break;
+                case 7: translation = { x: 0,      y: shift,  z }; break;
+                case 8: translation = { x: shift,  y: shift,  z }; break;
             }
 
             return translation;
