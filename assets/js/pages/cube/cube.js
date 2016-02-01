@@ -20,7 +20,7 @@ export default {
      * @return {void}
      */
     attached() {
-        this.reset();
+        this.resetCube();
     },
 
     /**
@@ -60,10 +60,28 @@ export default {
         /**
          * Returns the translation value of a sticker
          *
+         * @param  {Integer}    Sticker index
          * @return {Object}
          */
-        getTranslation() {
-            return { x: 0, y: 0, z: '100px' };
+        getTranslation(index) {
+            let translation, z = 100;
+            switch (Number(index)) {
+                case 0: translation = { x: -65, y: -65, z }; break;
+                case 1: translation = { x: 0,   y: -65, z }; break;
+                case 2: translation = { x: 65,  y: -65, z }; break;
+                case 3: translation = { x: -65, y: 0,   z }; break;
+                case 4: translation = { x: 0,   y: 0,   z }; break;
+                case 5: translation = { x: 65,  y: 0,   z }; break;
+                case 6: translation = { x: -65, y: 65,  z }; break;
+                case 7: translation = { x: 0,   y: 65,  z }; break;
+                case 8: translation = { x: 65,  y: 65,  z }; break;
+            }
+
+            return {
+                x: String(translation.x) + 'px',
+                y: String(translation.y) + 'px',
+                z: String(translation.z) + 'px',
+            };
         },
 
         /**
@@ -71,7 +89,7 @@ export default {
          *
          * @return {void}
          */
-        reset() {
+        resetCube() {
             let stickers = [];
             for (let face of ['U', 'L', 'F', 'R', 'B', 'D']) {
                 for (let i = 0, len = Math.pow(this.size, 2); i < len; i++) {
