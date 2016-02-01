@@ -8,7 +8,6 @@
 
     .inner {
         max-width: $layout-width;
-
         width: 100%;
         @include bp-prop(padding, $layout-margin-mobile, $layout-margin-tablet);
         @include bp-prop(font-size, 16px, 20px, 24px);
@@ -26,7 +25,8 @@
     .content {
         border-bottom: 2px solid rgba(0, 0, 0, 0.15);
         background-color: #fff;
-        opacity: 0.97;
+        opacity: $content-opacity;
+        padding: $layout-margin-mobile;
         width: 100%;
         @include bp-prop(margin-bottom, $layout-margin-mobile, $layout-margin-tablet);
 

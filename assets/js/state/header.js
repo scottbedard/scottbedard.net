@@ -11,8 +11,7 @@ export default {
         isExpanded: false,
         navigation: [
             { name: 'blog', text: 'Thoughts' },
-            { name: 'code', text: 'Experiments' },
-            { name: 'contact', text: 'Github' },
+            { name: 'contact', text: 'Contact' },
         ],
     },
 

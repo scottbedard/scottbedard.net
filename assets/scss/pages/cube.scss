@@ -1,0 +1,33 @@
+.page.cube-page {
+    $sticker-size: 100px;
+
+    .content {
+        min-height: 320px;
+        @include valign-parent();
+    }
+
+    .cube-outer {
+        border: 1px solid red;
+        left: 50%;
+        top: 50%;
+        perspective: 1500px;
+        position: absolute;
+    }
+
+    .cube-inner {
+        perspective: 800px;
+        transform: rotateX(-25deg);
+        transform-style: preserve-3d;
+    }
+
+    .cube-sticker {
+        border: 1px solid black;
+        border-radius: 3px;
+        height: $sticker-size;
+        width: $sticker-size;
+
+        position: absolute;
+        top: calc(50% - #{ $sticker-size / 2});
+        left: calc(50% - #{ $sticker-size / 2});
+    }
+}

@@ -8,7 +8,9 @@ export default {
      *
      * @type {Object}
      */
-    redirects: { },
+    redirects: {
+        'cube': 'css-cube',
+    },
 
     /**
      * Routes
@@ -42,12 +44,12 @@ export default {
         },
 
         //
-        // Code
+        // Css cube
         //
-        '/code': {
-            name: 'code',
-            title: ' - code',
-            component: require('pages/code/code'),
+        '/css-cube': {
+            name: 'cube',
+            title: ' - css cube',
+            component: require('pages/cube/cube'),
         },
 
         //
