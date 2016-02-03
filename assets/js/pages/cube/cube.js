@@ -1,3 +1,8 @@
+import turns from './turns';
+
+//
+// CSS Cube
+//
 export default {
 
     /**
@@ -50,11 +55,16 @@ export default {
     methods: {
 
         /**
+         * @spread {turns}
+         */
+        ...turns,
+
+        /**
          * Execute the next turn in the queue
          *
          * @return {void}
          */
-        executeNextTurn() {
+        processNextTurn() {
             if (this.isTurning || this.queue.length === 0) {
                 return;
             }
@@ -62,14 +72,11 @@ export default {
             // @temp
             this.isTurning = true;
             let turn = this.queue.shift();
-            this.stickers.forEach(sticker => {
-                sticker.rotation.z += 90;
-                return sticker;
-            });
+            this.animateTurn(turn);
 
             // @todo: time out the below to not run until css transition is done
             if (this.queue.length > 0) {
-                this.executeNextTurn();
+                this.processNextTurn();
             } else {
                 this.isTurning = false;
             }
@@ -84,9 +91,9 @@ export default {
         getRotation(face) {
             switch (face) {
                 case 'U': return { x: 90,  y: 0,   z: 0 };
-                case 'L': return { x: 0,   y: -90, z: 0 };
+                case 'L': return { x: -90, y: 0,   z: 0 };
                 case 'F': return { x: 0,   y: 0,   z: 0 };
-                case 'R': return { x: 0,   y: 90,  z: 0 };
+                case 'R': return { x: 90,  y: 0,   z: 0 };
                 case 'B': return { x: 0,   y: 180, z: 0 };
                 case 'D': return { x: -90, y: 0,   z: 0 };
             }
@@ -99,9 +106,14 @@ export default {
          * @param  {Object} options.translation
          * @return {String}
          */
-        getTransform({ rotation, translation }) {
+        getTransform({ face, rotation, translation }) {
             let r = rotation, t = translation;
-            return `rotateX(${ r.x }deg) rotateY(${ r.y }deg) rotateZ(${ r.z }deg) translate3d(${ t.x }px, ${ t.y }px, ${ t.z }px)`;
+
+            let orientation = ['R', 'L'].indexOf(face) !== -1
+                ? `rotateY(${ r.x }deg) rotateX(${ r.y }deg)`
+                : `rotateX(${ r.x }deg) rotateY(${ r.y }deg)`;
+
+            return `${ orientation } rotateZ(${ r.z }deg) translate3d(${ t.x }px, ${ t.y }px, ${ t.z }px)`;
         },
 
         /**
@@ -147,13 +159,13 @@ export default {
                 case 'K': move = 'R-'; break;
                 case 'Q': move = 'B'; break;
                 case 'P': move = 'B-'; break;
-                case 'L': move = 'D'; break;
-                case 'S': move = 'D-'; break;
+                case 'L': move = 'D-'; break;
+                case 'S': move = 'D'; break;
             }
 
             if (move) {
                 this.queue.push(move);
-                this.executeNextTurn();
+                this.processNextTurn();
             }
         },
 
@@ -174,9 +186,28 @@ export default {
                         translation: this.getTranslation(i),
                     });
                 }
+
             }
 
             this.stickers = stickers;
+            this.queue = [];
+        },
+
+        /**
+         * Query the cube for specific stickers
+         *
+         * @param  {String} face
+         * @param  {Array}  positions
+         * @return {Object}
+         */
+        getStickers(face, positions = null) {
+            return this.stickers.filter(sticker => {
+                if (sticker.face !== face) {
+                    return false;
+                }
+
+                return positions === null || positions.indexOf(sticker.position) !== -1;
+            });
         },
     },
 }
