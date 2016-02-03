@@ -4,7 +4,7 @@
         <div class="content">
 
             <div class="cube-outer">
-                <div v-bind:style="{ transitionDuration: speed + 'ms' }" class="cube-inner">
+                <div v-bind:class="{ 'is-turning': isTurning }" v-bind:style="{ transitionDuration: speed + 'ms' }" class="cube-inner">
                     <div
                         v-for="sticker in stickers"
                         v-bind:style="{
