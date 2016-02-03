@@ -9,12 +9,12 @@
     .cube-outer {
         left: 50%;
         top: 50%;
-        perspective: 3000px;
+        perspective: 2500px;
         position: absolute;
     }
 
     .cube-inner {
-        perspective: 1500px;
+        perspective: inherit;
         transform: rotateX(-23deg);
         transform-style: preserve-3d;
     }
@@ -29,6 +29,8 @@
         position: absolute;
         top: calc(50% - #{ $sticker-size / 2});
         left: calc(50% - #{ $sticker-size / 2});
-        transition: transform 0.2s linear;
+        transition-property: transform;
+        transition-duration: inherit;
+        transition-timing-function: linear;
     }
 }

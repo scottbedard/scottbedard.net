@@ -1,4 +1,4 @@
-import turns from './turns';
+import turns from './sizes/three';
 
 //
 // CSS Cube
@@ -25,6 +25,7 @@ export default {
             },
             isTurning: false,
             size: 3,
+            speed: 85,
             stickers: [],
             queue: [],
         };
@@ -69,17 +70,17 @@ export default {
                 return;
             }
 
-            // @temp
-            this.isTurning = true;
             let turn = this.queue.shift();
+            this.isTurning = true;
             this.animateTurn(turn);
 
-            // @todo: time out the below to not run until css transition is done
-            if (this.queue.length > 0) {
-                this.processNextTurn();
-            } else {
+            setTimeout(() => {
                 this.isTurning = false;
-            }
+
+                if (this.queue.length > 0) {
+                    this.processNextTurn();
+                }
+            }, this.speed);
         },
 
         /**
@@ -91,9 +92,9 @@ export default {
         getRotation(face) {
             switch (face) {
                 case 'U': return { x: 90,  y: 0,   z: 0 };
-                case 'L': return { x: -90, y: 0,   z: 0 };
+                case 'L': return { y: 0,   x: -90, z: 0 };
                 case 'F': return { x: 0,   y: 0,   z: 0 };
-                case 'R': return { x: 90,  y: 0,   z: 0 };
+                case 'R': return { y: 0,   x: 90,  z: 0 };
                 case 'B': return { x: 0,   y: 180, z: 0 };
                 case 'D': return { x: -90, y: 0,   z: 0 };
             }
@@ -109,7 +110,7 @@ export default {
         getTransform({ face, rotation, translation }) {
             let r = rotation, t = translation;
 
-            let orientation = ['R', 'L'].indexOf(face) !== -1
+            let orientation = face === 'L' || face === 'R'
                 ? `rotateY(${ r.x }deg) rotateX(${ r.y }deg)`
                 : `rotateX(${ r.x }deg) rotateY(${ r.y }deg)`;
 
