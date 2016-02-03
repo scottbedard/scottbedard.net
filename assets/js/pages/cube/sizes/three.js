@@ -9,12 +9,10 @@ export default {
      * @param  {String} turn
      * @return {void}
      */
-    animateTurn(turn) {
-        let face = turn.charAt(0),
-            degrees = turn.length > 1 ? -90 : 90
-
+    executeTurn({ face, isPrime }) {
+        let degrees = isPrime ? -90 : 90
         this.getStickers(face).forEach(sticker => sticker.rotation.z += degrees);
-        this['animateSliceTurn' + face](degrees);
+        this['executeTurn' + face](degrees);
     },
 
     /**
@@ -23,7 +21,7 @@ export default {
      * @param  {Number} degrees
      * @return {void}
      */
-    animateSliceTurnU(degrees) {
+    executeTurnU(degrees) {
         this.getStickers('B', [0, 1, 2]).forEach(sticker => sticker.rotation.y += -degrees);
         this.getStickers('R', [0, 1, 2]).forEach(sticker => sticker.rotation.x += -degrees);
         this.getStickers('F', [0, 1, 2]).forEach(sticker => sticker.rotation.y += -degrees);
@@ -36,7 +34,7 @@ export default {
      * @param  {Number} degrees
      * @return {void}
      */
-    animateSliceTurnL(degrees) {
+    executeTurnL(degrees) {
         this.getStickers('U', [0, 3, 6]).forEach(sticker => sticker.rotation.x += -degrees);
         this.getStickers('F', [0, 3, 6]).forEach(sticker => sticker.rotation.x += -degrees);
         this.getStickers('D', [0, 3, 6]).forEach(sticker => sticker.rotation.x += -degrees);
@@ -49,7 +47,7 @@ export default {
      * @param  {Number} degrees
      * @return {void}
      */
-    animateSliceTurnF(degrees) {
+    executeTurnF(degrees) {
         this.getStickers('U', [6, 7, 8]).forEach(sticker => sticker.rotation.y += degrees);
         this.getStickers('R', [0, 3, 6]).forEach(sticker => sticker.rotation.y += -degrees);
         this.getStickers('D', [0, 1, 2]).forEach(sticker => sticker.rotation.y += -degrees);
@@ -62,7 +60,7 @@ export default {
      * @param  {Number} degrees
      * @return {void}
      */
-    animateSliceTurnR(degrees) {
+    executeTurnR(degrees) {
         this.getStickers('U', [2, 5, 8]).forEach(sticker => sticker.rotation.x += degrees);
         this.getStickers('B', [0, 3, 6]).forEach(sticker => sticker.rotation.x += degrees);
         this.getStickers('D', [2, 5, 8]).forEach(sticker => sticker.rotation.x += degrees);
@@ -75,7 +73,7 @@ export default {
      * @param  {Number} degrees
      * @return {void}
      */
-    animateSliceTurnD(degrees) {
+    executeTurnD(degrees) {
         this.getStickers('F', [6, 7, 8]).forEach(sticker => sticker.rotation.y += degrees);
         this.getStickers('R', [6, 7, 8]).forEach(sticker => sticker.rotation.x += degrees);
         this.getStickers('B', [6, 7, 8]).forEach(sticker => sticker.rotation.y += degrees);
@@ -88,7 +86,7 @@ export default {
      * @param  {Number} degrees
      * @return {void}
      */
-    animateSliceTurnB(degrees) {
+    executeTurnB(degrees) {
         this.getStickers('D', [6, 7, 8]).forEach(sticker => sticker.rotation.y += degrees);
         this.getStickers('L', [0, 3, 6]).forEach(sticker => sticker.rotation.y += -degrees);
         this.getStickers('U', [0, 1, 2]).forEach(sticker => sticker.rotation.y += -degrees);

@@ -61,30 +61,7 @@ export default {
         ...turns,
 
         /**
-         * Execute the next turn in the queue
-         *
-         * @return {void}
-         */
-        processNextTurn() {
-            if (this.isTurning || this.queue.length === 0) {
-                return;
-            }
-
-            let turn = this.queue.shift();
-            this.isTurning = true;
-            this.animateTurn(turn);
-
-            setTimeout(() => {
-                this.isTurning = false;
-
-                if (this.queue.length > 0) {
-                    this.processNextTurn();
-                }
-            }, this.speed);
-        },
-
-        /**
-         * Returns a sticker's rotation value
+         * Returns a sticker's initial rotation value
          *
          * @param  {Object} options.face
          * @return {Object}
@@ -98,6 +75,23 @@ export default {
                 case 'B': return { x: 0,   y: 180, z: 0 };
                 case 'D': return { x: -90, y: 0,   z: 0 };
             }
+        },
+
+        /**
+         * Query the cube for specific stickers
+         *
+         * @param  {String} face
+         * @param  {Array}  positions
+         * @return {Object}
+         */
+        getStickers(face, positions = null) {
+            return this.stickers.filter(sticker => {
+                if (sticker.face !== face) {
+                    return false;
+                }
+
+                return positions === null || positions.indexOf(sticker.position) !== -1;
+            });
         },
 
         /**
@@ -150,24 +144,47 @@ export default {
         onKeyup(e) {
             let move;
             switch (String.fromCharCode(e.keyCode)) {
-                case 'J': move = 'U'; break;
-                case 'F': move = 'U-'; break;
-                case 'D': move = 'L'; break;
-                case 'E': move = 'L-'; break;
-                case 'H': move = 'F'; break;
-                case 'G': move = 'F-'; break;
-                case 'I': move = 'R'; break;
-                case 'K': move = 'R-'; break;
-                case 'Q': move = 'B'; break;
-                case 'P': move = 'B-'; break;
-                case 'L': move = 'D-'; break;
-                case 'S': move = 'D'; break;
+                case 'J': move = { face: 'U', isPrime: false }; break;
+                case 'F': move = { face: 'U', isPrime: true }; break;
+                case 'D': move = { face: 'L', isPrime: false }; break;
+                case 'E': move = { face: 'L', isPrime: true }; break;
+                case 'H': move = { face: 'F', isPrime: false }; break;
+                case 'G': move = { face: 'F', isPrime: true }; break;
+                case 'I': move = { face: 'R', isPrime: false }; break;
+                case 'K': move = { face: 'R', isPrime: true }; break;
+                case 'W': move = { face: 'B', isPrime: false }; break;
+                case 'O': move = { face: 'B', isPrime: true }; break;
+                case 'S': move = { face: 'D', isPrime: false }; break;
+                case 'L': move = { face: 'D', isPrime: true }; break;
             }
 
             if (move) {
                 this.queue.push(move);
                 this.processNextTurn();
             }
+        },
+
+        /**
+         * Execute the next turn in the queue
+         *
+         * @return {void}
+         */
+        processNextTurn() {
+            if (this.isTurning || this.queue.length === 0) {
+                return;
+            }
+
+            let turn = this.queue.shift();
+            this.isTurning = true;
+            this.executeTurn(turn);
+
+            setTimeout(() => {
+                this.isTurning = false;
+
+                if (this.queue.length > 0) {
+                    this.processNextTurn();
+                }
+            }, this.speed);
         },
 
         /**
@@ -187,28 +204,10 @@ export default {
                         translation: this.getTranslation(i),
                     });
                 }
-
             }
 
             this.stickers = stickers;
             this.queue = [];
-        },
-
-        /**
-         * Query the cube for specific stickers
-         *
-         * @param  {String} face
-         * @param  {Array}  positions
-         * @return {Object}
-         */
-        getStickers(face, positions = null) {
-            return this.stickers.filter(sticker => {
-                if (sticker.face !== face) {
-                    return false;
-                }
-
-                return positions === null || positions.indexOf(sticker.position) !== -1;
-            });
         },
     },
 }
