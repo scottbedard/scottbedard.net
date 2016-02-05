@@ -69,9 +69,9 @@ export default {
         getRotation(face) {
             switch (face) {
                 case 'U': return { x: 90,  y: 0,   z: 0 };
-                case 'L': return { y: 0,   x: -90, z: 0 };
+                case 'L': return { y: -90, x: 0,   z: 0 };
                 case 'F': return { x: 0,   y: 0,   z: 0 };
-                case 'R': return { y: 0,   x: 90,  z: 0 };
+                case 'R': return { y: 90,  x: 0,   z: 0 };
                 case 'B': return { x: 0,   y: 180, z: 0 };
                 case 'D': return { x: -90, y: 0,   z: 0 };
             }
@@ -105,7 +105,7 @@ export default {
             let r = rotation, t = translation;
 
             let orientation = face === 'L' || face === 'R'
-                ? `rotateY(${ r.x }deg) rotateX(${ r.y }deg)`
+                ? `rotateY(${ r.y }deg) rotateX(${ r.x }deg)`
                 : `rotateX(${ r.x }deg) rotateY(${ r.y }deg)`;
 
             return `${ orientation } rotateZ(${ r.z }deg) translate3d(${ t.x }px, ${ t.y }px, ${ t.z }px)`;
