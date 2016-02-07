@@ -25,6 +25,7 @@ export default {
             },
             isTurning: false,
             pendingTransitions: 0,
+            pendingRepaints: [],
             size: 3,
             speed: 75,
             stickers: [],
@@ -77,9 +78,24 @@ export default {
         ...turns,
 
         /**
+         * Returns the colors of a sticker array
+         *
+         * @param  {Array} stickers
+         * @return {Array}
+         */
+        getColors(stickers) {
+            let colors = [];
+            for (let sticker of stickers) {
+                colors.push(sticker.color);
+            }
+
+            return colors;
+        },
+
+        /**
          * Returns a sticker's initial rotation value
          *
-         * @param  {Object} options.face
+         * @param  {String} face
          * @return {Object}
          */
         getRotation(face) {
@@ -120,11 +136,11 @@ export default {
          * @return {String}
          */
         getTransform({ face, rotation, translation }) {
-            let r = rotation, t = translation;
-
-            let orientation = face === 'L' || face === 'R'
-                ? `rotateY(${ r.y }deg) rotateX(${ r.x }deg)`
-                : `rotateX(${ r.x }deg) rotateY(${ r.y }deg)`;
+            let r = rotation,
+                t = translation,
+                orientation = face === 'L' || face === 'R'
+                    ? `rotateY(${ r.y }deg) rotateX(${ r.x }deg)`
+                    : `rotateX(${ r.x }deg) rotateY(${ r.y }deg)`;
 
             return `${ orientation } rotateZ(${ r.z }deg) translate3d(${ t.x }px, ${ t.y }px, ${ t.z }px)`;
         },
@@ -152,9 +168,15 @@ export default {
          */
         onTransitionEnd(e) {
             this.pendingTransitions--;
-            if (this.isTurning && !this.pendingTransitions) {
+            if (!this.pendingTransitions) {
                 this.isTurning = false;
                 this.stickers.forEach(sticker => sticker.rotation = this.getRotation(sticker.face));
+
+                for (let i in this.pendingRepaints) {
+                    let repaint = this.pendingRepaints.shift();
+                    repaint();
+                }
+
                 setTimeout(this.processNextTurn, 0);
             }
         },
@@ -170,7 +192,7 @@ export default {
             }
 
             this.isTurning = true;
-            this.executeTurn(this.queue.shift());
+            this.animateTurn(this.queue.shift());
         },
 
         /**
@@ -179,6 +201,10 @@ export default {
          * @return {void}
          */
         resetCube() {
+
+            // Random colors for dev purposes
+            let randomColor = () => '#' + Math.random().toString(16).slice(2, 8).toUpperCase();
+
             let stickers = [];
             for (let face of ['U', 'L', 'F', 'R', 'B', 'D']) {
                 for (let i = 0, len = Math.pow(this.size, 2); i < len; i++) {
@@ -192,8 +218,53 @@ export default {
                 }
             }
 
-            this.stickers = stickers;
             this.queue = [];
+            this.stickers = stickers;
+        },
+
+        /**
+         * Turns a band of stickers
+         *
+         * @param  {Array}      band
+         * @param  {Boolean}    isPrime
+         * @return {Array}
+         */
+        turnBand(band, isPrime) {
+            let size = this.size;
+
+            return isPrime
+                ? [ ...band.slice(-size), ...band.slice(0, -size) ]
+                : [ ...band.slice(size), ...band.slice(0, size) ];
+        },
+
+        /**
+         * Turn a face of stickers
+         *
+         * @param  {Array}      face
+         * @param  {Boolean}    isPrime
+         * @return {Array}
+         */
+        turnFace(stickers, face, isPrime) {
+            let rows = [],
+                colors = [],
+                method = 'pop';
+
+            for (let i = 0; i < face.length; i += this.size) {
+                rows.push(face.slice(i, i + this.size));
+            }
+
+            if (isPrime) {
+                rows.reverse();
+                method = 'shift';
+            }
+
+            for (let i = 0; i < this.size; i++) {
+                for (let row of rows) {
+                    colors.push(row[method]());
+                }
+            }
+
+            stickers.forEach(sticker => sticker.color = colors.shift());
         },
     },
 }
