@@ -17,12 +17,6 @@
         perspective: inherit;
         transform: rotateX(-23deg);
         transform-style: preserve-3d;
-
-        &.is-turning .cube-sticker {
-            transition-duration: inherit;
-            transition-property: transform;
-            transition-timing-function: linear;
-        }
     }
 
     .cube-sticker {

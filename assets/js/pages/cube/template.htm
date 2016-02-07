@@ -4,13 +4,15 @@
         <div class="content">
 
             <div class="cube-outer">
-                <div v-bind:class="{ 'is-turning': isTurning }" v-bind:style="{ transitionDuration: speed + 'ms' }" class="cube-inner">
+                <div class="cube-inner">
                     <div
                         v-for="sticker in stickers"
                         v-bind:style="{
                             backgroundColor: sticker.color,
                             transform: getTransform(sticker),
+                            transition: transition,
                         }"
+                        v-on:transitionend="onTransitionEnd"
                         class="cube-sticker">
                     </div>
                 </div>
@@ -18,7 +20,7 @@
         </div>
 
         <div class="content">
-            <pre>{{ $data | json }}</pre>
+            <pre>{{ $data.queue | json }}</pre>
         </div>
     </div>
 </div>

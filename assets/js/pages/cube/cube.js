@@ -24,8 +24,9 @@ export default {
                 D: '#FAFAFA',
             },
             isTurning: false,
+            pendingTransitions: 0,
             size: 3,
-            speed: 85,
+            speed: 75,
             stickers: [],
             queue: [],
         };
@@ -39,6 +40,21 @@ export default {
     attached() {
         this.resetCube();
         window.addEventListener('keyup', this.onKeyup);
+    },
+
+    /**
+     * @type {Object}
+     */
+    computed: {
+
+        /**
+         * If the cube is turning, enable css transitions
+         *
+         * @return {String}
+         */
+        transition() {
+            return this.isTurning ? `transform ${ this.speed }ms linear` : 'none';
+        },
     },
 
     /**
@@ -67,14 +83,16 @@ export default {
          * @return {Object}
          */
         getRotation(face) {
-            switch (face) {
-                case 'U': return { x: 90,  y: 0,   z: 0 };
-                case 'L': return { y: -90, x: 0,   z: 0 };
-                case 'F': return { x: 0,   y: 0,   z: 0 };
-                case 'R': return { y: 90,  x: 0,   z: 0 };
-                case 'B': return { x: 0,   y: 180, z: 0 };
-                case 'D': return { x: -90, y: 0,   z: 0 };
-            }
+            let rotation = {
+                U: { x: 90,  y: 0,   z: 0 },
+                L: { y: -90, x: 0,   z: 0 },
+                F: { x: 0,   y: 0,   z: 0 },
+                R: { y: 90,  x: 0,   z: 0 },
+                B: { x: 0,   y: 180, z: 0 },
+                D: { x: -90, y: 0,   z: 0 },
+            };
+
+            return rotation[face];
         },
 
         /**
@@ -112,27 +130,6 @@ export default {
         },
 
         /**
-         * Returns the translation value of a sticker
-         *
-         * @param  {Integer} index
-         * @return {Object}
-         */
-        getTranslation(index) {
-            let px = 68, z = 104;
-            switch (index) {
-                case 0: return { x: -px, y: -px, z };
-                case 1: return { x: 0,   y: -px, z };
-                case 2: return { x: px,  y: -px, z };
-                case 3: return { x: -px, y: 0,   z };
-                case 4: return { x: 0,   y: 0,   z };
-                case 5: return { x: px,  y: 0,   z };
-                case 6: return { x: -px, y: px,  z };
-                case 7: return { x: 0,   y: px,  z };
-                case 8: return { x: px,  y: px,  z };
-            }
-        },
-
-        /**
          * Translate a keypress into a cube movement, and add it to the queue
          *
          * @param  {Object} e
@@ -148,6 +145,21 @@ export default {
         },
 
         /**
+         * When the transitions end, reset the cube rotation
+         *
+         * @param  {[type]} e [description]
+         * @return {[type]}   [description]
+         */
+        onTransitionEnd(e) {
+            this.pendingTransitions--;
+            if (this.isTurning && !this.pendingTransitions) {
+                this.isTurning = false;
+                this.stickers.forEach(sticker => sticker.rotation = this.getRotation(sticker.face));
+                setTimeout(this.processNextTurn, 0);
+            }
+        },
+
+        /**
          * Execute the next turn in the queue
          *
          * @return {void}
@@ -157,17 +169,8 @@ export default {
                 return;
             }
 
-            let turn = this.queue.shift();
             this.isTurning = true;
-            this.executeTurn(turn);
-
-            setTimeout(() => {
-                this.isTurning = false;
-
-                if (this.queue.length > 0) {
-                    this.processNextTurn();
-                }
-            }, this.speed);
+            this.executeTurn(this.queue.shift());
         },
 
         /**
