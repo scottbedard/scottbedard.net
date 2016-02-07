@@ -118,21 +118,18 @@ export default {
          * @return {Object}
          */
         getTranslation(index) {
-            let translation, shift = 68, z = 104;
-
+            let px = 68, z = 104;
             switch (index) {
-                case 0: translation = { x: -shift, y: -shift, z }; break;
-                case 1: translation = { x: 0,      y: -shift, z }; break;
-                case 2: translation = { x: shift,  y: -shift, z }; break;
-                case 3: translation = { x: -shift, y: 0,      z }; break;
-                case 4: translation = { x: 0,      y: 0,      z }; break;
-                case 5: translation = { x: shift,  y: 0,      z }; break;
-                case 6: translation = { x: -shift, y: shift,  z }; break;
-                case 7: translation = { x: 0,      y: shift,  z }; break;
-                case 8: translation = { x: shift,  y: shift,  z }; break;
+                case 0: return { x: -px, y: -px, z };
+                case 1: return { x: 0,   y: -px, z };
+                case 2: return { x: px,  y: -px, z };
+                case 3: return { x: -px, y: 0,   z };
+                case 4: return { x: 0,   y: 0,   z };
+                case 5: return { x: px,  y: 0,   z };
+                case 6: return { x: -px, y: px,  z };
+                case 7: return { x: 0,   y: px,  z };
+                case 8: return { x: px,  y: px,  z };
             }
-
-            return translation;
         },
 
         /**
