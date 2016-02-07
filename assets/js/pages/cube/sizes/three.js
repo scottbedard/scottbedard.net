@@ -99,4 +99,29 @@ export default {
         this.getStickers('U', [0, 1, 2]).forEach(sticker => sticker.rotation.y += -degrees);
         this.getStickers('R', [2, 5, 8]).forEach(sticker => sticker.rotation.x += degrees);
     },
+
+    /**
+     * Translate a keypress into a move object
+     *
+     * @param  {Object|Null} e
+     * @return {Object}
+     */
+    getMove(e) {
+        switch (String.fromCharCode(e.keyCode)) {
+            case 'J': return { face: 'U', isPrime: false };
+            case 'F': return { face: 'U', isPrime: true };
+            case 'D': return { face: 'L', isPrime: false };
+            case 'E': return { face: 'L', isPrime: true };
+            case 'H': return { face: 'F', isPrime: false };
+            case 'G': return { face: 'F', isPrime: true };
+            case 'I': return { face: 'R', isPrime: false };
+            case 'K': return { face: 'R', isPrime: true };
+            case 'W': return { face: 'B', isPrime: false };
+            case 'O': return { face: 'B', isPrime: true };
+            case 'S': return { face: 'D', isPrime: false };
+            case 'L': return { face: 'D', isPrime: true };
+        }
+
+        return null;
+    },
 };

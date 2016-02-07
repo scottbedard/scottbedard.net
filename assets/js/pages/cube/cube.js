@@ -139,21 +139,7 @@ export default {
          * @return {void}
          */
         onKeyup(e) {
-            let move;
-            switch (String.fromCharCode(e.keyCode)) {
-                case 'J': move = { face: 'U', isPrime: false }; break;
-                case 'F': move = { face: 'U', isPrime: true }; break;
-                case 'D': move = { face: 'L', isPrime: false }; break;
-                case 'E': move = { face: 'L', isPrime: true }; break;
-                case 'H': move = { face: 'F', isPrime: false }; break;
-                case 'G': move = { face: 'F', isPrime: true }; break;
-                case 'I': move = { face: 'R', isPrime: false }; break;
-                case 'K': move = { face: 'R', isPrime: true }; break;
-                case 'W': move = { face: 'B', isPrime: false }; break;
-                case 'O': move = { face: 'B', isPrime: true }; break;
-                case 'S': move = { face: 'D', isPrime: false }; break;
-                case 'L': move = { face: 'D', isPrime: true }; break;
-            }
+            let move = this.getMove(e);
 
             if (move) {
                 this.queue.push(move);
