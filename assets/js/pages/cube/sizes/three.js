@@ -22,26 +22,15 @@ export default {
      * @return {void}
      */
     animateTurnU(degrees) {
-        let U = this.getStickers('U'),
-            B = this.getStickers('B', [0, 1, 2]),
-            R = this.getStickers('R', [0, 1, 2]),
-            F = this.getStickers('F', [0, 1, 2]),
-            L = this.getStickers('L', [0, 1, 2]);
-
-        let face = [], band = [];
-        U.forEach(sticker => { face.push(sticker.color); sticker.rotation.z += degrees });
-        B.forEach(sticker => { band.push(sticker.color); sticker.rotation.y += -degrees });
-        R.forEach(sticker => { band.push(sticker.color); sticker.rotation.y += -degrees });
-        F.forEach(sticker => { band.push(sticker.color); sticker.rotation.y += -degrees });
-        L.forEach(sticker => { band.push(sticker.color); sticker.rotation.y += -degrees });
+        let U = this.animate(this.getStickers('U'), 'z', degrees),
+            B = this.animate(this.getStickers('B', [0, 1, 2]), 'y', -degrees),
+            R = this.animate(this.getStickers('R', [0, 1, 2]), 'y', -degrees),
+            F = this.animate(this.getStickers('F', [0, 1, 2]), 'y', -degrees),
+            L = this.animate(this.getStickers('L', [0, 1, 2]), 'y', -degrees);
 
         this.pendingRepaints.push(() => {
-            let bandColors = this.turnBand(band, degrees > 0);
-            this.turnFace(U, face, degrees > 0);
-            B.forEach(sticker => sticker.color = bandColors.shift());
-            R.forEach(sticker => sticker.color = bandColors.shift());
-            F.forEach(sticker => sticker.color = bandColors.shift());
-            L.forEach(sticker => sticker.color = bandColors.shift());
+            this.turnFace(U, degrees > 0);
+            this.turnBand([B, R, F, L], degrees > 0);
         });
     },
 
@@ -52,10 +41,16 @@ export default {
      * @return {void}
      */
     animateTurnL(degrees) {
-        this.getStickers('U', [0, 3, 6]).forEach(sticker => sticker.rotation.x += -degrees);
-        this.getStickers('F', [0, 3, 6]).forEach(sticker => sticker.rotation.x += -degrees);
-        this.getStickers('D', [0, 3, 6]).forEach(sticker => sticker.rotation.x += -degrees);
-        this.getStickers('B', [2, 5, 8]).forEach(sticker => sticker.rotation.x += -degrees);
+        let L = this.animate(this.getStickers('L'), 'z', degrees),
+            U = this.animate(this.getStickers('U', [0, 3, 6]), 'x', -degrees),
+            F = this.animate(this.getStickers('F', [0, 3, 6]), 'x', -degrees),
+            D = this.animate(this.getStickers('D', [0, 3, 6]), 'x', -degrees),
+            B = this.animate(this.getStickers('B', [8, 5, 2]), 'x', -degrees);
+
+        this.pendingRepaints.push(() => {
+            this.turnFace(L, degrees > 0);
+            this.turnBand([U, F, D, B], degrees > 0);
+        });
     },
 
     /**
@@ -65,10 +60,16 @@ export default {
      * @return {void}
      */
     animateTurnF(degrees) {
-        this.getStickers('U', [6, 7, 8]).forEach(sticker => sticker.rotation.y += degrees);
-        this.getStickers('R', [0, 3, 6]).forEach(sticker => sticker.rotation.x += -degrees);
-        this.getStickers('D', [0, 1, 2]).forEach(sticker => sticker.rotation.y += -degrees);
-        this.getStickers('L', [2, 5, 8]).forEach(sticker => sticker.rotation.x += degrees);
+        let F = this.animate(this.getStickers('F'), 'z', degrees),
+            U = this.animate(this.getStickers('U', [6, 7, 8]), 'y', degrees),
+            R = this.animate(this.getStickers('R', [0, 3, 6]), 'x', -degrees),
+            D = this.animate(this.getStickers('D', [2, 1, 0]), 'y', -degrees),
+            L = this.animate(this.getStickers('L', [8, 5, 2]), 'x', degrees);
+
+        this.pendingRepaints.push(() => {
+            this.turnFace(F, degrees > 0);
+            this.turnBand([U, R, D, L], degrees > 0);
+        });
     },
 
     /**
@@ -78,10 +79,16 @@ export default {
      * @return {void}
      */
     animateTurnR(degrees) {
-        this.getStickers('U', [2, 5, 8]).forEach(sticker => sticker.rotation.x += degrees);
-        this.getStickers('B', [0, 3, 6]).forEach(sticker => sticker.rotation.x += degrees);
-        this.getStickers('D', [2, 5, 8]).forEach(sticker => sticker.rotation.x += degrees);
-        this.getStickers('F', [2, 5, 8]).forEach(sticker => sticker.rotation.x += degrees);
+        let R = this.animate(this.getStickers('R'), 'z', degrees),
+            U = this.animate(this.getStickers('U', [8, 5, 2]), 'x', degrees),
+            B = this.animate(this.getStickers('B', [0, 3, 6]), 'x', degrees),
+            D = this.animate(this.getStickers('D', [8, 5, 2]), 'x', degrees),
+            F = this.animate(this.getStickers('F', [8, 5, 2]), 'x', degrees);
+
+        this.pendingRepaints.push(() => {
+            this.turnFace(R, degrees > 0);
+            this.turnBand([U, B, D, F], degrees > 0);
+        });
     },
 
     /**
@@ -91,10 +98,16 @@ export default {
      * @return {void}
      */
     animateTurnD(degrees) {
-        this.getStickers('F', [6, 7, 8]).forEach(sticker => sticker.rotation.y += degrees);
-        this.getStickers('R', [6, 7, 8]).forEach(sticker => sticker.rotation.y += degrees);
-        this.getStickers('B', [6, 7, 8]).forEach(sticker => sticker.rotation.y += degrees);
-        this.getStickers('L', [6, 7, 8]).forEach(sticker => sticker.rotation.y += degrees);
+        let D = this.animate(this.getStickers('D'), 'z', degrees),
+            F = this.animate(this.getStickers('F', [6, 7, 8]), 'y', degrees),
+            R = this.animate(this.getStickers('R', [6, 7, 8]), 'y', degrees),
+            B = this.animate(this.getStickers('B', [6, 7, 8]), 'y', degrees),
+            L = this.animate(this.getStickers('L', [6, 7, 8]), 'y', degrees);
+
+        this.pendingRepaints.push(() => {
+            this.turnFace(D, degrees > 0);
+            this.turnBand([F, R, B, L], degrees > 0);
+        });
     },
 
     /**
@@ -104,10 +117,16 @@ export default {
      * @return {void}
      */
     animateTurnB(degrees) {
-        this.getStickers('D', [6, 7, 8]).forEach(sticker => sticker.rotation.y += degrees);
-        this.getStickers('L', [0, 3, 6]).forEach(sticker => sticker.rotation.x += -degrees);
-        this.getStickers('U', [0, 1, 2]).forEach(sticker => sticker.rotation.y += -degrees);
-        this.getStickers('R', [2, 5, 8]).forEach(sticker => sticker.rotation.x += degrees);
+        let B = this.animate(this.getStickers('B'), 'z', degrees),
+            U = this.animate(this.getStickers('U', [2, 1, 0]), 'y', -degrees),
+            L = this.animate(this.getStickers('L', [0, 3, 6]), 'x', -degrees),
+            D = this.animate(this.getStickers('D', [6, 7, 8]), 'y', degrees),
+            R = this.animate(this.getStickers('R', [8, 5, 2]), 'x', degrees);
+
+        this.pendingRepaints.push(() => {
+            this.turnFace(B, degrees > 0);
+            this.turnBand([U, L, D, R], degrees > 0);
+        });
     },
 
     /**

@@ -78,6 +78,19 @@ export default {
         ...turns,
 
         /**
+         * Animate a turn
+         *
+         * @param  {Array}      stickers
+         * @param  {String}     axis
+         * @param  {Integer}    degrees
+         * @return {Array}
+         */
+        animate(stickers, axis, degrees) {
+            stickers.forEach(sticker => sticker.rotation[axis] += degrees)
+            return stickers;
+        },
+
+        /**
          * Returns the colors of a sticker array
          *
          * @param  {Array} stickers
@@ -119,13 +132,18 @@ export default {
          * @return {Object}
          */
         getStickers(face, positions = null) {
-            return this.stickers.filter(sticker => {
-                if (sticker.face !== face) {
-                    return false;
-                }
+            let stickers = this.stickers.filter(sticker => sticker.face === face);
 
-                return positions === null || positions.indexOf(sticker.position) !== -1;
+            if (positions === null) {
+                return stickers;
+            }
+
+            let positionMatches = [];
+            positions.forEach(i => {
+                positionMatches.push(stickers.filter(sticker => sticker.position === i)[0]);
             });
+
+            return positionMatches;
         },
 
         /**
@@ -203,7 +221,7 @@ export default {
         resetCube() {
 
             // Random colors for dev purposes
-            let randomColor = () => '#' + Math.random().toString(16).slice(2, 8).toUpperCase();
+            let rc = () => '#' + Math.random().toString(16).slice(2, 8).toUpperCase();
 
             let stickers = [];
             for (let face of ['U', 'L', 'F', 'R', 'B', 'D']) {
@@ -229,12 +247,24 @@ export default {
          * @param  {Boolean}    isPrime
          * @return {Array}
          */
-        turnBand(band, isPrime) {
-            let size = this.size;
+        turnBand(segments, isPrime) {
+            // Extract the cube's color data
+            let colors = [];
+            for (let segment of segments) {
+                colors.push(segment.map(sticker => sticker.color));
+            }
 
-            return isPrime
-                ? [ ...band.slice(-size), ...band.slice(0, -size) ]
-                : [ ...band.slice(size), ...band.slice(0, size) ];
+            // Turn the band of colors
+            colors = isPrime
+                ? [ colors[3], colors[0], colors[1], colors[2] ]
+                : [ colors[1], colors[2], colors[3], colors[0] ];
+
+            // Update the band
+            for (let i = 0; i < 4; i++) {
+                for (let j = 0; j < this.size; j++) {
+                    segments[i][j].color = colors[i][j];
+                }
+            }
         },
 
         /**
@@ -244,11 +274,13 @@ export default {
          * @param  {Boolean}    isPrime
          * @return {Array}
          */
-        turnFace(stickers, face, isPrime) {
+        turnFace(stickers, isPrime) {
             let rows = [],
                 colors = [],
                 method = 'pop';
 
+            let face = [];
+            stickers.forEach(sticker => face.push(sticker.color));
             for (let i = 0; i < face.length; i += this.size) {
                 rows.push(face.slice(i, i + this.size));
             }
