@@ -23,8 +23,8 @@ module.exports = function() {
         })
         .transform(stringify({
             extensions: ['.htm'],
-            minify: true,
-            minifier: { extensions: ['.htm'] },
+            // minify: true,
+            // minifier: { extensions: ['.htm'] },
         }))
         .transform(babelify);
 
@@ -40,7 +40,7 @@ module.exports = function() {
             .pipe(source('app.min.js'))
             .pipe(buffer())
             .pipe(sourcemaps.init({ loadMaps: true }))
-            .pipe(uglify())
+            // .pipe(uglify())
             .pipe(sourcemaps.write('./'))
             .pipe(gulp.dest('./assets/compiled'))
             .pipe(notify({ message: 'Javascript compiled!', onLast: true }));

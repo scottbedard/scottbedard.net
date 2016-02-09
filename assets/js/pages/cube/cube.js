@@ -181,8 +181,8 @@ export default {
         /**
          * When the transitions end, reset the cube rotation
          *
-         * @param  {[type]} e [description]
-         * @return {[type]}   [description]
+         * @param  {Object} e
+         * @return {void}
          */
         onTransitionEnd(e) {
             this.pendingTransitions--;

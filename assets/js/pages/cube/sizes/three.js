@@ -9,10 +9,9 @@ export default {
      * @param  {String} turn
      * @return {void}
      */
-    animateTurn({ face, isPrime }) {
+    animateTurn({ face, isPrime, isFull }) {
         let degrees = isPrime ? -90 : 90
         this['animateTurn' + face](degrees);
-        this.pendingTransitions = 21;
     },
 
     /**
@@ -22,6 +21,7 @@ export default {
      * @return {void}
      */
     animateTurnU(degrees) {
+        this.pendingTransitions = 21;
         let U = this.animate(this.getStickers('U'), 'z', degrees),
             B = this.animate(this.getStickers('B', [0, 1, 2]), 'y', -degrees),
             R = this.animate(this.getStickers('R', [0, 1, 2]), 'y', -degrees),
@@ -41,6 +41,7 @@ export default {
      * @return {void}
      */
     animateTurnL(degrees) {
+        this.pendingTransitions = 21;
         let L = this.animate(this.getStickers('L'), 'z', degrees),
             U = this.animate(this.getStickers('U', [0, 3, 6]), 'x', -degrees),
             F = this.animate(this.getStickers('F', [0, 3, 6]), 'x', -degrees),
@@ -60,6 +61,7 @@ export default {
      * @return {void}
      */
     animateTurnF(degrees) {
+        this.pendingTransitions = 21;
         let F = this.animate(this.getStickers('F'), 'z', degrees),
             U = this.animate(this.getStickers('U', [6, 7, 8]), 'y', degrees),
             R = this.animate(this.getStickers('R', [0, 3, 6]), 'x', -degrees),
@@ -79,6 +81,7 @@ export default {
      * @return {void}
      */
     animateTurnR(degrees) {
+        this.pendingTransitions = 21;
         let R = this.animate(this.getStickers('R'), 'z', degrees),
             U = this.animate(this.getStickers('U', [8, 5, 2]), 'x', degrees),
             B = this.animate(this.getStickers('B', [0, 3, 6]), 'x', degrees),
@@ -98,6 +101,7 @@ export default {
      * @return {void}
      */
     animateTurnD(degrees) {
+        this.pendingTransitions = 21;
         let D = this.animate(this.getStickers('D'), 'z', degrees),
             F = this.animate(this.getStickers('F', [6, 7, 8]), 'y', degrees),
             R = this.animate(this.getStickers('R', [6, 7, 8]), 'y', degrees),
@@ -117,6 +121,7 @@ export default {
      * @return {void}
      */
     animateTurnB(degrees) {
+        this.pendingTransitions = 21;
         let B = this.animate(this.getStickers('B'), 'z', degrees),
             U = this.animate(this.getStickers('U', [2, 1, 0]), 'y', -degrees),
             L = this.animate(this.getStickers('L', [0, 3, 6]), 'x', -degrees),
@@ -126,6 +131,25 @@ export default {
         this.pendingRepaints.push(() => {
             this.turnFace(B, degrees > 0);
             this.turnBand([U, L, D, R], degrees > 0);
+        });
+    },
+
+    animateTurnY(degrees) {
+        this.pendingTransitions = 45;
+        let U = this.animate(this.getStickers('U'), 'z', degrees),
+            L = this.animate(this.getStickers('L'), 'y', -degrees),
+            F = this.animate(this.getStickers('F'), 'y', -degrees),
+            R = this.animate(this.getStickers('R'), 'y', -degrees),
+            B = this.animate(this.getStickers('B'), 'y', -degrees),
+            D = this.animate(this.getStickers('D'), 'z', -degrees);
+
+        this.pendingRepaints.push(() => {
+            this.turnFace(U, degrees > 0);
+            this.turnBand([F.slice(0, 3), R.slice(0, 3), B.slice(0, 3), L.slice(0, 3)], degrees < 0);
+            this.turnBand([F.slice(3, 3), R.slice(3, 3), B.slice(3, 3), L.slice(3, 3)], degrees < 0);
+            this.turnBand([F.slice(6, 3), R.slice(6, 3), B.slice(6, 3), L.slice(6, 3)], degrees < 0);
+            this.turnFace(D, -degrees > 0);
+            // this.turnBand([F, L, B, R], degrees > 0);
         });
     },
 
@@ -149,6 +173,11 @@ export default {
             case 'O': return { face: 'B', isPrime: true };
             case 'S': return { face: 'D', isPrime: false };
             case 'L': return { face: 'D', isPrime: true };
+        }
+
+        switch (e.keyCode) {
+            case 186: return { face: 'Y', isPrime: false }; // ' -> Y
+            case 65: return { face: 'Y', isPrime: true }; // a -> Y'
         }
 
         return null;

@@ -18,9 +18,7 @@ var compile = function() {
 //
 gulp.task('default', function() {
     compile();
-
     gulp.watch('./assets/scss/**/*', ['scss']);
-    // gulp.watch('./assets/js/**/*', ['scripts']);
 });
 
 gulp.task('scss', scss);
