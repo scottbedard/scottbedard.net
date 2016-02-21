@@ -1,0 +1,27 @@
+//
+// Global configuration
+//
+$bg-color: #f9f9f9;
+
+$breakpoints: (
+    tablet: 'min-width: 768px',
+    desktop: 'min-width: 1024px',
+);
+
+$font-color: #333;
+
+$header-border: 2px solid #e0e0e0;
+$header-height-mobile: 65px;
+$header-height-tablet: 85px;
+$header-height-desktop: 100px;
+
+$layout-inner-width: 1200px;
+$layout-padding: 15px;
+
+$link-hover-color: #EC7363;
+
+//
+// Mixins
+//
+@import 'mixins/bp';
+@import 'mixins/transition';

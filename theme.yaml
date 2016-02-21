@@ -1,8 +1,3 @@
 name: scottbedard
 description: 'My personal code playground.'
 author: 'Scott Bedard'
-homepage: 'http://scottbedard.net'
-code: ''
-require:
-    - Bedard.Vuetober
-    - Owl.RainLabBlogApi
