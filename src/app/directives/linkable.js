@@ -1,6 +1,5 @@
 import Vue from 'vue';
 
-console.log ('hey');
 /**
  * Keep local links from dynamic content as part of the SPA
  *
@@ -14,7 +13,7 @@ Vue.directive('linkable', {
      * @return {void}
      */
     bind() {
-        this.el.addEventListener('click', this.onClicked.bind(this));
+        this.el.addEventListener('click', this.onClick.bind(this));
     },
 
     /**
@@ -23,10 +22,15 @@ Vue.directive('linkable', {
      * @param  {Object} e       The click event
      * @return {void}
      */
-    onClicked(e) {
-        if (e.target.tagName === 'A' && e.target.hostname === window.location.hostname) {
-            e.preventDefault();
-            this.vm.$router.go({ path: e.target.pathname });
+    onClick(e) {
+        for (let el of e.path) {
+            if (el === this.el || el.tagName === 'A') {
+                if (el.hostname === window.location.hostname) {
+                    e.preventDefault();
+                    this.vm.$router.go({ path: el.pathname });
+                }
+                break;
+            }
         }
     },
 
@@ -36,6 +40,6 @@ Vue.directive('linkable', {
      * @return {void}
      */
     unbind() {
-        this.el.removeEventListener('click', this.onClicked);
+        this.el.removeEventListener('click', this.onClick);
     },
 });
