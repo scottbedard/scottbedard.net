@@ -19,13 +19,5 @@
 
     export default {
 
-        /**
-         * Set the header state
-         *
-         * @return {void}
-         */
-        ready() {
-            HeaderState.clearTitle();
-        },
     };
 </script>

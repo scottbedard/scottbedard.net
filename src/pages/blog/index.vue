@@ -59,14 +59,5 @@
                 posts: [],
             };
         },
-
-        /**
-         * Set the header state
-         *
-         * @return {void}
-         */
-        ready() {
-            HeaderState.setTitle('blog');
-        },
     };
 </script>

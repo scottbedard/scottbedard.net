@@ -12,13 +12,5 @@
 
     module.exports = {
 
-        /**
-         * Set the header state
-         *
-         * @return {void}
-         */
-        ready() {
-            HeaderState.setTitle('code');
-        },
     };
 </script>

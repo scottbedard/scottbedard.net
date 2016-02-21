@@ -39,8 +39,7 @@ module.exports = {
      * @return {void}
      */
     after({ from, to }) {
-        if (typeof to.title !== 'undefined') {
-            document.title = to.title;
-        }
+        let { docTitle, headerTitle, title } = to;
+        HeaderState.setTitleFromRoute({ docTitle, headerTitle, title });
     },
 };

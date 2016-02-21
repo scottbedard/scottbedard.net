@@ -26,12 +26,13 @@ module.exports = {
         //
         '/blog': {
             name: 'blog',
-            title: 'Thoughts',
+            title: 'blog',
             component: require('pages/blog/index'),
         },
 
         '/blog/:slug': {
             name: 'blog-post',
+            headerTitle: 'blog',
             component: require('pages/blog/post'),
         },
 
@@ -40,7 +41,7 @@ module.exports = {
         //
         '/code': {
             name: 'code',
-            title: 'Code',
+            title: 'code',
             component: require('pages/code'),
         },
 
@@ -49,7 +50,6 @@ module.exports = {
         //
         '*': {
             name: '404',
-            title: '404',
             component: require('pages/404'),
         },
     },

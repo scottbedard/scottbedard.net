@@ -8,6 +8,11 @@ export default {
         title: '',
     },
 
+    /**
+     * Erase the header title
+     *
+     * @return {void}
+     */
     clearTitle() {
         this.state.title = '';
     },
@@ -28,6 +33,19 @@ export default {
      */
     setTitle(title = null) {
         this.state.title = ' / ' + title;
+    },
+
+    /**
+     * Set the document and header title via the route definition
+     *
+     * @param  {String} options.docTitle
+     * @param  {String} options.headerTitle
+     * @param  {String} options.title
+     * @return {void}
+     */
+    setTitleFromRoute({ docTitle, headerTitle, title }) {
+        document.title = !docTitle && !title ? 'scottbedard' : `scottbedard / ${ docTitle || title }`;
+        this.state.title = !headerTitle && !title ? '' : ` / ${ headerTitle || title }`;
     },
 
     /**
