@@ -5,11 +5,10 @@
         overflow: hidden;
         top: $header-height-mobile;
         width: 100%;
+        z-index: 1;
         @include bp-prop(border-bottom, $header-border, none);
+        @include bp-prop(max-width, false, 500px);
         @include bp-prop(position, absolute, static);
-        @include bp(tablet) {
-            max-width: 500px;
-        }
     }
 
     ul {
