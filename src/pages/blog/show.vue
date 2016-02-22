@@ -1,12 +1,20 @@
-<style lang="sass" scoped>
+<!-- Scoped styles cannot target dynamic content like a blog post -->
+<style lang="sass"> @import 'core';
+    main.blog-show {
+        p {
+            @include bp-prop(margin-top, $layout-padding, $layout-padding * 2);
+        }
+    }
 </style>
 
 <template>
-    <article class="blog-post page">
+    <main class="page blog-show">
         <v-ribbon></v-ribbon>
-        <h3>{{ post.title }}</h3>
-        <p v-linkable>{{{ post.content_html }}}</p>
-    </article>
+        <article class="content">
+            <h1>{{ post.title }}</h1>
+            <div v-linkable>{{{ post.content_html }}}</div>
+        </article>
+    </main>
 </template>
 
 <script>
@@ -42,6 +50,15 @@
             return {
                 post: { },
             };
+        },
+
+        /**
+         * Apply prism highlighting
+         *
+         * @return {void}
+         */
+        attached() {
+            Prism.highlightAll();
         },
     };
 </script>

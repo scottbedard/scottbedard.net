@@ -30,12 +30,12 @@
 </style>
 
 <template>
-    <div class="blog page">
+    <div class="page">
         <v-ribbon></v-ribbon>
         <main>
             <ul>
                 <li v-for="post in posts" class="content btn">
-                    <a v-link="{ name: 'blog-post', params: { slug: post.slug }}">
+                    <a v-link="{ name: 'blog-show', params: { slug: post.slug }}">
                         <div class="top">
                             <h1>{{ post.title }}</h1>
                             <time datetime="{{ post.published_at | moment }}">

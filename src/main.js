@@ -6,6 +6,7 @@ import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 import { redirects, routes } from 'app/routes';
 import { config, before, after } from 'app/router';
+import Prism from 'vendor/prism';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);

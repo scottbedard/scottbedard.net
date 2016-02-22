@@ -6,6 +6,7 @@ module.exports = {
         app: './src/main.js',
         vendors: [
             'moment',
+            'vendor/prism',
             'vue',
             'vue-resource',
             'vue-router',

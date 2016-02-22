@@ -1,0 +1,76 @@
+//
+// Prism.js material theme
+// http://scottbedard.net
+//
+code[class*="language-"], pre[class*="language-"] {
+    color: #c5c8c6;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    font-family: 'Source Code Pro', Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    line-height: 2;
+    tab-size: 4;
+    hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    background: #212121;
+    overflow: auto;
+    padding: 10px 12px;
+    border-radius: 'Source Code Pro', 3px;
+}
+
+//
+// SASS / CSS
+//
+
+//
+// PHP
+//
+pre.language-php .token {
+    &.comment { color: #656565 }
+    &.punctuation { color: #c5c8c6 }
+    &.keyword { color: #c792ea }
+    &.class-name { color: #ffcb6b }
+    &.number, &.boolean { color: #F77669 }
+    &.string { color: #C3E88D }
+    &.property, &.variable { color: #B2CCD6 }
+    &.operator { color: #c792ea }
+    &.function { color: #82AAFF }
+}
+
+//
+// Markup (HTML, XML, etc...)
+//
+pre.language-markup .token {
+    &.punctuation { color: #89ddff }
+    &.tag { color: #ff5370 }
+    &.attr-name { color: #ffcb6b }
+    &.attr-value {
+        color: #C3E88D;
+        .token.punctuation:not(:first-of-type) { color: #d9f5dd } // quotation marks
+    }
+}
+
+//
+// JSON
+//
+pre.language-json .token {
+    &.punctuation { color: #cdd3de }
+    &.property, &.string { color: #c3e88d }
+}
+
+//
+// YAML
+//
+pre.language-yaml {
+    code { color: #c3e88d; }
+    .token {
+        &.atrule { color: #ff5370 }
+        &.atrule + .punctuation { color: #89ddff } // colons
+        &.punctuation { color: #c792ea }
+        &.number { color: #f77669 }
+    }
+}

@@ -31,9 +31,9 @@ module.exports = {
         },
 
         '/blog/:slug': {
-            name: 'blog-post',
+            name: 'blog-show',
             headerTitle: 'blog',
-            component: require('pages/blog/post'),
+            component: require('pages/blog/show'),
         },
 
         //

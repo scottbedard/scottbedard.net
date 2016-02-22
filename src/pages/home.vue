@@ -12,11 +12,3 @@
         <p>I'm Scott, and I build cool things at <a href="http://spyfu.com">SpyFu</a>.</p>
     </div>
 </template>
-
-<script>
-    import HeaderState from 'state/header';
-
-    export default {
-
-    };
-</script>
