@@ -18,3 +18,23 @@ body {
 .page {
     padding: $layout-padding;
 }
+
+.content {
+    background: #fff;
+    border-bottom: $content-border;
+    opacity: 0.9;
+    padding: 12px;
+    @include bp-prop(padding, $content-padding-mobile, $content-padding-tablet);
+    @include transition(padding);
+    &:not(:last-of-type) {  margin-bottom: $layout-padding }
+
+    &.btn {
+        padding: 0;
+
+        a {
+            display: block;
+            @include bp-prop(padding, $content-padding-mobile, $content-padding-tablet);
+            @include transition(padding);
+        }
+    }
+}

@@ -1,26 +1,52 @@
-<style lang="sass" scoped>
+<style lang="sass" scoped> @import 'core';
     ul {
         list-style: none;
         margin: 0;
         padding: 0;
-        li { padding: 10px 0 }
+    }
+
+    .top {
+        margin-bottom: 12px;
+        overflow: hidden;
+
+        h1 {
+            @include bp(tablet) { float: left }
+            @include transition(color);
+        }
+
+        time {
+            display: inline-block;
+            font-weight: 300;
+            color: lighten($font-color, 5%);
+            @include bp-prop(margin-top, 6px, none);
+            @include bp-prop(float, false, right);
+            @include bp-prop(font-size, 16px, 18px, 20px);
+        }
+    }
+
+    a:hover p, a:hover time {
+        color: $font-color;
     }
 </style>
 
 <template>
     <div class="blog page">
         <v-ribbon></v-ribbon>
-        <p>This blog demonstrates how to communicate with your October backend.</p>
-        <ul>
-            <li v-for="post in posts">
-                <h3>{{ post.published_at | moment 'MMM DD, YYYY' }}</h3>
-                <h2>
+        <main>
+            <ul>
+                <li v-for="post in posts" class="content btn">
                     <a v-link="{ name: 'blog-post', params: { slug: post.slug }}">
-                        {{ post.title }}
+                        <div class="top">
+                            <h1>{{ post.title }}</h1>
+                            <time datetime="{{ post.published_at | moment }}">
+                                {{ post.published_at | moment 'MMM DD, YYYY' }}
+                            </time>
+                        </div>
+                        <p>{{{ post.excerpt }}}</p>
                     </a>
-                </h2>
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </main>
     </div>
 </template>
 

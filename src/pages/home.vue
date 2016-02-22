@@ -1,6 +1,5 @@
-<style lang="sass"> @import 'core';
+<style lang="sass" scoped> @import 'core';
     p {
-        font-weight: 300;
         @include bp-prop(font-size, 22px, 28px, 34px);
         &:not(:first-of-type) { margin-top: $layout-padding }
     }
