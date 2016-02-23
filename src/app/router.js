@@ -41,5 +41,8 @@ module.exports = {
     after({ from, to }) {
         let { docTitle, headerTitle, title } = to;
         HeaderState.setTitleFromRoute({ docTitle, headerTitle, title });
+
+        // Log page hit with Google Analytics
+        ga('send', 'pageview', to.path);
     },
 };
