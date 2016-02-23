@@ -16,19 +16,23 @@ code {
 //
 pre[class*="language-"] {
     background: #212121;
+    border-radius: 3px;
+    font-size: inherit;
+    margin-bottom: 0;
     overflow: auto;
     padding: 10px 12px;
-    border-radius: 3px;
+    @include bp-prop(margin-top, 12px, 24px);
 
     code[class*="language-"] {
         color: #c5c8c6;
         font-family: 'Source Code Pro', monospace;
-        white-space: pre;
-        word-spacing: normal;
-        word-break: normal;
+        font-size: inherit;
+        hyphens: none;
         line-height: 2;
         tab-size: 4;
-        hyphens: none;
+        white-space: pre;
+        word-break: normal;
+        word-spacing: normal;
     }
 }
 
@@ -40,36 +44,36 @@ pre[class*="language-"] {
 // PHP
 //
 pre.language-php .token {
-    &.comment { color: #656565 }
-    &.punctuation { color: #c5c8c6 }
-    &.keyword { color: #c792ea }
     &.class-name { color: #ffcb6b }
-    &.number, &.boolean { color: #F77669 }
-    &.string { color: #C3E88D }
-    &.property, &.variable { color: #B2CCD6 }
-    &.operator { color: #c792ea }
+    &.comment { color: #656565 }
     &.function { color: #82AAFF }
+    &.keyword { color: #c792ea }
+    &.number, &.boolean { color: #F77669 }
+    &.operator { color: #c792ea }
+    &.property, &.variable { color: #B2CCD6 }
+    &.punctuation { color: #c5c8c6 }
+    &.string { color: #C3E88D }
 }
 
 //
 // Markup (HTML, XML, etc...)
 //
 pre.language-markup .token {
-    &.punctuation { color: #89ddff }
-    &.tag { color: #ff5370 }
     &.attr-name { color: #ffcb6b }
     &.attr-value {
         color: #C3E88D;
         .token.punctuation:not(:first-of-type) { color: #d9f5dd } // quotation marks
     }
+    &.punctuation { color: #89ddff }
+    &.tag { color: #ff5370 }
 }
 
 //
 // JSON
 //
 pre.language-json .token {
-    &.punctuation { color: #cdd3de }
     &.property, &.string { color: #c3e88d }
+    &.punctuation { color: #cdd3de }
 }
 
 //
@@ -80,7 +84,7 @@ pre.language-yaml {
     .token {
         &.atrule { color: #ff5370 }
         &.atrule + .punctuation { color: #89ddff } // colons
-        &.punctuation { color: #c792ea }
         &.number { color: #f77669 }
+        &.punctuation { color: #c792ea }
     }
 }

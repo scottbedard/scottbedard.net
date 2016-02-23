@@ -7,20 +7,20 @@
 
     .top {
         margin-bottom: 12px;
-        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+        @include bp-prop(flex-wrap, wrap, nowrap);
 
         h1 {
-            @include bp(tablet) { float: left }
+            flex-basis: 100%;
             @include transition(color);
+            @include bp('min-width: 568px') { flex-basis: auto }
         }
 
         time {
-            display: inline-block;
-            font-weight: 300;
-            color: lighten($font-color, 5%);
-            @include bp-prop(margin-top, 6px, none);
-            @include bp-prop(float, false, right);
+            flex-basis: 100%;
             @include bp-prop(font-size, 16px, 18px, 20px);
+            @include bp('min-width: 568px') { flex-basis: auto }
         }
     }
 
