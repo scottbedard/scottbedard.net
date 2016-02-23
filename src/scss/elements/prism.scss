@@ -2,24 +2,34 @@
 // Prism.js material theme
 // http://scottbedard.net
 //
-code[class*="language-"], pre[class*="language-"] {
-    color: #c5c8c6;
-    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-    font-family: 'Source Code Pro', Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    line-height: 2;
-    tab-size: 4;
-    hyphens: none;
+
+//
+// Inline code
+//
+code {
+    color: #333;
+    font-family: Inconsolata, monospace;
 }
 
-/* Code blocks */
+//
+// Code blocks
+//
 pre[class*="language-"] {
     background: #212121;
     overflow: auto;
     padding: 10px 12px;
-    border-radius: 'Source Code Pro', 3px;
+    border-radius: 3px;
+
+    code[class*="language-"] {
+        color: #c5c8c6;
+        font-family: 'Source Code Pro', monospace;
+        white-space: pre;
+        word-spacing: normal;
+        word-break: normal;
+        line-height: 2;
+        tab-size: 4;
+        hyphens: none;
+    }
 }
 
 //

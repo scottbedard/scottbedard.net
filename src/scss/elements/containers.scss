@@ -25,19 +25,20 @@ body {
 .content {
     background: #fff;
     border-bottom: $content-border;
-    opacity: 0.9;
+    opacity: 0.95;
     padding: 12px;
     @include bp-prop(padding, $content-padding-mobile, $content-padding-tablet);
     @include transition(padding);
-    &:not(:last-of-type) {  margin-bottom: $layout-padding }
-
-    &.btn {
+    &:not(:last-of-type) { margin-bottom: $layout-padding }
+    &.content-btn {
         padding: 0;
-
         a {
             display: block;
+            text-decoration: none;
             @include bp-prop(padding, $content-padding-mobile, $content-padding-tablet);
             @include transition(padding);
         }
     }
+
+    a { text-decoration: underline }
 }

@@ -34,7 +34,7 @@
         <v-ribbon></v-ribbon>
         <main>
             <ul>
-                <li v-for="post in posts" class="content btn">
+                <li v-for="post in posts" class="content content-btn">
                     <a v-link="{ name: 'blog-show', params: { slug: post.slug }}">
                         <div class="top">
                             <h1>{{ post.title }}</h1>

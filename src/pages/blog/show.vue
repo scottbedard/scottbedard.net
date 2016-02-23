@@ -1,8 +1,13 @@
 <!-- Scoped styles cannot target dynamic content like a blog post -->
 <style lang="sass"> @import 'core';
     main.blog-show {
+        h1 {
+            border-bottom: 1px solid darken($bg-color, 10%);
+            @include bp-prop(padding-bottom, $layout-padding, $layout-padding * 2);
+        }
+
         p {
-            @include bp-prop(margin-top, $layout-padding, $layout-padding * 2);
+            @include bp-prop(padding-top, $layout-padding, $layout-padding * 2);
         }
     }
 </style>

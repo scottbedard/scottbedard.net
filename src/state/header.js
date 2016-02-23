@@ -29,9 +29,9 @@ export default {
     /**
      * Set the header title
      *
-     * @param {String|null}     title
+     * @param {String}  title
      */
-    setTitle(title = null) {
+    setTitle(title) {
         this.state.title = ' / ' + title;
     },
 
