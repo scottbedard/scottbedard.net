@@ -9,6 +9,6 @@
     <div class="page">
         <v-ribbon></v-ribbon>
         <p>Hi there,</p>
-        <p>I'm Scott, and I build cool things at <a href="http://spyfu.com">SpyFu</a>.</p>
+        <p>I'm Scott, and I work on cool things at <a href="http://spyfu.com">SpyFu</a>.</p>
     </div>
 </template>

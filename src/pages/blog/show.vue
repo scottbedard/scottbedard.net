@@ -80,7 +80,9 @@
          * @return {void}
          */
         attached() {
-            Prism.highlightAll();
+            if (typeof Prism !== 'undefined') {
+                Prism.highlightAll();
+            }
         },
     };
 </script>

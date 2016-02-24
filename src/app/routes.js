@@ -13,6 +13,7 @@ module.exports = {
      * @type {Object}
      */
     routes: {
+
         //
         // Intro
         //
@@ -34,15 +35,6 @@ module.exports = {
             name: 'blog-show',
             headerTitle: 'blog',
             component: require('pages/blog/show'),
-        },
-
-        //
-        // Code
-        //
-        '/code': {
-            name: 'code',
-            title: 'code',
-            component: require('pages/code'),
         },
 
         //

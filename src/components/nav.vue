@@ -51,8 +51,7 @@
     <nav>
         <ul v-bind:class="{ 'is-expanded': isExpanded }">
             <li><a v-link="{ name: 'blog' }">Thoughts</a></li>
-            <li><a v-link="{ name: 'code' }">Code</a></li>
-            <li><a href="https://github.com/scottbedard">Contact</a></li>
+            <li><a href="https://github.com/scottbedard">Code</a></li>
         </ul>
     </nav>
 </template>
