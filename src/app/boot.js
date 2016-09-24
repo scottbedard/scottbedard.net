@@ -1,9 +1,11 @@
-import Vue from 'vue';
+//
+// Window events
+//
+import WindowState from 'src/state/window';
 
-//
-// Components
-//
-Vue.component('v-ribbon', require('components/ribbon'));
+WindowState.sync();
+window.onscroll = () => WindowState.updateScrollTop();
+window.onresize = () => WindowState.updateDimensions();
 
 //
 // Directives
@@ -11,7 +13,7 @@ Vue.component('v-ribbon', require('components/ribbon'));
 require('./directives/linkable');
 
 //
-// Filters
+// Plugins
 //
-require('./filters/moment');
-
+require('./plugins/resources');
+require('./plugins/router');

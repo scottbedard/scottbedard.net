@@ -1,48 +1,49 @@
-module.exports = {
+import RouterState from 'src/state/router';
+import HomeComponent from 'src/pages/home';
+import NotFoundComponent from 'src/pages/404';
 
-    /**
-     * Redirects
-     *
-     * @type {Object}
-     */
-    redirects: { },
+//
+// Before route
+//
+exports.before = function (route, redirect, next) {
+    document.title = typeof route.meta.title === 'string'
+        ? `Scott Bedard :: ${ route.meta.title }`
+        : 'Scott Bedard';
 
-    /**
-     * Routes
-     *
-     * @type {Object}
-     */
-    routes: {
+    next();
+};
 
-        //
-        // Intro
-        //
-        '/': {
-            name: 'home',
-            component: require('pages/home'),
-        },
+//
+// After route
+//
+exports.after = function (route) {
+    RouterState.setCurrentRoute(route);
+};
 
-        //
-        // Blog
-        //
-        '/blog': {
-            name: 'blog',
-            title: 'blog',
-            component: require('pages/blog/index'),
-        },
+//
+// Routes
+//
+exports.routes = [
 
-        '/blog/:slug': {
-            name: 'blog-show',
-            headerTitle: 'blog',
-            component: require('pages/blog/show'),
-        },
-
-        //
-        // 404
-        //
-        '*': {
-            name: '404',
-            component: require('pages/404'),
+    //
+    // Home
+    //
+    {
+        path: '/',
+        component: HomeComponent,
+        meta: {
+            title: 'Home',
         },
     },
-};
+
+    //
+    // 404
+    //
+    {
+        path: '*',
+        component: NotFoundComponent,
+        meta: {
+            title: '404',
+        },
+    },
+];

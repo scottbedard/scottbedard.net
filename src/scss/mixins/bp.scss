@@ -1,26 +1,60 @@
-/**
- * Breakpoint mixin for pre-defined or custom values
- *
- * .foo {
- *     color: red;
- *     @include bp(tablet) { color: green }
- *     @include bp('min-width: 900px') { color: blue }
- * }
- *
- * .bar {
- *     @include bp-prop(color, red, green, blue);
- * }
- */
+// Breakpoint mixin for predefined or custom values
+//
+// Example usage...
+// .foo {
+//     color: red;
+//     @include bp(tablet) { color: green }
+//     @include bp(desktop) { color: blue }
+//     @include bp('min-width: 1600px') { color: orange }
+// }
+//
+// Example usage of bp-prop shorthand...
+// .bar {
+//     @include bp-prop(color, red, green, blue);
+//     @include bp-prop('height, line-height', 12px, 16px, 20px, 24px);
+// }
+
 @mixin bp($bp) {
     @if map-get($breakpoints, $bp) {
-        @media screen and (map-get($breakpoints, $bp)) { @content; }
+        @media screen and (map-get($breakpoints, $bp)) {
+            @content;
+        }
     } @else {
-        @media screen and ($bp) { @content; }
+        @media screen and ($bp) {
+            @content;
+        }
     }
 }
 
-@mixin bp-prop($property, $mobile: false, $tablet: false, $desktop: false) {
-    @if ($mobile) { #{ unquote($property) }: $mobile; }
-    @if ($tablet) { @include bp(tablet) { #{ unquote($property) }: $tablet; } }
-    @if ($desktop) { @include bp(desktop) { #{ unquote($property) }: $desktop; } }
+@mixin bp-prop($property, $mobile: false, $large-phone: false, $tablet: false, $desktop: false) {
+    $properties: explode($property, ',');
+    @if (type-of($properties) != 'list') {
+        $properties: list($property);
+    }
+    @if ($mobile) {
+        @each $prop in $properties {
+            #{ unquote($prop) }: $mobile;
+        }
+    }
+    @if ($large-phone) {
+        @include bp(large-phone) {
+            @each $prop in $properties {
+                #{ unquote($prop) }: $large-phone;
+            }
+        }
+    }
+    @if ($tablet) {
+        @include bp(tablet) {
+            @each $prop in $properties {
+                #{ unquote($prop) }: $tablet;
+            }
+        }
+    }
+    @if ($desktop) {
+        @include bp(desktop) {
+            @each $prop in $properties {
+                #{ unquote($prop) }: $desktop;
+            }
+        }
+    }
 }
