@@ -22,6 +22,7 @@
 </template>
 
 <script>
+    import RouterState from 'src/state/router';
     import WindowState from 'src/state/window';
     import Color from 'src/app/utilities/color';
 
@@ -31,6 +32,7 @@
             return {
                 debounceRedraw: null,
                 isRedrawing: false,
+                Router: RouterState.state,
                 Window: WindowState.state,
             };
         },
@@ -133,6 +135,10 @@
                 }
             },
 
+            onRouteChanged() {
+                this.redraw();
+            },
+
             onWindowResize() {
                 this.redraw();
             },
@@ -161,6 +167,7 @@
 
         watch: {
             'Window.width': 'onWindowResize',
+            'Router.current': 'onRouteChanged',
         },
     };
 </script>
