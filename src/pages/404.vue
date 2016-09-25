@@ -1,3 +1,9 @@
+<style lang="scss" scoped>@import 'core';
+    .not-found {
+        text-align: center;
+    }
+</style>
+
 <template>
     <div class="page splash">
         <div class="not-found">

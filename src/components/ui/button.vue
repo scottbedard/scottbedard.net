@@ -1,4 +1,6 @@
 <style lang="scss" scoped>@import 'core';
+    $opacity: 0.9;
+
     a,
     button {
         border: 0;
@@ -14,17 +16,17 @@
         //
         @each $color, $value in $colors {
             &.color-#{ $color } {
-                background-color: $value;
+                background-color: rgba($value, $opacity);
                 border-bottom: 2px solid darken($value, 5%);
 
                 &:hover {
-                    background-color: darken($value, 10%);
-                    border-color: darken($value, 15%);
+                    background-color: darken(rgba($value, $opacity), 10%);
+                    border-color: darken(rgba($value, $opacity), 15%);
                 }
 
                 &:active {
-                    background-color: darken($value, 15%);
-                    border-color: darken($value, 20%);
+                    background-color: darken(rgba($value, $opacity), 15%);
+                    border-color: darken(rgba($value, $opacity), 20%);
                 }
             }
         }
