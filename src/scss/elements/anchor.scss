@@ -1,0 +1,13 @@
+a {
+    color: $font-color;
+    text-decoration: none;
+    @include transition(color);
+
+    &:visited {
+        color: $font-color;
+    }
+
+    &:hover {
+        color: $blue;
+    }
+}

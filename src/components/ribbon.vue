@@ -1,68 +1,59 @@
-<style lang="sass" scoped>
-    canvas {
+<style lang="scss" scoped>@import 'core';
+    div {
         height: 100%;
         left: 0;
+        opacity: 1;
         position: fixed;
         top: 0;
         width: 100%;
         z-index: -1;
+        @include transition(opacity, 500ms);
 
-        &.content {
-            opacity: 0.7;
+        &.is-redrawing {
+            opacity: 0;
         }
     }
 </style>
 
 <template>
-    <canvas></canvas>
+    <div :class="{ 'is-redrawing': isRedrawing }">
+        <canvas ref="canvas"></canvas>
+    </div>
 </template>
 
 <script>
-    import Color from 'classes/color';
+    import WindowState from 'src/state/window';
+    import Color from 'src/app/utilities/color';
 
     export default {
 
-        /**
-         * @type {Object}
-         */
-        props: {
-            reset: { default: 120000 },
-            clear: { default: true },
+        data() {
+            return {
+                debounceRedraw: null,
+                isRedrawing: false,
+                Window: WindowState.state,
+            };
         },
 
-        /**
-         * Draw our ribbon when the DOM element is attached
-         *
-         * @return {void}
-         */
-        attached() {
-            // First things first, we need to get our canvas ready to be drawn
-            // on. While we're here, lets also create a few other neccessary
-            // variables for drawing the ribbon, and how it should appear.
-            let canvas = this.$el,
-                ctx = canvas.getContext('2d');
-
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            this.draw(canvas, ctx);
+        mounted() {
+            this.draw();
 
             // Redraw the ribbon every couple of minutes
             if (this.reset) {
-                setInterval(() => this.draw(canvas, ctx), this.reset);
+                setInterval(this.redraw, this.reset);
             }
         },
 
-        /**
-         * @type {Object}
-         */
         methods: {
+            draw() {
+                // First things first, we need to get our canvas ready to be drawn
+                // on. While we're here, lets also create a few other neccessary
+                // variables for drawing the ribbon, and how it should appear.
+                let canvas = this.$refs.canvas,
+                    ctx = canvas.getContext('2d');
 
-            /**
-             * Draw the ribbon
-             *
-             * @return {void}
-             */
-            draw(canvas, ctx) {
+                canvas.width = this.Window.width;
+                canvas.height = this.Window.height;
 
                 // Clear the canvas
                 if (this.clear) {
@@ -90,7 +81,7 @@
                     first   = base[Math.floor(Math.random() * base.length)],
                     last    = colors[first][Math.floor(Math.random() * colors[first].length)];
 
-                // Give our colors a 50% change of being swapped
+                // Give our colors a 50% chance of being swapped
                 if (Math.random() > 0.5) {
                     [first, last] = [last, first];
                 }
@@ -141,6 +132,35 @@
                     }
                 }
             },
+
+            onWindowResize() {
+                this.redraw();
+            },
+
+            redraw() {
+                let redraw = () => {
+                    this.draw();
+                    this.isRedrawing = false;
+                };
+
+                this.isRedrawing = true;
+                this.debounceRedraw = redraw;
+
+                setTimeout(() => {
+                    if (this.debounceRedraw === redraw) {
+                        redraw();
+                    }
+                }, 200);
+            },
+        },
+
+        props: {
+            clear: { type: Boolean, default: true },
+            reset: { type: Number, default: 60000 },
+        },
+
+        watch: {
+            'Window.width': 'onWindowResize',
         },
     };
 </script>

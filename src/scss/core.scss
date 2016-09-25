@@ -2,6 +2,7 @@
 // Variables
 //
 @import './variables/breakpoints';
+@import './variables/colors';
 
 //
 // Functions
@@ -13,3 +14,4 @@
 // Mixins
 //
 @import './mixins/bp';
+@import './mixins/transition';

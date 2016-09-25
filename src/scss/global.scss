@@ -5,11 +5,18 @@
 @import 'normalize.scss/normalize.scss';
 
 //
+// Fonts
+//
+@import url('//fonts.googleapis.com/css?family=Lato:300|Open+Sans:300,400,700');
+
+//
 // Classes
 //
+@import './classes/page';
 @import './classes/transitions';
 
 //
 // Elements
 //
+@import './elements/anchor';
 @import './elements/html_body';

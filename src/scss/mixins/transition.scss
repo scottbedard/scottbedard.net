@@ -1,10 +1,4 @@
-/**
- * Transition one or more properties
- *
- * .foo { @include transition('color, height') }
- * .bar { @include transition(color, 2s, linear) }
- */
-@mixin transition($properties, $duration: 0.2s, $function: linear ) {
+@mixin transition($properties, $duration: 0.2s, $function: ease ) {
     transition-property: unquote($properties);
     transition-duration: $duration;
     transition-timing-function: $function;
