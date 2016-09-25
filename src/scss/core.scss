@@ -3,12 +3,16 @@
 //
 @import './variables/breakpoints';
 @import './variables/colors';
+@import './variables/layout';
+@import './variables/z_index';
 
 //
 // Functions
 //
 @import './functions/explode';
 @import './functions/implode';
+@import './functions/map_deep_get';
+@import './functions/z';
 
 //
 // Mixins

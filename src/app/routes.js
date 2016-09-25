@@ -1,4 +1,6 @@
 import RouterState from 'src/state/router';
+
+import CubeComponent from 'src/pages/cube/cube';
 import HomeComponent from 'src/pages/home';
 import NotFoundComponent from 'src/pages/404';
 
@@ -7,8 +9,8 @@ import NotFoundComponent from 'src/pages/404';
 //
 exports.before = function (route, redirect, next) {
     document.title = typeof route.meta.title === 'string'
-        ? `Scott Bedard :: ${ route.meta.title }`
-        : 'Scott Bedard';
+        ? `scottbedard / ${ route.meta.title.toLowerCase() }`
+        : 'scottbedard';
 
     next();
 };
@@ -18,6 +20,7 @@ exports.before = function (route, redirect, next) {
 //
 exports.after = function (route) {
     RouterState.setCurrentRoute(route);
+    RouterState.setSubtitle(route.meta.subtitle);
 };
 
 //
@@ -32,7 +35,20 @@ exports.routes = [
         path: '/',
         component: HomeComponent,
         meta: {
+            header: false,
             title: 'Home',
+        },
+    },
+
+    //
+    // Cube
+    //
+    {
+        path: '/cube',
+        component: CubeComponent,
+        meta: {
+            title: 'CSS Cube',
+            subtitle: 'CSS Cube',
         },
     },
 
@@ -43,6 +59,7 @@ exports.routes = [
         path: '*',
         component: NotFoundComponent,
         meta: {
+            header: false,
             title: '404',
         },
     },
