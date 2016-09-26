@@ -1,4 +1,17 @@
 .page {
+    &.default {
+        margin: 0 auto;
+        max-width: $layout-inner-width;
+        padding: $layout-inner-padding;
+        width: 100%;
+
+        > .inner {
+            background-color: rgba($white, 0.9);
+            border-radius: 3px;
+            padding: $layout-inner-padding;
+        }
+    }
+
     &.splash {
         align-items: center;
         bottom: 0;

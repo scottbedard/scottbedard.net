@@ -82,10 +82,10 @@
             },
             bindDismissListener() {
                 this.dismissListener = this.onBodyClicked.bind(this);
-                document.body.addEventListener('click', this.dismissListener, true);
+                window.addEventListener('click', this.dismissListener, true);
             },
             unbindDismissListener() {
-                document.body.removeEventListener('click', this.dismissListener, true);
+                window.removeEventListener('click', this.dismissListener, true);
             },
             onRouteChanged() {
                 NavigationState.closeMobileNavigation();

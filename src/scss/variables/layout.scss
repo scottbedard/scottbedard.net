@@ -2,4 +2,6 @@
 // Layout
 //
 $layout-inner-horizontal-padding: 20px;
+$layout-inner-vertical-padding: 20px;
+$layout-inner-padding: $layout-inner-vertical-padding $layout-inner-horizontal-padding;
 $layout-inner-width: 1200px;
