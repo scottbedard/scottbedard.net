@@ -1,5 +1,5 @@
 <style lang="scss" scoped>
-    .v-cube {
+    .stage {
         perspective: 1000px;
         position: absolute;
         left: 50%;
@@ -16,23 +16,30 @@
         transform-style: preserve-3d;
         width: 100%;
     }
+
+    .spacer {
+        height: 330px;
+    }
 </style>
 
 <template>
     <div class="v-cube">
-        <div class="inner">
-            <template v-for="face in faces">
-                <v-sticker
-                    v-for="sticker in face"
-                    :class="[ color(sticker) ]"
-                    :base="sticker.base"
-                    :index="sticker.index"
-                    :target="sticker.target"
-                    :value="sticker.value">
-                </v-sticker>
-            </template>
+        <div class="stage">
+            <div class="inner">
+                <template v-for="face in faces">
+                    <v-sticker
+                        v-for="sticker in face"
+                        :class="[ color(sticker) ]"
+                        :base="sticker.base"
+                        :index="sticker.index"
+                        :target="sticker.target"
+                        :value="sticker.value">
+                    </v-sticker>
+                </template>
+            </div>
         </div>
-
+        <div class="spacer"></div>
+        <v-button color="green" @click="scramble">Click to scramble</v-button>
     </div>
 </template>
 
@@ -76,6 +83,12 @@
             color(sticker) {
                 return `color-${ this.colors[sticker.value] }`;
             },
+            executeTurn(turn) {
+                let face = turn[0];
+                let rotation = turn.length === 1 ? 90 : (turn[1] === 2 ? 180 : -90);
+
+                console.log (face, rotation);
+            },
             reset() {
                 let size = Math.pow(this.size, 2);
                 Object.keys(this.cube).forEach(face => {
@@ -88,6 +101,9 @@
                         };
                     }
                 });
+            },
+            scramble() {
+                this.executeTurn('R');
             },
         },
     };

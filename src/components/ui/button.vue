@@ -84,13 +84,16 @@
             },
         },
         methods: {
+            emit(event) {
+                return () => this.$emit(event);
+            },
             renderAnchor(h) {
-                return <a href={ this.href } class={ this.buttonClasses }>
+                return <a href={ this.href } class={ this.buttonClasses } on-click={ this.emit('click') }>
                     { this.$slots.default }
                 </a>;
             },
             renderButton(h) {
-                return <button class={ this.buttonClasses }>
+                return <button class={ this.buttonClasses } on-click={ this.emit('click') }>
                     { this.$slots.default }
                 </button>;
             },
