@@ -7,7 +7,7 @@
         top: 0;
         width: 100%;
         z-index: -1;
-        @include transition(opacity, 500ms);
+        @include transition(opacity, 1000ms);
 
         &.is-redrawing {
             opacity: 0;
@@ -73,10 +73,23 @@
                 // Create an array of colors that we'll allow the ribbon to blend
                 // between. Each base color will have a series of complimentary
                 // colors, and then we can just randomize the starting color.
+                let red = 'ff1100';
+                let pink = 'f48fb1';
+                let purple = '9c27b0';
+                let indigo = '3f51b5';
+                let blue = '2196f3';
+                let cyan = '00bcd4';
+                let green = '009307';
+                let lightGreen = '8bc34a';
+                let yellow = 'ffeb3b';
+                let orange = 'ef6c00';
+
                 let colors = {
-                    'ff0000': ['0000ff', 'ffff00'],
-                    '00dd00': ['009999', '0000ee'],
-                    '0000ee': ['00ffff', '00ff00'],
+                    [red]: [orange, yellow, purple ],
+                    [yellow]: [ purple, red, pink, green, orange ],
+                    [green]: [ cyan, blue, yellow ],
+                    [purple]: [ yellow, cyan, blue, red ],
+                    [blue]: [ red, pink, lightGreen, yellow, indigo, cyan, purple, green ],
                 };
 
                 let base    = Object.keys(colors),
@@ -156,7 +169,7 @@
                     if (this.debounceRedraw === redraw) {
                         redraw();
                     }
-                }, 200);
+                }, 1000);
             },
         },
 
