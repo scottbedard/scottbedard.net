@@ -1,5 +1,5 @@
-<style lang="scss" scoped>
-    .stage {
+<style lang="scss" scoped>@import 'core';
+    .outer {
         perspective: 1000px;
         position: absolute;
         left: 50%;
@@ -8,7 +8,6 @@
     }
 
     .inner {
-        left: 50%;
         height: 100%;
         position: relative;
         transform: rotateX(-25deg);
@@ -17,39 +16,62 @@
         width: 100%;
     }
 
+    .v-sticker {
+        $size: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        left: calc(50% - #{ $size / 2 });
+        border: 1px solid rgba($black, 0.2);
+        border-radius: 3px;
+        height: $size;
+        position: absolute;
+        top: calc(50% - #{ $size / 2 });
+        width: $size;
+        @include transition(transform, 0.5);
+
+        //
+        // Colors
+        //
+        @each $color, $value in $colors {
+            &.color-#{ $color } {
+                background-color: $value;
+            }
+        }
+    }
+
     .spacer {
-        height: 330px;
+        height: 320px;
     }
 </style>
 
 <template>
-    <div class="v-cube">
-        <div class="stage">
+    <div>
+        <!-- Cube wrapper -->
+        <div class="outer">
             <div class="inner">
-                <template v-for="face in faces">
-                    <v-sticker
-                        v-for="sticker in face"
-                        :class="[ color(sticker) ]"
-                        :base="sticker.base"
-                        :index="sticker.index"
-                        :turn="turn"
-                        :value="sticker.value">
-                    </v-sticker>
-                </template>
+                <v-sticker
+                    v-for="sticker in stickers"
+                    :color="sticker.color"
+                    :index="sticker.index"
+                    :face="sticker.face"
+                    :turn="turn">
+                </v-sticker>
             </div>
         </div>
+
+        <!-- Controls -->
         <div class="spacer"></div>
-        <v-button color="green" @click="scramble">Click to scramble</v-button>
+        <v-button color="green" @click="onButtonClicked">Click to scramble {{ turn }}</v-button>
     </div>
 </template>
 
 <script>
     import StickerComponent from './sticker';
-    import Vue from 'vue';
 
     export default {
         created() {
-            this.reset();
+            this.resetCube();
         },
         data() {
             return {
@@ -61,57 +83,33 @@
                     B: 'green',
                     D: 'off-white',
                 },
-                cube: {
-                    U: [],
-                    L: [],
-                    F: [],
-                    R: [],
-                    B: [],
-                    D: [],
-                },
-                size: 3,
                 turn: {
                     face: null,
                     rotation: 0,
                 },
+                stickers: [],
             };
         },
         components: {
             'v-sticker': StickerComponent,
         },
-        computed: {
-            faces() {
-                return Object.keys(this.cube).map(face => this.cube[face]);
-            },
-        },
         methods: {
-            color(sticker) {
-                return `color-${ this.colors[sticker.value] }`;
-            },
-            executeTurn(turn) {
-                let face = turn[0];
-                let rotation = turn.length === 1 ? 90 : (turn[1] === 2 ? 180 : -90);
+            resetCube() {
+                this.stickers = [];
+                let faces = ['U', 'L', 'F', 'R', 'B', 'D'];
 
-                console.log ('turning face', face, rotation);
-                this.turn = { face, rotation };
-                setTimeout(this.updateCube, 500);
-            },
-            reset() {
-                Object.keys(this.cube).forEach(face => {
-                    for (let i = 0; i < 9; i++) {
-                        this.cube[face][i] = {
-                            base: face,
-                            index: i,
-                            value: face,
-                        };
+                for (let face of faces) {
+                    for (let index = 0; index < 9; index++) {
+                        this.stickers.push({
+                            color: this.colors[face],
+                            face,
+                            index,
+                        });
                     }
-                });
+                }
             },
-            scramble() {
-                this.executeTurn('F');
-            },
-            updateCube() {
-                console.log ('updating the cube');
+            onButtonClicked() {
+                this.turn++;
             },
         },
     };
