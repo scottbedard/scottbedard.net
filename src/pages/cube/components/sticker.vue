@@ -12,6 +12,7 @@
         position: absolute;
         top: calc(50% - #{ $size / 2 });
         width: $size;
+        @include transition(transform, 0.5);
 
         //
         // Colors
@@ -83,6 +84,11 @@
             rotateZ() {
                 let rotation = this.getInitialRotation('z', this.base);
 
+                if (this.turn.face === this.base)
+                    rotation += this.turn.rotation;
+
+                console.log (rotation);
+
                 return rotation;
             },
         },
@@ -96,6 +102,9 @@
 
                 return rotation[axis][face];
             },
+            onTurn(face, rotation) {
+                console.log ('yup', face, rotation);
+            },
             onWindowResized() {
                 this.setStickerSize();
             },
@@ -107,7 +116,7 @@
         props: [
             'base',
             'index',
-            'target',
+            'turn',
             'value',
         ],
         watch: {

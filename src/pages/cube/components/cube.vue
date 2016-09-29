@@ -32,7 +32,7 @@
                         :class="[ color(sticker) ]"
                         :base="sticker.base"
                         :index="sticker.index"
-                        :target="sticker.target"
+                        :turn="turn"
                         :value="sticker.value">
                     </v-sticker>
                 </template>
@@ -45,6 +45,7 @@
 
 <script>
     import StickerComponent from './sticker';
+    import Vue from 'vue';
 
     export default {
         created() {
@@ -69,6 +70,10 @@
                     D: [],
                 },
                 size: 3,
+                turn: {
+                    face: null,
+                    rotation: 0,
+                },
             };
         },
         components: {
@@ -87,23 +92,26 @@
                 let face = turn[0];
                 let rotation = turn.length === 1 ? 90 : (turn[1] === 2 ? 180 : -90);
 
-                console.log (face, rotation);
+                console.log ('turning face', face, rotation);
+                this.turn = { face, rotation };
+                setTimeout(this.updateCube, 500);
             },
             reset() {
-                let size = Math.pow(this.size, 2);
                 Object.keys(this.cube).forEach(face => {
-                    for (let i = 0; i < size; i++) {
+                    for (let i = 0; i < 9; i++) {
                         this.cube[face][i] = {
                             base: face,
                             index: i,
-                            target: null,
                             value: face,
                         };
                     }
                 });
             },
             scramble() {
-                this.executeTurn('R');
+                this.executeTurn('F');
+            },
+            updateCube() {
+                console.log ('updating the cube');
             },
         },
     };
