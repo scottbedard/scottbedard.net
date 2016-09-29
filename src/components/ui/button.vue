@@ -84,8 +84,8 @@
             },
         },
         methods: {
-            emit(event) {
-                return () => this.$emit(event);
+            emit() {
+                return this.$emit.bind(this, ...arguments);
             },
             renderAnchor(h) {
                 return <a href={ this.href } class={ this.buttonClasses } on-click={ this.emit('click') }>
