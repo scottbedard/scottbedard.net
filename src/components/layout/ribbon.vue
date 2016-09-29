@@ -7,7 +7,7 @@
         top: 0;
         width: 100%;
         z-index: -1;
-        @include transition(opacity, 1000ms);
+        @include transition(opacity, 500ms);
 
         &.is-redrawing {
             opacity: 0;
@@ -85,11 +85,11 @@
                 let orange = 'ef6c00';
 
                 let colors = {
-                    [red]: [orange, yellow, purple ],
-                    [yellow]: [ purple, red, pink, green, orange ],
+                    [red]: [yellow, purple ],
+                    [yellow]: [ red, pink, green, orange ],
                     [green]: [ cyan, blue, yellow ],
                     [purple]: [ yellow, cyan, blue, red ],
-                    [blue]: [ red, pink, lightGreen, yellow, indigo, cyan, purple, green ],
+                    [blue]: [ red, pink, lightGreen, purple, green ],
                 };
 
                 let base    = Object.keys(colors),
@@ -169,7 +169,7 @@
                     if (this.debounceRedraw === redraw) {
                         redraw();
                     }
-                }, 1000);
+                }, 500);
             },
         },
 
