@@ -73,6 +73,12 @@
         created() {
             this.resetCube();
         },
+        destroyed() {
+            this.unbindKeyboardControls();
+        },
+        mounted() {
+            this.bindKeyboardControls();
+        },
         data() {
             return {
                 colors: {
@@ -99,13 +105,19 @@
             'v-sticker': StickerComponent,
         },
         methods: {
+            bindKeyboardControls() {
+                document.addEventListener('keydown', this.onKeyDown);
+            },
             executeTurn(face, rotation) {
                 this.isTransitioning = true;
 
                 this.turn = { face, rotation };
             },
             onButtonClicked() {
-                this.executeTurn('D', 90);
+                this.executeTurn('F', 90);
+            },
+            onKeyDown(e) {
+                this.executeTurn('R', 90);
             },
             onTransitionEnd() {
                 this.isTransitioning = false;
@@ -132,6 +144,9 @@
                 let stickerB = this.stickerMap[b];
 
                 stickerB.nextColor = stickerA.color;
+            },
+            unbindKeyboardControls() {
+                document.removeEventListener('keydown', this.onKeyDown);
             },
             updateStickers() {
                 let map = TargetMap[this.turn.face];
