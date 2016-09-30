@@ -28,15 +28,10 @@
         position: absolute;
         top: calc(50% - #{ $size / 2 });
         width: $size;
-        @include transition(transform, 0.5);
+        @include transition(transform, 0.5s);
 
-        //
-        // Colors
-        //
         @each $color, $value in $colors {
-            &.color-#{ $color } {
-                background-color: $value;
-            }
+            &.color-#{ $color } { background-color: $value }
         }
     }
 
@@ -81,19 +76,25 @@
                     F: 'blue',
                     R: 'red',
                     B: 'green',
-                    D: 'off-white',
+                    D: 'black',
                 },
+                isTransitioning: false,
                 turn: {
                     face: null,
                     rotation: 0,
                 },
                 stickers: [],
+                queue: [],
             };
         },
         components: {
             'v-sticker': StickerComponent,
         },
         methods: {
+            executeTurn(face, rotation) {
+                this.isTransitioning = true;
+                this.turn = { face, rotation };
+            },
             resetCube() {
                 this.stickers = [];
                 let faces = ['U', 'L', 'F', 'R', 'B', 'D'];
@@ -109,7 +110,20 @@
                 }
             },
             onButtonClicked() {
-                this.turn++;
+                this.executeTurn('F', this.turn.rotation === 0 ? 90 : 0);
+            },
+            onTransitionEnd() {
+                this.isTransitioning = false;
+            },
+            updateStickers() {
+                console.log ('updating the stickers...');
+            },
+        },
+        watch: {
+            isTransitioning(isTurning) {
+                if (!isTurning) {
+                    this.updateStickers();
+                }
             },
         },
     };
