@@ -113,6 +113,7 @@ export default {
             class={ Sticker.getClass(context.props) }
             style={ Sticker.getStyle(context.props) }
             on-transitionend={ context.parent.onTransitionEnd }>
+            { context.props.index }
         </div>;
     },
 };

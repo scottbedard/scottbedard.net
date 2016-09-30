@@ -14,6 +14,11 @@
         transform-origin: 50% 50%;
         transform-style: preserve-3d;
         width: 100%;
+
+        &.is-updating > .v-sticker {
+            border: 10px solid green;
+            transition: none !important;
+        }
     }
 
     .v-sticker {
@@ -44,7 +49,7 @@
     <div>
         <!-- Cube wrapper -->
         <div class="outer">
-            <div class="inner">
+            <div class="inner" :class="{ 'is-updating': isUpdating }">
                 <v-sticker
                     v-for="sticker in stickers"
                     :color="sticker.color"
@@ -62,6 +67,7 @@
 </template>
 
 <script>
+    import TargetMap from './target_map';
     import StickerComponent from './sticker';
 
     export default {
@@ -78,12 +84,15 @@
                     B: 'green',
                     D: 'black',
                 },
+                faces: ['U', 'L', 'F', 'R', 'B', 'D'],
                 isTransitioning: false,
+                isUpdating: false,
                 turn: {
                     face: null,
                     rotation: 0,
                 },
                 stickers: [],
+                stickerMap: {},
                 queue: [],
             };
         },
@@ -93,7 +102,14 @@
         methods: {
             executeTurn(face, rotation) {
                 this.isTransitioning = true;
+
                 this.turn = { face, rotation };
+            },
+            onButtonClicked() {
+                this.executeTurn('F', 90);
+            },
+            onTransitionEnd() {
+                this.isTransitioning = false;
             },
             resetCube() {
                 this.stickers = [];
@@ -105,18 +121,41 @@
                             color: this.colors[face],
                             face,
                             index,
+                            nextColor: null,
                         });
+
+                        this.stickerMap[`${ face }${ index }`] = this.stickers[this.stickers.length - 1];
                     }
                 }
             },
-            onButtonClicked() {
-                this.executeTurn('F', this.turn.rotation === 0 ? 90 : 0);
-            },
-            onTransitionEnd() {
-                this.isTransitioning = false;
+            setNextColor(a, b) {
+                let stickerA = this.stickerMap[a];
+                let stickerB = this.stickerMap[b];
+
+                stickerB.nextColor = stickerA.color;
             },
             updateStickers() {
-                console.log ('updating the stickers...');
+                let map = TargetMap[this.turn.face];
+                let setNextColorFunction = this.turn.rotation === 90
+                    ? ([a, b]) => this.setNextColor(a, b)
+                    : ([a, b]) => this.setNextColor(b, a);
+
+                // Set next color values for the stickers
+                for (let i = 0, end = map.length; i < end; i++) {
+                    setNextColorFunction(map[i]);
+                }
+
+                // Update the color values of the stickers effected by this turn
+                this.isUpdating = true;
+                this.stickers.filter(sticker => sticker.nextColor !== null).forEach(sticker => {
+                    sticker.color = sticker.nextColor;
+                    sticker.nextColor = null;
+                });
+
+                this.$nextTick(() => {
+                    this.turn = { face: null, rotation: 0 };
+                    this.$nextTick(() => this.isUpdating = false);
+                });
             },
         },
         watch: {
