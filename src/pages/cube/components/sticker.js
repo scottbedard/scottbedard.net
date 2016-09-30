@@ -55,11 +55,9 @@ const Sticker = {
         return `translate3d(${ x }%, ${ y }%, ${ z }px)`;
     },
     getXRotation(x, i, face, turn) {
-        if (turn.face === 'U') {
-
-        } else if (turn.face === 'L') {
-
-
+        if (turn.face === 'L') {
+            if (this.isTurnedSticker(['U', 'F', 'D'], leftSlice, face, i)) x += turn.rotation * -1;
+            else if (face === 'B' && this.isTurnedIndex(i, rightSlice)) x += turn.rotation;
         } else if (turn.face === 'F') {
             if (face === 'R' && this.isTurnedIndex(i, leftSlice)) x += turn.rotation * -1;
             else if (face === 'L' && this.isTurnedIndex(i, rightSlice)) x += turn.rotation;
@@ -119,7 +117,6 @@ export default {
             class={ Sticker.getClass(context.props) }
             style={ Sticker.getStyle(context.props) }
             on-transitionend={ context.parent.onTransitionEnd }>
-            { context.props.index }
         </div>;
     },
 };

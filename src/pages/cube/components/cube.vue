@@ -105,7 +105,7 @@
                 this.turn = { face, rotation };
             },
             onButtonClicked() {
-                this.executeTurn('F', 90);
+                this.executeTurn('L', 90);
             },
             onTransitionEnd() {
                 this.isTransitioning = false;
