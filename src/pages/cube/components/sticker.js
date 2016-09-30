@@ -74,8 +74,8 @@ const Sticker = {
         return x;
     },
     getYRotation(y, i, face, turn) {
-        if (turn.face === 'U') {
-
+        if (turn.face === 'U' && this.isTurnedSticker(['B', 'L', 'F', 'R'], topSlice, face, i)) {
+            y += turn.rotation * -1;
         } else if (turn.face === 'L') {
 
 
@@ -92,8 +92,14 @@ const Sticker = {
 
         return y;
     },
+    isTurnedFace(faces, face) {
+        return faces.indexOf(face) !== -1;
+    },
     isTurnedIndex(key, values) {
         return values.indexOf(key) > -1;
+    },
+    isTurnedSticker(faces, slice, stickerFace, stickerIndex) {
+        return this.isTurnedFace(faces, stickerFace) && this.isTurnedIndex(stickerIndex, slice);
     },
 };
 

@@ -16,8 +16,7 @@
         width: 100%;
 
         &.is-updating > .v-sticker {
-            border: 10px solid green;
-            transition: none !important;
+            transition: none;
         }
     }
 
@@ -119,6 +118,7 @@
                     for (let index = 0; index < 9; index++) {
                         this.stickers.push({
                             color: this.colors[face],
+                            color: this.colors[faces[Math.floor(Math.random() * faces.length)]], // <- test colors
                             face,
                             index,
                             nextColor: null,
@@ -152,6 +152,7 @@
                     sticker.nextColor = null;
                 });
 
+                // Reset the dom and execute the next turn
                 this.$nextTick(() => {
                     this.turn = { face: null, rotation: 0 };
                     this.$nextTick(() => this.isUpdating = false);
