@@ -32,7 +32,7 @@
         position: absolute;
         top: calc(50% - #{ $size / 2 });
         width: $size;
-        @include transition(transform, 0.5s);
+        @include transition(transform, 0.3s);
 
         @each $color, $value in $colors {
             &.color-#{ $color } { background-color: $value }
@@ -105,7 +105,7 @@
                 this.turn = { face, rotation };
             },
             onButtonClicked() {
-                this.executeTurn('R', 90);
+                this.executeTurn('B', 90);
             },
             onTransitionEnd() {
                 this.isTransitioning = false;
