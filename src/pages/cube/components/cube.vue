@@ -105,7 +105,7 @@
                 this.turn = { face, rotation };
             },
             onButtonClicked() {
-                this.executeTurn('B', 90);
+                this.executeTurn('D', 90);
             },
             onTransitionEnd() {
                 this.isTransitioning = false;
@@ -118,7 +118,6 @@
                     for (let index = 0; index < 9; index++) {
                         this.stickers.push({
                             color: this.colors[face],
-                            color: this.colors[faces[Math.floor(Math.random() * faces.length)]], // <- test colors
                             face,
                             index,
                             nextColor: null,

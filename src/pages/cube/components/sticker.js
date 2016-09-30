@@ -67,8 +67,6 @@ const Sticker = {
         } else if (turn.face === 'B') {
             if (face === 'R' && this.isTurnedIndex(i, rightSlice)) x += turn.rotation;
             else if (face === 'L' && this.isTurnedIndex(i, leftSlice)) x += turn.rotation * -1;
-        } else if (turn.face === 'D') {
-
         }
 
         return x;
@@ -79,13 +77,11 @@ const Sticker = {
         } else if (turn.face === 'F') {
             if (face === 'U' && this.isTurnedIndex(i, bottomSlice)) y += turn.rotation;
             else if (face === 'D' && this.isTurnedIndex(i, topSlice)) y += turn.rotation * -1;
-        } else if (turn.face === 'R') {
-
         } else if (turn.face === 'B') {
             if (face === 'U' && this.isTurnedIndex(i, topSlice)) y += turn.rotation * -1;
             else if (face === 'D' && this.isTurnedIndex(i, bottomSlice)) y += turn.rotation;
-        } else if (turn.face === 'D') {
-
+        } else if (turn.face === 'D' && this.isTurnedSticker(['L', 'F', 'R', 'B'], bottomSlice, face, i)) {
+            y += turn.rotation;
         }
 
         return y;
