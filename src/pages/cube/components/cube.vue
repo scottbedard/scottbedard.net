@@ -97,6 +97,7 @@
                     face: null,
                     rotation: 0,
                 },
+                scrambleLength: 40,
                 stickers: [],
                 stickerMap: {},
                 queue: [],
@@ -145,6 +146,7 @@
                 this.activeTransitions--;
             },
             resetCube() {
+                this.queue = [];
                 this.stickers = [];
                 let faces = ['U', 'L', 'F', 'R', 'B', 'D'];
 
@@ -166,7 +168,22 @@
                 }
             },
             scramble() {
-                console.log ('scrambling...');
+                this.resetCube();
+                this.isScrambled = true;
+
+                let previousTurn = null;
+                let turns = ['U', 'L', 'F', 'R', 'B', 'X', 'Y', 'Z'];
+
+                let i = 0;
+                while (i < this.scrambleLength) {
+                    let turn = turns[Math.floor(Math.random() * turns.length)];
+
+                    if (turn !== previousTurn) {
+                        i++;
+                        previousTurn = turn;
+                        this.queue.push({ face: turn, rotation: Math.random() >= 0.5 ? 90 : -90 });
+                    }
+                }
             },
             setNextColor(a, b) {
                 let stickerA = this.stickerMap[a];
