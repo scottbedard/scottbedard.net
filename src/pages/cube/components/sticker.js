@@ -110,8 +110,9 @@ export const Sticker = {
         } else if (turn.face === 'X') {
             if (face === 'R') return turn.rotation;
             else if (face === 'L') return turn.rotation * -1;
-        } else if (turn.face === 'Y' && (face === 'U' || face === 'D')) {
-            return turn.rotation;
+        } else if (turn.face === 'Y') {
+            if (face === 'U') return turn.rotation;
+            else if (face === 'D') return turn.rotation * -1;
         } else if (turn.face === 'Z') {
             if (face === 'F') return turn.rotation;
             else if (face === 'B') return turn.rotation * -1;
