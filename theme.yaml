@@ -1,3 +1,5 @@
 name: 'scottbedard'
 description: 'My personal code playground'
 author: 'scott@scottbedard.net'
+require:
+    - Bedard.Cube

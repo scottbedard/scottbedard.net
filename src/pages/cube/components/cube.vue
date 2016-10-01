@@ -131,6 +131,24 @@
             'v-sticker': StickerComponent,
         },
         computed: {
+            isSolved() {
+                if (!this.isSolving) {
+                    return false;
+                }
+
+                let colors = { U: null, L: null, F: null, R: null, B: null, D: null };
+
+                for (let i = 0, end = this.stickers.length; i < end; i++) {
+                    let sticker = this.stickers[i];
+                    if (colors[sticker.face] === null) {
+                        colors[sticker.face] = sticker.color;
+                    } else if (colors[sticker.face] !== sticker.color) {
+                        return false;
+                    }
+                }
+
+                return true;
+            },
             isTurning() {
                 return this.activeTransitions > 0;
             },
@@ -156,12 +174,13 @@
             clearStopwatch() {
                 clearInterval(this.stopwatch);
             },
+            endSolve() {
+                this.isSolving = false;
+                this.solve.end = Date.now();
+                this.clearStopwatch();
+            },
             executeTurn(turn) {
-                let transitions = turn.face === 'X' || turn.face === 'Y' || turn.face === 'Z'
-                    ? 54
-                    : 21;
-
-                this.activeTransitions = transitions;
+                this.activeTransitions = turn.face === 'X' || turn.face === 'Y' || turn.face === 'Z' ? 54 : 21;
                 this.turn = turn;
             },
             onKeydown(e) {
@@ -268,6 +287,12 @@
                     sticker.color = sticker.nextColor;
                     sticker.nextColor = null;
                 });
+
+                // Determine if the cube is solved or not
+                if (this.isSolved) {
+                    this.endSolve();
+                    return;
+                }
 
                 // Reset the dom and execute the next turn
                 this.$nextTick(() => {
