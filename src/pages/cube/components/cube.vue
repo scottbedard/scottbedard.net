@@ -130,10 +130,7 @@
                 this.turn = turn;
             },
             onKeydown(e) {
-                let character;
-                if (e.keyCode === 186) character = ':';
-                else character = String.fromCharCode(e.keyCode);
-
+                let character = e.key.toUpperCase();
                 let turn = KeyboardControls[character];
 
                 if (typeof turn !== 'undefined') {

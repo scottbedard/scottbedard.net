@@ -28,7 +28,7 @@ export const KeyboardControls = {
     B: 'X\'',
     N: 'X\'',
     M: 'X\'',
-    ':': 'Y',
+    ';': 'Y',
     A: 'Y\'',
     P: 'Z',
     Q: 'Z\'',
