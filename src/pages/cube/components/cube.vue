@@ -32,7 +32,7 @@
         position: absolute;
         top: calc(50% - #{ $size / 2 });
         width: $size;
-        @include transition(transform, 0.3s);
+        @include transition(transform, 80ms, linear);
 
         @each $color, $value in $colors {
             &.color-#{ $color } { background-color: $value }
@@ -68,6 +68,7 @@
 </template>
 
 <script>
+    import { KeyboardControls, InspectionMoves } from './controls';
     import TargetMap from './target_map';
     import { Sticker } from './sticker';
     import StickerComponent from './sticker';
@@ -84,6 +85,7 @@
         },
         data() {
             return {
+                activeTransitions: 0,
                 colors: {
                     U: 'yellow',
                     L: 'orange',
@@ -107,22 +109,40 @@
         components: {
             'v-sticker': StickerComponent,
         },
+        computed: {
+            isTransitioning() {
+                return this.activeTransitions > 0;
+            },
+        },
         methods: {
             bindKeyboardControls() {
-                document.addEventListener('keydown', this.onKeyDown);
+                document.addEventListener('keydown', this.onKeydown);
             },
-            executeTurn(face, rotation) {
-                this.isTransitioning = true;
-                this.turn = { face, rotation };
+            executeTurn(turn) {
+                let transitions = turn.face === 'X' || turn.face === 'Y' || turn.face === 'Z'
+                    ? 54
+                    : 21;
+
+                console.log (transitions);
+
+                this.activeTransitions = transitions;
+                this.turn = turn;
             },
             onButtonClicked() {
                 this.executeTurn('F', 90);
             },
-            onKeyDown(e) {
-                this.executeTurn('R', 90);
+            onKeydown(e) {
+                let character = String.fromCharCode(e.keyCode);
+                let turn = KeyboardControls[character];
+
+                if (typeof turn !== 'undefined') {
+                    let face = turn[0];
+                    let rotation = turn.length === 1 ? 90 : -90;
+                    this.queue.push({ face, rotation });
+                }
             },
             onTransitionEnd() {
-                this.isTransitioning = false;
+                this.activeTransitions--;
             },
             resetCube() {
                 this.stickers = [];
@@ -152,7 +172,7 @@
                 stickerB.nextColor = stickerA.color;
             },
             unbindKeyboardControls() {
-                document.removeEventListener('keydown', this.onKeyDown);
+                document.removeEventListener('keydown', this.onKeydown);
             },
             updateStickers() {
                 let map = TargetMap[this.turn.face];
@@ -175,7 +195,10 @@
                 // Reset the dom and execute the next turn
                 this.$nextTick(() => {
                     this.turn = { face: null, rotation: 0 };
-                    setTimeout(() => this.isUpdating = false, 20);
+                    setTimeout(() => {
+                        this.isUpdating = false;
+                        this.queue.shift();
+                    }, 10);
                 });
             },
         },
@@ -184,6 +207,13 @@
                 if (!isTurning) {
                     this.updateStickers();
                 }
+            },
+            queue() {
+                // If the queue is empty, do nothing
+                if (this.queue.length === 0) return;
+
+                // Otherwise execute the next turn
+                this.executeTurn(this.queue[0]);
             },
         },
     };
