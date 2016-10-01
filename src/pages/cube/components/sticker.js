@@ -23,7 +23,7 @@ const bottomSlice = [6, 7, 8];
 //
 // Functions to calculate the class and style of a sticker
 //
-const Sticker = {
+export const Sticker = {
     getClass(sticker) {
         return [
             'v-sticker',
@@ -103,15 +103,20 @@ const Sticker = {
 export default {
     functional: true,
     props: [
+        'baseStyle',
         'color',
         'face',
         'index',
+        'isUpdating',
         'turn',
     ],
     render(h, context) {
+        let cssClass = Sticker.getClass(context.props);
+        let inlineStyle = context.props.isUpdating ? context.props.baseStyle : Sticker.getStyle(context.props);
+
         return <div
-            class={ Sticker.getClass(context.props) }
-            style={ Sticker.getStyle(context.props) }
+            class={ cssClass }
+            style={ inlineStyle }
             on-transitionend={ context.parent.onTransitionEnd }>
         </div>;
     },

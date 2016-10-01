@@ -51,8 +51,10 @@
             <div class="inner" :class="{ 'is-updating': isUpdating }">
                 <v-sticker
                     v-for="sticker in stickers"
+                    :base-style="sticker.baseStyle"
                     :color="sticker.color"
                     :index="sticker.index"
+                    :is-updating="isUpdating"
                     :face="sticker.face"
                     :turn="turn">
                 </v-sticker>
@@ -67,6 +69,7 @@
 
 <script>
     import TargetMap from './target_map';
+    import { Sticker } from './sticker';
     import StickerComponent from './sticker';
 
     export default {
@@ -110,7 +113,6 @@
             },
             executeTurn(face, rotation) {
                 this.isTransitioning = true;
-
                 this.turn = { face, rotation };
             },
             onButtonClicked() {
@@ -128,14 +130,18 @@
 
                 for (let face of faces) {
                     for (let index = 0; index < 9; index++) {
-                        this.stickers.push({
+                        let sticker = {
                             color: this.colors[face],
                             face,
                             index,
                             nextColor: null,
-                        });
+                            turn: this.turn,
+                        };
 
-                        this.stickerMap[`${ face }${ index }`] = this.stickers[this.stickers.length - 1];
+                        // cache the base style for faster resets
+                        sticker.baseStyle = Sticker.getStyle(sticker);
+                        this.stickers.push(sticker);
+                        this.stickerMap[`${ face }${ index }`] = sticker;
                     }
                 }
             },
@@ -169,7 +175,7 @@
                 // Reset the dom and execute the next turn
                 this.$nextTick(() => {
                     this.turn = { face: null, rotation: 0 };
-                    this.$nextTick(() => this.isUpdating = false);
+                    setTimeout(() => this.isUpdating = false, 20);
                 });
             },
         },
