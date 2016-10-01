@@ -12,6 +12,10 @@ const initialRotation = {
     y: { U: 0,   L: -90, F: 0,   R: 90,  B: 180, D: 0 },
 };
 
+const horizontalMiddleSlice = [3, 4, 5];
+
+const verticalMiddleSlice = [1, 4, 7];
+
 const leftSlice = [0, 3, 6];
 
 const rightSlice = [2, 5, 8];
@@ -19,6 +23,8 @@ const rightSlice = [2, 5, 8];
 const topSlice = [0, 1, 2];
 
 const bottomSlice = [6, 7, 8];
+
+const allSlices = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
 //
 // Functions to calculate the class and style of a sticker
@@ -37,6 +43,7 @@ export const Sticker = {
 
         x = this.getXRotation(x, index, face, turn);
         y = this.getYRotation(y, index, face, turn);
+        z = this.getZRotation(z, face, turn);
 
         return face === 'U' || face === 'F' || face === 'D'
             ? `rotateX(${ x }deg) rotateY(${ y }deg) rotateZ(${ z }deg)`
@@ -67,6 +74,12 @@ export const Sticker = {
         } else if (turn.face === 'B') {
             if (face === 'R' && this.isTurnedIndex(i, rightSlice)) x += turn.rotation;
             else if (face === 'L' && this.isTurnedIndex(i, leftSlice)) x += turn.rotation * -1;
+        } else if (turn.face === 'X') {
+            if (this.isTurnedFace(['U', 'D', 'F'], face) && this.isTurnedIndex(i, allSlices)) x += turn.rotation;
+            else if (this.isTurnedFace(['B'], face) && this.isTurnedIndex(i, allSlices)) x += turn.rotation * -1;
+        } else if (turn.face === 'Z') {
+            if (face === 'R' && this.isTurnedIndex(i, allSlices)) x += turn.rotation * -1;
+            else if (face === 'L' && this.isTurnedIndex(i, allSlices)) x += turn.rotation;
         }
 
         return x;
@@ -82,9 +95,29 @@ export const Sticker = {
             else if (face === 'D' && this.isTurnedIndex(i, bottomSlice)) y += turn.rotation;
         } else if (turn.face === 'D' && this.isTurnedSticker(['L', 'F', 'R', 'B'], bottomSlice, face, i)) {
             y += turn.rotation;
+        } else if (turn.face === 'Y') {
+            if (this.isTurnedSticker(['B', 'L', 'F', 'R'], allSlices, face, i)) y += turn.rotation * -1;
+        } else if (turn.face === 'Z') {
+            if (face === 'U' && this.isTurnedIndex(i, allSlices)) y += turn.rotation;
+            else if (face === 'D' && this.isTurnedIndex(i, allSlices)) y += turn.rotation * -1;
         }
 
         return y;
+    },
+    getZRotation(z, face, turn) {
+        if (turn.face === face) {
+            return turn.rotation;
+        } else if (turn.face === 'X') {
+            if (face === 'R') return turn.rotation;
+            else if (face === 'L') return turn.rotation * -1;
+        } else if (turn.face === 'Y' && (face === 'U' || face === 'D')) {
+            return turn.rotation;
+        } else if (turn.face === 'Z') {
+            if (face === 'F') return turn.rotation;
+            else if (face === 'B') return turn.rotation * -1;
+        }
+
+        return 0;
     },
     isTurnedFace(faces, face) {
         return faces.indexOf(face) !== -1;

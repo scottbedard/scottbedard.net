@@ -63,7 +63,8 @@
 
         <!-- Controls -->
         <div class="spacer"></div>
-        <v-button color="green" @click="onButtonClicked">Click to scramble {{ turn }}</v-button>
+        <v-button v-if="!isScrambled && !isSolving" color="green" @click="scramble">Click to scramble</v-button>
+        <v-button v-else color="grey">Go</v-button>
     </div>
 </template>
 
@@ -77,12 +78,6 @@
         created() {
             this.resetCube();
         },
-        destroyed() {
-            this.unbindKeyboardControls();
-        },
-        mounted() {
-            this.bindKeyboardControls();
-        },
         data() {
             return {
                 activeTransitions: 0,
@@ -92,10 +87,11 @@
                     F: 'blue',
                     R: 'red',
                     B: 'green',
-                    D: 'black',
+                    D: 'white',
                 },
                 faces: ['U', 'L', 'F', 'R', 'B', 'D'],
-                isTransitioning: false,
+                isScrambled: false,
+                isSolving: false,
                 isUpdating: false,
                 turn: {
                     face: null,
@@ -106,11 +102,17 @@
                 queue: [],
             };
         },
+        destroyed() {
+            this.unbindKeyboardControls();
+        },
+        mounted() {
+            this.bindKeyboardControls();
+        },
         components: {
             'v-sticker': StickerComponent,
         },
         computed: {
-            isTransitioning() {
+            isTurning() {
                 return this.activeTransitions > 0;
             },
         },
@@ -123,16 +125,14 @@
                     ? 54
                     : 21;
 
-                console.log (transitions);
-
                 this.activeTransitions = transitions;
                 this.turn = turn;
             },
-            onButtonClicked() {
-                this.executeTurn('F', 90);
-            },
             onKeydown(e) {
-                let character = String.fromCharCode(e.keyCode);
+                let character;
+                if (e.keyCode === 186) character = ':';
+                else character = String.fromCharCode(e.keyCode);
+
                 let turn = KeyboardControls[character];
 
                 if (typeof turn !== 'undefined') {
@@ -164,6 +164,9 @@
                         this.stickerMap[`${ face }${ index }`] = sticker;
                     }
                 }
+            },
+            scramble() {
+                console.log ('scrambling...');
             },
             setNextColor(a, b) {
                 let stickerA = this.stickerMap[a];
@@ -203,7 +206,7 @@
             },
         },
         watch: {
-            isTransitioning(isTurning) {
+            isTurning(isTurning) {
                 if (!isTurning) {
                     this.updateStickers();
                 }
