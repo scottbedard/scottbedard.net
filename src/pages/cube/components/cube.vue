@@ -71,6 +71,7 @@
             {{ isScrambling ? 'Scrambling...' : 'Click to scramble' }}
         </v-button>
         <h2 v-if="isInspecting">{{ inspectionSeconds }}</h2>
+        <h2 v-if="isSolving">{{ stopwatchDisplay }}</h2>
     </div>
 </template>
 
@@ -97,7 +98,7 @@
                 },
                 faces: ['U', 'L', 'F', 'R', 'B', 'D'],
                 inspectionSeconds: 0,
-                inspectionTotalSeconds: 15,
+                inspectionTotalSeconds: 5,
                 isInspecting: false,
                 isScrambled: false,
                 isScrambling: false,
@@ -108,13 +109,20 @@
                     rotation: 0,
                 },
                 scrambleLength: 40,
+                solve: {
+                    moves: [],
+                    start: 0,
+                    end: 0,
+                },
                 stickers: [],
                 stickerMap: {},
+                stopwatch: null,
                 queue: [],
             };
         },
         destroyed() {
             this.unbindKeyboardControls();
+            this.clearStopwatch();
         },
         mounted() {
             this.bindKeyboardControls();
@@ -126,26 +134,27 @@
             isTurning() {
                 return this.activeTransitions > 0;
             },
-        },
-        methods: {
-            begin() {
-                this.isScrambling = false;
-                this.isScrambled = true;
-                this.isInspecting = true;
-                this.isSolving = false;
+            stopwatchDisplay() {
+                let elapsedTime = this.solve.end - this.solve.start;
 
-                for (let i = 0; i < this.inspectionTotalSeconds; i++) {
-                    setTimeout(() => this.inspectionSeconds = this.inspectionTotalSeconds - i, i * 1000);
+                if (elapsedTime < 0) {
+                    return 0;
                 }
 
-                setTimeout(() => {
-                    this.isInspecting = false;
-                    this.isSolving = true;
-                    console.log ('go');
-                }, this.inspectionTotalSeconds * 1000);
+                let minutes = Math.floor(elapsedTime / 60000);
+                let seconds = ((elapsedTime / 1000) % 60).toFixed(1);
+
+                return minutes >= 1
+                    ? `${ minutes }:${ seconds < 10 ? '0' + seconds : seconds }`
+                    : seconds;
             },
+        },
+        methods: {
             bindKeyboardControls() {
                 document.addEventListener('keydown', this.onKeydown);
+            },
+            clearStopwatch() {
+                clearInterval(this.stopwatch);
             },
             executeTurn(turn) {
                 let transitions = turn.face === 'X' || turn.face === 'Y' || turn.face === 'Z'
@@ -219,6 +228,26 @@
 
                 stickerB.nextColor = stickerA.color;
             },
+            startInspection() {
+                this.isScrambling = false;
+                this.isScrambled = true;
+                this.isInspecting = true;
+                this.isSolving = false;
+
+                for (let i = 0; i < this.inspectionTotalSeconds; i++) {
+                    setTimeout(() => this.inspectionSeconds = this.inspectionTotalSeconds - i, i * 1000);
+                }
+
+                setTimeout(() => {
+                    this.isInspecting = false;
+                    this.startSolve();
+                }, this.inspectionTotalSeconds * 1000);
+            },
+            startSolve() {
+                this.isSolving = true;
+                this.solve.start = Date.now();
+                this.stopwatch = setInterval(() => this.solve.end = Date.now(), 100);
+            },
             unbindKeyboardControls() {
                 document.removeEventListener('keydown', this.onKeydown);
             },
@@ -263,7 +292,7 @@
                 // If the queue is a begin flag, start recording the solve
                 if (this.queue[0] === 'BEGIN') {
                     this.queue.shift();
-                    return this.begin();
+                    return this.startInspection();
                 }
 
                 // Otherwise, execute the next turn
