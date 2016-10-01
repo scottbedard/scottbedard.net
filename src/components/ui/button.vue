@@ -93,7 +93,7 @@
                 </a>;
             },
             renderButton(h) {
-                return <button class={ this.buttonClasses } on-click={ this.emit('click') }>
+                return <button class={ this.buttonClasses } on-click={ this.emit('click') } disabled={ this.disabled }>
                     { this.$slots.default }
                 </button>;
             },
@@ -105,6 +105,7 @@
         },
         props: {
             color: { default: 'white' },
+            disabled: { default: false },
             route: { default: null },
             href: { default: null },
             size: { type: String, default: 'medium' },

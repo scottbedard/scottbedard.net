@@ -63,13 +63,19 @@
 
         <!-- Controls -->
         <div class="spacer"></div>
-        <v-button v-if="!isScrambled && !isSolving" color="green" @click="scramble">Click to scramble</v-button>
-        <v-button v-else color="grey">Go</v-button>
+        <v-button
+            v-if="!isScrambled"
+            :disabled="isScrambling"
+            :color="isScrambling ? 'grey' : 'green'"
+            @click="scramble">
+            {{ isScrambling ? 'Scrambling...' : 'Click to scramble' }}
+        </v-button>
+        <h2 v-if="isInspecting">{{ inspectionSeconds }}</h2>
     </div>
 </template>
 
 <script>
-    import { KeyboardControls, InspectionMoves } from './controls';
+    import KeyboardControls from './controls';
     import TargetMap from './target_map';
     import { Sticker } from './sticker';
     import StickerComponent from './sticker';
@@ -90,7 +96,11 @@
                     D: 'white',
                 },
                 faces: ['U', 'L', 'F', 'R', 'B', 'D'],
+                inspectionSeconds: 0,
+                inspectionTotalSeconds: 15,
+                isInspecting: false,
                 isScrambled: false,
+                isScrambling: false,
                 isSolving: false,
                 isUpdating: false,
                 turn: {
@@ -118,6 +128,22 @@
             },
         },
         methods: {
+            begin() {
+                this.isScrambling = false;
+                this.isScrambled = true;
+                this.isInspecting = true;
+                this.isSolving = false;
+
+                for (let i = 0; i < this.inspectionTotalSeconds; i++) {
+                    setTimeout(() => this.inspectionSeconds = this.inspectionTotalSeconds - i, i * 1000);
+                }
+
+                setTimeout(() => {
+                    this.isInspecting = false;
+                    this.isSolving = true;
+                    console.log ('go');
+                }, this.inspectionTotalSeconds * 1000);
+            },
             bindKeyboardControls() {
                 document.addEventListener('keydown', this.onKeydown);
             },
@@ -136,7 +162,10 @@
                 if (typeof turn !== 'undefined') {
                     let face = turn[0];
                     let rotation = turn.length === 1 ? 90 : -90;
-                    this.queue.push({ face, rotation });
+
+                    if (!this.isInspecting || ['X', 'Y', 'Z'].indexOf(face) !== -1) {
+                        this.queue.push({ face, rotation });
+                    }
                 }
             },
             onTransitionEnd() {
@@ -166,7 +195,7 @@
             },
             scramble() {
                 this.resetCube();
-                this.isScrambled = true;
+                this.isScrambling = true;
 
                 let previousTurn = null;
                 let turns = ['U', 'L', 'F', 'R', 'B', 'X', 'Y', 'Z'];
@@ -181,6 +210,8 @@
                         this.queue.push({ face: turn, rotation: Math.random() >= 0.5 ? 90 : -90 });
                     }
                 }
+
+                this.queue.push('BEGIN');
             },
             setNextColor(a, b) {
                 let stickerA = this.stickerMap[a];
@@ -229,7 +260,13 @@
                 // If the queue is empty, do nothing
                 if (this.queue.length === 0) return;
 
-                // Otherwise execute the next turn
+                // If the queue is a begin flag, start recording the solve
+                if (this.queue[0] === 'BEGIN') {
+                    this.queue.shift();
+                    return this.begin();
+                }
+
+                // Otherwise, execute the next turn
                 this.executeTurn(this.queue[0]);
             },
         },

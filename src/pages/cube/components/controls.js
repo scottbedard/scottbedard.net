@@ -1,13 +1,4 @@
-export const InspectionMoves = [
-    'X',
-    'X\'',
-    'Y',
-    'Y\'',
-    'Z',
-    'Z\'',
-];
-
-export const KeyboardControls = {
+export default {
     J: 'U',
     F: 'U\'',
     D: 'L',
