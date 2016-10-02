@@ -31,6 +31,7 @@
     "browser-sync": "^2.14.3",
     "chai": "^3.5.0",
     "connect-history-api-fallback": "^1.1.0",
+    "coveralls": "^2.11.14",
     "css-loader": "^0.23.0",
     "eslint": "^2.10.2",
     "eslint-friendly-formatter": "^2.0.5",
