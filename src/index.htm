@@ -3,6 +3,11 @@ url = "/:all?*"
 description = "Do not modify"
 is_hidden = 0
 ==
+function onStart()
+{
+    $this['token'] = \Session::token();
+}
+==
 <!--
     Hi, I'm Scott. This site is my place to play around with new code, and work
     on random nonsense. If you'd like to look under the hood, and apparently
@@ -17,6 +22,7 @@ is_hidden = 0
         <!-- Meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="token" content="{{ token }}">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
