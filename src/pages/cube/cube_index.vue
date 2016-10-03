@@ -24,8 +24,5 @@
         components: {
             'v-cube': CubeComponent,
         },
-        methods: {
-
-        },
     };
 </script>

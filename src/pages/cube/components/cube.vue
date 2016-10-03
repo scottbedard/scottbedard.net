@@ -76,6 +76,7 @@
 </template>
 
 <script>
+    import CubeResource from 'src/resources/cube';
     import KeyboardControls from './controls';
     import TargetMap from './target_map';
     import { Sticker } from './sticker';
@@ -178,6 +179,8 @@
                 this.isSolving = false;
                 this.solve.end = Date.now();
                 this.clearStopwatch();
+
+                CubeResource.store(this.solve);
             },
             executeTurn(turn) {
                 this.activeTransitions = turn.face === 'X' || turn.face === 'Y' || turn.face === 'Z' ? 54 : 21;
