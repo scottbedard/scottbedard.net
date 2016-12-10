@@ -1,6 +1,5 @@
 import RouterState from 'src/state/router';
 
-import CubeIndexComponent from 'src/pages/cube/cube_index';
 import HomeComponent from 'src/pages/home';
 import NotFoundComponent from 'src/pages/404';
 
@@ -45,7 +44,7 @@ exports.routes = [
     //
     {
         path: '/cube',
-        component: CubeIndexComponent,
+        component: require('src/pages/cube/cube'),
         meta: {
             title: 'CSS Cube',
             subtitle: 'CSS Cube',
