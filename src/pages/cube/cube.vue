@@ -13,11 +13,7 @@
         transform: rotateX(-25deg);
         transform-origin: 50% 50%;
         transform-style: preserve-3d;
-        width: 100%;
-
-        &.is-updating > .v-sticker {
-            transition: none;
-        }
+        width: 100%
     }
 
     .cube-sticker {
@@ -32,10 +28,15 @@
         position: absolute;
         top: calc(50% - #{ $size / 2 });
         width: $size;
-        @include transition(transform, 2s, linear);
 
         @each $color, $value in $colors {
             &.color-#{ $color } { background-color: $value }
+        }
+    }
+
+    .cube-inner.is-turning {
+        .cube-sticker {
+            @include transition(transform, 100ms, linear);
         }
     }
 </style>

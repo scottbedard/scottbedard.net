@@ -1,135 +1,216 @@
 <style lang="scss" scoped>@import 'core';
-    @import './config';
+    //
+    // Stickers
+    //
+    @import './stickers/default';
+    @import './stickers/u';
+    @import './stickers/l';
+    @import './stickers/f';
+    @import './stickers/r';
+    @import './stickers/b';
+    @import './stickers/d';
+    @import './stickers/m';
+    @import './stickers/e';
+    @import './stickers/s';
 
     //
-    // Resting state
+    // Controls
     //
-    .face-u {
-        &.index-0 { transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, -$stickerSpacing, $stickerDepth) }
-        &.index-1 { transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg) translate3d(0%, -$stickerSpacing, $stickerDepth) }
-        &.index-2 { transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg) translate3d($stickerSpacing, -$stickerSpacing, $stickerDepth) }
-        &.index-3 { transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, 0%, $stickerDepth) }
-        &.index-4 { transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg) translate3d(0%, 0%, $stickerDepth) }
-        &.index-5 { transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg) translate3d($stickerSpacing, 0%, $stickerDepth) }
-        &.index-6 { transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, $stickerSpacing, $stickerDepth) }
-        &.index-7 { transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg) translate3d(0%, $stickerSpacing, $stickerDepth) }
-        &.index-8 { transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg) translate3d($stickerSpacing, $stickerSpacing, $stickerDepth) }
+    .controls {
+        margin-top: 320px;
+        text-align: center;
     }
-
-    .face-l {
-        &.index-0 { transform: rotateY(-90deg) rotateX(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, -$stickerSpacing, $stickerDepth) }
-        &.index-1 { transform: rotateY(-90deg) rotateX(0deg) rotateZ(0deg) translate3d(0%, -$stickerSpacing, $stickerDepth) }
-        &.index-2 { transform: rotateY(-90deg) rotateX(0deg) rotateZ(0deg) translate3d($stickerSpacing, -$stickerSpacing, $stickerDepth) }
-        &.index-3 { transform: rotateY(-90deg) rotateX(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, 0%, $stickerDepth) }
-        &.index-4 { transform: rotateY(-90deg) rotateX(0deg) rotateZ(0deg) translate3d(0%, 0%, $stickerDepth) }
-        &.index-5 { transform: rotateY(-90deg) rotateX(0deg) rotateZ(0deg) translate3d($stickerSpacing, 0%, $stickerDepth) }
-        &.index-6 { transform: rotateY(-90deg) rotateX(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, $stickerSpacing, $stickerDepth) }
-        &.index-7 { transform: rotateY(-90deg) rotateX(0deg) rotateZ(0deg) translate3d(0%, $stickerSpacing, $stickerDepth) }
-        &.index-8 { transform: rotateY(-90deg) rotateX(0deg) rotateZ(0deg) translate3d($stickerSpacing, $stickerSpacing, $stickerDepth) }
-    }
-
-    .face-f {
-        &.index-0 { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, -$stickerSpacing, $stickerDepth) }
-        &.index-1 { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d(0%, -$stickerSpacing, $stickerDepth) }
-        &.index-2 { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d($stickerSpacing, -$stickerSpacing, $stickerDepth) }
-        &.index-3 { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, 0%, $stickerDepth) }
-        &.index-4 { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d(0%, 0%, $stickerDepth) }
-        &.index-5 { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d($stickerSpacing, 0%, $stickerDepth) }
-        &.index-6 { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, $stickerSpacing, $stickerDepth) }
-        &.index-7 { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d(0%, $stickerSpacing, $stickerDepth) }
-        &.index-8 { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d($stickerSpacing, $stickerSpacing, $stickerDepth) }
-    }
-
-    .face-r {
-        &.index-0 { transform: rotateY(90deg) rotateX(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, -$stickerSpacing, $stickerDepth) }
-        &.index-1 { transform: rotateY(90deg) rotateX(0deg) rotateZ(0deg) translate3d(0%, -$stickerSpacing, $stickerDepth) }
-        &.index-2 { transform: rotateY(90deg) rotateX(0deg) rotateZ(0deg) translate3d($stickerSpacing, -$stickerSpacing, $stickerDepth) }
-        &.index-3 { transform: rotateY(90deg) rotateX(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, 0%, $stickerDepth) }
-        &.index-4 { transform: rotateY(90deg) rotateX(0deg) rotateZ(0deg) translate3d(0%, 0%, $stickerDepth) }
-        &.index-5 { transform: rotateY(90deg) rotateX(0deg) rotateZ(0deg) translate3d($stickerSpacing, 0%, $stickerDepth) }
-        &.index-6 { transform: rotateY(90deg) rotateX(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, $stickerSpacing, $stickerDepth) }
-        &.index-7 { transform: rotateY(90deg) rotateX(0deg) rotateZ(0deg) translate3d(0%, $stickerSpacing, $stickerDepth) }
-        &.index-8 { transform: rotateY(90deg) rotateX(0deg) rotateZ(0deg) translate3d($stickerSpacing, $stickerSpacing, $stickerDepth) }
-    }
-
-    .face-b {
-        &.index-0 { transform: rotateY(180deg) rotateX(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, -$stickerSpacing, $stickerDepth) }
-        &.index-1 { transform: rotateY(180deg) rotateX(0deg) rotateZ(0deg) translate3d(0%, -$stickerSpacing, $stickerDepth) }
-        &.index-2 { transform: rotateY(180deg) rotateX(0deg) rotateZ(0deg) translate3d($stickerSpacing, -$stickerSpacing, $stickerDepth) }
-        &.index-3 { transform: rotateY(180deg) rotateX(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, 0%, $stickerDepth) }
-        &.index-4 { transform: rotateY(180deg) rotateX(0deg) rotateZ(0deg) translate3d(0%, 0%, $stickerDepth) }
-        &.index-5 { transform: rotateY(180deg) rotateX(0deg) rotateZ(0deg) translate3d($stickerSpacing, 0%, $stickerDepth) }
-        &.index-6 { transform: rotateY(180deg) rotateX(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, $stickerSpacing, $stickerDepth) }
-        &.index-7 { transform: rotateY(180deg) rotateX(0deg) rotateZ(0deg) translate3d(0%, $stickerSpacing, $stickerDepth) }
-        &.index-8 { transform: rotateY(180deg) rotateX(0deg) rotateZ(0deg) translate3d($stickerSpacing, $stickerSpacing, $stickerDepth) }
-    }
-
-    .face-d {
-        &.index-0 { transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, -$stickerSpacing, $stickerDepth) }
-        &.index-1 { transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg) translate3d(0%, -$stickerSpacing, $stickerDepth) }
-        &.index-2 { transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg) translate3d($stickerSpacing, -$stickerSpacing, $stickerDepth) }
-        &.index-3 { transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, 0%, $stickerDepth) }
-        &.index-4 { transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg) translate3d(0%, 0%, $stickerDepth) }
-        &.index-5 { transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg) translate3d($stickerSpacing, 0%, $stickerDepth) }
-        &.index-6 { transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, $stickerSpacing, $stickerDepth) }
-        &.index-7 { transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg) translate3d(0%, $stickerSpacing, $stickerDepth) }
-        &.index-8 { transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg) translate3d($stickerSpacing, $stickerSpacing, $stickerDepth) }
-    }
-
-    //
-    // Turns
-    //
-    @import './turns/u';
-    @import './turns/l';
-    @import './turns/f';
-    @import './turns/r';
-    @import './turns/b';
-    @import './turns/d';
-    @import './turns/m';
-    @import './turns/e';
-    @import './turns/s';
 </style>
 
 <template>
     <div>
         <div class="cube-outer">
-            <div class="cube-inner" :class="[`turn-${ turn.toLowerCase() }`]">
+            <div class="cube-inner" :class="[activeTurnClasses, isTurningClass]">
                 <div
-                    v-for="{ index, face } in stickers"
+                    v-for="{ color, index, face } in stickers"
                     class="cube-sticker"
-                    :class="[`index-${ index }`, `face-${ face }`]">
+                    :class="[`index-${ index }`, `face-${ face }`]"
+                    :style="{ 'background-color': color }">
                 </div>
             </div>
         </div>
 
-        <v-button color="green" @click="onClick">turn</v-button>
+        <div class="controls">
+            <!-- Scramble button -->
+            <v-button
+                v-if="! isInspecting && ! isSolving"
+                color="green"
+                @click="onScrambleClicked"
+                :disabled="isScrambling">
+                <span v-if="isScrambling">Scrambling...</span>
+                <span v-else>Scramble</span>
+            </v-button>
+
+            <!-- Inspection timer -->
+            <v-inspection
+                v-if="isInspecting"
+                :seconds="15"
+                @complete="onInspectionComplete">
+            </v-inspection>
+
+            <!-- Solve timer -->
+            <v-timer
+                v-if="isSolving">
+            </v-timer>
+        </div>
     </div>
 </template>
 
 <script>
+    import TurnMap from './turn_map';
+    import KeyboardControls from './keyboard_controls';
+
     export default {
+        created() {
+            this.bindKeyboardControls();
+        },
         data() {
             return {
-                turn: '',
+                activeTurn: null,
+                isInspecting: false,
+                isScrambling: false,
+                isSolving: false,
+                isTurning: false,
+                queue: [],
                 stickers: this.resetStickers(),
+                timeout: 100,
             };
         },
+        components: {
+            'v-inspection': require('../inspection'),
+            'v-timer': require('../timer'),
+        },
+        computed: {
+            activeTurnClasses() {
+                if (! this.activeTurn)          return null;
+                if (this.activeTurn === 'x')    return 'turn-l turn-m turn-r-prime';
+                if (this.activeTurn === 'x-')   return 'turn-l-prime turn-m-prime turn-r';
+                if (this.activeTurn === 'y')    return 'turn-u turn-e-prime turn-d-prime';
+                if (this.activeTurn === 'y-')   return 'turn-u-prime turn-e turn-d';
+                if (this.activeTurn === 'z')    return 'turn-f turn-s turn-b-prime';
+                if (this.activeTurn === 'z-')   return 'turn-f-prime turn-s-prime turn-b';
+
+                return this.activeTurn.length === 1
+                    ? `turn-${ this.activeTurn }`
+                    : `turn-${ this.activeTurn[0] }-prime`;
+            },
+            isTurningClass() {
+                return this.isTurning ? 'is-turning': null;
+            },
+        },
         methods: {
+            bindKeyboardControls() {
+                document.addEventListener('keydown', this.onKeydown);
+            },
+            onInspectionComplete() {
+                this.isInspecting = false;
+                this.isSolving = true;
+            },
+            onKeydown(e) {
+                let character = e.key.toUpperCase();
+                let turn = KeyboardControls[character];
+
+                if (typeof turn !== 'undefined') {
+                    if (!this.isInspecting || ['x', 'y', 'z'].indexOf(turn[0]) !== -1) {
+                        this.queue.push(turn);
+                    }
+                }
+            },
+            onScrambleClicked() {
+                let turns = [];
+                let possibleTurns = ['u', 'l', 'f', 'r', 'b', 'd', 'm', 'e', 's'];
+
+                while (turns.length < 30) {
+                    let turn = possibleTurns[Math.floor(Math.random() * possibleTurns.length)]; // pick a face to turn
+                    if (turns.length > 0 && turns[turns.length - 1][0] === turn) continue;      // make sure it wasn't the last face we turned
+                    if (Math.random() >= 0.5) turn += '-';                                      // randomize the direction of the turn
+
+                    turns.push(turn);
+                }
+
+                turns.push(this.onScrambleComplete);
+
+                this.isScrambling = true;
+                this.queue = turns;
+            },
+            onScrambleComplete() {
+                this.isScrambling = false;
+                this.isInspecting = true;
+            },
+            onQueueChanged(queue) {
+                if (queue.length && ! this.isTurning) {
+                    this.processNextTurn();
+                }
+            },
+            processNextTurn() {
+                if (! this.queue.length) return;
+
+                if (typeof this.queue[0] === 'function') {
+                    return this.queue.shift()();
+                }
+
+                this.isTurning = true;
+                this.$nextTick(() => {
+                    this.activeTurn = this.queue.shift();
+                    setTimeout(() => this.updateCube(this.activeTurn), this.timeout);
+                });
+            },
             resetStickers() {
                 let stickers = [];
-                for (let face of ['u', 'l', 'f', 'r', 'b', 'd']) {
+                let nextColor = null;
+                let faces = { u: '#ffeb3b', l: '#ff9800', f: '#2196f3', r: '#f44336', b: '#4caf50', d: '#f5f5f5' };
+
+                for (let face in faces) {
+                    let color = faces[face];
+
                     for (let index = 0; index < 9; index++) {
-                        stickers.push({ face, index });
+                        stickers.push({ color, face, index, nextColor });
                     }
                 }
 
                 return stickers;
             },
-            onClick() {
-                this.turn = this.turn === 'u turn-d-prime turn-e-prime'
-                    ? ''
-                    : 'u turn-d-prime turn-e-prime';
+            setNextColor(a, b) {
+                let stickerA = this.stickers.find(sticker => sticker.face == a[0] && sticker.index == a[1]);
+                let stickerB = this.stickers.find(sticker => sticker.face == b[0] && sticker.index == b[1]);
+
+                stickerB.nextColor = stickerA.color;
             },
+            updateCube(turn) {
+                // turn off transitions while updating the sticker colors
+                this.activeTurn = null;
+                this.isTurning = false;
+
+                // find the map for our current turn
+                let map = TurnMap[turn[0]];
+
+                // if the turn has a prime flag on it, read the map backwards
+                let setNextColor = turn.length === 1
+                    ? ([a, b]) => this.setNextColor(a, b)
+                    : ([a, b]) => this.setNextColor(b, a);
+
+                // set the nextColor value for all of our effected stickers
+                for (let i = 0, end = map.length; i < end; i++) {
+                    setNextColor(map[i]);
+                }
+
+                // loop through every sticker with a nextColor and make it the current color
+                this.stickers.filter(sticker => sticker.nextColor !== null).forEach(sticker => {
+                    sticker.color = sticker.nextColor;
+                    sticker.nextColor = null;
+                });
+
+                // after these updates are in the dom, execute the next turn
+                this.$nextTick(this.processNextTurn);
+            },
+        },
+        watch: {
+            queue: 'onQueueChanged',
         },
     };
 </script>
