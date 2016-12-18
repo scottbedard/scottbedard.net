@@ -84,6 +84,13 @@
                 </v-timer>
             </div>
         </div>
+
+        <!-- Solved modal -->
+        <v-button color="red" @click="showModal">show</v-button>
+
+        <v-modal ref="modal">
+            <v-submit-score></v-submit-score>
+        </v-modal>
     </div>
 </template>
 
@@ -105,6 +112,7 @@
         components: {
             'v-3x3': require('./three/three'),
             'v-inspection': require('./inspection'),
+            'v-submit-score': require('./submit_score'),
             'v-timer': require('./timer'),
         },
         methods: {
@@ -123,6 +131,9 @@
             },
             onSolveComplete() {
                 this.$refs.timer.end();
+            },
+            showModal() {
+                this.$refs.modal.show();
             },
         },
     };
