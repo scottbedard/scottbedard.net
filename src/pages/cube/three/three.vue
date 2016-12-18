@@ -34,30 +34,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="controls">
-            <!-- Scramble button -->
-            <v-button
-                v-if="! isInspecting && ! isSolving"
-                color="green"
-                @click="onScrambleClicked"
-                :disabled="isScrambling">
-                <span v-if="isScrambling">Scrambling...</span>
-                <span v-else>Scramble</span>
-            </v-button>
-
-            <!-- Inspection timer -->
-            <v-inspection
-                v-if="isInspecting"
-                :seconds="15"
-                @complete="onInspectionComplete">
-            </v-inspection>
-
-            <!-- Solve timer -->
-            <v-timer
-                v-if="isSolving">
-            </v-timer>
-        </div>
     </div>
 </template>
 
@@ -72,9 +48,8 @@
         data() {
             return {
                 activeTurn: null,
-                isInspecting: false,
-                isScrambling: false,
-                isSolving: false,
+                isExecutingTurn: false,
+                isSolved: false,
                 isTurning: false,
                 queue: [],
                 stickers: this.resetStickers(),
@@ -99,6 +74,16 @@
                     ? `turn-${ this.activeTurn }`
                     : `turn-${ this.activeTurn[0] }-prime`;
             },
+            isSolved() {
+                let colors = { u: null, l: null, f: null, r: null, b: null, d: null };
+
+                for (let { face, color } of this.stickers) {
+                    if (colors[face] === null) colors[face] = color;
+                    if (color !== colors[face]) return false;
+                }
+
+                return true;
+            },
             isTurningClass() {
                 return this.isTurning ? 'is-turning': null;
             },
@@ -107,11 +92,11 @@
             bindKeyboardControls() {
                 document.addEventListener('keydown', this.onKeydown);
             },
-            onInspectionComplete() {
-                this.isInspecting = false;
-                this.isSolving = true;
-            },
             onKeydown(e) {
+                if (this.isSolved) {
+                    return;
+                }
+
                 let character = e.key.toUpperCase();
                 let turn = KeyboardControls[character];
 
@@ -121,7 +106,7 @@
                     }
                 }
             },
-            onScrambleClicked() {
+            scramble() {
                 let turns = [];
                 let possibleTurns = ['u', 'l', 'f', 'r', 'b', 'd', 'm', 'e', 's'];
 
@@ -134,16 +119,14 @@
                 }
 
                 turns.push(this.onScrambleComplete);
-
-                this.isScrambling = true;
+                this.isSolved = false;
                 this.queue = turns;
             },
             onScrambleComplete() {
-                this.isScrambling = false;
-                this.isInspecting = true;
+                this.$emit('scrambled');
             },
             onQueueChanged(queue) {
-                if (queue.length && ! this.isTurning) {
+                if (! this.isExecutingTurn) {
                     this.processNextTurn();
                 }
             },
@@ -155,6 +138,7 @@
                 }
 
                 this.isTurning = true;
+                this.isExecutingTurn = true;
                 this.$nextTick(() => {
                     this.activeTurn = this.queue.shift();
                     setTimeout(() => this.updateCube(this.activeTurn), this.timeout);
@@ -183,32 +167,51 @@
             },
             updateCube(turn) {
                 // turn off transitions while updating the sticker colors
-                this.activeTurn = null;
                 this.isTurning = false;
 
-                // find the map for our current turn
-                let map = TurnMap[turn[0]];
+                this.$nextTick(() => {
+                    // find the map for our current turn
+                    let map = TurnMap[turn[0]];
 
-                // if the turn has a prime flag on it, read the map backwards
-                let setNextColor = turn.length === 1
-                    ? ([a, b]) => this.setNextColor(a, b)
-                    : ([a, b]) => this.setNextColor(b, a);
+                    // if the turn has a prime flag on it, read the map backwards
+                    let setNextColor = turn.length === 1
+                        ? ([a, b]) => this.setNextColor(a, b)
+                        : ([a, b]) => this.setNextColor(b, a);
 
-                // set the nextColor value for all of our effected stickers
-                for (let i = 0, end = map.length; i < end; i++) {
-                    setNextColor(map[i]);
-                }
+                    // set the nextColor value for all of our effected stickers
+                    for (let i = 0, end = map.length; i < end; i++) {
+                        setNextColor(map[i]);
+                    }
 
-                // loop through every sticker with a nextColor and make it the current color
-                this.stickers.filter(sticker => sticker.nextColor !== null).forEach(sticker => {
-                    sticker.color = sticker.nextColor;
-                    sticker.nextColor = null;
+                    // loop through every sticker with a nextColor and make it the current color
+                    this.stickers.filter(sticker => sticker.nextColor !== null).forEach(sticker => {
+                        sticker.color = sticker.nextColor;
+                        sticker.nextColor = null;
+                    });
+
+                    this.activeTurn = null;
+
+                    // determine if the cube is solved
+                    if (this.isSolved) {
+                        this.$emit('solved');
+                        this.isSolved = true;
+                        this.isExecutingTurn = false;
+                        return;
+                    }
+
+                    // after these updates are in the dom, execute the next turn
+                    setTimeout(() => {
+                        this.isExecutingTurn = false;
+                        this.processNextTurn();
+                    }, 20);
                 });
-
-                // after these updates are in the dom, execute the next turn
-                this.$nextTick(this.processNextTurn);
             },
         },
+        props: [
+            'isInspecting',
+            'isScrambling',
+            'isSolving',
+        ],
         watch: {
             queue: 'onQueueChanged',
         },
