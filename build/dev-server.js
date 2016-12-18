@@ -57,7 +57,7 @@ browserSync({
     ],
     rewriteRules: [
         {
-            match: /<link(.*)scottbedard\/assets(.*?)>/ig,
+            match: /<link href=\/themes\/scottbedard\/assets(.*?)>/ig,
             fn: function(match) {
                 return '';
             },
