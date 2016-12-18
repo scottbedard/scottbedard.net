@@ -1,7 +1,6 @@
-import ButtonComponent from './ui/button';
-import ButtonGroupComponent from './ui/button-group';
-
+// Global component registration
 export default {
-    'v-button': ButtonComponent,
-    'v-button-group': ButtonGroupComponent,
+    'v-button': require('./ui/button'),
+    'v-button-group': require('./ui/button-group'),
+    'v-modal': require('./ui/modal'),
 };
