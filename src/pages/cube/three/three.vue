@@ -89,7 +89,17 @@
                 document.addEventListener('keydown', this.onKeydown);
             },
             onKeydown(e) {
+                // reset the cube on escape
+                if (e.keyCode === 27) {
+                    this.$emit('reset');
+                    return;
+                }
+
                 if (this.isSolved) {
+                    if (e.keyCode === 32) {
+                        this.$emit('spacebar');
+                    }
+
                     return;
                 }
 
@@ -107,7 +117,7 @@
                 let turns = [];
                 let possibleTurns = ['u', 'l', 'f', 'r', 'b', 'd', 'm', 'e', 's'];
 
-                while (turns.length < 2) {
+                while (turns.length < this.scrambleLength) {
                     let turn = possibleTurns[Math.floor(Math.random() * possibleTurns.length)]; // pick a face to turn
                     if (turns.length > 0 && turns[turns.length - 1][0] === turn) continue;      // make sure it wasn't the last face we turned
                     if (Math.random() >= 0.5) turn += '-';                                      // randomize the direction of the turn
@@ -141,6 +151,15 @@
                     this.activeTurn = this.queue.shift();
                     setTimeout(() => this.updateCube(this.activeTurn), this.timeout);
                 });
+            },
+            reset() {
+                this.activeTurn = null;
+                this.isExecutingTurn = false;
+                this.isSolved = false;
+                this.isTurning = false;
+                this.queue = [];
+                this.scrambleTurns = [];
+                this.stickers = this.resetStickers();
             },
             resetStickers() {
                 let stickers = [];
@@ -209,6 +228,7 @@
             'isInspecting',
             'isScrambling',
             'isSolving',
+            'scrambleLength',
         ],
         watch: {
             queue: 'onQueueChanged',

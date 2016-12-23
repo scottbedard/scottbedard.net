@@ -56,7 +56,10 @@
                 :is-inspecting="isInspecting"
                 :is-scrambling="isScrambling"
                 :is-solving="isSolving"
+                :scramble-length="30"
+                @reset="reset"
                 @scrambled="onScrambleComplete"
+                @spacebar="onScrambleClicked"
                 @solved="onSolveComplete"
                 @turn="onTurnQueued"
                 ref="cube">
@@ -142,10 +145,24 @@
             },
             onSubmitDismissed() {
                 this.$refs.modal.hide();
+                this.reset();
             },
             onTurnQueued(turn) {
                 let timeout = Date.now() - this.solve.start;
                 this.solve.turns.push({ turn, timeout });
+            },
+            reset() {
+                this.$refs.cube.reset();
+                this.isInspecting = false;
+                this.isScrambling = false;
+                this.isSolving = false;
+                this.isSolving = false;
+                this.solve = {
+                    end: null,
+                    scramble: [],
+                    start: null,
+                    turns: [],
+                };
             },
         },
     };

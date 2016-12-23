@@ -1,5 +1,5 @@
 <style lang="scss" scoped>@import 'core';
-    div {
+    .v-submit-solve {
         margin: 20px 0;
     }
 
@@ -16,23 +16,47 @@
         a { margin-right: 12px }
         input { margin-bottom: 20px; width: 100% }
     }
+
+    .v-spinner {
+        margin-right: 6px;
+    }
+
+    .error {
+        text-align: right;
+        margin-top: 10px;
+        color: $red;
+    }
 </style>
 
 <template>
-    <div>
+    <div class="v-submit-solve">
+        <!-- Congrats -->
         <p class="congrats">Nice job, you solved the cube in <span>{{ time }}</span></p>
+
+        <!-- Form -->
         <form @submit.prevent="onFormSubmitted">
-            <input v-model="name" placeholder="Enter your name" ref="input">
-            <a href="#" @click.prevent="onCancelClicked">Cancel</a>
-            <v-button color="green">Submit solve</v-button>
+            <input v-model="name" placeholder="Enter your name" ref="input" :disabled="isLoading">
+            <a href="#" @click.prevent="dismiss">Cancel</a>
+            <v-button color="green" :disabled="isLoading">
+                <v-spinner color="#fff" size="16px" v-if="isLoading"></v-spinner>
+                <span v-if="isLoading">Submitting</span>
+                <span v-else>Submit solve</span>
+            </v-button>
         </form>
+
+        <!-- Error -->
+        <div v-if="error" class="error">{{ error }}</div>
     </div>
 </template>
 
 <script>
+    import CubeResource from 'src/resources/cube';
+
     export default {
         data() {
             return {
+                error: null,
+                isLoading: false,
                 name: '',
             };
         },
@@ -62,11 +86,24 @@
             focus() {
                 setTimeout(() => this.$refs.input.focus(), 200);
             },
-            onCancelClicked() {
+            dismiss() {
                 this.$emit('dismiss');
             },
             onFormSubmitted() {
-                console.log ('submit');
+                if (this.isLoading) {
+                    return;
+                }
+
+                this.error = null;
+                this.isLoading = true;
+
+                CubeResource.submit({ name: this.name, ...this.solve })
+                    .then(this.dismiss)
+                    .catch(this.onSubmitFailed)
+                    .then(() => this.isLoading = false);
+            },
+            onSubmitFailed() {
+                this.error = 'Sorry, something went wrong. Please try again.';
             },
         },
         props: [
