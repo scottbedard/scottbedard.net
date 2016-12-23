@@ -58,6 +58,7 @@
                 :is-solving="isSolving"
                 @scrambled="onScrambleComplete"
                 @solved="onSolveComplete"
+                @turn="onTurnQueued"
                 ref="cube">
             </v-3x3>
 
@@ -85,11 +86,12 @@
             </div>
         </div>
 
-        <!-- Solved modal -->
-        <v-button color="red" @click="showModal">show</v-button>
-
         <v-modal ref="modal">
-            <v-submit-score></v-submit-score>
+            <v-submit-score
+                ref="submitScore"
+                :solve="solve"
+                @dismiss="onSubmitDismissed">
+            </v-submit-score>
         </v-modal>
     </div>
 </template>
@@ -103,8 +105,9 @@
                 isSolving: false,
                 isSolving: false,
                 solve: {
-                    start: null,
                     end: null,
+                    scramble: [],
+                    start: null,
                     turns: [],
                 },
             };
@@ -125,15 +128,24 @@
                 this.isScrambling = true;
                 this.$refs.cube.scramble();
             },
-            onScrambleComplete() {
+            onScrambleComplete(scramble) {
                 this.isScramling = false;
                 this.isInspecting = true;
+                this.solve.scramble = scramble;
             },
             onSolveComplete() {
+                this.solve.end = Date.now();
+
                 this.$refs.timer.end();
-            },
-            showModal() {
                 this.$refs.modal.show();
+                this.$refs.submitScore.focus();
+            },
+            onSubmitDismissed() {
+                this.$refs.modal.hide();
+            },
+            onTurnQueued(turn) {
+                let timeout = Date.now() - this.solve.start;
+                this.solve.turns.push({ turn, timeout });
             },
         },
     };

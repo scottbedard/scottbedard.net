@@ -46,9 +46,9 @@
         // Sizes
         //
         &.size-m {
-            font-size: 20px;
-            line-height: 20px;
-            padding: 18px 32px;
+            height: $form-element-height;
+            font-size: $form-font-size;
+            padding: 0 $form-element-padding-horizontal;
         }
     }
 </style>

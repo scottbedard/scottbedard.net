@@ -1,7 +1,5 @@
-<style lang="scss" scoped>@import 'core';
-    //
-    // Stickers
-    //
+<style lang="scss" scoped>
+    @import 'core';
     @import './stickers/default';
     @import './stickers/u';
     @import './stickers/l';
@@ -13,9 +11,6 @@
     @import './stickers/e';
     @import './stickers/s';
 
-    //
-    // Controls
-    //
     .controls {
         margin-top: 320px;
         text-align: center;
@@ -52,6 +47,7 @@
                 isSolved: false,
                 isTurning: false,
                 queue: [],
+                scrambleTurns: [],
                 stickers: this.resetStickers(),
                 timeout: 100,
             };
@@ -103,6 +99,7 @@
                 if (typeof turn !== 'undefined') {
                     if (!this.isInspecting || ['x', 'y', 'z'].indexOf(turn[0]) !== -1) {
                         this.queue.push(turn);
+                        this.$emit('turn', turn);
                     }
                 }
             },
@@ -110,12 +107,13 @@
                 let turns = [];
                 let possibleTurns = ['u', 'l', 'f', 'r', 'b', 'd', 'm', 'e', 's'];
 
-                while (turns.length < 30) {
+                while (turns.length < 2) {
                     let turn = possibleTurns[Math.floor(Math.random() * possibleTurns.length)]; // pick a face to turn
                     if (turns.length > 0 && turns[turns.length - 1][0] === turn) continue;      // make sure it wasn't the last face we turned
                     if (Math.random() >= 0.5) turn += '-';                                      // randomize the direction of the turn
 
                     turns.push(turn);
+                    this.scrambleTurns.push(turn);
                 }
 
                 turns.push(this.onScrambleComplete);
@@ -123,7 +121,7 @@
                 this.queue = turns;
             },
             onScrambleComplete() {
-                this.$emit('scrambled');
+                this.$emit('scrambled', this.scrambleTurns);
             },
             onQueueChanged(queue) {
                 if (! this.isExecutingTurn) {
