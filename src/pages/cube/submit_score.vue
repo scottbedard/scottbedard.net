@@ -98,9 +98,13 @@
                 this.isLoading = true;
 
                 CubeResource.submit({ name: this.name, ...this.solve })
-                    .then(this.dismiss)
+                    .then(this.onSubmitComplete)
                     .catch(this.onSubmitFailed)
                     .then(() => this.isLoading = false);
+            },
+            onSubmitComplete() {
+                this.$emit('submitted');
+                this.dismiss();
             },
             onSubmitFailed() {
                 this.error = 'Sorry, something went wrong. Please try again.';

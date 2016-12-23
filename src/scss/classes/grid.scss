@@ -1,0 +1,47 @@
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+
+    // Space can be added between the cells via the .padded class
+    &.padded {
+        $m: $grid-padding-mobile / 2;
+        $lp: $grid-padding-large-phone / 2;
+        $t: $grid-padding-tablet / 2;
+        $d: $grid-padding-desktop / 2;
+        @include bp-prop(margin, 0 #{ -$m }, 0 #{ -$lp }, 0 #{ -$t }, 0 #{ -$d });
+        @include transition(margin);
+
+        > .cell,
+        > .row > .cell {
+            @include bp-prop(padding, 0 $m #{ $m * 2 }, 0 $lp #{ $lp * 2 }, 0 $t #{ $t * 2 }, 0 $d #{ $d * 2 });
+            @include transition(padding);
+        }
+    }
+
+    > .cell,
+    > .row > .cell {
+        flex-basis: auto;
+        width: 100%;
+        @include transition(width);
+
+        // Adding .grow to a cell will cause it to fill the available width
+        &.grow { flex-grow: 1 }
+
+        // Generate width classes for all of our breakpoints and sizes
+        @for $i from 1 through 12 {
+            &.mobile-#{ $i } {
+                width: #{ $i / 12 * 100% };
+            }
+        }
+
+        @each $breakpoint, $value in $breakpoints {
+            @include bp($breakpoint) {
+                @for $i from 1 through 12 {
+                    &.#{ $breakpoint }-#{ $i } {
+                        width: #{ $i / 12 * 100% };
+                    }
+                }
+            }
+        }
+    }
+}

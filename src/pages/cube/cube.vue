@@ -102,13 +102,16 @@
                     <div class="escape">press escape to reset</div>
                 </div>
             </div>
+
+            <v-leaderboard ref="leaderboard"></v-leaderboard>
         </div>
 
         <v-modal ref="modal">
             <v-submit-score
                 ref="submitScore"
                 :solve="solve"
-                @dismiss="onSubmitDismissed">
+                @dismiss="onSubmitDismissed"
+                @submitted="onSolveSubmitted">
             </v-submit-score>
         </v-modal>
     </div>
@@ -133,6 +136,7 @@
         components: {
             'v-3x3': require('./three/three'),
             'v-inspection': require('./inspection'),
+            'v-leaderboard': require('./leaderboard/leaderboard'),
             'v-submit-score': require('./submit_score'),
             'v-timer': require('./timer'),
         },
@@ -157,6 +161,9 @@
                 this.$refs.timer.end();
                 this.$refs.modal.show();
                 this.$refs.submitScore.focus();
+            },
+            onSolveSubmitted() {
+                this.$refs.leaderboard.refresh();
             },
             onSubmitDismissed() {
                 this.$refs.modal.hide();
