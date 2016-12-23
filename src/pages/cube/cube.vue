@@ -36,16 +36,27 @@
 
     .cube-inner.is-turning {
         .cube-sticker {
-            @include transition(transform, 100ms, linear);
+            @include transition(transform, 90ms, linear);
         }
     }
 
     .controls {
         display: flex;
+        font-size: 32px;
         justify-content: center;
         margin-top: 340px;
+    }
 
-        font-size: 24px;
+    .scramble,
+    .timer {
+        text-align: center;
+
+        .spacebar,
+        .escape {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #aaa;
+        }
     }
 </style>
 
@@ -66,26 +77,30 @@
             </v-3x3>
 
             <div class="controls">
-                <v-button
-                    v-if="! isInspecting && ! isSolving"
-                    color="green"
-                    @click="onScrambleClicked"
-                    :disabled="isScrambling">
-                    <span v-if="isScrambling">Scrambling...</span>
-                    <span v-else>Scramble</span>
-                </v-button>
+                <div class="scramble" v-if="! isInspecting && ! isSolving">
+                    <v-button
+                        color="green"
+                        @click="onScrambleClicked"
+                        :disabled="isScrambling">
+                        <span v-if="isScrambling">Scrambling...</span>
+                        <span v-else>Click to scramble</span>
+                    </v-button>
+                    <div class="spacebar" v-if="! isScrambling">or press spacebar</div>
+                </div>
 
                 <v-inspection
                     v-if="isInspecting"
-                    :seconds="5"
+                    :seconds="10"
                     @complete="onInspectionComplete">
                 </v-inspection>
 
-                <v-timer
-                    ref="timer"
-                    v-if="isSolving"
-                    :start="solve.start">
-                </v-timer>
+                <div class="timer" v-if="isSolving">
+                    <v-timer
+                        ref="timer"
+                        :start="solve.start">
+                    </v-timer>
+                    <div class="escape">press escape to reset</div>
+                </div>
             </div>
         </div>
 

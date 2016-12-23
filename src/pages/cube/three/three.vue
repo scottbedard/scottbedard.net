@@ -49,7 +49,7 @@
                 queue: [],
                 scrambleTurns: [],
                 stickers: this.resetStickers(),
-                timeout: 100,
+                timeout: 90,
             };
         },
         components: {
