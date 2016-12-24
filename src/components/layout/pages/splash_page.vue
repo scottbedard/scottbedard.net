@@ -1,18 +1,5 @@
-.page {
-    &.default {
-        margin: 0 auto;
-        max-width: $layout-inner-width;
-        padding: $layout-inner-padding;
-        width: 100%;
-
-        > .inner {
-            background-color: rgba($white, 0.9);
-            border-radius: 3px;
-            padding: $layout-inner-padding;
-        }
-    }
-
-    &.splash {
+<style lang="scss" scoped>@import 'core';
+    .v-splash-page {
         align-items: center;
         bottom: 0;
         display: flex;
@@ -29,4 +16,10 @@
         @include bp-prop('line-height', 48px, false, 54px, 60px);
         @include transition('font-size, line-height');
     }
-}
+</style>
+
+<template>
+    <div class="v-splash-page">
+        <slot></slot>
+    </div>
+</template>

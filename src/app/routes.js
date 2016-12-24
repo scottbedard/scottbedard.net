@@ -40,6 +40,18 @@ exports.routes = [
     },
 
     //
+    // Canvas-ribbon
+    //
+    {
+        path: '/canvas-ribbon',
+        component: require('src/pages/experiments/canvas_ribbon/canvas_ribbon'),
+        meta: {
+            title: 'Canvas ribbon',
+            subtitle: 'canvas-ribbon',
+        },
+    },
+
+    //
     // Cube
     //
     {

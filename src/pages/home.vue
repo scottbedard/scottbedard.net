@@ -5,7 +5,7 @@
 </style>
 
 <template>
-    <div class="page splash">
+    <v-splash-page>
         <div>
             <div>
                 Hi there,<br />
@@ -22,7 +22,7 @@
                 </v-button>
             </v-button-group>
         </div>
-    </div>
+    </v-splash-page>
 </template>
 
 <script>

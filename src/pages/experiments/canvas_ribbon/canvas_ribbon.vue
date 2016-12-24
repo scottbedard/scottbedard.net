@@ -3,7 +3,7 @@
 </style>
 
 <template>
-    <div>
-        Hello!
-    </div>
+    <v-page>
+        Hello!!!!
+    </v-page>
 </template>

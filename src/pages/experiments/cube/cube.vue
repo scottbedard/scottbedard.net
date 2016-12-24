@@ -69,52 +69,50 @@
 </style>
 
 <template>
-    <div class="page default">
-        <div class="inner">
-            <v-help></v-help>
+    <v-page relative>
+        <v-help></v-help>
 
-            <v-3x3
-                :is-inspecting="isInspecting"
-                :is-scrambling="isScrambling"
-                :is-solving="isSolving"
-                :scramble-length="30"
-                @reset="reset"
-                @scrambled="onScrambleComplete"
-                @spacebar="onScrambleClicked"
-                @solved="onSolveComplete"
-                @turn="onTurnQueued"
-                ref="cube">
-            </v-3x3>
+        <v-3x3
+            :is-inspecting="isInspecting"
+            :is-scrambling="isScrambling"
+            :is-solving="isSolving"
+            :scramble-length="30"
+            @reset="reset"
+            @scrambled="onScrambleComplete"
+            @spacebar="onScrambleClicked"
+            @solved="onSolveComplete"
+            @turn="onTurnQueued"
+            ref="cube">
+        </v-3x3>
 
-            <div class="controls">
-                <div class="scramble" v-if="! isInspecting && ! isSolving">
-                    <v-button
-                        color="green"
-                        @click="onScrambleClicked"
-                        :disabled="isScrambling">
-                        <span v-if="isScrambling">Scrambling...</span>
-                        <span v-else>Click to scramble</span>
-                    </v-button>
-                    <div class="spacebar" v-if="! isScrambling">or press spacebar</div>
-                </div>
-
-                <v-inspection
-                    v-if="isInspecting"
-                    :seconds="10"
-                    @complete="onInspectionComplete">
-                </v-inspection>
-
-                <div class="timer" v-if="isSolving">
-                    <v-timer
-                        ref="timer"
-                        :start="solve.start">
-                    </v-timer>
-                    <div class="escape">press escape to reset</div>
-                </div>
+        <div class="controls">
+            <div class="scramble" v-if="! isInspecting && ! isSolving">
+                <v-button
+                    color="green"
+                    @click="onScrambleClicked"
+                    :disabled="isScrambling">
+                    <span v-if="isScrambling">Scrambling...</span>
+                    <span v-else>Click to scramble</span>
+                </v-button>
+                <div class="spacebar" v-if="! isScrambling">or press spacebar</div>
             </div>
 
-            <v-leaderboard ref="leaderboard"></v-leaderboard>
+            <v-inspection
+                v-if="isInspecting"
+                :seconds="10"
+                @complete="onInspectionComplete">
+            </v-inspection>
+
+            <div class="timer" v-if="isSolving">
+                <v-timer
+                    ref="timer"
+                    :start="solve.start">
+                </v-timer>
+                <div class="escape">press escape to reset</div>
+            </div>
         </div>
+
+        <v-leaderboard ref="leaderboard"></v-leaderboard>
 
         <v-modal ref="modal">
             <v-submit-score
@@ -124,7 +122,7 @@
                 @submitted="onSolveSubmitted">
             </v-submit-score>
         </v-modal>
-    </div>
+    </v-page>
 </template>
 
 <script>

@@ -40,24 +40,22 @@
 </style>
 
 <template>
-    <div class="v-experiments page default">
-        <div class="inner">
-            <h1>Experiments</h1>
-            <p class="description">Every now and then I use this site as a sandbox to mess around with random ideas. Here are just a few of them, I hope you find them interesting.</p>
+    <v-page class="v-experiments">
+        <h1>Experiments</h1>
+        <p class="description">Every now and then I use this site as a sandbox to mess around with random ideas. Here are just a few of them, I hope you find them interesting.</p>
 
-            <div class="experiments">
-                <router-link v-for="{ image, title, path, description } in experiments" class="experiment" :to="path">
-                    <div class="image">
-                        <img :src="image" alt="title">
-                    </div>
-                    <div class="details">
-                        <h2>{{ title }}</h2>
-                        <p>{{ description }}</p>
-                    </div>
-                </router-link>
-            </div>
+        <div class="experiments">
+            <router-link v-for="{ image, title, path, description } in experiments" class="experiment" :to="path">
+                <div class="image">
+                    <img :src="image" alt="title">
+                </div>
+                <div class="details">
+                    <h2>{{ title }}</h2>
+                    <p>{{ description }}</p>
+                </div>
+            </router-link>
         </div>
-    </div>
+    </v-page>
 </template>
 
 <script>
