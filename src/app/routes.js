@@ -43,8 +43,18 @@ exports.routes = [
     // Cube
     //
     {
+        // const Foo = resolve => {
+        //   // require.ensure is Webpack's special syntax for a code-split point.
+        //   require.ensure(['./Foo.vue'], () => {
+        //     resolve(require('./Foo.vue'))
+        //   })
+        // }
         path: '/cube',
-        component: require('src/pages/cube/cube'),
+        component: resolve => {
+            require.ensure(['src/pages/cube/cube'], () => {
+                resolve(require('src/pages/cube/cube'));
+            });
+        },
         meta: {
             title: 'CSS Cube',
             subtitle: 'CSS Cube',
