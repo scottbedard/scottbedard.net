@@ -52,6 +52,18 @@ exports.routes = [
     },
 
     //
+    // Experiments
+    //
+    {
+        path: '/experiments',
+        component: require('src/pages/experiments/experiments'),
+        meta: {
+            title: 'Experiments',
+            subtitle: 'experiments',
+        },
+    },
+
+    //
     // 404
     //
     {

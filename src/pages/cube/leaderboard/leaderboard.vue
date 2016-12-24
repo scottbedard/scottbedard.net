@@ -133,7 +133,7 @@
             fetch() {
                 this.isLoading = true;
 
-                CubeResource.getLeaderboard({ results: 5 })
+                CubeResource.getLeaderboard({ results: 10 })
                     .then(this.onFetchComplete)
                     .catch(this.onFetchFailed)
                     .then(() => this.isLoading = false);

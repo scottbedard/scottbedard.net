@@ -5,7 +5,7 @@ export default [
         color: 'green',
     },
     {
-        route: '/cube',
+        route: '/experiments',
         name: 'Experiments',
         color: 'blue',
     },

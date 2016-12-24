@@ -96,7 +96,7 @@
                     { leftTurn: 'Y\'', leftKey: 'A', rightTurn: 'Y', rightKey: ';' },
                     { leftTurn: 'Z\'', leftKey: 'Q', rightTurn: 'Z', rightKey: 'P' },
                 ],
-            }
-        }
+            };
+        },
     };
 </script>
