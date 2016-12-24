@@ -45,7 +45,7 @@ exports.routes = [
     {
         path: '/cube',
         component: resolve => {
-            require.ensure('src/pages/cube/cube', () => resolve(require('src/pages/cube/cube')));
+            require.ensure('src/pages/experiments/cube/cube', () => resolve(require('src/pages/experiments/cube/cube')));
         },
         meta: {
             title: 'CSS Cube',

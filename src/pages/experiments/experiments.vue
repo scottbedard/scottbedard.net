@@ -69,13 +69,13 @@
                         description: 'An odd experiment to see how far we can push the 3D transform abilities of CSS.',
                         title: 'CSS Cube',
                         path: '/cube',
-                        image: require('./cube.png'),
+                        image: require('./cube/cube.png'),
                     },
                     {
                         description: 'Getting my feet with with the canvas element.',
                         title: 'Canvas ribbon',
                         path: '/canvas-ribbon',
-                        image: require('./ribbon.png'),
+                        image: require('./canvas_ribbon/ribbon.png'),
                     },
                 ],
             };

@@ -18,7 +18,7 @@
             <i class="fa fa-gamepad"></i>
             <span>controls</span>
         </a>
-        <a href="https://github.com/scottbedard/scottbedard.net/tree/dev/src/pages/cube">
+        <a href="https://github.com/scottbedard/scottbedard.net/tree/dev/src/pages/experiments/cube">
             <i class="fa fa-code"></i>
             <span>source code</span>
         </a>
