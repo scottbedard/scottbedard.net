@@ -3,7 +3,7 @@
         left: 50%;
         perspective: 1000px;
         position: absolute;
-        top: 270px;
+        top: 175px;
         transform: translateX(-50%);
     }
 
@@ -14,6 +14,10 @@
         transform-style: preserve-3d;
         transform: rotateX(-25deg);
         width: 100%
+    }
+
+    .inner {
+        position: relative;
     }
 
     .cube-sticker {
@@ -40,6 +44,10 @@
         }
     }
 
+    .v-help {
+        position: absolute;
+    }
+
     .controls {
         display: flex;
         font-size: 32px;
@@ -63,6 +71,8 @@
 <template>
     <div class="page default">
         <div class="inner">
+            <v-help></v-help>
+
             <v-3x3
                 :is-inspecting="isInspecting"
                 :is-scrambling="isScrambling"
@@ -135,6 +145,7 @@
         },
         components: {
             'v-3x3': require('./three/three'),
+            'v-help': require('./help/help'),
             'v-inspection': require('./inspection'),
             'v-leaderboard': require('./leaderboard/leaderboard'),
             'v-submit-score': require('./submit_score'),

@@ -11,6 +11,7 @@
         top: 0;
         visibility: hidden;
         width: 100%;
+        z-index: 1;
         @include transition('opacity, visibility');
 
         &.is-visible {
