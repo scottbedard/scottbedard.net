@@ -50,6 +50,13 @@
             font-size: $form-font-size;
             padding: 0 $form-element-padding-horizontal;
         }
+
+        &.size-l {
+            height: 60px;
+            line-height: 60px;
+            font-size: 24px;
+            padding: 0 24px;
+        }
     }
 </style>
 

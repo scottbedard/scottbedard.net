@@ -14,6 +14,7 @@
             <v-button-group class="buttons">
                 <v-button
                     v-for="link in navigation"
+                    size="large"
                     :route="link.route"
                     :href="link.href"
                     :color="link.color">
