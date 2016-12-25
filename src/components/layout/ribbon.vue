@@ -25,9 +25,9 @@
     import RouterState from 'src/state/router';
     import WindowState from 'src/state/window';
     import Color from 'src/app/utilities/color';
+    import { EventBus } from 'src/app/event_bus';
 
     export default {
-
         data() {
             return {
                 debounceRedraw: null,
@@ -36,14 +36,14 @@
                 Window: WindowState.state,
             };
         },
-
         mounted() {
             this.draw();
 
             // Redraw the ribbon every couple of minutes
-            if (this.reset) {
-                setInterval(this.redraw, this.reset);
-            }
+            if (this.reset) setInterval(this.redraw, this.reset);
+
+            // Listen for redraw events emitted from the global event bus
+            EventBus.$on('ribbon:redraw', this.redraw);
         },
 
         methods: {
@@ -147,15 +147,6 @@
                     }
                 }
             },
-
-            onRouteChanged() {
-                this.redraw();
-            },
-
-            onWindowResize() {
-                this.redraw();
-            },
-
             redraw() {
                 let redraw = () => {
                     this.draw();
@@ -172,15 +163,13 @@
                 }, 500);
             },
         },
-
         props: {
             clear: { type: Boolean, default: true },
             reset: { type: Number, default: 60000 },
         },
-
         watch: {
-            'Window.width': 'onWindowResize',
-            'Router.current': 'onRouteChanged',
+            'Window.width': 'redraw',
+            'Router.current': 'redraw',
         },
     };
 </script>
