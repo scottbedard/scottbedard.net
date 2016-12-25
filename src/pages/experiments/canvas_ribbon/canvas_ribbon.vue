@@ -11,7 +11,7 @@
 <template>
     <v-blank-page>
         <h1>Canvas ribbon</h1>
-        <p>My site background was the product of me playing with the canvas element. It was inspired by <a href="http://evanyou.me" target="_blank" class="colored">Evan You's</a> website.</p>
+        <p>My site background was the product of playing around with the canvas element. It was inspired by <a href="http://evanyou.me" target="_blank" class="colored">Evan You's</a> website.</p>
         <div>
             <a href="#" @click.prevent="onRedrawClicked">
                 <i class="fa fa-pencil"></i>

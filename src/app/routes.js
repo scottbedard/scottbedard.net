@@ -52,6 +52,18 @@ exports.routes = [
     },
 
     //
+    // Contact
+    //
+    {
+        path: '/contact',
+        component: require('src/pages/contact/contact'),
+        meta: {
+            title: 'Contact',
+            subtitle: 'Contact',
+        },
+    },
+
+    //
     // Cube
     //
     {
