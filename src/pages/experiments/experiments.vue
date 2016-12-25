@@ -28,13 +28,6 @@
         .details {
             @include bp-prop(margin-left, 10px, 20px, 40px, 60px);
             @include transition(margin-left);
-
-            p {
-                color: #333;
-                font-size: 18px;
-                font-weight: 300;
-                line-height: 24px;
-            }
         }
     }
 </style>
