@@ -1,9 +1,8 @@
 <style lang="scss" scoped>@import 'core';
     a {
-        color: #ccc;
         display: block;
+        font-weight: 300;
         &:not(:last-child) { margin-bottom: 5px }
-        &:hover { color: $red }
 
         i {
             text-align: center;

@@ -1,16 +1,17 @@
 <style lang="scss" scoped>@import 'core';
-    a {
+    a:not(:last-child) {
+        margin-right: 20px;
+    }
+
+    div {
         font-weight: 300;
-        &:not(:last-child) {
-            margin-right: 20px;
-        }
     }
 </style>
 
 <template>
     <v-blank-page>
         <h1>Canvas ribbon</h1>
-        <p>My site background was a quick experiment to get my feet with with the canvas element. It was inspired by <a href="http://evanyou.me" target="_blank" class="colored">Evan You's</a> website.</p>
+        <p>My site background was the product of me playing with the canvas element. It was inspired by <a href="http://evanyou.me" target="_blank" class="colored">Evan You's</a> website.</p>
         <div>
             <a href="#" @click.prevent="onRedrawClicked">
                 <i class="fa fa-pencil"></i>
