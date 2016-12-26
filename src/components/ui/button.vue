@@ -3,11 +3,13 @@
 
     a,
     button {
-        border: 0;
+        align-items: center;
         border-radius: 3px;
-        cursor: pointer;
+        border: 0;
         color: #fff;
-        display: inline-block;
+        cursor: pointer;
+        display: inline-flex;
+        justify-content: center;
         outline: none;
         @include transition('background-color');
 
