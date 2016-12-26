@@ -11,7 +11,11 @@
         @include bp-prop(margin, 0 #{ -$m }, 0 #{ -$lp }, 0 #{ -$t }, 0 #{ -$d });
         @include transition(margin);
 
-        > .cell,
+        > .cell {
+            @include bp-prop(padding, 0 $m, 0 $lp, 0 $t, 0 $d);
+            @include transition(padding);
+        }
+
         > .row > .cell {
             @include bp-prop(padding, 0 $m #{ $m * 2 }, 0 $lp #{ $lp * 2 }, 0 $t #{ $t * 2 }, 0 $d #{ $d * 2 });
             @include transition(padding);
