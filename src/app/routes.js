@@ -1,8 +1,5 @@
 import RouterState from 'src/state/router';
 
-import HomeComponent from 'src/pages/home';
-import NotFoundComponent from 'src/pages/404';
-
 //
 // Before route
 //
@@ -32,7 +29,7 @@ exports.routes = [
     //
     {
         path: '/',
-        component: HomeComponent,
+        component: require('src/pages/home'),
         meta: {
             header: false,
             title: 'Home',
@@ -106,7 +103,7 @@ exports.routes = [
     //
     {
         path: '*',
-        component: NotFoundComponent,
+        component: require('src/pages/404'),
         meta: {
             header: false,
             title: '404',
