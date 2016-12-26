@@ -90,6 +90,18 @@ exports.routes = [
     },
 
     //
+    // Skills
+    //
+    {
+        path: '/skills',
+        component: require('src/pages/skills/skills'),
+        meta: {
+            title: 'Skills',
+            subtitle: 'skills',
+        },
+    },
+
+    //
     // 404
     //
     {
