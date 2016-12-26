@@ -221,7 +221,7 @@
                     setTimeout(() => {
                         this.isExecutingTurn = false;
                         this.processNextTurn();
-                    }, 20);
+                    }, 25);
                 });
             },
         },
