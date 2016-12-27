@@ -91,7 +91,9 @@ exports.routes = [
     //
     {
         path: '/skills',
-        component: require('src/pages/skills/skills'),
+        component: resolve => {
+            require.ensure('src/pages/skills/skills', () => resolve(require('src/pages/skills/skills')));
+        },
         meta: {
             title: 'Skills',
             subtitle: 'skills',
