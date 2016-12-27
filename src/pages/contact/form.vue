@@ -51,7 +51,7 @@
         <div class="submit">
             <v-button type="submit" color="green">
                 <div v-if="isLoading">
-                    <v-button-spinner>Sending...</v-button-spinner>
+                    <v-button-spinner></v-button-spinner>
                     <span>Sending...</span>
                 </div>
                 <div v-else>Send message</div>
