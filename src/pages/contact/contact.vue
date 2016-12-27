@@ -1,8 +1,6 @@
 <style lang="scss" scoped>@import 'core';
     .mobile { @include bp-prop(display, inline, false, none) }
     .tablet { @include bp-prop(display, none, false, inline) }
-
-
 </style>
 
 <template>
