@@ -25,15 +25,27 @@ exports.after = function (route) {
 exports.routes = [
 
     //
-    // Home
+    // Blog
     //
     {
-        path: '/',
-        component: require('src/pages/home'),
-        meta: {
-            header: false,
-            title: 'Home',
-        },
+        path: '/blog',
+        component: r => require.ensure('src/pages/blog/blog', () => r(require('src/pages/blog/blog')), 'blog'),
+        children: [
+            {
+                path: '',
+                name: 'blog.posts',
+                component: r => require.ensure('src/pages/blog/posts/posts', () => r(require('src/pages/blog/posts/posts')), 'blog'),
+                meta: {
+                    title: 'Blog',
+                    subtitle: 'blog',
+                },
+            },
+            {
+                component: r => require.ensure('src/pages/blog/post/post', () => r(require('src/pages/blog/post/post')), 'blog'),
+                name: 'blog.post',
+                path: ':slug',
+            },
+        ],
     },
 
     //
@@ -83,6 +95,18 @@ exports.routes = [
         meta: {
             title: 'Experiments',
             subtitle: 'experiments',
+        },
+    },
+
+    //
+    // Home
+    //
+    {
+        path: '/',
+        component: require('src/pages/home'),
+        meta: {
+            header: false,
+            title: 'Home',
         },
     },
 
