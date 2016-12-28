@@ -77,9 +77,7 @@ exports.routes = [
     //
     {
         path: '/cube',
-        component: resolve => {
-            require.ensure('src/pages/experiments/cube/cube', () => resolve(require('src/pages/experiments/cube/cube')));
-        },
+        component: resolve => require(['src/pages/experiments/cube/cube'], resolve),
         meta: {
             title: 'CSS Cube',
             subtitle: 'CSS Cube',
@@ -115,9 +113,7 @@ exports.routes = [
     //
     {
         path: '/skills',
-        component: resolve => {
-            require.ensure('src/pages/skills/skills', () => resolve(require('src/pages/skills/skills')));
-        },
+        component: resolve => require(['src/pages/skills/skills'], resolve),
         meta: {
             title: 'Skills',
             subtitle: 'skills',
