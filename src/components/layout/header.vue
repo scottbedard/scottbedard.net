@@ -2,18 +2,25 @@
     $height-mobile: 60px;
     $height-desktop: 80px;
 
+    .v-header {
+        transition-delay: 100ms;
+        @include transition(transform);
+
+        &.is-hidden { transform: translateY(-100%) }
+    }
+
     header {
         font-family: 'Lato', sans-serif;
         font-size: 24px;
         font-weight: 300;
-        transition-delay: 100ms;
-        @include transition(transform);
-
+        position: absolute;
+        width: 100%;
+        z-index: 1;
         @include bp-prop('height, line-height', $height-mobile, false, $height-desktop);
+    }
 
-        &.is-hidden {
-            transform: translateY(-100%);
-        }
+    .spacer {
+        @include bp-prop('height, line-height', $height-mobile, false, $height-desktop);
     }
 
     .inner {
@@ -27,12 +34,15 @@
 </style>
 
 <template>
-    <header :class="{ 'is-hidden': isHidden }">
-        <div class="inner">
-            <v-title></v-title>
-            <v-desktop-navigation></v-desktop-navigation>
-        </div>
-    </header>
+    <div class="v-header" :class="{ 'is-hidden': isHidden }">
+        <header>
+            <div class="inner">
+                <v-title></v-title>
+                <v-desktop-navigation></v-desktop-navigation>
+            </div>
+        </header>
+        <div class="spacer"></div>
+    </div>
 </template>
 
 <script>

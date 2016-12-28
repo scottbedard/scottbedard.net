@@ -121,10 +121,20 @@ exports.routes = [
     },
 
     //
+    // 500
+    //
+    {
+        path: '/error',
+        name: '500',
+        component: require('src/pages/500'),
+    },
+
+    //
     // 404
     //
     {
         path: '*',
+        name: '400',
         component: require('src/pages/404'),
         meta: {
             header: false,
