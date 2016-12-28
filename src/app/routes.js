@@ -48,6 +48,9 @@ exports.routes = [
         ],
     },
 
+    { path: '/thoughts', redirect: '/blog' },
+    { path: '/thoughts/*', redirect: '/blog' },
+
     //
     // Canvas-ribbon
     //
