@@ -1,17 +1,16 @@
 <style lang="scss" scoped>@import 'core';
-    .loading {
+    .v-spinner {
         display: flex;
         justify-content: center;
         padding: 50px 0;
+        width: 100%;
     }
 </style>
 
 <template>
     <v-blank-page class="v-posts">
         <transition name="fade" mode="out-in">
-            <div v-if="isLoading" class="loading">
-                <v-spinner thickness="3" size="50px" color="#ccc"></v-spinner>
-            </div>
+            <v-spinner v-if="isLoading" thickness="3" size="50px" color="#ccc"></v-spinner>
             <div v-else>
                 <v-post-preview v-for="post in posts" :post="post"></v-post-preview>
             </div>
@@ -54,7 +53,7 @@
                 this.posts = response.data.posts;
             },
             onFetchFailed(error) {
-
+                this.$router.replace({ name: '500' });
             },
         },
     };

@@ -19,6 +19,7 @@ Object.keys(components).forEach(name => Vue.component(name, components[name]));
 // Directives
 //
 require('./directives/linkable');
+require('./directives/prism');
 
 //
 // Plugins
