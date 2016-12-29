@@ -9,7 +9,7 @@
         <div>
             <div>
                 Hi there,<br />
-                I'm Scott, and I build cool things at <a href="https://spyfu.com">SpyFu</a>.
+                I'm Scott, and I build cool things at <a href="https://spyfu.com" target="_blank">SpyFu</a>.
             </div>
             <v-button-group class="buttons">
                 <v-button
