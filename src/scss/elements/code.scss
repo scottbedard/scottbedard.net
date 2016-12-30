@@ -1,4 +1,6 @@
 $code-blue: #81a2be;
+$code-brown: #a3685a;
+$code-gray: #969896;
 $code-green: #b5bd68;
 $code-orange: #de935f;
 $code-purple: #b294bb;
@@ -6,7 +8,6 @@ $code-red: #cc6666;
 $code-teal: #8abeb7;
 $code-white: #c5c8c6;
 $code-yellow: #f0c674;
-$code-gray: #969896;
 
 pre.prism {
     background-color: rgba(#1d1f21, 0.93);
@@ -107,7 +108,14 @@ code.language-javascript {
 }
 
 //
-// Css / Scss
+// JSON
+//
+code.language-json {
+    .token.property { color: $code-red }
+}
+
+//
+// CSS / SCSS
 //
 code.language-css,
 code.language-scss {
@@ -118,14 +126,13 @@ code.language-scss {
 }
 
 //
-// Html
+// HTML / Markup
 //
-code.language-html {
+code.language-html,
+code.language-markup {
     .token.tag { color: $code-red }
     .token.attr-name { color: $code-orange }
-    .token.attr-value {
-        color: $code-green;
-    }
+    .token.attr-value { color: $code-green }
 }
 
 //
@@ -133,4 +140,18 @@ code.language-html {
 //
 code.language-php {
     .token.control { color: $code-purple }
+    .token.class-name { color: $code-yellow }
+    .token.package { color: $code-yellow }
+    .token.keyword { color: $code-purple }
+    .token.delimiter { color: $code-brown }
+    .token.extends + .token.class-name { color: $code-white }
+    .token.use + .token.package { color: $code-white }
+}
+
+//
+// YAML
+//
+code.language-yaml {
+    .token.key { color: $code-red }
+    .token.tag { color: $code-white }
 }

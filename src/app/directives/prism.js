@@ -6,6 +6,8 @@ import { php } from 'src/app/utilities/syntax_highlighter';
 // css, html, javascript, markup, mathm, svg, xml
 
 // additional languages
+require('prismjs/components/prism-bash');
+require('prismjs/components/prism-json');
 require('prismjs/components/prism-markdown');
 require('prismjs/components/prism-php');
 require('prismjs/components/prism-scss');
@@ -17,10 +19,10 @@ Vue.directive('prism', {
             let source = code.innerHTML;
             let language = code.className.split('-')[1];
             let syntax = Prism.languages[language];
+            code.parentElement.className += ' prism';
 
-            if (syntax !== 'undefined') {
+            if (typeof syntax !== 'undefined') {
                 source = source.replace(/\&lt;/g, '<').replace(/\&gt;/g, '>').replace(/\&amp;/g, '&');
-                code.parentElement.className += ' prism';
 
                 let highlightedCode = Prism.highlight(source, syntax);
                 if (language === 'php') highlightedCode = php(highlightedCode);
