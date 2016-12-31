@@ -1,5 +1,5 @@
 # scottbedard
 
-My personal code playground
+My personal code playground.
 
 https://scottbedard.net
