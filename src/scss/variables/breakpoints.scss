@@ -1,0 +1,11 @@
+//
+// Breakpoints
+//
+$breakpoints: (
+    portrait: 'orientation: portrait',
+    landscape: 'orientation: landscape',
+    mobile-only: 'max-width: 736px', // iPhone 6+
+    large-phone: 'min-width: 481px',
+    tablet: 'min-width: 768px',
+    desktop: 'min-width: 1224px',
+);

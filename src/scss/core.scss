@@ -1,31 +1,22 @@
 //
-// Global configuration
+// Variables
 //
-$bg-color: #f9f9f9;
+@import './variables/breakpoints';
+@import './variables/colors';
+@import './variables/form';
+@import './variables/layout';
+@import './variables/z_index';
 
-$breakpoints: (
-    tablet: 'min-width: 768px',
-    desktop: 'min-width: 1024px',
-);
-
-$content-border: 2px solid #e0e0e0;
-$content-padding-mobile: 12px;
-$content-padding-tablet: 20px;
-
-$font-color: #333;
-
-$header-border: $content-border;
-$header-height-mobile: 65px;
-$header-height-tablet: 85px;
-$header-height-desktop: 100px;
-
-$layout-inner-width: 1200px;
-$layout-padding: 12px;
-
-$link-hover-color: #EC7363;
+//
+// Functions
+//
+@import './functions/explode';
+@import './functions/implode';
+@import './functions/map_deep_get';
+@import './functions/z';
 
 //
 // Mixins
 //
-@import 'mixins/bp';
-@import 'mixins/transition';
+@import './mixins/bp';
+@import './mixins/transition';

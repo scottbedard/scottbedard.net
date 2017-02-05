@@ -1,28 +1,31 @@
-//
-// On your mark
-//
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import VueResource from 'vue-resource';
-import { redirects, routes } from 'app/routes';
-import { config, before, after } from 'app/router';
-import Prism from 'vendor/prism';
-
-Vue.use(VueRouter);
-Vue.use(VueResource);
-require('app/boot');
+import RootComponent from './root';
+import { before, after, routes } from './app/routes';
 
 //
-// Get set
+// Boot up our application
 //
-let Router = new VueRouter(config);
-Router.map(routes);
-Router.redirect(redirects);
-Router.beforeEach(before);
-Router.afterEach(after);
+require('./app/boot');
 
 //
-// Go!
+// Configure the router
 //
-import Master from './app/master';
-Router.start(Master, '#app');
+const router = new VueRouter({
+    base: __dirname,
+    mode: 'history',
+    routes,
+});
+
+router.beforeEach(before);
+router.afterEach(after);
+
+//
+// Mount our application to the dom
+//
+/* eslint-disable no-new */
+new Vue({
+    router,
+    el: '#app',
+    render: h => h(RootComponent),
+});

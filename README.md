@@ -1,3 +1,5 @@
-# scottbedard.net
+# scottbedard
 
-Future ones and zeros of my personal code playground.
+My personal code playground.
+
+https://scottbedard.net

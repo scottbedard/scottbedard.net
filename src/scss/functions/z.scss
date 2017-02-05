@@ -1,0 +1,6 @@
+//
+// z-index layering
+//
+@function z($layers...) {
+    @return map-deep-get($z-index, $layers...);
+}

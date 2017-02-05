@@ -1,0 +1,12 @@
+a {
+    color: $font-color;
+    text-decoration: none;
+    @include transition(color);
+
+    &:visited { color: $font-color }
+    &:hover { color: $red }
+    &.colored {
+        color: $red;
+        &:hover { color: darken($red, 10%) }
+    }
+}

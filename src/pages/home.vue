@@ -1,14 +1,38 @@
-<style lang="sass" scoped> @import 'core';
-    p {
-        @include bp-prop(font-size, 22px, 28px, 34px);
-        &:not(:first-of-type) { margin-top: $layout-padding }
+<style lang="scss" scoped>
+    .buttons {
+        margin-top: 20px;
     }
 </style>
 
 <template>
-    <div class="page">
-        <v-ribbon></v-ribbon>
-        <p>Hi there,</p>
-        <p>I'm Scott, and I work on cool things at <a href="http://spyfu.com">SpyFu</a>.</p>
-    </div>
+    <v-splash-page>
+        <div>
+            <div>
+                Hi there,<br />
+                I'm Scott, and I build cool things at <a href="https://spyfu.com" target="_blank">SpyFu</a>.
+            </div>
+            <v-button-group class="buttons">
+                <v-button
+                    v-for="link in navigation"
+                    size="large"
+                    :route="link.route"
+                    :href="link.href"
+                    :color="link.color">
+                    {{ link.name }}
+                </v-button>
+            </v-button-group>
+        </div>
+    </v-splash-page>
 </template>
+
+<script>
+    import Navigation from 'src/app/navigation';
+
+    export default {
+        computed: {
+            navigation() {
+                return Navigation;
+            },
+        },
+    };
+</script>

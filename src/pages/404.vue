@@ -1,31 +1,20 @@
 <template>
-    <div class="page splash">
-        <v-ribbon :reset="150"></v-ribbon>
-        <p>{{ notFoundMessage }}</p>
-    </div>
+    <v-splash-page>
+        {{ message }}
+    </v-splash-page>
 </template>
 
 <script>
-    import HeaderState from 'state/header';
-
     export default {
-
-        /**
-         * @type {Object}
-         */
         computed: {
-
-            /**
-             * Return a 404 message
-             *
-             * @return {String}
-             */
-            notFoundMessage() {
+            message() {
                 let messages = [
-                    'You shouldn\'t be here...',
-                    'I could have put a page here, but I didn\'t.',
-                    'One of us screwed up, I hope it\'s not me...',
-                    'There is no page here, but you can still enjoy this colorful nonsense.',
+                    'Four oh four',
+                    'Sorry, this page does not exist.',
+                    'Sorry, I\'ve got nothing for you here.',
+                    'This is not the page you\'re looking for.',
+                    'This page either moved, or never existed.',
+                    'Welcome to my 404 page, I hope you like it.',
                 ];
 
                 return messages[Math.floor(Math.random() * messages.length)];

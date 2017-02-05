@@ -1,0 +1,57 @@
+//
+// Colors
+//
+$font-color: #333333;
+
+$amber: #FFC107;
+$black: #000000;
+$blue-grey: #607D8B;
+$blue: #2196F3;
+$brown: #795548;
+$cyan: #00BCD4;
+$deep-orange: #FF5722;
+$deep-purple: #673AB7;
+$green: #4CAF50;
+$grey: #9E9E9E;
+$indigo: #3F51B5;
+$light-blue: #03A9F4;
+$light-green: #8BC34A;
+$light-grey: #ccc;
+$lime: #CDDC39;
+$off-black: #333;
+$off-white: #E0E0E0;
+$orange: #FF9800;
+$pink: #E91E63;
+$purple: #9C27B0;
+$red: #F44336;
+$teal: #009688;
+$white: #FFFFFF;
+$yellow: #FFEB3B;
+
+//
+// This array exists to make itterating over colors simpler
+//
+$colors: (
+    'font-color': $font-color,
+    'amber': $amber,
+    'black': $black,
+    'blue-grey': $blue-grey,
+    'blue': $blue,
+    'brown': $brown,
+    'cyan': $cyan,
+    'deep-orange': $deep-orange,
+    'deep-purple': $deep-purple,
+    'green': $green,
+    'grey': $grey,
+    'indigo': $indigo,
+    'light-blue': $light-blue,
+    'light-green': $light-green,
+    'lime': $lime,
+    'orange': $orange,
+    'pink': $pink,
+    'purple': $purple,
+    'red': $red,
+    'teal': $teal,
+    'white': $white,
+    'yellow': $yellow,
+);

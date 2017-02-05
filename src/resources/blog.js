@@ -1,19 +1,11 @@
 import Vue from 'vue';
+import { normalizeResponse } from 'src/app/utilities/normalize_response';
 
-module.exports = {
-
-    /**
-     * @type {String}
-     */
-    url: '/api/rainlab/blog{/slug}',
-
-    /**
-     * Make a get request to the blog api
-     *
-     * @param  {Object}     params
-     * @return {Promise}
-     */
-    get(params) {
-        return Vue.resource(this.url).get(params);
+export default {
+    getPost(slug, params = {}) {
+        return Vue.http.get(`/api/rainlab/blog/posts/${slug}`, { params }).then(normalizeResponse);
+    },
+    getPosts(params) {
+        return Vue.http.get('/api/rainlab/blog/posts', { params }).then(normalizeResponse);
     },
 };
