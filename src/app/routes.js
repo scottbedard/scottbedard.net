@@ -17,6 +17,10 @@ exports.before = function (route, redirect, next) {
 exports.after = function (route) {
     RouterState.setCurrentRoute(route);
     RouterState.setSubtitle(route.meta.subtitle);
+
+    // send the pageview to google analytics
+    ga('set', 'page', route.path);
+    ga('send', 'pageview');
 };
 
 //
