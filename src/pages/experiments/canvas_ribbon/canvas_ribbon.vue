@@ -21,10 +21,6 @@
                 <i class="fa fa-code"></i>
                 <span>Source code</span>
             </a>
-            <a href="#" @click.prevent>
-                <i class="fa fa-question"></i>
-                <span>About this project</span>
-            </a>
         </div>
     </v-blank-page>
 </template>
