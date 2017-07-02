@@ -63,7 +63,7 @@
         <!-- Featured -->
         <div class="featured" v-if="featuredSkill">
             <h2>{{ featuredSkill.name }}</h2>
-            <p v-linkable v-html="featuredSkill.text"></p>
+            <!-- <p v-linkable v-html="featuredSkill.text"></p> -->
         </div>
     </v-page>
 </template>
