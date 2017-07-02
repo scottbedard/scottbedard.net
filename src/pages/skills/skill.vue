@@ -53,10 +53,10 @@
                     &:hover { animation-play-state: paused; .level { animation-play-state: paused }}
                     .level {
                         animation: level-#{ $i } #{ $orbit-speed } linear 0s infinite reverse;
-                        height: 80px;
-                        width: 80px;
+                        height: 90px;
+                        width: 90px;
                     }
-                    img { width: 50px }
+                    img { width: 60px }
                 }
                 @keyframes level-#{ $i } {
                     from { transform: rotate(#{ 0deg - ($i * 120) }) }
@@ -77,10 +77,10 @@
                     }
                     .level {
                         animation: level-#{ $i } #{ $orbit-speed + 60 } linear 0s infinite reverse;
-                        height: 60px;
-                        width: 60px;
+                        height: 50px;
+                        width: 50px;
                     }
-                    img { width: 40px }
+                    img { width: 30px }
                 }
                 @keyframes level-#{ $i } {
                     from { transform: rotate(#{ 0deg - ($i * 72) }) }
@@ -101,10 +101,10 @@
                     }
                     .level {
                         animation: level-#{ $i } #{ $orbit-speed + 120 } linear 0s infinite reverse;
-                        height: 45px;
-                        width: 45px;
+                        height: 25px;
+                        width: 25px;
                     }
-                    img { width: 25px }
+                    img { width: 20px }
                 }
                 @keyframes level-#{ $i } {
                     from { transform: rotate(#{ 0deg - ($i * 45) }) }
@@ -125,7 +125,7 @@
             <img :src="skill.img">
             <div class="details">
                 <div class="name">{{ skill.name }}</div>
-                <div class="text" v-html="getMobileText(skill.text)"></div>
+                <!-- <div class="text" v-html="getMobileText(skill.text)"></div> -->
             </div>
         </div>
     </div>
