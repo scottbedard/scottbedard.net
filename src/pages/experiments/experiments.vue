@@ -56,6 +56,12 @@
             return {
                 experiments: [
                     {
+                        description: 'Re-creating GitHub\'s commit graph with Svelte.js',
+                        title: 'Svelte Heatmap',
+                        path: '/svelte-heatmap',
+                        image: require('./svelte_heatmap/heatmap.png'),
+                    },
+                    {
                         description: 'An odd experiment to see how far we can push the 3D transform abilities of CSS.',
                         title: 'CSS Cube',
                         path: '/cube',
