@@ -128,6 +128,18 @@ exports.routes = [
     },
 
     //
+    // Svelte Heatmap
+    //
+    {
+        path: '/svelte-heatmap',
+        component: resolve => require(['src/pages/experiments/svelte_heatmap/svelte_heatmap'], resolve),
+        meta: {
+            title: 'Svelte Heatmap',
+            subtitle: 'svelte-heatmap',
+        },
+    },
+
+    //
     // 500
     //
     {
