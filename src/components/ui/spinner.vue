@@ -23,14 +23,15 @@
             y="0px"
             :height="size"
             :width="size">
-        <path
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            :stroke-width="thickness"
-            :stroke="color"
-            d="M142.114,105.059
-        	c-4.002-4.376-5.601-10.721-3.64-16.765c1.318-4.052,4.011-7.271,7.39-9.312">
+            <path
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                :stroke-width="thickness"
+                :stroke="color"
+                d="M142.114,105.059
+                c-4.002-4.376-5.601-10.721-3.64-16.765c1.318-4.052,4.011-7.271,7.39-9.312">
+            </path>
         </svg>
     </div>
 </template>

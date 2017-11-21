@@ -16,7 +16,7 @@
 <template>
     <router-link class="v-post-preview" :to="{ name: 'blog.post', params: { slug: post.slug }}">
         <h2>{{ post.title }}</h2>
-        <p>{{ post.excerpt }}</h3>
+        <p>{{ post.excerpt }}</p>
     </router-link>
 </template>
 
