@@ -5361,9 +5361,9 @@ supports-color@^4.0.0, supports-color@^4.4.0:
   dependencies:
     has-flag "^2.0.0"
 
-svelte-heatmap@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/svelte-heatmap/-/svelte-heatmap-0.3.1.tgz#1c6f2461891413680130aa321e235c671b867c91"
+svelte-heatmap@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/svelte-heatmap/-/svelte-heatmap-0.4.0.tgz#908aebc4dc24375ef057d85fd25ec446c31fdb0f"
 
 svgo@^0.7.0:
   version "0.7.2"

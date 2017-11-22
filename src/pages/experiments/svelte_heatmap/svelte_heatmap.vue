@@ -14,8 +14,21 @@
     }
 
     .controls {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
         div {
-            margin-bottom: 20px;
+            margin: 12px;
+            width: 100px;
+
+            input {
+                display: inline-block;
+                height: 24px;
+                outline: none;
+                line-height: 24px;
+                padding: 0 10px;
+            }
         }
     }
 </style>
@@ -46,7 +59,19 @@
         <!-- controls -->
         <div class="controls">
             <div>
-                <label for="heatmap_colors">Number of colors</label>
+                <label for="heatmap_show_legend">Show legend</label>
+                <input v-model="showLegend" id="heatmap_show_legend" type="checkbox" />
+            </div>
+            <div>
+                <label for="heatmap_legend_low">Low text</label>
+                <input id="heatmap_legend_low" v-model="legendLow" />
+            </div>
+            <div>
+                <label for="heatmap_legend_high">High text</label>
+                <input id="heatmap_legend_high" v-model="legendHigh" />
+            </div>
+            <div>
+                <label for="heatmap_colors">Colors</label>
                 <input id="heatmap_colors" type="number" v-model.number="colors" min="3" max="50" />
             </div>
             <div>
@@ -73,13 +98,16 @@
     export default {
         data() {
             return {
-                colors: 10,
+                colors: 4,
                 days: 200,
                 emptyColor: '#ebedf0',
-                lowColor: '#c6e48b',
-                highColor: '#196127',
                 heatmapInstance: null,
+                highColor: '#196127',
                 history: [],
+                legendHigh: 'More',
+                legendLow: 'Less',
+                lowColor: '#c6e48b',
+                showLegend: true,
             };
         },
         mounted() {
@@ -89,9 +117,12 @@
                 target: this.$refs.heatmap,
                 data: {
                     colors: this.colors,
-                    lowColor: this.lowColor,
                     highColor: this.highColor,
                     history: this.history,
+                    legendHigh: this.legendHigh,
+                    legendLow: this.legendLow,
+                    lowColor: this.lowColor,
+                    showLegend: this.showLegend,
                     tooltip: (date, value) => `<strong>${value}</strong> contributions on <strong>${date}</strong>`,
                 },
             });
@@ -103,6 +134,12 @@
             onColorsChanged(colors) {
                 this.heatmapInstance.set({ colors });
             },
+            onLegendHighChanged(legendHigh) {
+                this.heatmapInstance.set({ legendHigh });
+            },
+            onLegendLowChanged(legendLow) {
+                this.heatmapInstance.set({ legendLow });
+            },
             onLowColorChanged(lowColor) {
                 this.heatmapInstance.set({ lowColor });
             },
@@ -111,6 +148,9 @@
             },
             onHistoryChanged(history) {
                 this.heatmapInstance.set({ history });
+            },
+            onShowLegendChanged(showLegend) {
+                this.heatmapInstance.set({ showLegend });
             },
             seed() {
                  // generate a years worth of dummy data
@@ -137,7 +177,10 @@
             emptyColor: 'onEmptyColorChanged',
             highColor: 'onHighColorChanged',
             history: 'onHistoryChanged',
+            legendHigh: 'onLegendHighChanged',
+            legendLow: 'onLegendLowChanged',
             lowColor: 'onLowColorChanged',
+            showLegend: 'onShowLegendChanged',
         },
     };
 </script>
