@@ -1,3 +1,5 @@
+<style lang="scss" src="./scss/tailwind.scss"></style>
+
 <template>
   <div id="app">
     <div id="nav">
