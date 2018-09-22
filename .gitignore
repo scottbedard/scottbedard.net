@@ -23,7 +23,7 @@ composer.lock
 /plugins
 /storage
 /tests
-/themes
+/themes/demo
 /.editorconfig
 /.gitattributes
 /.htaccess
@@ -37,6 +37,9 @@ composer.lock
 /LICENSE
 /phpunit.xml
 /server.php
+
+# theme
+/themes/scottbedard/assets
 
 # for netbeans
 nbproject
