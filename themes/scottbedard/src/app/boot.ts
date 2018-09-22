@@ -1,0 +1,4 @@
+//
+// plugins
+//
+import './plugins/router';
