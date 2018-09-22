@@ -23,8 +23,9 @@ View the full documentation at https://tailwindcss.com.
 | values with some of the Tailwind defaults.
 |
 */
-
-// let defaultConfig = require('tailwindcss/defaultConfig')()
+const remSizes = Array(100).fill(0).reduce((acc, n, i) => {
+    return { ...acc, [i]: (i / 4) + 'rem' };
+}, {});
 
 
 /*
@@ -470,20 +471,7 @@ module.exports = {
   width: {
     'auto': 'auto',
     'px': '1px',
-    '1': '0.25rem',
-    '2': '0.5rem',
-    '3': '0.75rem',
-    '4': '1rem',
-    '5': '1.25rem',
-    '6': '1.5rem',
-    '8': '2rem',
-    '10': '2.5rem',
-    '12': '3rem',
-    '16': '4rem',
-    '24': '6rem',
-    '32': '8rem',
-    '48': '12rem',
-    '64': '16rem',
+    ...remSizes,
     '1/2': '50%',
     '1/3': '33.33333%',
     '2/3': '66.66667%',
@@ -518,20 +506,7 @@ module.exports = {
   height: {
     'auto': 'auto',
     'px': '1px',
-    '1': '0.25rem',
-    '2': '0.5rem',
-    '3': '0.75rem',
-    '4': '1rem',
-    '5': '1.25rem',
-    '6': '1.5rem',
-    '8': '2rem',
-    '10': '2.5rem',
-    '12': '3rem',
-    '16': '4rem',
-    '24': '6rem',
-    '32': '8rem',
-    '48': '12rem',
-    '64': '16rem',
+    ...remSizes,
     'full': '100%',
     'screen': '100vh'
   },
@@ -644,20 +619,7 @@ module.exports = {
 
   padding: {
     'px': '1px',
-    '0': '0',
-    '1': '0.25rem',
-    '2': '0.5rem',
-    '3': '0.75rem',
-    '4': '1rem',
-    '5': '1.25rem',
-    '6': '1.5rem',
-    '8': '2rem',
-    '10': '2.5rem',
-    '12': '3rem',
-    '16': '4rem',
-    '20': '5rem',
-    '24': '6rem',
-    '32': '8rem',
+    ...remSizes,
   },
 
 
@@ -679,20 +641,7 @@ module.exports = {
   margin: {
     'auto': 'auto',
     'px': '1px',
-    '0': '0',
-    '1': '0.25rem',
-    '2': '0.5rem',
-    '3': '0.75rem',
-    '4': '1rem',
-    '5': '1.25rem',
-    '6': '1.5rem',
-    '8': '2rem',
-    '10': '2.5rem',
-    '12': '3rem',
-    '16': '4rem',
-    '20': '5rem',
-    '24': '6rem',
-    '32': '8rem',
+    ...remSizes,
   },
 
 
@@ -713,20 +662,7 @@ module.exports = {
 
   negativeMargin: {
     'px': '1px',
-    '0': '0',
-    '1': '0.25rem',
-    '2': '0.5rem',
-    '3': '0.75rem',
-    '4': '1rem',
-    '5': '1.25rem',
-    '6': '1.5rem',
-    '8': '2rem',
-    '10': '2.5rem',
-    '12': '3rem',
-    '16': '4rem',
-    '20': '5rem',
-    '24': '6rem',
-    '32': '8rem',
+    ...remSizes,
   },
 
 
@@ -926,10 +862,6 @@ module.exports = {
   */
 
   plugins: [
-    require('tailwindcss/plugins/container')({
-      // center: true,
-      // padding: '1rem',
-    }),
   ],
 
 
