@@ -1,12 +1,24 @@
 <style lang="scss" src="./scss/tailwind.scss"></style>
+<style lang="scss" src="./scss/global.scss"></style>
 
 <template>
     <div id="app">
-        <router-link :to="{ name: 'home' }">Home</router-link>
-        <router-link :to="{ name: 'skills' }">Skills</router-link>
-
-        <div>
-            <router-view />
-        </div>
+        <router-view />
     </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue';
+
+export default Vue.extend({
+    mounted() {
+        window.addEventListener('resize', this.onResize);
+    },
+    methods: {
+        onResize() {
+            this.$store.commit('browser/setHeight', window.innerHeight);
+            this.$store.commit('browser/setWidth', window.innerWidth);
+        },
+    },
+});
+</script>
