@@ -15,6 +15,29 @@ class TailwindExtractor {
 }
 
 module.exports = {
+    chainWebpack(config) {
+        config
+            .module
+            .rule('ts')
+            .uses
+            .get('ts-loader')
+            .tap((options) => {
+                return {
+                    ...options,
+                    configFile: resolve('../../tsconfig.json'),
+                };
+            });
+
+        config
+            .plugin('fork-ts-checker')
+            .tap((args) => {
+                Object.assign(args[0], {
+                    tsconfig: resolve('../../tsconfig.json'),
+                });
+                
+                return args;
+            });
+    },
     configureWebpack: {
         plugins: [
             // tailwind generates a ton of utility classes for us, most
@@ -22,8 +45,8 @@ module.exports = {
             new PurgecssPlugin({
                 extractors: [
                     {
-                        extractor: TailwindExtractor,
                         extensions: ['html', 'js', 'ts', 'vue'],
+                        extractor: TailwindExtractor,
                     },
                 ],
                 paths: glob.sync([
