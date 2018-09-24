@@ -4,7 +4,7 @@ import { expect } from 'chai';
 // color utils
 //
 import {
-    calculateGradient,
+    blend,
     hexToRgb,
     rgbToHex,
 } from '@/app/utils/color';
@@ -13,20 +13,20 @@ import {
 // specs
 //
 describe('color utils', () => {
-    it('calculateGradient', () => {
-        expect(calculateGradient('#000000', '#ff0000')).to.deep.equal([
+    it('blend', () => {
+        expect(blend('#000000', '#ff0000')).to.deep.equal([
             [0, 0, 0], [128, 0, 0], [255, 0, 0],
         ]);
 
-        expect(calculateGradient('#000000', '#00ff00')).to.deep.equal([
+        expect(blend('#000000', '#00ff00')).to.deep.equal([
             [0, 0, 0], [0, 128, 0], [0, 255, 0],
         ]);
 
-        expect(calculateGradient('#000000', '#0000ff')).to.deep.equal([
+        expect(blend('#000000', '#0000ff')).to.deep.equal([
             [0, 0, 0], [0, 0, 128], [0, 0, 255],
         ]);
 
-        expect(calculateGradient('#000000', '#ffffff', 3, 'hex')).to.deep.equal([
+        expect(blend('#000000', '#ffffff', 3, 'hex')).to.deep.equal([
             '#000000', '#808080', '#ffffff',
         ]);
     });

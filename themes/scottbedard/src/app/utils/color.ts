@@ -8,7 +8,7 @@ export type rgbArray = [number, number, number];
  * @param  {number}             size        number of colors in the final gradient
  * @param  {'hex'|'rgb'}        format      output format for the gradient
  */
-export function calculateGradient(
+export function blend(
     fromColor: string|rgbArray,
     toColor: string|rgbArray,
     size: number = 3,

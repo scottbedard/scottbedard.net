@@ -3,5 +3,5 @@
 // classes that are being removed, you can whitelist them here.
 // see docs here: https://www.purgecss.com/whitelisting.html
 module.exports = [
-    // ...
+    'bg-grey-lighter', // <- used by the home page
 ];
