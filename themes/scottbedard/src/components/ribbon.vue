@@ -5,7 +5,6 @@
             'opacity-0': isRedrawing,
         }">
         <canvas ref="canvas"></canvas>
-        <pre>{{ width }}</pre>
     </div>
 </template>
 
@@ -18,6 +17,12 @@ import { mapState } from 'vuex';
 interface Coordinate {
     x: number;
     y: number;
+}
+
+interface RibbonVue extends Vue {
+    draw: () => void;
+    isRedrawing: boolean;
+    redraw: () => void;
 }
 
 // create an array of colors that we'll allow the ribbon to blend
@@ -70,7 +75,7 @@ export default Vue.extend({
         ]),
     },
     methods: {
-        draw() {
+        draw(): void {
             // first things first, we need to get our canvas ready to be drawn
             // on. While we're here, lets also create a few other neccessary
             // variables for drawing the ribbon, and how it should appear.
@@ -150,7 +155,7 @@ export default Vue.extend({
                 }
             }
         },
-        redraw: debounce(function(this: any) {
+        redraw: debounce(function(this: RibbonVue) {
             this.isRedrawing = true;
 
             setTimeout(() => {
@@ -160,7 +165,7 @@ export default Vue.extend({
                     this.isRedrawing = false;
                 });
             }, 150, { leading: true });
-        }, 250),
+        }, 150),
     },
     watch: {
         width: 'redraw',
