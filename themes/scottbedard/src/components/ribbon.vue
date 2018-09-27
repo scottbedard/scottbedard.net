@@ -11,7 +11,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { blend } from '@/app/utils/color';
-import { debounce } from 'lodash';
+import { debounce } from 'lodash-es';
 import { mapState } from 'vuex';
 
 interface Coordinate {
