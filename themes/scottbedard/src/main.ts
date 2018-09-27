@@ -1,4 +1,4 @@
-    //
+//
 // boot up our application
 //
 import './app/boot';
