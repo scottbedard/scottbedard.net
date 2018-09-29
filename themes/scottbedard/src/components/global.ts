@@ -5,11 +5,13 @@ import { Map } from '@/types';
 // imports
 //
 import marginComponent from './containers/margin.vue';
+import buttonComponent from './ui/button.vue';
 
 //
-// global component registration
+// global components
 //
 const globalComponents: Map<VueConstructor<Vue>> = {
+    'v-button': buttonComponent,
     'v-margin': marginComponent,
 };
 

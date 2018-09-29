@@ -1,0 +1,3 @@
+import '@types/mocha';
+
+export {};

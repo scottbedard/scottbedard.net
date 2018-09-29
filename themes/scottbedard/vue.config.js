@@ -56,4 +56,13 @@ module.exports = {
             }),
         ],
     },
+    pluginOptions: {
+        karma: {
+            karmaConfig: {
+                browsers: [
+                    'ChromeHeadless',
+                ],
+            },
+        },
+    },
 };
