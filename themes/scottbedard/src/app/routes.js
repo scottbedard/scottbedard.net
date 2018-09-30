@@ -1,7 +1,11 @@
+//
+// layouts
+//
 import splashComponent from '@/layouts/splash.vue';
 
 //
 // routes
+// note that all routes must be named, otherwise they may not mount correctly
 //
 export default [
     //

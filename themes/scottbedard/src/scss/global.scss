@@ -3,3 +3,13 @@
 *:after {
     box-sizing: border-box;
 }
+
+a {
+    color: config('colors.grey-darkest');
+    text-decoration: none;
+    transition: color 150ms ease-in-out;
+
+    &:hover {
+        color: config('colors.red');
+    }
+}

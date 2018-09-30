@@ -8,6 +8,10 @@ $defaultEasing: ease-in-out;
     transition: background-color $defaultDuration $defaultEasing;
 }
 
+.transition-color {
+    transition: color $defaultDuration $defaultEasing;
+}
+
 .transition-font {
     transition: font-size $defaultDuration $defaultEasing;
 }
@@ -18,6 +22,14 @@ $defaultEasing: ease-in-out;
 
 .transition-opacity {
     transition: opacity $defaultDuration $defaultEasing;
+}
+
+.transition-padding {
+    transition: padding $defaultDuration $defaultEasing;
+}
+
+.transition-transform {
+    transition: transform $defaultDuration $defaultEasing;
 }
 
 //
@@ -46,4 +58,10 @@ $defaultEasing: ease-in-out;
     transition: 
         margin $defaultDuration $defaultEasing,
         opacity $defaultDuration $defaultEasing;
+}
+
+.transition-opacity.transition-transform {
+    transition: 
+        opacity $defaultDuration $defaultEasing,
+        transform $defaultDuration $defaultEasing;
 }

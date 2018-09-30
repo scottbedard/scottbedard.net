@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <v-card padded>
         Hello from the skills page
-    </div>
+    </v-card>
 </template>

@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 //
 // import dependencies
 //
@@ -24,7 +26,6 @@ Vue.config.productionTip = false;
 // create a router
 //
 const router = new VueRouter({
-    base: '/',
     mode: 'history',
     routes,
 });
@@ -56,8 +57,9 @@ new Vue({
         };
     },
     render(h) {
-        return h(rootComponent);
+        return this.$route.name && h(rootComponent);
     },
+    el: '#app',
     methods: {
         onResize() {
             this.height = window.innerHeight;
@@ -66,4 +68,4 @@ new Vue({
     },
     router,
     store,
-}).$mount('#app');
+});
