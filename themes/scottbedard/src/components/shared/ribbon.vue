@@ -1,20 +1,15 @@
 <template>
     <div
-        class="fixed h-full pin-l pin-t pointer-events-none transition-opacity w-full"
-        :class="{
-            'opacity-0': isRedrawing,
-        }">
+        class="fixed h-full pin-l pin-t pointer-events-none transition-opacity w-full" :class="opacityClass">
         <canvas
+            class="absolute pin"
             ref="canvas"
-            :height="height"
-            :width="width"
         ></canvas>
     </div>
 </template>
 
 <script>
 /* eslint-disable max-len */
-import { debounce } from 'lodash-es';
 import { blend } from '@/app/utils/color';
 import { createArray } from '@/app/utils/array';
 
@@ -51,6 +46,7 @@ const deviation = 135;
 export default {
     data() {
         return {
+            debouncedRedraw: null,
             isRedrawing: false,
         };
     },
@@ -65,6 +61,9 @@ export default {
         height() {
             return this.$root.height;
         },
+        opacityClass() {
+            return this.isRedrawing ? 'opacity-0' : 'opacity-100';
+        },
         width() {
             return this.$root.width;
         },
@@ -74,8 +73,11 @@ export default {
             // first things first, we need to get our canvas ready to be drawn
             // on. While we're here, lets also create a few other neccessary
             // variables for drawing the ribbon, and how it should appear.
-            const { canvas } = this.$refs;
-            const ctx = canvas.getContext('2d');
+            const { canvas } = this.$refs;              
+            canvas.width = this.width;
+            canvas.height = this.height;
+
+            const ctx = canvas.getContext('2d');  
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
 
@@ -139,20 +141,28 @@ export default {
                     }
                 });
         },
-        redraw: debounce(function () {
+        redraw() {
+            let redraw = () => {
+                this.draw();
+                this.isRedrawing = false;
+            };
+
             this.isRedrawing = true;
+            this.debounceRedraw = redraw;
 
             setTimeout(() => {
-                this.draw();
-
-                this.$nextTick(() => {
-                    this.isRedrawing = false;
-                });
+                if (this.debounceRedraw === redraw) {
+                    redraw();
+                }
             }, 150);
-        }, 150),
+        },
     },
     watch: {
-        $route: 'redraw',
+        $route(to, from) {
+            if (from.name !== null) {
+                this.redraw();
+            }
+        },
         width: 'redraw',
     },
 };
