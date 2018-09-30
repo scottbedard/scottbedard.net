@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /*
 
 Tailwind - The Utility-First CSS Framework
@@ -14,7 +16,7 @@ View the full documentation at https://tailwindcss.com.
 */
 
 const remSizes = Array(100).fill(0).reduce((acc, n, i) => {
-    return { ...acc, [i]: (i / 4) + 'rem' };
+  return { ...acc, [i]: (i / 4) + 'rem' };
 }, {});
 
 /*

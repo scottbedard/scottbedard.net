@@ -1,25 +1,33 @@
+
 <style lang="scss" src="./scss/tailwind.scss"></style>
 <style lang="scss" src="./scss/global.scss"></style>
 
 <template>
     <div id="app">
-        <router-view />
+        <!-- ribbon -->
+        <v-ribbon />
+
+        <!-- layout -->
+        <v-fade-transition>
+            <component :is="layout">
+                <router-view />
+            </component>
+        </v-fade-transition>
     </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
+<script>
+import defaultLayoutComponent from './layouts/default.vue';
+import ribbonComponent from './components/shared/ribbon.vue';
 
-export default Vue.extend({
-    mounted() {
-        this.onResize();
-        window.addEventListener('resize', this.onResize);
+export default {
+    components: {
+        'v-ribbon': ribbonComponent,
     },
-    methods: {
-        onResize() {
-            this.$store.commit('browser/setHeight', window.innerHeight);
-            this.$store.commit('browser/setWidth', window.innerWidth);
+    computed: {
+        layout() {
+            return this.$route.meta.layout || defaultLayoutComponent;
         },
     },
-});
+};
 </script>

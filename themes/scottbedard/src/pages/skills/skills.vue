@@ -1,5 +1,5 @@
 <template>
     <div>
-        Hello from the skills page!
+        Hello from the skills page
     </div>
 </template>

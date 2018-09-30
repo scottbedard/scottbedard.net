@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 const glob = require('glob-all');
 const path = require('path');
@@ -5,44 +6,11 @@ const purgecssWhitelist = require('./src/scss/whitelist');
 
 // constants
 const isTesting = process.env.NODE_ENV === 'test';
-const isProduction = process.env.NODE_ENV === 'production';
 
 // helper function to resolve relative directories and files
 const resolve = (...args) => path.resolve(__dirname, ...args);
 
-// PurgeCSS extractor for Tailwind that allows special characters in class names
-// https://github.com/FullHuman/purgecss#extractor
-class TailwindExtractor {
-    static extract(content) {
-        return content.match(/[A-z0-9-:\/]+/g) || [];
-    }
-}
-
-
 module.exports = {
-    chainWebpack(config) {
-        config
-            .module
-            .rule('ts')
-            .uses
-            .get('ts-loader')
-            .tap((options) => {
-                return {
-                    ...options,
-                    configFile: resolve('../../tsconfig.json'),
-                };
-            });
-
-        config
-            .plugin('fork-ts-checker')
-            .tap((args) => {
-                Object.assign(args[0], {
-                    tsconfig: resolve('../../tsconfig.json'),
-                });
-                
-                return args;
-            });
-    },
     configureWebpack: {
         plugins: [
             // tailwind generates a ton of utility classes for us, most
@@ -50,11 +18,17 @@ module.exports = {
             new PurgecssPlugin({
                 extractors: [
                     {
-                        extensions: ['html', 'js', 'ts', 'vue'],
-                        extractor: TailwindExtractor,
+                        extensions: ['htm', 'js', 'vue'],
+                        extractor: class {
+                            static extract(content) {
+                                // allow tailwind special characters in classes
+                                return content.match(/[A-z0-9-:/]+/g) || [];
+                            }
+                        },
                     },
                 ],
                 paths: glob.sync([
+                    resolve('./**/*.htm'),
                     resolve('./**/*.vue'),
                 ]),
                 whitelist: purgecssWhitelist,
@@ -64,11 +38,16 @@ module.exports = {
     pluginOptions: {
         karma: {
             files: [
-                resolve('./tests/unit/index.js'),
+                resolve('./tests/unit/setup.js'),
+                resolve('./tests/unit/**/*.spec.js'),
             ],
             karmaConfig: {
                 browsers: [
                     'ChromeHeadless',
+                ],
+                frameworks: [
+                    'mocha',
+                    'sinon-chai',
                 ],
             },
         },
