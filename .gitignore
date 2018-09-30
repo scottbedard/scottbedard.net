@@ -20,7 +20,7 @@ composer.lock
 /bootstrap
 /config
 /modules
-/plugins
+/plugins/october
 /storage
 /tests
 /themes/demo
