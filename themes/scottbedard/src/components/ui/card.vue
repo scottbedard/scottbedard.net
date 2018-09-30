@@ -6,9 +6,10 @@ export default {
         const bindings = bindAll(context);
         const { padded } = context.props;
 
-        if (padded) {
-            bindings.class.push('p-4');
-        }
+        bindings.class.push(
+            'bg-white',
+            padded && 'p-4',
+        );
 
         return <div {...bindings}>
             {context.slots().default}

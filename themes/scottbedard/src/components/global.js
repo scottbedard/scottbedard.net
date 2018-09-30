@@ -1,4 +1,5 @@
 import buttonComponent from './ui/button.vue';
+import cardComponent from './ui/card.vue';
 import fadeTransitionComponent from './transitions/fade.vue';
 import marginComponent from './containers/margin.vue';
 
@@ -20,4 +21,5 @@ export default {
     // ui
     //
     'v-button': buttonComponent,
+    'v-card': cardComponent,
 };

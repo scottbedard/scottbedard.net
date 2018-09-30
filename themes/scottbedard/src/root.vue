@@ -4,15 +4,15 @@
 
 <template>
     <div id="app">
+        <!-- ribbon -->
+        <v-ribbon />
+
         <!-- layout -->
         <v-fade-transition>
             <component :is="layout">
                 <router-view />
             </component>
         </v-fade-transition>
-
-        <!-- ribbon -->
-        <v-ribbon />
     </div>
 </template>
 

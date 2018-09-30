@@ -5,4 +5,5 @@
 @tailwind utilities;
 
 // custom utils
-@import './tailwind/transitions';
+@import './utils/positioning';
+@import './utils/transitions';
