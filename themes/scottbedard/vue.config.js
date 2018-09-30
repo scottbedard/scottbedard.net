@@ -3,6 +3,10 @@ const glob = require('glob-all');
 const path = require('path');
 const purgecssWhitelist = require('./src/scss/whitelist');
 
+// constants
+const isTesting = process.env.NODE_ENV === 'test';
+const isProduction = process.env.NODE_ENV === 'production';
+
 // helper function to resolve relative directories and files
 const resolve = (...args) => path.resolve(__dirname, ...args);
 
@@ -13,6 +17,7 @@ class TailwindExtractor {
         return content.match(/[A-z0-9-:\/]+/g) || [];
     }
 }
+
 
 module.exports = {
     chainWebpack(config) {
@@ -58,6 +63,9 @@ module.exports = {
     },
     pluginOptions: {
         karma: {
+            files: [
+                resolve('./tests/unit/index.js'),
+            ],
             karmaConfig: {
                 browsers: [
                     'ChromeHeadless',
@@ -65,4 +73,5 @@ module.exports = {
             },
         },
     },
+    runtimeCompiler: isTesting,
 };

@@ -5,7 +5,7 @@ import { Map } from '@/types';
 // imports
 //
 import marginComponent from './containers/margin.vue';
-import buttonComponent from './ui/button.vue';
+import buttonComponent from './ui/button';
 
 //
 // global components

@@ -7819,8 +7819,8 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
 
 spyfu-vue-factory@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/spyfu-vue-factory/-/spyfu-vue-factory-0.7.0.tgz#9af55ef783ab40899eb7ba86f58b073a12080fdf"
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/spyfu-vue-factory/-/spyfu-vue-factory-0.7.4.tgz#f3e2f48c1b4d5b5944b2dc9bcf01b59137fcf7ac"
   dependencies:
     deepmerge "^2.0.0"
     lodash.clonedeep "^4.5.0"
@@ -7829,6 +7829,10 @@ spyfu-vue-factory@^0.7.0:
     vue-router "^3.0.1"
     vuex "^3.0.0"
     vuex-router-sync "^5.0.0"
+
+spyfu-vue-functional@^0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/spyfu-vue-functional/-/spyfu-vue-functional-0.2.6.tgz#3ff8e021ae93eae5d7ff102c6ce17ae8fb5f4d43"
 
 sshpk@^1.7.0:
   version "1.14.2"

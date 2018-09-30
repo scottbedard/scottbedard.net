@@ -1,15 +1,17 @@
+// this is global boot file is used by both the application and testing environment
+// to setup our Vue instance. here we'll install plugins, filters, register global
+// components, etc... be cautions when adding to this, as they'll be added everywhere.
 import Vue from 'vue';
-import globalComponents from '@/components/global';
 
 //
-// install plugins
+// plugins
 //
 import './plugins/router';
 import './plugins/vuex';
 
 //
-// register global components
+// global components
 //
-Object.keys(globalComponents).forEach((name) => {
-    Vue.component(name, globalComponents[name]);
-});
+import globalComponents from '@/components/global';
+
+Object.keys(globalComponents).forEach((name) => Vue.component(name, globalComponents[name]));
