@@ -1,4 +1,5 @@
 /* eslint-disable no-use-before-define */
+import { createArray } from './array';
 
 /**
  * Calculate a gradient between two colors.
@@ -23,7 +24,7 @@ export function blend(fromColor, toColor, size = 3, format = 'rgb') {
     ];
 
     // compose a gradient between our two colors
-    const gradientRgb = new Array(size).fill(null).map((n, i) => [
+    const gradientRgb = createArray(size).map((n, i) => [
         Math.round(fromRgb[0] + (stepRgb[0] * i)),
         Math.round(fromRgb[1] + (stepRgb[1] * i)),
         Math.round(fromRgb[2] + (stepRgb[2] * i)),

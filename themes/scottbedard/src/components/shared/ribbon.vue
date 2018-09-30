@@ -16,6 +16,7 @@
 /* eslint-disable max-len */
 import { debounce } from 'lodash-es';
 import { blend } from '@/app/utils/color';
+import { createArray } from '@/app/utils/array';
 
 // create an array of colors that we'll allow the ribbon to blend
 // between. Each base color will have a series of complimentary
@@ -99,21 +100,19 @@ export default {
 
             const width = this.width / vertices;
 
-            const points = new Array(vertices + 4)
-                .fill(null)
-                .map((n, i) => {
-                    const x = (i * width) - (width * 2);
-                    const y = (previousHeight + (Math.random() * deviation)) - (deviation / 2);
+            const points = createArray(vertices + 4).map((n, i) => {
+                const x = (i * width) - (width * 2);
+                const y = (previousHeight + (Math.random() * deviation)) - (deviation / 2);
 
-                    previousHeight = y;
+                previousHeight = y;
 
-                    // by tracking the average height of the ribbon, we can keep things
-                    // roughly in the center of the screen. we'll use this value with
-                    // the height of the window to determine an approximate offset.
-                    totalHeight += y;
+                // by tracking the average height of the ribbon, we can keep things
+                // roughly in the center of the screen. we'll use this value with
+                // the height of the window to determine an approximate offset.
+                totalHeight += y;
 
-                    return { x, y };
-                });
+                return { x, y };
+            });
 
             const offset = verticalCenter - (totalHeight / points.length);
 
