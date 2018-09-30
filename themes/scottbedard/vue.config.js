@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 const glob = require('glob-all');
 const path = require('path');
@@ -21,7 +22,7 @@ module.exports = {
                         extractor: class {
                             static extract(content) {
                                 // allow tailwind special characters in classes
-                                return content.match(/[A-z0-9-:\/]+/g) || [];
+                                return content.match(/[A-z0-9-:/]+/g) || [];
                             }
                         },
                     },

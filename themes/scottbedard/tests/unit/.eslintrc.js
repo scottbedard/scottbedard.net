@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 module.exports = {
     env: {
         mocha: true,
@@ -10,7 +12,7 @@ module.exports = {
         sinon: true,
     },
     rules: {
-        'no-unused-expression': 0,
+        'no-unused-expressions': 0,
         'quotes': 0,
     },
 };

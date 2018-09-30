@@ -4,10 +4,7 @@
 
 <template>
     <div id="app">
-        <router-link :to="{ name: 'home' }">home</router-link>
-        - <router-link :to="{ name: 'skills' }">skills</router-link>
-
-        hmmmm
+        <!-- layout -->
         <v-fade-transition>
             <component :is="layout">
                 <router-view />
