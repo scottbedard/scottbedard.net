@@ -10,13 +10,20 @@
                 <router-view />
             </component>
         </v-fade-transition>
+
+        <!-- ribbon -->
+        <v-ribbon />
     </div>
 </template>
 
 <script>
 import defaultLayoutComponent from './layouts/default.vue';
+import ribbonComponent from './components/shared/ribbon.vue';
 
 export default {
+    components: {
+        'v-ribbon': ribbonComponent,
+    },
     computed: {
         layout() {
             return this.$route.meta.layout || defaultLayoutComponent;

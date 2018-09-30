@@ -15,7 +15,8 @@ module.exports = {
     },
     root: true,
     rules: {
-        indent: ['error', 4],
+        'func-names': 0,
+        'indent': ['error', 4],
         'no-console': isProduction ? 'error' : 'off',
         'no-debugger': isProduction ? 'error' : 'off',
     },

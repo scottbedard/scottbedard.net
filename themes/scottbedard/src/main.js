@@ -46,7 +46,24 @@ sync(store, router);
 // instantiate our application and mount it to the dom
 //
 new Vue({
-    render: h => h(rootComponent),
+    created() {
+        window.addEventListener('resize', this.onResize);
+    },
+    data() {
+        return {
+            height: window.innerHeight,
+            width: window.innerWidth,
+        };
+    },
+    render(h) {
+        return h(rootComponent);
+    },
+    methods: {
+        onResize() {
+            this.height = window.innerHeight;
+            this.width = window.innerWidth;
+        },
+    },
     router,
     store,
 }).$mount('#app');
