@@ -1,6 +1,6 @@
 /**
  * Generate an array of a given size.
- * 
+ *
  * @param  {number} size    the length of the array
  * @param  {any}    value   value to fill array with
  * @return {Array}
