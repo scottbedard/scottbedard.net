@@ -26,7 +26,17 @@ describe('<v-button>', () => {
         expect(vm.$el.textContent).to.equal('Hello world');
     });
 
-    it('accepts a "to" prop for rendering as a <router-link>', () => {
+    it('can be rendered as an anchor', () => {
+        const vm = mount({
+            template: `<v-button href="/foo" target="_blank" />`,
+        });
+
+        expect(vm.$el.tagName).to.equal('A');
+        expect(vm.$el.getAttribute('href')).to.equal('/foo');
+        expect(vm.$el.getAttribute('target')).to.equal('_blank');
+    });
+
+    it('can be rendered as a router-link', () => {
         const vm = mount({
             template: `<v-button :to="{ name: 'home' }" />`,
         });
