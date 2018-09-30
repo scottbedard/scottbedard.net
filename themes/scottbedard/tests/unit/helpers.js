@@ -4,6 +4,7 @@ import { expect } from 'chai';
 import { factory as spyfuVueFactory } from 'spyfu-vue-factory';
 
 import modules from '@/app/store';
+import routes from '@/app/routes';
 
 //
 // click an element
@@ -24,6 +25,7 @@ window.factory = function factory(options = {}) {
     return spyfuVueFactory({
         Vue,
         modules,
+        routes,
         ...options,
     });
 };
