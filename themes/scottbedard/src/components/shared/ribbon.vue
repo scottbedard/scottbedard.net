@@ -73,11 +73,11 @@ export default {
             // first things first, we need to get our canvas ready to be drawn
             // on. While we're here, lets also create a few other neccessary
             // variables for drawing the ribbon, and how it should appear.
-            const { canvas } = this.$refs;              
+            const { canvas } = this.$refs;
             canvas.width = this.width;
             canvas.height = this.height;
 
-            const ctx = canvas.getContext('2d');  
+            const ctx = canvas.getContext('2d');
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
 
@@ -142,7 +142,7 @@ export default {
                 });
         },
         redraw() {
-            let redraw = () => {
+            const redraw = () => {
                 this.draw();
                 this.isRedrawing = false;
             };

@@ -5,7 +5,7 @@ export default {
     render(h, context) {
         const bindings = bindAll(context);
         const { color, href, to } = context.props;
-        
+
         //
         // colors
         //
@@ -37,7 +37,7 @@ export default {
             Tag = 'a';
         }
 
-        return <Tag 
+        return <Tag
             class={[
                 'cursor-pointer',
                 'font-bold',
@@ -53,7 +53,7 @@ export default {
                 'hover:opacity-90',
             ]}
             href={href}
-            to={to} 
+            to={to}
             {...bindings}>
             {context.slots().default}
         </Tag>;
