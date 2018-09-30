@@ -1,9 +1,0 @@
-// preflight
-@tailwind preflight;
-
-// built in utils
-@tailwind utilities;
-
-// custom utils
-@import './utils/positioning';
-@import './utils/transitions';

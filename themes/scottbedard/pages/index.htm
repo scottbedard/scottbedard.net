@@ -1,0 +1,12 @@
+title = "test"
+url = "/:all?*"
+==
+function onStart()
+{
+    $this['vuetober'] = [
+        'env' => app()->env,
+        'token' => Session::token(),
+    ];
+}
+==
+<!DOCTYPE html><html><head><meta charset=utf-8><meta content="IE=edge" http-equiv=X-UA-Compatible><meta name=viewport content="width=device-width,initial-scale=1"><meta name=vuetober content="{{ vuetober | json_encode }}"><title>scottbedard</title><link href=themes/scottbedard/assets/js/about.07b90307.js rel=prefetch><link href=themes/scottbedard/assets/css/app.1aa33f4e.css rel=preload as=style><link href=themes/scottbedard/assets/js/app.cb23f2e1.js rel=preload as=script><link href=themes/scottbedard/assets/js/chunk-vendors.19368321.js rel=preload as=script><link href=themes/scottbedard/assets/css/app.1aa33f4e.css rel=stylesheet></head><body><noscript><strong>We're sorry but scottbedard doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app></div><script src=themes/scottbedard/assets/js/chunk-vendors.19368321.js></script><script src=themes/scottbedard/assets/js/app.cb23f2e1.js></script></body></html>
