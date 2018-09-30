@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import globalComponents from '@/components/global';
 
 //
 // plugins
@@ -9,8 +10,6 @@ import './plugins/vuex';
 //
 // register global components
 //
-import globalComponents from '@/components/global';
-
 Object.keys(globalComponents).forEach((name) => {
     Vue.component(name, globalComponents[name]);
 });

@@ -1,4 +1,5 @@
 import buttonComponent from './ui/button.vue';
+import fadeTransitionComponent from './transitions/fade.vue';
 import marginComponent from './containers/margin.vue';
 
 //
@@ -9,6 +10,11 @@ export default {
     // containers
     //
     'v-margin': marginComponent,
+
+    //
+    // transitions
+    //
+    'v-fade-transition': fadeTransitionComponent,
 
     //
     // ui
