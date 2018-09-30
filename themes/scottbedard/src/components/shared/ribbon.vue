@@ -14,7 +14,6 @@
 
 <script>
 /* eslint-disable max-len */
-/* eslint-disable no-plusplus */
 import { debounce } from 'lodash-es';
 import { blend } from '@/app/utils/color';
 
@@ -56,6 +55,10 @@ export default {
     },
     mounted() {
         this.draw();
+
+        const redrawInterval = setInterval(this.redraw, 60000);
+
+        this.$on('hook:destroyed', () => clearInterval(redrawInterval));
     },
     computed: {
         height() {
@@ -150,6 +153,7 @@ export default {
         }, 150),
     },
     watch: {
+        $route: 'redraw',
         width: 'redraw',
     },
 };
