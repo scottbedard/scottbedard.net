@@ -13,3 +13,6 @@
 .tx-half { transform: translateX(50%) }
 .ty-full { transform: translateY(100%) }
 .ty-half { transform: translateY(50%) }
+
+// this class can be useful for forcing hardware acceleration
+.tz-0 { transform: translateZ(0) }

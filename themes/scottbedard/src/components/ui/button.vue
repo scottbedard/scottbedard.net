@@ -40,15 +40,16 @@ export default {
         return <Tag
             class={[
                 'cursor-pointer',
-                'font-bold',
                 'inline-flex',
                 'no-underline',
                 'opacity-80',
-                'px-8 py-4',
+                'px-8',
+                'py-4',
                 'rounded',
                 'text-lg',
                 'transition-font',
                 'transition-opacity',
+                'tz-0', // <- force hardware acceleration to smooth out transitions
                 'focus:outline-none',
                 'hover:opacity-90',
             ]}

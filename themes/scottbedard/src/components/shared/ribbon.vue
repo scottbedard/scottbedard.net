@@ -1,6 +1,8 @@
 <template>
     <div
-        class="fixed h-full pin-l pin-t pointer-events-none transition-opacity w-full" :class="opacityClass">
+        class="fixed h-full pin-l pin-t pointer-events-none transition-opacity w-full"
+        style="z-index:-1"
+        :class="opacityClass">
         <canvas
             class="absolute pin"
             ref="canvas"
