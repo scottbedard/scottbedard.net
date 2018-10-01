@@ -18,7 +18,6 @@ composer.lock
 
 # october
 /bootstrap
-/config
 /modules
 /plugins/october
 /storage
