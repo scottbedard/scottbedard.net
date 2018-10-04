@@ -47,17 +47,17 @@ sync(store, router);
 // instantiate our application and mount it to the dom
 //
 new Vue({
-    created() {
-        window.addEventListener('resize', this.onResize);
-    },
     data() {
         return {
             height: window.innerHeight,
             width: window.innerWidth,
         };
     },
+    mounted() {
+        window.addEventListener('resize', this.onResize);
+    },
     render(h) {
-        return this.$route.name && h(rootComponent);
+        return h(rootComponent);
     },
     el: '#app',
     methods: {

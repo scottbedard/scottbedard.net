@@ -1,4 +1,4 @@
-<template>
+<template functional>
     <div>
         <v-margin class="flex justify-center" padded>
             <div class="text-center">
