@@ -11,29 +11,37 @@ const isTesting = process.env.NODE_ENV === 'test';
 const resolve = (...args) => path.resolve(__dirname, ...args);
 
 module.exports = {
-    configureWebpack: {
-        plugins: [
-            // tailwind generates a ton of utility classes for us, most
-            // of which are not used. purgecss is able to remove them.
-            new PurgecssPlugin({
-                extractors: [
-                    {
-                        extensions: ['htm', 'js', 'vue'],
-                        extractor: class {
-                            static extract(content) {
-                                // allow tailwind special characters in classes
-                                return content.match(/[A-z0-9-:/]+/g) || [];
-                            }
+    chainWebpack(config) {
+        // mock all axios calls in our testing environment
+        if (isTesting) {
+            config.resolve.alias.set('axios$', resolve('./tests/unit/mocks/axios'));
+        }
+    },
+    configureWebpack() {
+        return {
+            plugins: [
+                // tailwind generates a ton of utility classes for us, most
+                // of which are not used. purgecss is able to remove them.
+                new PurgecssPlugin({
+                    extractors: [
+                        {
+                            extensions: ['htm', 'js', 'vue'],
+                            extractor: class {
+                                static extract(content) {
+                                    // allow tailwind special characters in classes
+                                    return content.match(/[A-z0-9-:/]+/g) || [];
+                                }
+                            },
                         },
-                    },
-                ],
-                paths: glob.sync([
-                    resolve('./**/*.htm'),
-                    resolve('./**/*.vue'),
-                ]),
-                whitelist: purgecssWhitelist,
-            }),
-        ],
+                    ],
+                    paths: glob.sync([
+                        resolve('./**/*.htm'),
+                        resolve('./**/*.vue'),
+                    ]),
+                    whitelist: purgecssWhitelist,
+                }),
+            ],
+        };
     },
     pluginOptions: {
         karma: {

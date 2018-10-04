@@ -10,6 +10,7 @@ module.exports = {
         factory: true,
         mount: true,
         sinon: true,
+        stubRequests: true,
     },
     rules: {
         'no-unused-expressions': 0,

@@ -8,3 +8,13 @@
 export function createArray(size, value = null) {
     return new Array(size).fill(value);
 }
+
+/**
+ * Determine if an array is empty.
+ *
+ * @param  {Array}      arr     the array being tested
+ * @return {boolean}
+ */
+export function isEmpty(arr) {
+    return arr.length === 0;
+}
