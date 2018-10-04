@@ -48,15 +48,13 @@ class Plugin extends PluginBase
      */
     public function registerNavigation()
     {
-        return []; // Remove this line to activate
-
         return [
             'bedard' => [
-                'icon'        => 'icon-leaf',
-                'label'       => 'Bedard',
+                'icon'        => 'icon-rocket',
+                'label'       => 'Skills',
                 'order'       => 500,
                 'permissions' => ['bedard.bedard.*'],
-                'url'         => Backend::url('bedard/bedard/mycontroller'),
+                'url'         => Backend::url('bedard/bedard/skills'),
             ],
         ];
     }

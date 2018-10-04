@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Skill
+
+# Model Form Field configuration
+form: $/bedard/bedard/models/skill/fields.yaml
+
+# Model Class name
+modelClass: Bedard\Bedard\Models\Skill
+
+# Default redirect location
+defaultRedirect: bedard/bedard/skills
+
+# Create page
+create:
+    title: Create Skill
+    redirect: bedard/bedard/skills/update/:id
+    redirectClose: bedard/bedard/skills
+
+# Update page
+update:
+    title: Edit Skill
+    redirect: bedard/bedard/skills
+    redirectClose: bedard/bedard/skills
+
+# Preview page
+preview:
+    title: Preview Skill
