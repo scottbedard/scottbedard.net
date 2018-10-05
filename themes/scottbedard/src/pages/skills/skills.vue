@@ -1,12 +1,16 @@
 <template>
     <v-card padded>
-        <pre class="text-xs">{{ skills }}</pre>
+        <!-- universe view -->
+        <div>
+            <v-universe />
+        </div>
     </v-card>
 </template>
 
 <script>
 import { mapState } from 'vuex';
 import { isEmpty } from '@/app/utils/array';
+import universeComponent from './universe/universe.vue';
 
 export default {
     created() {
@@ -14,6 +18,9 @@ export default {
         if (isEmpty(this.skills)) {
             this.$store.dispatch('skills/getSkills');
         }
+    },
+    components: {
+        'v-universe': universeComponent,
     },
     computed: {
         ...mapState('skills', [
