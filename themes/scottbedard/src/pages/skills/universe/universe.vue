@@ -5,8 +5,8 @@
 
 .circle-1 {
     border-color: #d0d0d0;
-    height: 156px;
-    width: 156px;
+    height: 154px;
+    width: 154px;
 }
 
 .circle-2 {
@@ -22,8 +22,30 @@
 }
 
 .skill {
+    transition: z-index;
+    transition-delay: 150ms;
+
     div {
-        box-shadow: 0 0 24px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .skill-tooltip {
+        opacity: 0;
+        transform: translateY(0);
+    }
+
+    &:hover {
+        transition-delay: 0ms;
+        z-index: 10;
+
+        .skill-inner {
+            box-shadow: 0 0 24px rgba(0, 0, 0, 0.25);
+        }
+
+        .skill-tooltip {
+            opacity: 1;
+            transform: translateY(-1rem);
+        }
     }
 }
 </style>
@@ -47,10 +69,11 @@
             v-for="(skill, i) in firstOrbit"
             :key="skill.id"
             :style="{ animation: `orbit-1-${i} 90s linear 0s infinite` }"
-            class="skill absolute flex h-20 items-center justify-center w-20">
+            class="skill absolute flex h-20 items-center justify-center w-20 z-0">
             <div
-                class="bg-white flex h-full items-center justify-center rounded-half w-full"
+                class="skill-inner bg-white flex h-full items-center justify-center relative rounded-half transition-shadow w-full"
                 :style="{ animation: `orbit-1-${i}-inner 90s linear 0s infinite` }">
+                <v-skill-tooltip>{{ skill.name }}</v-skill-tooltip>
                 <img class="h-auto w-2/3" :alt="skill.name" :src="skill.logo.path" />
             </div>
         </div>
@@ -60,10 +83,11 @@
             v-for="(skill, i) in secondOrbit"
             :key="skill.id"
             :style="{ animation: `orbit-2-${i} 180s linear 0s infinite` }"
-            class="skill absolute flex h-14 items-center justify-center w-14">
+            class="skill absolute flex h-14 items-center justify-center w-14 z-0">
             <div
-                class="bg-white flex h-full items-center justify-center rounded-half w-full"
+                class="skill-inner bg-white flex h-full items-center justify-center opacity-90 rounded-half transition-shadow w-full"
                 :style="{ animation: `orbit-2-${i}-inner 180s linear 0s infinite` }">
+                <v-skill-tooltip>{{ skill.name }}</v-skill-tooltip>
                 <img class="h-auto w-3/5" :alt="skill.name" :src="skill.logo.path" />
             </div>
         </div>
@@ -73,10 +97,11 @@
             v-for="(skill, i) in thirdOrbit"
             :key="skill.id"
             :style="{ animation: `orbit-3-${i} 240s linear 0s infinite` }"
-            class="skill absolute flex h-8 items-center justify-center w-8">
+            class="skill absolute flex h-8 items-center justify-center w-8 z-0">
             <div
-                class="bg-white flex h-full items-center justify-center rounded-half w-full"
+                class="skill-inner bg-white flex h-full items-center justify-center opacity-80 rounded-half transition-shadow w-full"
                 :style="{ animation: `orbit-3-${i}-inner 240s linear 0s infinite` }">
+                <v-skill-tooltip>{{ skill.name }}</v-skill-tooltip>
                 <img class="h-auto w-3/5" :alt="skill.name" :src="skill.logo.path" />
             </div>
         </div>
@@ -86,8 +111,13 @@
 <script>
 import { mapState } from 'vuex';
 import dynamicStyleComponent from '@/components/shared/dynamic_style.vue';
+import skillTooltipComponent from './tooltip/tooltip.vue';
 
 export default {
+    components: {
+        'v-dynamic-style': dynamicStyleComponent,
+        'v-skill-tooltip': skillTooltipComponent,
+    },
     computed: {
         ...mapState('skills', [
             'skills',
@@ -158,9 +188,6 @@ export default {
                 `;
             });
         },
-    },
-    components: {
-        'v-dynamic-style': dynamicStyleComponent,
     },
 };
 </script>

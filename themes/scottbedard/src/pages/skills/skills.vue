@@ -1,7 +1,11 @@
 <template>
     <v-card padded>
         <!-- universe view -->
-        <div>
+        <div class="py-4">
+            <div class="font-thin leading-normal mb-4 text-center">
+                <div class="text-2xl text-grey-darkest">This page represents the universe of languages and tools I work with.</div>
+                <div class="text-xl text-grey-darker">Closest to the center are the tools I reach for every day.</div>
+            </div>
             <v-universe />
         </div>
     </v-card>

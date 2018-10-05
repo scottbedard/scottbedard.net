@@ -24,6 +24,10 @@ $defaultEasing: ease-in-out;
     transition: opacity $defaultDuration $defaultEasing;
 }
 
+.transition-shadow {
+    transition: box-shadow $defaultDuration $defaultEasing;
+}
+
 .transition-padding {
     transition: padding $defaultDuration $defaultEasing;
 }
