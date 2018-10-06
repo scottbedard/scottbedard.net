@@ -1,11 +1,17 @@
 <template>
     <v-card padded>
+        <div class="font-thin mb-4 text-left md:leading-normal md:text-center">
+            <div class="text-2xl text-grey-darkest">This page represents the universe of languages and tools I work with.</div>
+            <div class="hidden text-xl text-grey-darker md:block">Closest to the center are the tools I reach for every day.</div>
+        </div>
+
+        <!-- list view -->
+        <div class="md:hidden">
+            <v-list />
+        </div>
+
         <!-- universe view -->
-        <div class="py-4">
-            <div class="font-thin leading-normal mb-4 text-center">
-                <div class="text-2xl text-grey-darkest">This page represents the universe of languages and tools I work with.</div>
-                <div class="text-xl text-grey-darker">Closest to the center are the tools I reach for every day.</div>
-            </div>
+        <div class="hidden py-4 md:block">
             <v-universe />
         </div>
     </v-card>
@@ -14,6 +20,7 @@
 <script>
 import { mapState } from 'vuex';
 import { isEmpty } from '@/app/utils/array';
+import listComponent from './list/list.vue';
 import universeComponent from './universe/universe.vue';
 
 export default {
@@ -24,6 +31,7 @@ export default {
         }
     },
     components: {
+        'v-list': listComponent,
         'v-universe': universeComponent,
     },
     computed: {
