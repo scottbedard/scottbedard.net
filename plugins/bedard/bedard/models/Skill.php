@@ -46,4 +46,12 @@ class Skill extends Model
         'name' => 'required',
         'orbit' => 'required',
     ];
+    
+    /**
+     * Show only retired skills.
+     */
+    public function scopeRetired($query)
+    {
+        return $query->whereNotNull('retired_at');
+    }
 }

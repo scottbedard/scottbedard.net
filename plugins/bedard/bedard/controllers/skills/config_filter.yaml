@@ -1,0 +1,11 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+
+scopes:
+
+    category:
+        label: Retired Only
+        type: checkbox
+        default: false
+        scope: retired

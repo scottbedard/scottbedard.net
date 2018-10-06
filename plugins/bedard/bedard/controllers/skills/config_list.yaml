@@ -17,6 +17,9 @@ recordUrl: bedard/bedard/skills/update/:id
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records
 
+# Filter configuration
+filter: config_filter.yaml
+
 # Records to display per page
 recordsPerPage: 20
 
