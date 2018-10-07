@@ -41,11 +41,13 @@ export default {
             class={[
                 'cursor-pointer',
                 'inline-flex',
+                'justify-center',
                 'no-underline',
                 'opacity-80',
                 'px-8',
                 'py-4',
                 'rounded',
+                'text-center',
                 'text-lg',
                 'transition-font',
                 'transition-opacity',

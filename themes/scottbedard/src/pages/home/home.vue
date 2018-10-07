@@ -14,34 +14,44 @@
 
                 <!-- nav -->
                 <nav class="flex flex-wrap justify-center -m-2 overflow-hidden transition-margin sm:-m-4">
-                    <v-button
-                        class="m-2 transition-margin sm:m-4"
-                        color="green">
-                        Thoughts
-                    </v-button>
-                    <v-button
-                        class="m-2 transition-margin sm:m-4"
-                        color="blue">
-                        Experiments
-                    </v-button>
-                    <v-button
-                        class="m-2 transition-margin sm:m-4"
-                        color="indigo"
-                        :to="{ name: 'skills' }">
-                        Skills
-                    </v-button>
-                    <v-button
-                        class="m-2 transition-margin sm:m-4"
-                        color="red">
-                        Contact
-                    </v-button>
-                    <v-button
-                        class="m-2 transition-margin sm:m-4"
-                        color="teal"
-                        href="https://github.com/scottbedard"
-                        target="_blank">
-                        GitHub
-                    </v-button>
+                    <div class="p-2 w-1/2 sm:max-w-none sm:w-auto">
+                        <v-button
+                            class="w-full"
+                            color="green">
+                            Thoughts
+                        </v-button>
+                    </div>
+                    <div class="p-2 w-1/2 sm:max-w-none sm:w-auto">
+                        <v-button
+                            class="w-full"
+                            color="blue">
+                            Experiments
+                        </v-button>
+                    </div>
+                    <div class="p-2 w-1/2 sm:max-w-none sm:w-auto">
+                        <v-button
+                            class="w-full"
+                            color="indigo"
+                            :to="{ name: 'skills' }">
+                            Skills
+                        </v-button>
+                    </div>
+                    <div class="p-2 w-1/2 sm:max-w-none sm:w-auto">
+                        <v-button
+                            class="w-full"
+                            color="red">
+                            Contact
+                        </v-button>
+                    </div>
+                    <div class="p-2 w-1/2 sm:max-w-none sm:w-auto">
+                        <v-button
+                            class="w-full"
+                            color="teal"
+                            href="https://github.com/scottbedard"
+                            target="_blank">
+                            GitHub
+                        </v-button>
+                    </div>
                 </nav>
             </div>
         </v-margin>
