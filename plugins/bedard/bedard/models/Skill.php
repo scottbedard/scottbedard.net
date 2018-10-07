@@ -29,6 +29,7 @@ class Skill extends Model
         'notes',
         'orbit',
         'retired_at',
+        'sort_order',
         'updated_at',
     ];
 

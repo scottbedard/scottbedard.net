@@ -19,6 +19,7 @@ composer.lock
 # october
 /bootstrap
 /modules
+/plugins/bedard/debugbar
 /plugins/october
 /storage
 /tests
