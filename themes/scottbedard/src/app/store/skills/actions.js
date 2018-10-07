@@ -5,7 +5,11 @@ import { getSkills } from '@/app/repositories/skills';
 //
 export default {
     // get skills
-    getSkills({ commit }) {
+    getSkills({ commit, state }) {
+        if (state.skills.length > 0) {
+            return Promise.resolve();
+        }
+
         commit('setIsLoading', true);
 
         const request = getSkills();

@@ -8,7 +8,7 @@
                 </router-link>
                 <span class="font-thin text-grey-darker">
                     <span> / </span>
-                    <span>{{ $route.name }}</span>
+                    <span>{{ header }}</span>
                 </span>
             </div>
 
@@ -21,10 +21,22 @@
         </header>
 
         <!-- main content -->
-        <main>
+        <main class="mb-4">
             <v-fade-transition>
                 <router-view />
             </v-fade-transition>
         </main>
     </v-margin>
 </template>
+
+<script>
+import { resolveProperty } from '@/app/utils/object';
+
+export default {
+    computed: {
+        header() {
+            return resolveProperty(this.$route.meta, 'header') || this.$route.name;
+        },
+    },
+};
+</script>

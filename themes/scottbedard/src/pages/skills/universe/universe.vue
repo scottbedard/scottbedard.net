@@ -109,7 +109,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 import dynamicStyleComponent from '@/components/shared/dynamic_style.vue';
 import skillTooltipComponent from './tooltip/tooltip.vue';
 
@@ -119,12 +119,9 @@ export default {
         'v-skill-tooltip': skillTooltipComponent,
     },
     computed: {
-        ...mapState('skills', [
-            'skills',
+        ...mapGetters('skills', [
+            'activeSkills',
         ]),
-        activeSkills() {
-            return this.skills.filter(skill => skill.retiredAt === null);
-        },
         firstOrbit() {
             return this.activeSkills.filter(skill => skill.orbit === 1);
         },

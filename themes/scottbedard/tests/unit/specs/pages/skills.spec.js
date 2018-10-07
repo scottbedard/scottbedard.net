@@ -40,21 +40,4 @@ describe('skills page', () => {
             done();
         }, 10);
     });
-
-    it('only fetches skills when skills array is empty', () => {
-        let dispatch;
-
-        mount({
-            beforeCreate() {
-                dispatch = sinon.stub(this.$store, 'dispatch');
-            },
-            template: `<v-skills />`,
-        }, {
-            skills: {
-                skills: skillsFixture(),
-            },
-        });
-
-        expect(dispatch).not.to.have.been.calledWith('skills/getSkills');
-    });
 });

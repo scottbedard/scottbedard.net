@@ -12,6 +12,7 @@ class SkillsController extends Controller
     {
         return Skill::orderBy('orbit')
             ->with('logo')
+            ->orderBy('sort_order', 'asc')
             ->get();
     }
 }

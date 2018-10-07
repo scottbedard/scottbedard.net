@@ -21,6 +21,18 @@ export default [
     },
 
     //
+    // retired skills
+    //
+    {
+        component: () => import('@/pages/retired_skills/retired_skills.vue' /* webpackChunkName: 'retiredSkills' */),
+        meta: {
+            header: 'skills',
+        },
+        name: 'retiredSkills',
+        path: '/skills/retired',
+    },
+
+    //
     // skills
     //
     {
