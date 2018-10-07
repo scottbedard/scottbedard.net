@@ -2,7 +2,7 @@
     <v-card padded>
         <!-- title -->
         <div class="font-thin leading-normal mb-4 text-center text-left">
-            <div class="text-xl text-grey-darkest md:text-2xl">These tools were once part of my arsenal, but nothing can last forever.</div>
+            <div class="text-xl text-grey-darkest md:text-2xl">These tools were once part of my arsenal, but nothing lasts forever.</div>
             <div class="text-lg text-grey-darker md:text-xl">Thanks for the memories, everyone.</div>
         </div>
 
