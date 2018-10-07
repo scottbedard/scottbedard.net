@@ -8850,8 +8850,8 @@ vue-cli-plugin-unit-karma@^0.5.0:
     webpack-merge "^4.1.2"
 
 vue-cli-plugin-vuetober@^3.0.0-beta.10:
-  version "3.0.0-beta.10"
-  resolved "https://registry.yarnpkg.com/vue-cli-plugin-vuetober/-/vue-cli-plugin-vuetober-3.0.0-beta.10.tgz#5c18872d167683590a44b57c54e0e44805bc8cc0"
+  version "3.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/vue-cli-plugin-vuetober/-/vue-cli-plugin-vuetober-3.0.0-rc.1.tgz#cba599263e641125e39d765ec78feb66edac7e48"
   dependencies:
     write-file-webpack-plugin "^4.4.0"
 
