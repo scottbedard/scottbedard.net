@@ -14,10 +14,10 @@
                 'border-t border-grey-lighter mt-4 pt-4': i > 0,
             }"
             :key="skill.id">
-            <div class="flex items-center mr-4 transition-width w-10 sm:w-12">
-                <img :src="skill.logo.path" />
+            <div class="flex items-center min-w-12">
+                <img class="h-auto w-12" :src="skill.logo.path" />
             </div>
-            <div class="flex flex-wrap items-center">
+            <div class="flex flex-wrap items-center pl-4">
                 <div class="w-full">{{ skill.name }}</div>
                 <div
                     v-if="skill.notes"

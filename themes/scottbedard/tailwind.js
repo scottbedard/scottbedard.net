@@ -521,7 +521,7 @@ module.exports = {
   */
 
   minWidth: {
-    '0': '0',
+    ...remSizes,
     'full': '100%',
   },
 
@@ -541,7 +541,7 @@ module.exports = {
   */
 
   minHeight: {
-    '0': '0',
+    ...remSizes,
     'full': '100%',
     'screen': '100vh'
   },
@@ -573,6 +573,7 @@ module.exports = {
     '4xl': '90rem',
     '5xl': '100rem',
     'full': '100%',
+    ...remSizes,
   },
 
 
