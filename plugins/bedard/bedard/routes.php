@@ -10,6 +10,7 @@ Route::prefix('api/bedard/bedard')
         // blog
         //
         Route::get('blog', 'Bedard\Bedard\Http\Controllers\BlogController@index');
+        Route::get('blog/{slug}', 'Bedard\Bedard\Http\Controllers\BlogController@show');
 
         //
         // skills

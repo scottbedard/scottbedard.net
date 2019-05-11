@@ -73,7 +73,16 @@ import { getPosts } from '@/app/repositories/blog';
 
 export default {
     created() {
-        this.fetchPosts();
+        // fetch the list of posts
+        this.loading = true;
+
+        getPosts().then((response) => {
+            // success
+            this.posts = response.data;
+        }).finally(() => {
+            // complete
+            this.loading = false;
+        });
     },
     data() {
         return {
@@ -87,19 +96,6 @@ export default {
         },
         olderPosts() {
             return this.posts.slice(1);
-        },
-    },
-    methods: {
-        fetchPosts() {
-            this.loading = true;
-
-            getPosts().then((response) => {
-                // success
-                this.posts = response.data;
-            }).finally(() => {
-                // complete
-                this.loading = false;
-            });
         },
     },
 };
