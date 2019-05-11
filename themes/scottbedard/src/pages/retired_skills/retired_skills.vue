@@ -1,40 +1,47 @@
 <template>
-    <v-card padded>
-        <!-- title -->
-        <div class="font-thin leading-normal mb-4 text-center text-left">
-            <div class="text-xl text-grey-darkest md:text-2xl">These tools were once part of my arsenal, but nothing lasts forever.</div>
-            <div class="text-lg text-grey-darker md:text-xl">Thanks for the memories, everyone.</div>
-        </div>
+    <v-page padded>
+        <v-margin padded>
+            <!-- title -->
+            <div class="mb-4 md:mb-8">
+                <h1 class="font-light leading-tight text-2xl text-grey-darkest mb-2 md:mb-4 md:text-center md:text-3xl">
+                    These were tools I once used,<br class="hidden md:inline" />
+                    but have since moved on from.
+                </h1>
+                <p class="font-thin leading-normal max-w-lg mx-auto md:text-center">
+                    I've learned a lot from various tools over the years; from different
+                    programming styles, to re-thinking what was even possible. So to the authors
+                    of these tools, and their wonderful communities, thank you.
+                </p>
+            </div>
 
-        <!-- retired skills -->
-        <div
-            v-for="(skill, i) in retiredSkills"
-            class="flex items-center"
-            :class="{
-                'border-t border-grey-lighter mt-4 pt-4': i > 0,
-            }"
-            :key="skill.id">
-            <div class="flex items-center min-w-12">
-                <img class="h-auto w-12" :src="skill.logo.path" />
+            <!-- retired skills -->
+            <div class="mb-4">
+                <v-card>
+                    <v-skills-list :skills="retiredSkills" />
+                    
+                </v-card>
             </div>
-            <div class="flex flex-wrap items-center pl-4">
-                <div class="w-full">{{ skill.name }}</div>
-                <div
-                    v-if="skill.notes"
-                    class="font-grey mt-1 text-xs">
-                    {{ skill.notes }}
-                </div>
-            </div>
-        </div>
-    </v-card>
+
+            <!-- active skills -->
+            <p>
+                <router-link class="block font-thin leading-normal text-center text-sm md:text-base" :to="{ name: 'skills' }">
+                    Click here to see the tools I currently enjoy working with.
+                </router-link>
+            </p>
+        </v-margin>
+    </v-page>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import skillsListComponent from '@/components/shared/skills_list';
 
 export default {
     created() {
         this.$store.dispatch('skills/getSkills');
+    },
+    components: {
+        'v-skills-list': skillsListComponent,
     },
     computed: {
         ...mapGetters('skills', [

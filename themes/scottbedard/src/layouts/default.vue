@@ -8,13 +8,13 @@
                     <span class="hidden xs:inline">scottbedard.net</span>
                 </router-link>
                 <span class="font-thin text-grey-darker">
-                    <span> / </span>
+                    <span>&nbsp;/&nbsp;</span>
                     <span>{{ header }}</span>
                 </span>
             </div>
 
+            <!-- mobile nav -->
             <nav class="md:hidden">
-                <!-- mobile nav -->
                 <v-mobile-nav />
             </nav>
         </header>

@@ -7,7 +7,7 @@
                     who also enjoys Laravel and Node.
                 </h1>
                 <p class="font-thin leading-normal mb-4 md:text-center">
-                    This page represents the universe of tools I'm currently working with.<br class="hidden md:inline" />
+                    This page represents the universe of tools I'm usually working with.<br class="hidden md:inline" />
                     <span class="md:hidden">At the top of the list are tools I reach for on a daily basis.</span>
                     <span class="hidden md:inline">Closest to the center are ones I reach for on a daily basis.</span>
                 </p>
@@ -19,7 +19,7 @@
                     Fun side note, check out the desktop view of this page to see an experiment
                     I had with dynamic css animations.
                 </p>
-                <v-card padded>
+                <v-card>
                     <v-list />
                 </v-card>
             </div>
@@ -32,7 +32,7 @@
             <!-- retired -->
             <p>
                 <router-link class="block font-thin leading-normal text-center text-sm md:text-base" :to="{ name: 'retiredSkills' }">
-                    Nothing can live forever though, and tech is obviously no exception.<br class="hidden md:inline" />
+                    Nothing can live forever, and clearly tech is no exception.<br class="hidden md:inline" />
                     Click here to see my toolkit from yesteryear.
                 </router-link>
             </p>
