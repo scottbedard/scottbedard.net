@@ -7,18 +7,17 @@
                     These were tools I once used,<br class="hidden md:inline" />
                     but have since moved on from.
                 </h1>
-                <p class="font-thin leading-normal max-w-lg mx-auto md:text-center">
-                    I've learned a lot from various tools over the years; from different
-                    programming styles, to re-thinking what was even possible. So to the authors
-                    of these tools, and their wonderful communities, thank you.
+                <p class="font-thin leading-normal max-w-md mx-auto md:text-center">
+                    I've learned a lot from various tools over the years. They taught me different
+                    programming styles, and often forced me to rethink what I thought I knew. So to
+                    the authors of these tools, and their wonderful communities, thank you.
                 </p>
             </div>
 
             <!-- retired skills -->
-            <div class="mb-4">
+            <div class="max-w-lg mb-4 mx-auto">
                 <v-card>
                     <v-skills-list :skills="retiredSkills" />
-                    
                 </v-card>
             </div>
 

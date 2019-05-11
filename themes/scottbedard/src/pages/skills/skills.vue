@@ -32,7 +32,7 @@
             <!-- retired -->
             <p>
                 <router-link class="block font-thin leading-normal text-center text-sm md:text-base" :to="{ name: 'retiredSkills' }">
-                    Nothing can live forever, and clearly tech is no exception.<br class="hidden md:inline" />
+                    Nothing can live forever, and tech is clearly no exception.<br class="hidden md:inline" />
                     Click here to see my toolkit from yesteryear.
                 </router-link>
             </p>
