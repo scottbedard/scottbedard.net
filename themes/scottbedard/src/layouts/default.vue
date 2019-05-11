@@ -1,10 +1,11 @@
 <template>
     <div class="pt-16">
-        <header class="bg-grey-lighter fixed flex h-16 items-center justify-between pin px-4" padded>
+        <header class="fixed flex h-16 items-center justify-between pin px-4" padded>
             <!-- title -->
             <div class="text-xl">
                 <router-link :to="{ name: 'home' }">
-                    scottbedard.net
+                    <span class="xs:hidden">sb</span>
+                    <span class="hidden xs:inline">scottbedard.net</span>
                 </router-link>
                 <span class="font-thin text-grey-darker">
                     <span> / </span>
@@ -12,16 +13,9 @@
                 </span>
             </div>
 
-            <nav>
+            <nav class="md:hidden">
                 <!-- mobile nav -->
-                <div class="md:hidden">
-                    <v-mobile-nav />
-                </div>
-
-                <!-- desktop nav -->
-                <div class="hidden md:block">
-                    <router-link :to="{ name: 'skills' }">Skills</router-link>
-                </div>
+                <v-mobile-nav />
             </nav>
         </header>
 

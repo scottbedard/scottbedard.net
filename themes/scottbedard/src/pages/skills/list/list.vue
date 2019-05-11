@@ -2,7 +2,7 @@
     <div>
         <div
             v-for="skill in activeSkills"
-            class="border-b border-grey-lighter flex items-center mb-4 pb-4 "
+            class="flex items-center mb-4 pb-4 "
             :key="skill.id">
             <div class="flex items-center min-w-12">
                 <img class="h-auto w-12" :src="skill.logo.path" />

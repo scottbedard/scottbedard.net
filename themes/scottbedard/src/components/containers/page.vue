@@ -1,7 +1,7 @@
 <template>
-    <v-margin :padded="padded">
+    <div :class="{ 'py-4': padded }">
         <slot />
-    </v-margin>
+    </div>
 </template>
 
 <script>
