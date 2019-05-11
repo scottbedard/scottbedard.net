@@ -1,5 +1,5 @@
 <template functional>
-    <div>
+    <v-page padded>
         <v-margin class="flex justify-center" padded>
             <div class="text-center">
                 <!-- title -->
@@ -17,7 +17,8 @@
                     <div class="p-2 w-1/2 sm:max-w-none sm:w-auto">
                         <v-button
                             class="w-full"
-                            color="green">
+                            color="green"
+                            :to="{ name: 'blog' }">
                             Thoughts
                         </v-button>
                     </div>
@@ -55,5 +56,5 @@
                 </nav>
             </div>
         </v-margin>
-    </div>
+    </v-page>
 </template>

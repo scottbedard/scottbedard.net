@@ -21,6 +21,7 @@ composer.lock
 /modules
 /plugins/bedard/debugbar
 /plugins/october
+/plugins/rainlab/blog/vendor
 /storage
 /tests
 /themes/demo

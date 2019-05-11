@@ -7,6 +7,11 @@ Route::prefix('api/bedard/bedard')
     ->group(function() {
 
         //
+        // blog
+        //
+        Route::get('blog', 'Bedard\Bedard\Http\Controllers\BlogController@index');
+
+        //
         // skills
         //
         Route::get('skills', 'Bedard\Bedard\Http\Controllers\SkillsController@index');

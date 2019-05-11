@@ -9,6 +9,18 @@ import splashComponent from '@/layouts/splash.vue';
 //
 export default [
     //
+    // blog
+    //
+    {
+        component: () => import('@/pages/blog/blog.vue' /* webpackChunkName: 'blog' */),
+        meta: {
+            header: 'blog',
+        },
+        name: 'blog',
+        path: '/blog',
+    },
+
+    //
     // home
     //
     {
