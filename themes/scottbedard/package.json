@@ -17,6 +17,7 @@
     "prismjs": "^1.16.0",
     "prismjs-material-theme": "^1.0.0",
     "spyfu-vue-functional": "^0.2.6",
+    "spyfu-vue-utils": "^0.7.0",
     "spyfu-vuex-helpers": "^0.12.4",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",

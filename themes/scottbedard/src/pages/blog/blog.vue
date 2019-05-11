@@ -4,7 +4,10 @@
             <div class="max-w-lg mx-auto">
                 <!-- latest post -->
                 <div class="font-bold leading-normal mb-4 text-xs text-grey-dark tracking-wide uppercase">
-                    Latest Post &bull; <time :datetime="latestPost.publishedAt">{{ latestPost.publishedAt | date }}</time>
+                    Latest Post
+                    <template v-if="latestPost && latestPost.published">
+                        &bull; <time :datetime="latestPost.publishedAt">{{ latestPost.publishedAt | date }}</time>
+                    </template>
                 </div>
                 <article
                     v-if="latestPost"

@@ -1656,6 +1656,10 @@ better-assert@~1.0.0:
   dependencies:
     callsite "1.0.0"
 
+bezier-easing@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/bezier-easing/-/bezier-easing-2.1.0.tgz#c04dfe8b926d6ecaca1813d69ff179b7c2025d86"
+
 bfj@^6.1.1:
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/bfj/-/bfj-6.1.1.tgz#05a3b7784fbd72cfa3c22e56002ef99336516c48"
@@ -8367,6 +8371,12 @@ spyfu-vue-factory@^0.7.4:
 spyfu-vue-functional@^0.2.6:
   version "0.2.6"
   resolved "https://registry.yarnpkg.com/spyfu-vue-functional/-/spyfu-vue-functional-0.2.6.tgz#3ff8e021ae93eae5d7ff102c6ce17ae8fb5f4d43"
+
+spyfu-vue-utils@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/spyfu-vue-utils/-/spyfu-vue-utils-0.7.0.tgz#fdef0984afe6312a5f284c22ea14c837091b1479"
+  dependencies:
+    bezier-easing "^2.1.0"
 
 spyfu-vuex-helpers@^0.12.4:
   version "0.12.4"

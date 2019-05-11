@@ -31,24 +31,22 @@
             <article
                 v-if="!loading && post"
                 class="max-w-lg mx-auto">
-                <h1
-                    v-text="post.title"
-                    class="font-normal text-4xl"
-                />
-                <h2
-                    v-if="!post.published"
-                    v-text="'This is not published, only admins can see this'"
-                    class="font-bold leading-normal mt-4 text-orange-light text-xs uppercase"
-                />
-                <p
-                    v-if="post.excerpt"
-                    v-text="post.excerpt"
-                    class="leading-normal mt-4 text-grey-darkest"
-                />
-                <div class="border-b-2 border-grey-light mb-4 pb-4"></div>
-                <div class="font-bold leading-normal mb-12 text-xs text-grey-dark tracking-wide uppercase">
-                    Published <time :datetime="post.publishedAt">{{ post.publishedAt | date }}</time>
-                </div>
+                <header>
+                    <h1
+                        v-text="post.title"
+                        class="font-normal leading-normal text-4xl"
+                    />
+                    <div
+                        v-if="!post.published"
+                        v-text="'This is not published, only admins can see this'"
+                        class="font-bold leading-normal mt-4 text-orange-light text-xs uppercase"
+                    />
+                    <div
+                        v-else
+                        class="font-bold leading-normal mt-4 mb-12 text-xs text-grey-darker tracking-wide uppercase">
+                        Published <time :datetime="post.publishedAt">{{ post.publishedAt | date }}</time>
+                    </div>
+                </header>
                 <v-card padded>
                     <div
                         v-html="post.contentHtml"
