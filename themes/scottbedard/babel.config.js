@@ -2,8 +2,9 @@ module.exports = {
     plugins: [
         ['prismjs', {
             'languages': [
-                'javascript',
+                'bash',
                 'css',
+                'javascript',
                 'markup',
                 'php',
             ],

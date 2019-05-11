@@ -3,7 +3,11 @@
         @apply mt-0;
 
         > :not(:first-child) {
-            @apply mt-4;
+            @apply mt-6;
+        }
+
+        h2 {
+            @apply font-normal;
         }
 
         pre {

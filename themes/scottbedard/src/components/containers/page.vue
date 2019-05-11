@@ -1,5 +1,5 @@
 <template>
-    <div :class="{ 'py-4': padded }">
+    <div :class="{ 'py-8': padded }">
         <slot />
     </div>
 </template>
