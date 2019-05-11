@@ -2,6 +2,11 @@ import Vue from 'vue';
 import globalComponents from '@/components/global';
 
 //
+// filters
+//
+import './filters/date';
+
+//
 // plugins
 //
 import './plugins/router';

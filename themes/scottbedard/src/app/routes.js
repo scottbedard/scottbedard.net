@@ -8,6 +8,7 @@ import splashComponent from '@/layouts/splash.vue';
 // note that all routes must be named, otherwise they may not mount correctly
 //
 export default [
+
     //
     // blog
     //
@@ -18,6 +19,15 @@ export default [
         },
         name: 'blog',
         path: '/blog',
+    },
+
+    {
+        component: () => import('@/pages/blog/post/post.vue' /* webpackChunkName: 'blog-post' */),
+        meta: {
+            header: 'blog',
+        },
+        name: 'blog-post',
+        path: '/blog/:slug',
     },
 
     //
