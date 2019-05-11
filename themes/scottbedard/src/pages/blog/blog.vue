@@ -1,7 +1,7 @@
 <template>
     <v-page padded>
         <v-margin padded>
-            <div class="max-w-md mx-auto">
+            <div class="max-w-lg mx-auto">
                 <!-- latest post -->
                 <div class="font-bold leading-normal mb-4 text-xs text-grey-dark tracking-wide uppercase">
                     Latest Post &bull; <time :datetime="latestPost.publishedAt">{{ latestPost.publishedAt | date }}</time>
