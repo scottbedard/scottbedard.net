@@ -4,19 +4,19 @@
 }
 
 .circle-1 {
-    border-color: #d0d0d0;
+    @apply border-grey;
     height: 154px;
     width: 154px;
 }
 
 .circle-2 {
-    border-color: #dadada;
+    @apply border-grey;
     height: 350px;
     width: 350px;
 }
 
 .circle-3 {
-    border-color: #dfdfdf;
+    @apply border-grey;
     height: 538px;
     width: 538px;
 }
@@ -53,16 +53,19 @@
 <template>
     <div class="flex items-center justify-center relative universe">
         <!-- orbit animation keyframes -->
-        <v-dynamic-style :content="[
-            firstOrbitKeyframes,
-            secondOrbitKeyframes,
-            thirdOrbitKeyframes,
-        ]" />
+        <v-dynamic-style
+            :content="[
+                firstOrbitKeyframes,
+                secondOrbitKeyframes,
+                thirdOrbitKeyframes,
+            ]"
+            :leave-delay="500"
+        />
 
         <!-- circles -->
-        <div class="absolute border border-dotted circle-1 pin-center rounded-half z-0"></div>
-        <div class="absolute border border-dotted circle-2 pin-center rounded-half z-0"></div>
-        <div class="absolute border border-dotted circle-3 pin-center rounded-half z-0"></div>
+        <div class="absolute border border-dotted circle-1 pin-center rounded-half"></div>
+        <div class="absolute border border-dotted circle-2 pin-center rounded-half"></div>
+        <div class="absolute border border-dotted circle-3 pin-center rounded-half"></div>
 
         <!-- first orbit -->
         <div

@@ -10,7 +10,7 @@
                 <p class="font-thin leading-normal max-w-md mx-auto md:text-center">
                     I've learned a lot from various tools over the years. They taught me different
                     programming styles, and often forced me to rethink what I thought I knew. So to
-                    the authors of these tools, and their wonderful communities, thank you.
+                    the authors of these tools, and to their wonderful communities, thank you.
                 </p>
             </div>
 

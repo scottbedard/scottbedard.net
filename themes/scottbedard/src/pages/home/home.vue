@@ -4,7 +4,7 @@
             <div class="text-center">
                 <!-- title -->
                 <h1 class="font-thin mb-2 text-4xl transition-font md:mb-4 md:text-5xl">
-                    Hi, I'm Scott.
+                    Hi, I'm Scott Bedard.
                 </h1>
 
                 <!-- secondary title -->
@@ -25,7 +25,8 @@
                     <div class="p-2 w-1/2 sm:max-w-none sm:w-auto">
                         <v-button
                             class="w-full"
-                            color="blue">
+                            color="blue"
+                            :to="{ name: 'experiments' }">
                             Experiments
                         </v-button>
                     </div>

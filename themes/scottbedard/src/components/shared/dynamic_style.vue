@@ -5,7 +5,9 @@ import { flattenDeep } from 'lodash-es';
 export default {
     beforeDestroy() {
         // remove our style tag from the document head
-        document.head.removeChild(this.styleNode);
+        setTimeout(() => {
+            document.head.removeChild(this.styleNode);
+        }, this.leaveDelay);
     },
     data() {
         // create a style tag with a dynamic text node
@@ -31,6 +33,10 @@ export default {
         content: {
             required: true,
             type: [Array, String],
+        },
+        leaveDelay: {
+            default: 0,
+            type: Number,
         },
     },
 };

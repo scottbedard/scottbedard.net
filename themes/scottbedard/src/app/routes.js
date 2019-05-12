@@ -31,6 +31,18 @@ export default [
     },
 
     //
+    // experiments
+    //
+    {
+        component: () => import('@/pages/experiments/experiments.vue' /* webpackChunkName: 'experiments' */),
+        meta: {
+            header: 'experiments',
+        },
+        name: 'experiments',
+        path: 'experiments',
+    },
+
+    //
     // home
     //
     {

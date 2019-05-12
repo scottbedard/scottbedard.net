@@ -2,22 +2,22 @@
     <v-page padded>
         <v-margin padded>
             <div>
-                <h1 class="font-light leading-tight text-2xl text-grey-darkest mb-2 md:mb-4 md:text-center md:text-3xl">
-                    I like to think of myself as a frontender<br class="hidden md:inline" />
-                    who also enjoys Laravel and Node.
+                <h1 class="font-light leading-normal text-2xl text-grey-darkest mb-2 md:mb-4 md:text-center md:text-3xl">
+                    I think of myself as frontend developer,<br class="hidden sm:inline" />
+                    who's also experienced with Laravel and Node.
                 </h1>
                 <p class="font-thin leading-normal mb-4 md:text-center">
-                    This page represents the universe of tools I'm usually working with.<br class="hidden md:inline" />
+                    <span>This page represents the universe of tools I enjoy working with.<br class="hidden md:inline" /></span>
                     <span class="md:hidden">At the top of the list are tools I reach for on a daily basis.</span>
-                    <span class="hidden md:inline">Closest to the center are ones I reach for on a daily basis.</span>
+                    <span class="hidden md:inline">Closest to the center are the tools I reach for every day.</span>
                 </p>
             </div>
 
             <!-- list view -->
             <div class="mb-4 md:hidden">
                 <p class="bg-grey-light font-thin leading-normal mb-4 p-4 rounded text-left text-sm">
-                    Fun side note, check out the desktop view of this page to see an experiment
-                    I had with dynamic css animations.
+                    <strong>Fun side note,</strong> check out the desktop version of this page to see
+                    one of my experiments with dynamic css.
                 </p>
                 <v-card>
                     <v-list />
@@ -32,7 +32,7 @@
             <!-- retired -->
             <p>
                 <router-link class="block font-thin leading-normal text-center text-sm md:text-base" :to="{ name: 'retiredSkills' }">
-                    Nothing can live forever, and tech is clearly no exception.<br class="hidden md:inline" />
+                    Nothing can live forever, and tech is certainly no exception.<br class="hidden md:inline" />
                     Click here to see my toolkit from yesteryear.
                 </router-link>
             </p>
