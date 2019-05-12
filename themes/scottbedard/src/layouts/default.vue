@@ -16,7 +16,7 @@
                         </router-link>
                         <span class="inline-flex font-thin text-grey-darker">
                             <span class="mx-2 md:mx-4">/</span>
-                            <router-link :to="$route.meta.headerRoute">{{ header }}</router-link>
+                            <router-link :to="$route.meta.headerRoute || ''">{{ header }}</router-link>
                             <span class="hidden items-center relative md:inline-flex" ref="dropdown">
                                 <a
                                     class="px-2 md:px-4"

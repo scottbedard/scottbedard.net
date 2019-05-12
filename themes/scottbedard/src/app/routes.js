@@ -48,7 +48,43 @@ export default [
             },
         },
         name: 'experiments',
-        path: 'experiments',
+        path: '/experiments',
+    },
+
+    {
+        component: () => import('@/pages/experiments/cube/cube.vue' /* webpackChunkName: 'cube' */),
+        meta: {
+            header: 'experiments',
+            headerRoute: {
+                name: 'experiments',
+            },
+        },
+        name: 'experiments-cube',
+        path: '/experiments/cube',
+    },
+
+    {
+        component: () => import('@/pages/experiments/heatmap/heatmap.vue' /* webpackChunkName: 'heatmap' */),
+        meta: {
+            header: 'experiments',
+            headerRoute: {
+                name: 'experiments',
+            },
+        },
+        name: 'experiments-heatmap',
+        path: '/experiments/svelte-heatmap',
+    },
+
+    {
+        component: () => import('@/pages/experiments/ribbon/ribbon.vue' /* webpackChunkName: 'ribbon' */),
+        meta: {
+            header: 'experiments',
+            headerRoute: {
+                name: 'experiments',
+            },
+        },
+        name: 'experiments-ribbon',
+        path: '/experiments/canvas-ribbon',
     },
 
     //
