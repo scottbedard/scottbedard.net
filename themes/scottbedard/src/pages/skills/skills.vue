@@ -8,7 +8,7 @@
                             I think of myself as a frontender<br class="hidden sm:inline" />
                             who also enjoys Laravel and Node.
                         </h1>
-                        <p class="font-thin leading-normal mb-8 text-grey-darkest">
+                        <p class="font-thin leading-normal mb-4 text-grey-darkest lg:mb-8">
                             <span>This page represents the universe of tools I'm currently working with.&nbsp;<br class="hidden md:inline lg:hidden" /></span>
                             <span class="md:hidden">At the top of the list are ones I reach for on a daily basis.</span>
                             <span class="hidden md:inline">Closest to the center are the tools I reach for every day.</span>
