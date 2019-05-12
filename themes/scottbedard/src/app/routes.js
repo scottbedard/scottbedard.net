@@ -16,6 +16,9 @@ export default [
         component: () => import('@/pages/blog/blog.vue' /* webpackChunkName: 'blog' */),
         meta: {
             header: 'blog',
+            headerRoute: {
+                name: 'blog',
+            },
         },
         name: 'blog',
         path: '/blog',
@@ -25,6 +28,9 @@ export default [
         component: () => import('@/pages/blog/post/post.vue' /* webpackChunkName: 'blog-post' */),
         meta: {
             header: 'blog',
+            headerRoute: {
+                name: 'blog',
+            },
         },
         name: 'blog-post',
         path: '/blog/:slug',
@@ -37,6 +43,9 @@ export default [
         component: () => import('@/pages/experiments/experiments.vue' /* webpackChunkName: 'experiments' */),
         meta: {
             header: 'experiments',
+            headerRoute: {
+                name: 'experiments',
+            },
         },
         name: 'experiments',
         path: 'experiments',
@@ -61,6 +70,9 @@ export default [
         component: () => import('@/pages/retired_skills/retired_skills.vue' /* webpackChunkName: 'retiredSkills' */),
         meta: {
             header: 'skills',
+            headerRoute: {
+                name: 'skills',
+            },
         },
         name: 'retiredSkills',
         path: '/skills/retired',
@@ -71,6 +83,12 @@ export default [
     //
     {
         component: () => import('@/pages/skills/skills.vue' /* webpackChunkName: 'skills' */),
+        meta: {
+            header: 'skills',
+            headerRoute: {
+                name: 'skills',
+            },
+        },
         name: 'skills',
         path: '/skills',
     },
