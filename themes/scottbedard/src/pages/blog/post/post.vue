@@ -49,15 +49,13 @@
                         v-text="post.title"
                         class="font-thin leading-normal text-4xl"
                     />
-                    <div
-                        v-if="!post.published"
-                        v-text="'Not Published'"
-                        class="font-bold leading-normal mt-4 text-orange-light text-xs uppercase"
-                    />
-                    <div
-                        v-else
-                        class="font-bold leading-normal mt-4 mb-12 text-xs text-grey-darker tracking-wide uppercase">
-                        Published <time :datetime="post.publishedAt">{{ post.publishedAt | date }}</time>
+                    <div class="font-bold leading-normal mt-4 mb-12 text-xs text-grey-darker tracking-wide uppercase">
+                        <span v-if="post.published">
+                            Published <time :datetime="post.publishedAt">{{ post.publishedAt | date }}</time>
+                        </span>
+                        <span v-else class="text-orange-light">
+                            Not Published
+                        </span>
                     </div>
                 </header>
                 <v-card padded>
