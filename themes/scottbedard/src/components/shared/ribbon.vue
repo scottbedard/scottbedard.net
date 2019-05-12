@@ -14,6 +14,7 @@
 /* eslint-disable max-len */
 import { blend } from '@/app/utils/color';
 import { createArray } from '@/app/utils/array';
+import { componentTimeout } from 'spyfu-vue-utils';
 
 // create an array of colors that we'll allow the ribbon to blend
 // between. Each base color will have a series of complimentary
@@ -42,7 +43,7 @@ const baseColors = Object.keys(colors);
 // set up some other constants we'll need to draw the ribbon.
 // eventually, these could be converted to props to make it
 // a bit more unteractive, but until then this is fine.
-const opacity = 0.4;
+const opacity = 0.3;
 const deviation = 135;
 
 export default {
@@ -152,7 +153,7 @@ export default {
             this.isRedrawing = true;
             this.debounceRedraw = redraw;
 
-            setTimeout(() => {
+            componentTimeout(this, () => {
                 if (this.debounceRedraw === redraw) {
                     redraw();
                 }

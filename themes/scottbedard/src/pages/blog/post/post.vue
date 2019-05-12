@@ -2,12 +2,24 @@
     .post /deep/ {
         @apply mt-0;
 
-        > :not(:first-child) {
-            @apply mt-6;
-        }
-
         h2 {
             @apply font-normal;
+        }
+
+        //
+        // spacing
+        //
+        h2 + p,
+        h2 + pre,
+        p + p,
+        p + pre,
+        pre + p, {
+            @apply mt-4;
+        }
+
+        p + h2,
+        pre + h2 {
+            @apply mt-16;
         }
 
         pre {
@@ -22,6 +34,7 @@
 </style>
 
 <style lang="scss">
+    // additional languages are installed in babel.config.js
     @import '../../../../node_modules/prismjs-material-theme/sass/oceanic';
 </style>
 
@@ -34,11 +47,11 @@
                 <header>
                     <h1
                         v-text="post.title"
-                        class="font-normal leading-normal text-4xl"
+                        class="font-thin leading-normal text-4xl"
                     />
                     <div
                         v-if="!post.published"
-                        v-text="'This is not published, only admins can see this'"
+                        v-text="'Not Published'"
                         class="font-bold leading-normal mt-4 text-orange-light text-xs uppercase"
                     />
                     <div
@@ -50,7 +63,7 @@
                 <v-card padded>
                     <div
                         v-html="post.contentHtml"
-                        class="post leading-normal mt-8"
+                        class="post leading-normal"
                     />
                 </v-card>
             </article>
@@ -62,14 +75,6 @@
 import { getPost } from '@/app/repositories/blog';
 import { get } from 'lodash-es';
 import Prism from 'prismjs';
-
-function getLanguage(codeEl) {
-    if (codeEl.classList.contains('language-js')) {
-        return 'javascript';
-    }
-
-    return '';
-}
 
 export default {
     created() {
@@ -91,15 +96,10 @@ export default {
             post: null,
         };
     },
-    methods: {
-        highlightCode() {
-            Prism.highlightAll();
-        },
-    },
     watch: {
         loading(loading) {
             if (!loading) {
-                this.$nextTick(this.highlightCode);
+                this.$nextTick(Prism.highlightAll);
             }
         },
     },

@@ -1,6 +1,6 @@
 <style lang="scss" scoped>
     .v-card {
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: rgba(255, 255, 255, 0.95);
     }
 </style>
 

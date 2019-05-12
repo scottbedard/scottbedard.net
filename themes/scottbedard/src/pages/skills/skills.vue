@@ -17,7 +17,7 @@
             <div class="mb-4 md:hidden">
                 <p class="bg-grey-light font-thin leading-normal mb-4 p-4 rounded text-left text-sm">
                     <strong>Fun side note,</strong> check out the desktop version of this page to see
-                    one of my experiments with dynamic css.
+                    an experiment I had with dynamic css.
                 </p>
                 <v-card>
                     <v-list />

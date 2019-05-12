@@ -2,47 +2,11 @@
     <v-page padded>
         <v-margin padded>
             <div class="max-w-lg mx-auto">
-                <!-- latest post -->
-                <div class="font-bold leading-normal mb-4 text-xs text-grey-dark tracking-wide uppercase">
-                    Latest Post
-                    <template v-if="latestPost && latestPost.published">
-                        &bull; <time :datetime="latestPost.publishedAt">{{ latestPost.publishedAt | date }}</time>
-                    </template>
-                </div>
-                <article
-                    v-if="latestPost"
-                    class="mx-auto"
-                    :class="{
-                        'border-b-2 border-grey-light mb-20 pb-20': olderPosts.length > 0,   
-                    }">
-                    <router-link
-                        :title="latestPost.title"
-                        :to="{ name: 'blog-post', params: { slug: latestPost.slug }}">
-                        <h1
-                            v-text="latestPost.title"
-                            class="font-normal text-4xl"
-                        />
-                        <p
-                            v-if="!latestPost.published"
-                            v-text="'This is not published, only admins can see this'"
-                            class="font-bold leading-normal mt-2 text-orange-light text-xs uppercase"
-                        />
-                        <p
-                            v-if="latestPost.excerpt"
-                            v-text="latestPost.excerpt"
-                            class="leading-normal mt-4 text-grey-darkest"
-                        />
-                    </router-link>
-                </article>
 
                 <!-- older posts -->
-                <div
-                    v-text="'Older Posts'"
-                    class="font-bold leading-normal mb-4 text-xs text-grey-dark tracking-wide uppercase"
-                />
 
                 <article
-                    v-for="(post, index) in olderPosts"
+                    v-for="(post, index) in posts"
                     :class="{
                         'mt-20': index > 0,
                     }"
@@ -52,18 +16,26 @@
                         :to="{ name: 'blog-post', params: { slug: post.slug }}">
                         <h2
                             v-text="post.title"
-                            class="font-normal text-4xl"
+                            class="font-thin mb-4 text-4xl"
                         />
-                        <p
-                            v-if="!post.published"
-                            v-text="'This is not published, only admins can see this'"
-                            class="font-bold leading-normal mt-2 text-orange-light text-xs uppercase"
-                        />
-                        <p
-                            v-if="post.excerpt"
-                            v-text="post.excerpt"
-                            class="leading-normal mt-4 text-grey-darkest"
-                        />
+                        <div class="flex flex-wrap justify-between leading-normal">
+                            <div class="font-bold mb-4 text-grey-darker text-xs tracking-wide uppercase">
+                                {{ index === 0 ? 'Latest Post &bull;' : '' }}
+                                <time :datetime="post.publishedAt">{{ post.publishedAt | date }}</time>
+                            </div>
+                            <div
+                                v-if="!post.published"
+                                v-text="'Not Published'"
+                                class="font-bold mb-4 text-orange-light text-xs tracking-wide uppercase"
+                            />
+                        </div>
+                        <v-card padded>
+                            <p
+                                v-if="post.excerpt"
+                                v-text="post.excerpt"
+                                class="leading-normal text-grey-darkest"
+                            />
+                        </v-card>
                     </router-link>
                 </article>
             </div>
@@ -92,14 +64,6 @@ export default {
             loading: false,
             posts: [],
         };
-    },
-    computed: {
-        latestPost() {
-            return this.posts.slice(0, 1).pop();
-        },
-        olderPosts() {
-            return this.posts.slice(1);
-        },
     },
 };
 </script>
