@@ -28,7 +28,7 @@
                 <a
                     class="flex font-thin items-center ml-8"
                     href="#"
-                    title="Click to redraw the canvas ribbon"
+                    title="Click view the ribbon source code"
                     @click.prevent>
                     <i class="fa fa-code mr-2"></i>
                     View Source
