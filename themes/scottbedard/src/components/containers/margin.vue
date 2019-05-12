@@ -10,7 +10,7 @@ export default {
             bindings.class.push('px-4');
         }
 
-        return <div class="max-w-2xl mx-auto" {...bindings}>
+        return <div class="max-w-3xl mx-auto" {...bindings}>
             {context.slots().default}
         </div>;
     },
