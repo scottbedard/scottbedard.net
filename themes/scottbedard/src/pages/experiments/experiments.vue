@@ -2,27 +2,34 @@
     <v-page padded>
         <v-margin padded>
             <header>
-                <h1 class="font-light leading-tight text-2xl text-grey-darkest mb-2 md:mb-4 md:text-center md:text-3xl">
-                    From time to time, I use this site as<br class="hidden md:inline" />
-                    a sandbox for experimenting.
+                <h1 class="font-light leading-normal text-2xl text-grey-darkest max-w-lg mb-2 mx-auto md:mb-4 md:text-center md:text-3xl">
+                    Welcome to the hall of experiments!
                 </h1>
-                <!-- <p class="font-thin leading-normal mb-4 md:text-center">
-                    I hope you find these experiments interesting in some way.
-                </p> -->
+                <p class="leading-normal max-w-md mx-auto text-center">
+                    I often use this site as a place to mess around with new ideas. Here
+                    are a few of them that I figured others might find interesting or useful.
+                </p>
             </header>
 
             <div class="max-w-lg mx-auto">
-                <v-card>
-                    <div
-                        v-for="(experiment, index) in experiments"
-                        :key="index">
-                        <div class="p-4 text-center">
-                            <h2 class="font-light leading-tight mb-2 text-2xl text-grey-darkest">{{ experiment.title }}</h2>
-                            <p class="font-thin leading-normal mb-4">{{ experiment.excerpt }}</p>
+                <div
+                    v-for="(experiment, index) in experiments"
+                    class="mt-20"
+                    :key="index">
+                    <h2
+                        v-text="experiment.title"
+                        class="font-light leading-tight mb-4 text-2xl text-center text-grey-darkest"
+                    />
+                    <p
+                        class="mb-4 text-center"
+                        v-text="experiment.excerpt"
+                    />
+                    <v-card padded>
+                        <div class="text-center">
                             <img :src="experiment.thumbnail" />
                         </div>
-                    </div>
-                </v-card>
+                    </v-card>
+                </div>
             </div>
         </v-margin>
     </v-page>
