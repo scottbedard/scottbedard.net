@@ -4,19 +4,19 @@
 }
 
 .circle-1 {
-    @apply border-grey;
+    @apply border-grey border-2;
     height: 154px;
     width: 154px;
 }
 
 .circle-2 {
-    @apply border-grey;
+    @apply border-grey border-2;
     height: 350px;
     width: 350px;
 }
 
 .circle-3 {
-    @apply border-grey;
+    @apply border-grey border-2;
     height: 538px;
     width: 538px;
 }

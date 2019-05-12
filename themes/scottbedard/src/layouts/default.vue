@@ -14,14 +14,12 @@
                             <span class="xs:hidden">sb</span>
                             <span class="hidden xs:inline">scottbedard</span>
                         </router-link>
-                        <span class="font-thin text-grey-darker">
-                            <span>&nbsp;/&nbsp;</span>
-                            <router-link :to="$route.meta.headerRoute">
-                                {{ header }}
-                            </router-link>
-                            <span class="relative" ref="dropdown">
+                        <span class="inline-flex font-thin text-grey-darker">
+                            <span class="mx-2 md:mx-4">/</span>
+                            <router-link :to="$route.meta.headerRoute">{{ header }}</router-link>
+                            <span class="hidden items-center relative md:inline-flex" ref="dropdown">
                                 <a
-                                    class="px-2"
+                                    class="px-2 md:px-4"
                                     href="#"
                                     @click.prevent="expandDesktopNav">
                                     <i class="fa fa-angle-down"></i>
@@ -53,12 +51,12 @@
                     <nav class="hidden items-center md:flex">
                         <a
                             href="#"
-                            class="mr-4 text-grey-dark text-xl hover:text-grey-darkest"
+                            class="mr-4 text-grey-dark text-2xl hover:text-grey-darkest"
                             title="Send me a message">
                             <i class="fa fa-envelope-o"></i>
                         </a>
                         <a
-                            class="text-grey-dark text-xl hover:text-grey-darkest"
+                            class="text-grey-dark text-2xl hover:text-grey-darkest"
                             href="https://github.com/scottbedard"
                             target="_blank"
                             title="View GitHub profile">
