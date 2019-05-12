@@ -19,10 +19,10 @@
                     :to="experiment.to">
                     <h2
                         v-text="experiment.title"
-                        class="font-light leading-normal text-2xl text-center"
+                        class="font-light leading-normal text-3xl text-center"
                     />
                     <p
-                        class="font-thin leading-normal mb-8 text-center text-grey-darker"
+                        class="font-thin leading-normal mb-8 text-center text-grey-darkest"
                         v-text="experiment.excerpt"
                     />
                     <v-card padded>

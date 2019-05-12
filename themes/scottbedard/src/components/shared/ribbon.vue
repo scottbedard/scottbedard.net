@@ -47,6 +47,9 @@ const opacity = 0.3;
 const deviation = 135;
 
 export default {
+    created() {
+        this.$root.$on('redraw-canvas-ribbon', this.redraw);
+    },
     data() {
         return {
             debouncedRedraw: null,
