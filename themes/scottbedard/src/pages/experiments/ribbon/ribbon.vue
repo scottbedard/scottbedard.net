@@ -5,10 +5,17 @@
                 Canvas Ribbon
             </h1>
             <p class="font-thin leading-normal max-w-md mb-4 text-grey-darkest">
-                A while back I decided to start learning about the much feared
+                A while back I decided to start playing the much feared
                 <span class="font-mono">&lt;canvas&gt;</span> element. This colorful
                 group of triangles is from one of my very first experiments with it.
             </p>
+            <p class="font-thin leading-normal max-w-md mb-4 text-grey-darkest">
+                The basic idea here was to place points across the screen, while
+                varying the height a little for each one. After that, it's just
+                a matter of playing connect the dots and filling in the triangles
+                with colors from a gradient.
+            </p>
+
             <div class="flex items-center">
                 <a
                     class="flex font-thin items-center"
