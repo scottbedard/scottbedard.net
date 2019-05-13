@@ -24,9 +24,9 @@
                     <div class="mb-8">
                         <a
                             class="flex font-thin items-center"
-                            href="https://github.com/scottbedard/svelte-heatmap"
+                            href="https://github.com/scottbedard/scottbedard.net"
                             target="_blank"
-                            title="Click view this project on GitHub">
+                            title="Click view this page on GitHub">
                             <i class="fa fa-code mr-2"></i>
                             View Source
                         </a>

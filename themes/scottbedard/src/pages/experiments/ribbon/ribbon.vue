@@ -5,7 +5,7 @@
                 Canvas Ribbon
             </h1>
             <p class="font-thin leading-normal max-w-md mb-4 text-grey-darkest">
-                A while back I decided to start playing the much feared
+                A while back I decided to start playing with the much feared
                 <span class="font-mono">&lt;canvas&gt;</span> element. This colorful
                 group of triangles is from one of my very first experiments with it.
             </p>
