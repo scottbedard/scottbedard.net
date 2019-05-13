@@ -17,33 +17,6 @@
                         <span class="inline-flex font-thin text-grey-darker">
                             <span class="mx-2 md:mx-4">/</span>
                             <router-link :to="$route.meta.headerRoute || ''">{{ header }}</router-link>
-                            <span class="hidden items-center relative md:inline-flex" ref="dropdown">
-                                <a
-                                    class="px-2 md:px-4"
-                                    href="#"
-                                    @click.prevent="expandDesktopNav">
-                                    <i class="fa fa-angle-down"></i>
-                                </a>
-                                <transition
-                                    enter-class="opacity-0 -ty-8"
-                                    enter-to-class="opacity-100 ty-0"
-                                    enter-active-class="transition-opacity transition-transform"
-                                    leave-class="opacity-100 ty-0"
-                                    leave-to-class="opacity-0 -ty-8"
-                                    leave-active-class="transition-opacity transition-transform">
-                                    <div
-                                        v-if="desktopNavExpanded"
-                                        class="absolute pt-8 pin-t-full pin-r">
-                                        <v-card padded>
-                                            <div class="leading-normal">
-                                                <router-link class="block text-right" :to="{ name: 'blog' }">Blog</router-link>
-                                                <router-link class="block text-right" :to="{ name: 'skills' }">Skills</router-link>
-                                                <router-link class="block text-right" :to="{ name: 'experiments' }">Experiments</router-link>
-                                            </div>
-                                        </v-card>
-                                    </div>
-                                </transition>
-                            </span>
                         </span>
                     </div>
 

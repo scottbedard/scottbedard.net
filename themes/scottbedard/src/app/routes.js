@@ -59,8 +59,8 @@ export default [
                 name: 'experiments',
             },
         },
-        name: 'experiments-cube',
-        path: '/experiments/cube',
+        name: 'cube',
+        path: '/cube',
     },
 
     {
@@ -71,8 +71,8 @@ export default [
                 name: 'experiments',
             },
         },
-        name: 'experiments-heatmap',
-        path: '/experiments/svelte-heatmap',
+        name: 'svelte-heatmap',
+        path: '/svelte-heatmap',
     },
 
     {
@@ -83,8 +83,8 @@ export default [
                 name: 'experiments',
             },
         },
-        name: 'experiments-ribbon',
-        path: '/experiments/canvas-ribbon',
+        name: 'canvas-ribbon',
+        path: '/canvas-ribbon',
     },
 
     //

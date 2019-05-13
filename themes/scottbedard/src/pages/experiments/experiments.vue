@@ -3,11 +3,10 @@
         <v-margin padded>
             <header>
                 <h1 class="font-thin leading-normal text-3xl text-grey-darkest max-w-lg mb-2 mx-auto text-center md:mb-4 md:text-3xl">
-                    Welcome to my hall of experiments!
+                    Welcome to my Hall of Experiments!
                 </h1>
                 <p class="font-thin leading-normal max-w-md mx-auto text-center text-grey-darkest">
-                    I often use this site as a place to sandbox and mess around with ideas. Here
-                    are a few of them that I figured others might find interesting.
+                    Here are a few experiments that I'm proud of, and that you might find interesting.
                 </p>
             </header>
 
@@ -26,8 +25,11 @@
                         v-text="experiment.excerpt"
                     />
                     <v-card padded>
-                        <div class="text-center">
-                            <img :src="experiment.thumbnail" />
+                        <div class="py-4 text-center">
+                            <img
+                                :style="experiment.thumbnailStyles || {}"
+                                :src="experiment.thumbnail"
+                            />
                         </div>
                     </v-card>
                 </router-link>
@@ -46,15 +48,18 @@ export default {
                     thumbnail: require('./heatmap/heatmap.png'),
                     title: 'Svelte Heatmap',
                     to: {
-                        name: 'experiments-heatmap'
+                        name: 'svelte-heatmap'
                     },
                 },
                 {
                     excerpt: 'An odd experiment to see how far we can push the 3D transform abilities of CSS.',
                     thumbnail: require('./cube/cube.png'),
+                    thumbnailStyles: {
+                        'max-width': '200px',
+                    },
                     title: 'CSS Cube',
                     to: {
-                        name: 'experiments-cube',
+                        name: 'cube',
                     },
                 },
                 {
@@ -62,7 +67,7 @@ export default {
                     thumbnail: require('./ribbon/ribbon.png'),
                     title: 'Canvas ribbon',
                     to: {
-                        name: 'experiments-ribbon',
+                        name: 'canvas-ribbon',
                     },
                 },
             ];

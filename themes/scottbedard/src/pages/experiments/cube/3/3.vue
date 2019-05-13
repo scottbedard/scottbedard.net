@@ -60,7 +60,6 @@
 
 <template>
     <div class="cube-wrapper relative">
-
         <!-- cube -->
         <div class="cube-outer">
             <div class="cube-inner" :class="[activeTurnClasses, isTurningClass]">
@@ -86,6 +85,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import TurnMap from './turn_map';
 import { componentTimeout } from 'spyfu-vue-utils';
 

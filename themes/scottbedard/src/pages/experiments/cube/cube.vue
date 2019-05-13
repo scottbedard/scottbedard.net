@@ -16,9 +16,9 @@
                         I am only using JavaScript to manage state and apply styles to the
                         various stickers. This used to be interactive, with key bindings that
                         felt roughly similar to real speed cubing. In the years since this
-                        experiment though, I've decided no longer to support solving on this version.
-                        You're welcome to scramble the puzzle and enjoy the weird CSS, but to
-                        start solving head over to <a href="https://speedcube.site" target="_blank">
+                        experiment, however, I've decided to no longer support solving on this version.
+                        You're welcome to scramble the puzzle, if only for nostalgia's sake, and enjoy this weird CSS creation. To
+                        start solving, head over to <a href="https://speedcube.site" target="_blank">
                         the speedcube site</a>.
                     </p>
                     <div class="mb-8">
@@ -34,8 +34,8 @@
                     <div class="bg-grey-light font-thin leading-normal max-w-md mb-8 p-4 rounded text-grey-darkest text-sm">
                         <p class="mb-4">
                             <strong>I've since turned this experiment into a real site!</strong><br />
-                            Don't worry, I didn't use CSS to do the rendering. It's built using threejs,
-                            and has loads of features that this one never could. If you're a speed cuber
+                            Don't worry, I didn't use CSS to do the rendering. The site is built using three.js,
+                            and has loads of features that this CSS version could never have. If you're a speed cuber
                             and would like to get involved, it's entirely open source.
                         </p>
                         <a
