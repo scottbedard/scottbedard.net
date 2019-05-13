@@ -1,4 +1,5 @@
 <style lang="scss" scoped>
+    /* purgecss start ignore */
     @import './stickers/default';
     @import './stickers/u';
     @import './stickers/l';
@@ -54,6 +55,7 @@
             transition: transform 90ms linear;
         }
     }
+    /* purgecss end ignore */
 </style>
 
 <template>
