@@ -21,6 +21,7 @@ export default {
             else if (color === 'purple') bindings.class.push('bg-purple');
             else if (color === 'red') bindings.class.push('bg-red');
             else if (color === 'teal') bindings.class.push('bg-teal');
+            else if (color === 'grey') bindings.class.push('bg-grey');
         } else {
             // no color (grey)
             bindings.class.push('bg-grey', 'text-grey-darker', 'hover:text-grey-darkest');

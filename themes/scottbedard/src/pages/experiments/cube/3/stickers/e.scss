@@ -1,0 +1,53 @@
+@import './config';
+
+.turn-e {
+    .face-f {
+        &.index-3 { transform: rotateX(0deg) rotateY(90deg) rotateZ(0deg) translate3d(-$stickerSpacing, 0%, $stickerDepth) }
+        &.index-4 { transform: rotateX(0deg) rotateY(90deg) rotateZ(0deg) translate3d(0%, 0%, $stickerDepth) }
+        &.index-5 { transform: rotateX(0deg) rotateY(90deg) rotateZ(0deg) translate3d($stickerSpacing, 0%, $stickerDepth) }
+    }
+
+    .face-r {
+        &.index-3 { transform: rotateY(180deg) rotateX(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, 0%, $stickerDepth) }
+        &.index-4 { transform: rotateY(180deg) rotateX(0deg) rotateZ(0deg) translate3d(0%, 0%, $stickerDepth) }
+        &.index-5 { transform: rotateY(180deg) rotateX(0deg) rotateZ(0deg) translate3d($stickerSpacing, 0%, $stickerDepth) }
+    }
+
+    .face-b {
+        &.index-3 { transform: rotateY(270deg) rotateX(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, 0%, $stickerDepth) }
+        &.index-4 { transform: rotateY(270deg) rotateX(0deg) rotateZ(0deg) translate3d(0%, 0%, $stickerDepth) }
+        &.index-5 { transform: rotateY(270deg) rotateX(0deg) rotateZ(0deg) translate3d($stickerSpacing, 0%, $stickerDepth) }
+    }
+
+    .face-l {
+        &.index-3 { transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, 0%, $stickerDepth) }
+        &.index-4 { transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg) translate3d(0%, 0%, $stickerDepth) }
+        &.index-5 { transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg) translate3d($stickerSpacing, 0%, $stickerDepth) }
+    }
+}
+
+.turn-e-prime {
+    .face-f {
+        &.index-3 { transform: rotateX(0deg) rotateY(-90deg) rotateZ(0deg) translate3d(-$stickerSpacing, 0%, $stickerDepth) }
+        &.index-4 { transform: rotateX(0deg) rotateY(-90deg) rotateZ(0deg) translate3d(0%, 0%, $stickerDepth) }
+        &.index-5 { transform: rotateX(0deg) rotateY(-90deg) rotateZ(0deg) translate3d($stickerSpacing, 0%, $stickerDepth) }
+    }
+
+    .face-r {
+        &.index-3 { transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, 0%, $stickerDepth) }
+        &.index-4 { transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg) translate3d(0%, 0%, $stickerDepth) }
+        &.index-5 { transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg) translate3d($stickerSpacing, 0%, $stickerDepth) }
+    }
+
+    .face-b {
+        &.index-3 { transform: rotateY(90deg) rotateX(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, 0%, $stickerDepth) }
+        &.index-4 { transform: rotateY(90deg) rotateX(0deg) rotateZ(0deg) translate3d(0%, 0%, $stickerDepth) }
+        &.index-5 { transform: rotateY(90deg) rotateX(0deg) rotateZ(0deg) translate3d($stickerSpacing, 0%, $stickerDepth) }
+    }
+
+    .face-l {
+        &.index-3 { transform: rotateY(-180deg) rotateX(0deg) rotateZ(0deg) translate3d(-$stickerSpacing, 0%, $stickerDepth) }
+        &.index-4 { transform: rotateY(-180deg) rotateX(0deg) rotateZ(0deg) translate3d(0%, 0%, $stickerDepth) }
+        &.index-5 { transform: rotateY(-180deg) rotateX(0deg) rotateZ(0deg) translate3d($stickerSpacing, 0%, $stickerDepth) }
+    }
+}
