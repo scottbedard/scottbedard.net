@@ -9,17 +9,14 @@
         //
         // spacing
         //
-        h2 + p,
-        h2 + pre,
-        p + p,
-        p + pre,
-        pre + p, {
+        p:not(:first-child),
+        pre:not(:first-child),
+        ul:not(:first-child) {
             @apply mt-4;
         }
 
-        p + h2,
-        pre + h2 {
-            @apply mt-16;
+        h2 {
+            @apply mt-12;
         }
 
         pre {
