@@ -3,6 +3,7 @@ import cardComponent from './ui/card.vue';
 import fadeTransitionComponent from './transitions/fade.vue';
 import marginComponent from './containers/margin.vue';
 import pageComponent from './containers/page.vue';
+import backgroundTextComponent from './ui/background_text.vue';
 
 //
 // global components
@@ -24,4 +25,5 @@ export default {
     //
     'v-button': buttonComponent,
     'v-card': cardComponent,
+    'v-background-text': backgroundTextComponent,
 };

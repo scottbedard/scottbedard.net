@@ -93,32 +93,34 @@
 <template>
     <v-page padded>
         <v-margin padded>
-            <h1 class="font-thin mb-4 text-3xl">
-                Svelte Heatmap
-            </h1>
-            <p class="font-thin leading-normal max-w-md mb-4 text-grey-darkest">
-                This project was mostly just an excuse to get my feet wet
-                with Svelte. To see my first impressions of the framework,
-                <a href="#" @click.prevent>check out this blog post</a>.
-            </p>
-            <div class="flex items-center mb-8">
-                <a
-                    class="flex font-thin items-center"
-                    href="#"
-                    title="Click to redraw the heatmap"
-                    @click.prevent="redraw">
-                    <i class="fa fa-refresh mr-2"></i>
-                    Redraw
-                </a>
-                <a
-                    class="flex font-thin items-center ml-8"
-                    href="https://github.com/scottbedard/svelte-heatmap"
-                    target="_blank"
-                    title="Click view this project on GitHub">
-                    <i class="fa fa-code mr-2"></i>
-                    View Source
-                </a>
-            </div>
+            <v-background-text>
+                <h1 class="font-thin mb-4 text-3xl">
+                    Svelte Heatmap
+                </h1>
+                <p class="font-thin leading-normal max-w-md mb-4 text-grey-darkest">
+                    This project was mostly just an excuse to get my feet wet
+                    with Svelte. To see my first impressions of the framework,
+                    <a href="#" @click.prevent>check out this blog post</a>.
+                </p>
+                <div class="flex items-center mb-8">
+                    <a
+                        class="flex font-thin items-center"
+                        href="#"
+                        title="Click to redraw the heatmap"
+                        @click.prevent="redraw">
+                        <i class="fa fa-refresh mr-2"></i>
+                        Redraw
+                    </a>
+                    <a
+                        class="flex font-thin items-center ml-8"
+                        href="https://github.com/scottbedard/svelte-heatmap"
+                        target="_blank"
+                        title="Click view this project on GitHub">
+                        <i class="fa fa-code mr-2"></i>
+                        View Source
+                    </a>
+                </div>
+            </v-background-text>
             <v-card padded>
                 <div ref="heatmap" class="heatmap px-20 py-8"></div>
             </v-card>
