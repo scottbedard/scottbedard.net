@@ -26,16 +26,16 @@
                         <v-button
                             class="w-full"
                             color="blue"
-                            :to="{ name: 'experiments' }">
-                            Experiments
+                            :to="{ name: 'skills' }">
+                            Skills
                         </v-button>
                     </div>
                     <div class="p-2 w-1/2 sm:max-w-none sm:w-auto">
                         <v-button
                             class="w-full"
                             color="indigo"
-                            :to="{ name: 'skills' }">
-                            Skills
+                            :to="{ name: 'experiments' }">
+                            Experiments
                         </v-button>
                     </div>
                     <div class="p-2 w-1/2 sm:max-w-none sm:w-auto">

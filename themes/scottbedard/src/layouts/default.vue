@@ -22,12 +22,30 @@
 
                     <!-- mobile nav -->
                     <nav class="hidden items-center md:flex">
-                        <a
-                            href="#"
-                            class="mr-4 text-grey-dark text-2xl hover:text-grey-darkest"
-                            title="Send me a message">
+                        <router-link
+                            class="mr-8 text-grey-dark text-2xl hover:text-grey-darker"
+                            title="Random thoughts about things"
+                            :to="{ name: 'blog' }">
+                            <i class="fa fa-lightbulb-o"></i>
+                        </router-link>
+                        <router-link
+                            class="mr-8 text-grey-dark text-2xl hover:text-grey-darker"
+                            title="Check out the tools I enjoy using"
+                            :to="{ name: 'skills' }">
+                            <i class="fa fa-bullseye"></i>
+                        </router-link>
+                        <router-link
+                            class="mr-8 text-grey-dark text-2xl hover:text-grey-darker"
+                            title="See my code experiments"
+                            :to="{ name: 'experiments' }">
+                            <i class="fa fa-rocket"></i>
+                        </router-link>
+                        <router-link
+                            class="mr-8 text-grey-dark text-2xl hover:text-grey-darker"
+                            title="Get in touch with me"
+                            :to="{ name: 'contact' }">
                             <i class="fa fa-envelope-o"></i>
-                        </a>
+                        </router-link>
                         <a
                             class="text-grey-dark text-2xl hover:text-grey-darkest"
                             href="https://github.com/scottbedard"
