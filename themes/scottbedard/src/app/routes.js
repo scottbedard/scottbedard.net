@@ -37,6 +37,21 @@ export default [
     },
 
     //
+    // contact
+    //
+    {
+        component: () => import('@/pages/contact/contact.vue' /* webpackChunkName: 'contact' */),
+        meta: {
+            header: 'contact',
+            headerRoute: {
+                name: 'contact',
+            },
+        },
+        name: 'contact',
+        path: '/contact',
+    },
+
+    //
     // experiments
     //
     {
