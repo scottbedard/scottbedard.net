@@ -5,11 +5,24 @@
 }
 
 a {
-    color: config('colors.grey-darkest');
+    @apply text-red-light;
     text-decoration: none;
     transition: color 150ms ease-in-out;
 
     &:hover {
-        color: config('colors.red');
+        @apply text-red;
+        text-decoration: underline;
     }
+
+    &.heading {
+        @apply text-grey-darkest;
+
+        &:hover {
+            @apply no-underline text-red;
+        }
+    }
+}
+
+p {
+    @apply leading-normal text-lg;
 }

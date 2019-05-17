@@ -12,6 +12,7 @@
                         }"
                         :key="post.slug">
                         <router-link
+                            class="heading"
                             :title="post.title"
                             :to="{ name: 'blog-post', params: { slug: post.slug }}">
                             <h2

@@ -10,13 +10,13 @@
                 <div class="flex h-16 items-center justify-between">
                     <!-- title -->
                     <div class="text-xl">
-                        <router-link :to="{ name: 'home' }">
+                        <router-link class="heading" :to="{ name: 'home' }">
                             <span class="xs:hidden">sb</span>
                             <span class="hidden xs:inline">scottbedard</span>
                         </router-link>
-                        <span class="inline-flex font-thin text-grey-darker">
-                            <span class="mx-2 md:mx-4">/</span>
-                            <router-link :to="$route.meta.headerRoute || ''">{{ header }}</router-link>
+                        <span class="inline-flex font-light text-grey-darker">
+                            <span class="mx-2">/</span>
+                            <router-link class="heading" :to="$route.meta.headerRoute || ''">{{ header }}</router-link>
                         </span>
                     </div>
 

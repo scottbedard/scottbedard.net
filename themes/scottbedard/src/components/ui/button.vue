@@ -1,3 +1,11 @@
+<style lang="scss" scoped>
+a, button {
+    &:hover {
+        text-decoration: none;
+    }
+}
+</style>
+
 <script>
 import { bindAll } from 'spyfu-vue-functional';
 
