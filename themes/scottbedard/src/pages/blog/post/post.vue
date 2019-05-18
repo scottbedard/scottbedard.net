@@ -2,6 +2,31 @@
     .post /deep/ {
         @apply mt-0;
 
+        //
+        // elements
+        //
+        blockquote {
+            @apply p-8;
+
+            p {
+                @apply text-2xl text-grey-darkest;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            li {
+                @apply flex items-center justify-end text-grey-dark;
+
+                &:before {
+                    content: "";
+                    @apply block border border-grey h-px mr-4 w-4;
+                }
+            }
+        }
+
         h2 {
             @apply font-normal;
         }
