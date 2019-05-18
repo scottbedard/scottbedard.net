@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Message
+
+# Model Form Field configuration
+form: $/bedard/bedard/models/message/fields.yaml
+
+# Model Class name
+modelClass: Bedard\Bedard\Models\Message
+
+# Default redirect location
+defaultRedirect: bedard/bedard/messages
+
+# Create page
+create:
+    title: Create Message
+    redirect: bedard/bedard/messages/update/:id
+    redirectClose: bedard/bedard/messages
+
+# Update page
+update:
+    title: Edit Message
+    redirect: bedard/bedard/messages
+    redirectClose: bedard/bedard/messages
+
+# Preview page
+preview:
+    title: Preview Message

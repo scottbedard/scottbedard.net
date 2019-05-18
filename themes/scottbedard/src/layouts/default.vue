@@ -26,7 +26,7 @@
                             class="mr-8 text-grey-dark text-2xl hover:text-grey-darker"
                             title="Random thoughts about things"
                             :to="{ name: 'blog' }">
-                            <i class="fa fa-lightbulb-o"></i>
+                            <i class="fa fa-rss"></i>
                         </router-link>
                         <router-link
                             class="mr-8 text-grey-dark text-2xl hover:text-grey-darker"

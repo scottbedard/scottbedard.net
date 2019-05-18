@@ -56,6 +56,13 @@ class Plugin extends PluginBase
                 'permissions' => ['bedard.bedard.*'],
                 'url'         => Backend::url('bedard/bedard/skills'),
             ],
+            'bedard' => [
+                'icon'        => 'icon-envelope-o',
+                'label'       => 'Messages',
+                'order'       => 500,
+                'permissions' => ['bedard.bedard.*'],
+                'url'         => Backend::url('bedard/bedard/messages'),
+            ],
         ];
     }
 }

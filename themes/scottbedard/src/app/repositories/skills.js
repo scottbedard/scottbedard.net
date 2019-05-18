@@ -1,10 +1,6 @@
 import axios from 'axios';
 
-/**
- * Get all skills.
- *
- * @return {Promise}
- */
+// get all skills
 export function getSkills() {
     return axios.get('/api/bedard/bedard/skills');
 }

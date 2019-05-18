@@ -51,6 +51,18 @@ export default [
         path: '/contact',
     },
 
+    {
+        component: () => import('@/pages/contact/done/done.vue' /* webpackChunkName: 'contact' */),
+        meta: {
+            header: 'contact',
+            headerRoute: {
+                name: 'contact',
+            },
+        },
+        name: 'contact-done',
+        path: '/contact/done',
+    },
+
     //
     // experiments
     //

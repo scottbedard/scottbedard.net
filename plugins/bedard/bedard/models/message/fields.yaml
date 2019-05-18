@@ -1,0 +1,19 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    id:
+        label: ID
+        disabled: true
+
+    subject:
+        label: Subject
+    
+    body:
+        label: Body
+        type: textarea
+    
+    is_flagged:
+        label: Flagged
+        type: checkbox

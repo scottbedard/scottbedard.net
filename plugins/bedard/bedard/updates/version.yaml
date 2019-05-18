@@ -9,3 +9,7 @@
 1.0.3:
   - Initialize skills sort order
   - 1.0.3/initialize_skills_sort_order.php
+
+1.0.4:
+  - Add messages
+  - 1.0.4/create_messages_table.php
