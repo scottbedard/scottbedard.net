@@ -14,12 +14,12 @@
                                 <span class="md:hidden">At the top of the list are ones I reach for on a daily basis.</span>
                                 <span class="hidden md:inline">Closest to the center are the tools I reach for every day.</span>
                             </p>
-                            <p class="hidden leading-normal text-grey-darkest lg:block">
+                            <!-- <p class="hidden leading-normal text-grey-darkest lg:block">
                                 Nothing can live forever though, and tech is certainly no exception.
                                 <router-link class="text-sm md:text-base" :to="{ name: 'retiredSkills' }">
                                     Click here to see my toolkit from yesteryear.
                                 </router-link>
-                            </p>
+                            </p> -->
                         </v-background-text>
                     </div>
                 </div>
@@ -39,14 +39,14 @@
                     <div class="hidden md:block">
                         <v-universe />
                     </div>
-                    <p class="lg:hidden">
+                    <!-- <p class="lg:hidden">
                         <v-background-text>
                             <router-link class="block font-thin leading-normal text-center text-sm md:text-base" :to="{ name: 'retiredSkills' }">
                                 Nothing can live forever, and tech is certainly no exception.<br class="hidden md:inline" />
                                 Click here to see my toolkit from yesteryear.
                             </router-link>
                         </v-background-text>
-                    </p>
+                    </p> -->
                 </div>
             </div>
         </v-margin>
