@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'debug' => true,
+    'debug' => env('APP_ENV', 'production') !== 'production',
 
     /*
     |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'October CMS',
+    'name' => 'Scott Bedard',
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'key' => 'TTpqi5IOFrlFS1b7KLsryX5MKzzqtffy',
+    'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
 

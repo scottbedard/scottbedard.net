@@ -14,30 +14,10 @@ nginx-ssl.error.log
 php-errors.log
 sftp-config.json
 selenium.php
-composer.lock
 
 # october
-/bootstrap
-/modules
 /plugins/bedard/debugbar
-/plugins/october
 /plugins/rainlab/blog/vendor
-/storage
-/tests
-/themes/demo
-/.editorconfig
-/.gitattributes
-/.htaccess
-/.travis.yml
-/artisan
-/CHANGELOG.md
-/composer.json
-/CONTRIBUTING.md
-/index.php
-/ISSUE_TEMPLATE.md
-/LICENSE
-/phpunit.xml
-/server.php
 
 # theme
 /themes/scottbedard/assets
