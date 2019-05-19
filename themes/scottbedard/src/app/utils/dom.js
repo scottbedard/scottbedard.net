@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+
 /**
  * Determine if an event path passes through an element.
  *
@@ -23,7 +25,7 @@ export function isForeignClick(e, target) {
  * @param {Event}       e   the event being processed
  * @param {Function}    fn  function to apply to each piece of the event path
  */
-export function walkEventPath (e, fn) {
+export function walkEventPath(e, fn) {
     // internet explorer doesn't natively support click event
     // paths, so we'll need to fake it by manually walking
     // up the DOM tree until we find the document body.

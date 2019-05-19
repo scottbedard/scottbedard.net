@@ -37,7 +37,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import skillsListComponent from '@/components/shared/skills_list';
+import skillsListComponent from '@/components/shared/skills_list.vue';
 
 export default {
     created() {

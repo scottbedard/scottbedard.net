@@ -11,9 +11,6 @@ const isTesting = process.env.NODE_ENV === 'test';
 const resolve = (...args) => path.resolve(__dirname, ...args);
 
 module.exports = {
-    chainWebpack(config) {
-        
-    },
     configureWebpack() {
         return {
             plugins: [

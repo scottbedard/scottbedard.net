@@ -28,6 +28,7 @@ export default {
         layout() {
             // return no layout if we haven't set the route yet
             if (this.$route.name === null) {
+                /* eslint-disable-next-line no-unused-vars */
                 return { render: h => <router-view /> };
             }
 

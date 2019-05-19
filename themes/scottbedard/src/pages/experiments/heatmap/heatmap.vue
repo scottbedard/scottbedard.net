@@ -148,16 +148,16 @@ export default {
         };
     },
     methods: {
-        redraw: debounce(function redraw () {
+        redraw: debounce(function redraw() {
             // seed a year of dummy data
             const data = [];
             const date = new Date();
             const days = Math.min(200, Math.round(window.innerWidth / 8));
             const values = [
-                0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+                0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
             ];
 
-            for (let i = 0; i < days; i++) {
+            for (let i = 0; i < days; i += 1) {
                 data.push({
                     date: date.toISOString().slice(0, 10).replace(/-/g, '/'),
                     value: sample(values),
@@ -178,7 +178,7 @@ export default {
                 target: this.$refs.heatmap,
                 data: {
                     history: this.history,
-                    tooltip: (date, value) => `${pluralize('commit', value, true)} on ${dayjs(date).format('ddd MMM D YYYY')}`,
+                    tooltip: (d, value) => `${pluralize('commit', value, true)} on ${dayjs(d).format('ddd MMM D YYYY')}`,
                 },
             });
         }, 10),

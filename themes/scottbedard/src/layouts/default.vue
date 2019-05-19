@@ -86,7 +86,7 @@ export default {
             this.desktopNavExpanded = true;
         },
         onBodyClick(e) {
-            if(isForeignClick(e, this.$refs.dropdown)) {
+            if (isForeignClick(e, this.$refs.dropdown)) {
                 this.collapseDesktopNav();
             }
         },

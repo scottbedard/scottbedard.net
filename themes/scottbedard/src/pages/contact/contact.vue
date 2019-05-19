@@ -95,20 +95,19 @@ export default {
                 body: this.body,
                 from: this.from,
                 subject: this.subject,
-            }).then((response) => {
+            }).then(() => {
                 // success
                 this.$router.replace({ name: 'contact-done' });
             }, (err) => {
+                // failed
                 const errorMsg = get(err, 'response.data.error', '');
                 const statusCode = get(err, 'response.status', 500);
 
-                // unprocessable entity
                 if (statusCode === 422) {
+                    // unprocessable entity
                     this.errorMsg = errorMsg;
-                }
-                
-                // unknown error
-                else {
+                } else {
+                    // unknown error
                     this.errorMsg = 'Well, this is embarassing... an unknown error happened. Try contacting me on GitHub.';
                 }
             }).finally(() => {

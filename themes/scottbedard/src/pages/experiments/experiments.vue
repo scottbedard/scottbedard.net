@@ -41,21 +41,25 @@
 </template>
 
 <script>
+import heatmapThumb from './heatmap/heatmap.png';
+import cubeThumb from './cube/cube.png';
+import ribbonThumb from './ribbon/ribbon.png';
+
 export default {
     computed: {
         experiments() {
             return [
                 {
                     excerpt: 'A github-style heatmap build with Svelte.',
-                    thumbnail: require('./heatmap/heatmap.png'),
+                    thumbnail: heatmapThumb,
                     title: 'Svelte Heatmap',
                     to: {
-                        name: 'svelte-heatmap'
+                        name: 'svelte-heatmap',
                     },
                 },
                 {
                     excerpt: 'An odd experiment to see how far we can push the 3D transform abilities of CSS.',
-                    thumbnail: require('./cube/cube.png'),
+                    thumbnail: cubeThumb,
                     thumbnailStyles: {
                         'max-width': '200px',
                     },
@@ -66,7 +70,7 @@ export default {
                 },
                 {
                     excerpt: 'Getting my feet wet with the canvas element.',
-                    thumbnail: require('./ribbon/ribbon.png'),
+                    thumbnail: ribbonThumb,
                     title: 'Canvas ribbon',
                     to: {
                         name: 'canvas-ribbon',
