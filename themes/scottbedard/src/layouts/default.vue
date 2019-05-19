@@ -24,25 +24,7 @@
                     <nav class="hidden items-center md:flex">
                         <router-link
                             class="mr-8 text-grey-dark text-2xl hover:text-grey-darker"
-                            title="Random thoughts about things"
-                            :to="{ name: 'blog' }">
-                            <i class="fa fa-rss"></i>
-                        </router-link>
-                        <router-link
-                            class="mr-8 text-grey-dark text-2xl hover:text-grey-darker"
-                            title="Check out the tools I enjoy using"
-                            :to="{ name: 'skills' }">
-                            <i class="fa fa-bullseye"></i>
-                        </router-link>
-                        <router-link
-                            class="mr-8 text-grey-dark text-2xl hover:text-grey-darker"
-                            title="See my code experiments"
-                            :to="{ name: 'experiments' }">
-                            <i class="fa fa-rocket"></i>
-                        </router-link>
-                        <router-link
-                            class="mr-8 text-grey-dark text-2xl hover:text-grey-darker"
-                            title="Get in touch with me"
+                            title="Contact me"
                             :to="{ name: 'contact' }">
                             <i class="fa fa-envelope-o"></i>
                         </router-link>
@@ -50,7 +32,7 @@
                             class="text-grey-dark text-2xl hover:text-grey-darkest"
                             href="https://github.com/scottbedard"
                             target="_blank"
-                            title="View GitHub profile">
+                            title="View GitHub">
                             <i class="fa fa-github"></i>
                         </a>
                     </nav>
