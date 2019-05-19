@@ -26,6 +26,11 @@ export default {
     },
     computed: {
         layout() {
+            // return no layout if we haven't set the route yet
+            if (this.$route.name === null) {
+                return { render: h => <router-view /> };
+            }
+
             return this.$route.meta.layout || defaultLayoutComponent;
         },
     },
