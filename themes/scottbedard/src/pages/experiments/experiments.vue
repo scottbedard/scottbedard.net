@@ -2,14 +2,12 @@
     <v-page padded>
         <v-margin padded>
             <v-background-text>
-                <header>
-                    <h1 class="font-thin leading-normal text-3xl text-grey-darkest max-w-lg mb-2 mx-auto text-center md:mb-4 md:text-3xl">
-                        Welcome to my Hall of Experiments!
-                    </h1>
-                    <p class="font-thin leading-normal max-w-md mx-auto text-center text-grey-darkest">
-                        Here are a few experiments that I'm proud of, and that you might find interesting.
-                    </p>
-                </header>
+                <h1 class="font-thin leading-normal text-3xl text-grey-darkest max-w-lg mb-2 mx-auto text-center md:text-3xl">
+                    This site doubles as a place to experiment
+                </h1>
+                <p class="font-thin leading-normal max-w-md mx-auto text-center text-grey-darkest">
+                    Here are a few that I'm proud of, and figured someone might find interesting.
+                </p>
 
                 <div class="max-w-lg mx-auto">
                     <router-link
