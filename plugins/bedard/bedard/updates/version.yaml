@@ -13,3 +13,7 @@
 1.0.4:
   - Add messages
   - 1.0.4/create_messages_table.php
+
+1.0.5:
+  - Add from column to messages table
+  - 1.0.5/add_messages_from_column.php

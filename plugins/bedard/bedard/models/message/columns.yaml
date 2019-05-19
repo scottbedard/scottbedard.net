@@ -9,6 +9,11 @@ columns:
 
     subject:
         label: Subject
+        searchable: true
+
+    from:
+        label: From
+        searchable: true
     
     is_flagged:
         label: Flagged

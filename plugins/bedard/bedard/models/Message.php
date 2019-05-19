@@ -7,6 +7,8 @@ use Model;
  */
 class Message extends Model
 {
+    use \October\Rain\Database\Traits\Validation;
+
     /**
      * @var string The database table used by the model.
      */
@@ -18,23 +20,26 @@ class Message extends Model
     protected $guarded = ['*'];
 
     /**
-     * @var array Fillable fields
+     * @var array Fillable field
      */
     protected $fillable = [
         'subject',
         'body',
+        'from',
+    ];
+    
+    /**
+     * @var array Validation rules
+     */
+    public $rules = [
+        'from' => 'required|email',
+        'body' => 'required',
     ];
 
-    /**
-     * @var array Relations
-     */
-    public $hasOne = [];
-    public $hasMany = [];
-    public $belongsTo = [];
-    public $belongsToMany = [];
-    public $morphTo = [];
-    public $morphOne = [];
-    public $morphMany = [];
-    public $attachOne = [];
-    public $attachMany = [];
+    public $customMessages = [
+        'body.required' => 'Please enter the message body',
+        'from.email' => 'This doesn\'t look like a valid email address',
+        'from.required' => 'Please enter a return email address',
+    ];
+
 }

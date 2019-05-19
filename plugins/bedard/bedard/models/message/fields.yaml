@@ -9,6 +9,11 @@ fields:
 
     subject:
         label: Subject
+        searchable: true
+
+    from:
+        label: From
+        searchable: true
     
     body:
         label: Body
