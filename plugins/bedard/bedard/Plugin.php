@@ -49,14 +49,14 @@ class Plugin extends PluginBase
     public function registerNavigation()
     {
         return [
-            'bedard' => [
+            'skills' => [
                 'icon'        => 'icon-rocket',
                 'label'       => 'Skills',
-                'order'       => 500,
+                'order'       => 400,
                 'permissions' => ['bedard.bedard.*'],
                 'url'         => Backend::url('bedard/bedard/skills'),
             ],
-            'bedard' => [
+            'messages' => [
                 'icon'        => 'icon-envelope-o',
                 'label'       => 'Messages',
                 'order'       => 500,
