@@ -3,10 +3,10 @@
         <v-margin padded>
             <v-background-text>
                 <h1 class="font-thin leading-normal text-3xl text-grey-darkest max-w-lg mb-2 mx-auto text-center md:text-3xl">
-                    This site doubles as a place to experiment
+                    This site doubles as a code sandbox for me.
                 </h1>
                 <p class="font-thin leading-normal max-w-md mx-auto text-center text-grey-darkest">
-                    Here are a few that I'm proud of, and figured someone might find interesting.
+                    Here are a few of my experiments that you might find interesting.
                 </p>
 
                 <div class="max-w-lg mx-auto">
@@ -48,7 +48,7 @@ export default {
         experiments() {
             return [
                 {
-                    excerpt: 'A github-style heatmap build with Svelte.',
+                    excerpt: 'A github-style heatmap built with Svelte 1.',
                     thumbnail: heatmapThumb,
                     title: 'Svelte Heatmap',
                     to: {
