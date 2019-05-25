@@ -19,7 +19,7 @@
 
                 <div class="flex items-center">
                     <a
-                        class="flex font-thin items-center"
+                        class="flex items-center"
                         href="#"
                         title="Click to redraw the canvas ribbon"
                         @click.prevent="redraw">
@@ -27,10 +27,10 @@
                         Redraw
                     </a>
                     <a
-                        class="flex font-thin items-center ml-8"
-                        href="#"
-                        title="Click view the ribbon source code"
-                        @click.prevent>
+                        class="flex items-center ml-8"
+                        href="https://github.com/scottbedard/scottbedard.net/blob/master/themes/scottbedard/src/components/shared/ribbon.vue"
+                        target="_blank"
+                        title="View source on GitHub">
                         <i class="fa fa-code mr-2"></i>
                         View Source
                     </a>

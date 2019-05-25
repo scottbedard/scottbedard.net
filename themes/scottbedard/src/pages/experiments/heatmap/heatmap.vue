@@ -97,14 +97,14 @@
                 <h1 class="font-thin mb-4 text-3xl">
                     Svelte Heatmap
                 </h1>
-                <p class="font-thin leading-normal max-w-md mb-4 text-grey-darkest">
+                <p class="leading-normal max-w-md mb-4 text-grey-darkest">
                     This project was mostly just an excuse to get my feet wet
                     with Svelte. To see my first impressions of the framework,
                     <a href="#" @click.prevent>check out this blog post</a>.
                 </p>
                 <div class="flex items-center mb-8">
                     <a
-                        class="flex font-thin items-center"
+                        class="flex items-center"
                         href="#"
                         title="Click to redraw the heatmap"
                         @click.prevent="redraw">
@@ -112,7 +112,7 @@
                         Redraw
                     </a>
                     <a
-                        class="flex font-thin items-center ml-8"
+                        class="flex items-center ml-8"
                         href="https://github.com/scottbedard/svelte-heatmap"
                         target="_blank"
                         title="Click view this project on GitHub">
