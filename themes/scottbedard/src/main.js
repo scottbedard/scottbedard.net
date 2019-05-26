@@ -11,6 +11,7 @@ import { sync } from 'vuex-router-sync';
 import modules from './app/store';
 import rootComponent from './root.vue';
 import routes from './app/routes';
+import { beforeEach, afterEach } from './app/guards';
 
 //
 // boot up our application
@@ -29,6 +30,9 @@ const router = new VueRouter({
     mode: 'history',
     routes,
 });
+
+router.beforeEach(beforeEach);
+router.afterEach(afterEach);
 
 //
 // create a store
