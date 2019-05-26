@@ -40,7 +40,7 @@
 
 <script>
 import heatmapThumb from './heatmap/heatmap.png';
-import cubeThumb from './cube/cube.png';
+import cubeThumb from './cube/speedcube.png';
 import ribbonThumb from './ribbon/ribbon.png';
 
 export default {
@@ -59,7 +59,7 @@ export default {
                     excerpt: 'An odd experiment to see how far we can push the 3D transform abilities of CSS.',
                     thumbnail: cubeThumb,
                     thumbnailStyles: {
-                        'max-width': '200px',
+                        'max-width': '700px',
                     },
                     title: 'CSS Cube',
                     to: {

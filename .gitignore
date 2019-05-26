@@ -18,6 +18,7 @@ selenium.php
 # october
 /plugins/bedard/debugbar
 /plugins/rainlab/blog/vendor
+/plugins/rainlab/googleanalytics/vendor
 
 # theme
 /themes/scottbedard/assets
