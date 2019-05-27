@@ -12,7 +12,7 @@
     @import './stickers/s';
 
     .cube-wrapper {
-        min-height: 420px;
+        min-height: 500px;
     }
 
     .cube-outer {
@@ -75,10 +75,17 @@
 
         <!-- actions -->
         <v-fade-transition>
-            <div v-if="!scrambling" class="absolute flex justify-center pin-b w-full">
-                <v-button color="green" @click="scramble">
-                    Scramble
-                </v-button>
+            <div v-if="!scrambling" class="absolute flex flex-wrap justify-center pin-b w-full">
+                <div class="mb-4 text-center w-full">
+                    <v-button color="green" @click="scramble">
+                        Scramble
+                    </v-button>
+                </div>
+                <p class="max-w-sm mx-auto text-sm">
+                    <b>Note:</b> I no longer support solving on this version. Feel free
+                    to give it a scramble for nostalgia's sake., but if you'd like to do some
+                    solving head over to <a href="https://speedcube.site">the speedcube site</a>.
+                </p>
             </div>
         </v-fade-transition>
     </div>

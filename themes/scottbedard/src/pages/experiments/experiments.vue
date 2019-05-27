@@ -40,7 +40,7 @@
 
 <script>
 import heatmapThumb from './heatmap/heatmap.png';
-import cubeThumb from './cube/speedcube.png';
+import cubeThumb from './cube/cube.png';
 import ribbonThumb from './ribbon/ribbon.png';
 
 export default {
@@ -48,22 +48,22 @@ export default {
         experiments() {
             return [
                 {
-                    excerpt: 'A github-style heatmap built with Svelte 1.',
-                    thumbnail: heatmapThumb,
-                    title: 'Svelte Heatmap',
-                    to: {
-                        name: 'svelte-heatmap',
-                    },
-                },
-                {
-                    excerpt: 'An odd experiment to see how far we can push the 3D transform abilities of CSS.',
+                    excerpt: 'This started as an experiment to play with CSS transforms, but has since turned into much more.',
                     thumbnail: cubeThumb,
                     thumbnailStyles: {
                         'max-width': '700px',
                     },
-                    title: 'CSS Cube',
+                    title: 'The Speedcube Site',
                     to: {
                         name: 'cube',
+                    },
+                },
+                {
+                    excerpt: 'A GitHub style heatmap built with Svelte.',
+                    thumbnail: heatmapThumb,
+                    title: 'Svelte Heatmap',
+                    to: {
+                        name: 'svelte-heatmap',
                     },
                 },
                 {
