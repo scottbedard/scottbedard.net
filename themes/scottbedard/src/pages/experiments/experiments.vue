@@ -6,7 +6,7 @@
                     This site doubles as a code sandbox for me.
                 </h1>
                 <p class="font-thin leading-normal max-w-md mx-auto text-center text-grey-darkest">
-                    Here are a few of my experiments that you might find interesting.
+                    Here are a few experiments that I hope people find interesting.
                 </p>
 
                 <div class="max-w-lg mx-auto">

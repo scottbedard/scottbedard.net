@@ -18,6 +18,14 @@
                         <v-button
                             class="w-full"
                             color="green"
+                            :to="{ name: 'experiments' }">
+                            Experiments
+                        </v-button>
+                    </div>
+                    <div class="p-2 w-1/2 sm:max-w-none sm:w-auto">
+                        <v-button
+                            class="w-full"
+                            color="blue"
                             :to="{ name: 'skills' }">
                             Skills
                         </v-button>
@@ -25,17 +33,9 @@
                     <div class="p-2 w-1/2 sm:max-w-none sm:w-auto">
                         <v-button
                             class="w-full"
-                            color="blue"
-                            :to="{ name: 'blog' }">
-                            Thoughts
-                        </v-button>
-                    </div>
-                    <div class="p-2 w-1/2 sm:max-w-none sm:w-auto">
-                        <v-button
-                            class="w-full"
                             color="indigo"
-                            :to="{ name: 'experiments' }">
-                            Experiments
+                            :to="{ name: 'blog' }">
+                            Blog
                         </v-button>
                     </div>
                     <div class="p-2 w-1/2 sm:max-w-none sm:w-auto">

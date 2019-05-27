@@ -100,7 +100,7 @@
                 <p class="leading-normal max-w-md mb-4 text-grey-darkest">
                     This project was mostly just an excuse to get my feet wet
                     with Svelte. To see my first impressions of the framework,
-                    <a href="#" @click.prevent>check out this blog post</a>.
+                    <a href="/blog/first-impressions-sveltejs">check out this blog post</a>.
                 </p>
                 <div class="flex items-center mb-8">
                     <a
