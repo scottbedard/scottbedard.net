@@ -82,9 +82,9 @@
                     </v-button>
                 </div>
                 <p class="max-w-sm mx-auto text-sm">
-                    <b>Note:</b> I no longer support solving on this version. Feel free
-                    to give it a scramble for nostalgia's sake., but if you'd like to do some
-                    solving head over to <a href="https://speedcube.site">the speedcube site</a>.
+                    <b>Note:</b> I no longer support solving on this version. You can give
+                    it a scramble for nostalgia's sake, but if you'd like to do some solving
+                    head over to <a href="https://speedcube.site">the speedcube site</a>.
                 </p>
             </div>
         </v-fade-transition>
