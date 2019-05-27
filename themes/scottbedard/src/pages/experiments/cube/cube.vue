@@ -2,8 +2,8 @@
     <v-page padded>
         <v-margin padded>
             <v-background-text>
-                <h1 class="font-normal mb-4 text-3xl text-grey-darkest">
-                    Building the speedcube site
+                <h1 class="font-thin mb-4 text-3xl">
+                    The Speedcube Site
                 </h1>
                 <div class="flex flex-wrap">
                     <div class="w-full md:w-1/2">
