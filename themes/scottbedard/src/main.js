@@ -29,6 +29,9 @@ Vue.config.productionTip = false;
 const router = new VueRouter({
     mode: 'history',
     routes,
+    scrollBehavior() {
+        return { x: 0, y: 0 };
+    },
 });
 
 router.beforeEach(beforeEach);
