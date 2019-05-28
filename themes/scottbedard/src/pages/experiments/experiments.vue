@@ -21,7 +21,7 @@
                         />
                         <p
                             class="font-thin leading-normal mb-8 text-center text-grey-darkest"
-                            v-text="experiment.excerpt"
+                            v-html="experiment.excerpt"
                         />
                         <v-card padded>
                             <div class="py-4 text-center">
@@ -48,7 +48,7 @@ export default {
         experiments() {
             return [
                 {
-                    excerpt: 'This started as an experiment to play with CSS transforms, but has since turned into much more.',
+                    excerpt: 'Originally an experiment with 3D transforms, this has since turned into a platform for speed&nbsp;cubing.',
                     thumbnail: cubeThumb,
                     thumbnailStyles: {
                         'max-width': '700px',
