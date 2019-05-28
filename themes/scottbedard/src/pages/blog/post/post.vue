@@ -105,6 +105,9 @@ export default {
         getPost(slug).then((response) => {
             // success
             this.post = response.data;
+        }, (err) => {
+            // failed
+            this.$router.replace({ name: '404' });
         }).finally(() => {
             // complete
             this.loading = false;

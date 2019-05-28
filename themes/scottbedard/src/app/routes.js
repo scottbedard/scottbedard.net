@@ -155,4 +155,19 @@ export default [
         name: 'skills',
         path: '/skills',
     },
+
+    //
+    // 404
+    //
+    {
+        component: () => import('@/pages/404/404.vue' /* webpackChunkName: '404' */),
+        meta: {
+            header: '404',
+            headerRoute: {
+                name: 'home',
+            },
+        },
+        name: '404',
+        path: '*',
+    },
 ];
