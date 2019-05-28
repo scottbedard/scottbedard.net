@@ -4,7 +4,7 @@
             <div class="text-center">
                 <!-- title -->
                 <h1 class="font-thin mb-2 text-4xl transition-font md:mb-4 md:text-5xl">
-                    Hi, I'm Scott Bedard.
+                    Hi, I'm Scott&nbsp;Bedard.
                 </h1>
 
                 <!-- secondary title -->

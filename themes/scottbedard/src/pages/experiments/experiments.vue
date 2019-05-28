@@ -3,7 +3,7 @@
         <v-margin padded>
             <v-background-text>
                 <h1 class="font-thin leading-normal text-3xl text-grey-darkest max-w-lg mb-2 mx-auto text-center md:text-3xl">
-                    This site doubles as a code sandbox for me.
+                    This site doubles as my personal code sandbox.
                 </h1>
                 <p class="font-thin leading-normal max-w-md mx-auto text-center text-grey-darkest">
                     Here are a few experiments that I hope people find interesting.
