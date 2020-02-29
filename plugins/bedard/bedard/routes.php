@@ -13,6 +13,11 @@ Route::prefix('api/bedard/bedard')
         Route::get('blog/{slug}', 'Bedard\Bedard\Http\Controllers\BlogController@show');
 
         //
+        // github
+        //
+        Route::get('github/contributions', 'Bedard\Bedard\Http\Controllers\GitHubController@contributions');
+
+        //
         // messages
         //
         Route::post('messages', 'Bedard\Bedard\Http\Controllers\MessagesController@store');
