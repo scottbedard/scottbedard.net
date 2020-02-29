@@ -14,6 +14,7 @@ use Backend\Classes\ListColumn;
 use Backend\Classes\WidgetBase;
 use October\Rain\Database\Model;
 use ApplicationException;
+use BackendAuth;
 
 /**
  * List Widget
@@ -24,6 +25,8 @@ use ApplicationException;
  */
 class Lists extends WidgetBase
 {
+    use Backend\Traits\PreferenceMaker;
+
     //
     // Configurable properties
     //
@@ -207,7 +210,7 @@ class Lists extends WidgetBase
         /*
          * Configure the list widget
          */
-        $this->recordsPerPage = $this->getSession('per_page', $this->recordsPerPage);
+        $this->recordsPerPage = $this->getUserPreference('per_page', $this->recordsPerPage);
 
         if ($this->showPagination == 'auto') {
             $this->showPagination = $this->recordsPerPage && $this->recordsPerPage > 0;
@@ -358,7 +361,7 @@ class Lists extends WidgetBase
          *
          * Example usage:
          *
-         *     Event::listen('backend.list.extendQueryBefore', function($listWidget, $query) {
+         *     Event::listen('backend.list.extendQueryBefore', function ($listWidget, $query) {
          *         $query->whereNull('deleted_at');
          *     });
          *
@@ -408,7 +411,6 @@ class Lists extends WidgetBase
          * Prepare related eager loads (withs) and custom selects (joins)
          */
         foreach ($this->getVisibleColumns() as $column) {
-
             // If useRelationCount is enabled, eager load the count of the relation into $relation_count
             if ($column->relation && @$column->config['useRelationCount']) {
                 $query->withCount($column->relation);
@@ -462,7 +464,6 @@ class Lists extends WidgetBase
                     }
                 }
             }
-
         });
 
         /*
@@ -479,7 +480,6 @@ class Lists extends WidgetBase
              * Relation column
              */
             if (isset($column->relation)) {
-
                 // @todo Find a way...
                 $relationType = $this->model->getRelationType($column->relation);
                 if ($relationType == 'morphTo') {
@@ -502,7 +502,7 @@ class Lists extends WidgetBase
                 $joinSql = $countQuery->select($joinSql)->toSql();
 
                 $selects[] = Db::raw("(".$joinSql.") as ".$alias);
-                
+
                 /*
                  * If this is a polymorphic relation there will be bindings that need to be added to the query
                  */
@@ -546,7 +546,7 @@ class Lists extends WidgetBase
          * Add custom selects
          */
         $query->addSelect($selects);
-        
+
         /*
          * Add bindings for polymorphic relations
          */
@@ -558,7 +558,7 @@ class Lists extends WidgetBase
          *
          * Example usage:
          *
-         *     Event::listen('backend.list.extendQuery', function($listWidget, $query) {
+         *     Event::listen('backend.list.extendQuery', function ($listWidget, $query) {
          *         $newQuery = MyModel::newQuery();
          *         return $newQuery;
          *     });
@@ -609,7 +609,7 @@ class Lists extends WidgetBase
          *
          * Example usage:
          *
-         *     Event::listen('backend.list.extendRecords', function($listWidget, $records) {
+         *     Event::listen('backend.list.extendRecords', function ($listWidget, $records) {
          *         $model = MyModel::where('always_include', true)->first();
          *         $records->prepend($model);
          *     });
@@ -710,6 +710,10 @@ class Lists extends WidgetBase
      */
     public function getColumn($column)
     {
+        if (!isset($this->allColumns[$column])) {
+            throw new ApplicationException('No definition for column ' . $column);
+        }
+
         return $this->allColumns[$column];
     }
 
@@ -725,11 +729,10 @@ class Lists extends WidgetBase
          * Supplied column list
          */
         if ($this->columnOverride === null) {
-            $this->columnOverride = $this->getSession('visible', null);
+            $this->columnOverride = $this->getUserPreference('visible', null);
         }
 
         if ($this->columnOverride && is_array($this->columnOverride)) {
-
             $invalidColumns = array_diff($this->columnOverride, array_keys($definitions));
             if (!count($definitions)) {
                 throw new ApplicationException(Lang::get(
@@ -778,7 +781,7 @@ class Lists extends WidgetBase
          *
          * Example usage:
          *
-         *     Event::listen('backend.list.extendColumns', function($listWidget) {
+         *     Event::listen('backend.list.extendColumns', function ($listWidget) {
          *         // Only for the User controller
          *         if (!$listWidget->getController() instanceof \Backend\Controllers\Users) {
          *             return;
@@ -854,6 +857,12 @@ class Lists extends WidgetBase
          * Build a final collection of list column objects
          */
         foreach ($columns as $columnName => $config) {
+            // Check if user has permissions to show this column
+            $permissions = array_get($config, 'permissions');
+            if (!empty($permissions) && !BackendAuth::getUser()->hasAccess($permissions, false)) {
+                continue;
+            }
+
             $this->allColumns[$columnName] = $this->makeListColumn($columnName, $config);
         }
     }
@@ -934,6 +943,10 @@ class Lists extends WidgetBase
             $total++;
         }
 
+        if ($this->showTree) {
+            $total++;
+        }
+
         return $total;
     }
 
@@ -951,7 +964,7 @@ class Lists extends WidgetBase
          * If a value is returned from this event, it will be used as the value for the provided column.
          * `$value` is passed by reference so modifying the variable in place is also supported. Example usage:
          *
-         *     Event::listen('backend.list.overrideHeaderValue', function($listWidget, $column, &$value) {
+         *     Event::listen('backend.list.overrideHeaderValue', function ($listWidget, $column, &$value) {
          *         $value .= '-modified';
          *     });
          *
@@ -1027,7 +1040,7 @@ class Lists extends WidgetBase
          * If a value is returned from this event, it will be used as the raw value for the provided column.
          * `$value` is passed by reference so modifying the variable in place is also supported. Example usage:
          *
-         *     Event::listen('backend.list.overrideColumnValueRaw', function($listWidget, $record, $column, &$value) {
+         *     Event::listen('backend.list.overrideColumnValueRaw', function ($listWidget, $record, $column, &$value) {
          *         $value .= '-modified';
          *     });
          *
@@ -1074,7 +1087,7 @@ class Lists extends WidgetBase
          * If a value is returned from this event, it will be used as the value for the provided column.
          * `$value` is passed by reference so modifying the variable in place is also supported. Example usage:
          *
-         *     Event::listen('backend.list.overrideColumnValue', function($listWidget, $record, $column, &$value) {
+         *     Event::listen('backend.list.overrideColumnValue', function ($listWidget, $record, $column, &$value) {
          *         $value .= '-modified';
          *     });
          *
@@ -1108,7 +1121,7 @@ class Lists extends WidgetBase
          * If a value is returned from this event, it will be used as the value for the row class.
          * `$value` is passed by reference so modifying the variable in place is also supported. Example usage:
          *
-         *     Event::listen('backend.list.injectRowClass', function($listWidget, $record, &$value) {
+         *     Event::listen('backend.list.injectRowClass', function ($listWidget, $record, &$value) {
          *         $value .= '-modified';
          *     });
          *
@@ -1149,11 +1162,17 @@ class Lists extends WidgetBase
             }
         }
 
-        throw new ApplicationException(sprintf('List column type "%s" could not be found.', $type));
+        $customMessage = '';
+        if ($type === 'relation') {
+            $customMessage = 'Type: relation is not supported, instead use the relation property to specify a relationship to pull the value from and set the type to the type of the value expected.';
+        }
+
+        throw new ApplicationException(sprintf('List column type "%s" could not be found. %s', $type, $customMessage));
     }
 
     /**
      * Process as text, escape the value
+     * @return string
      */
     protected function evalTextTypeValue($record, $column, $value)
     {
@@ -1170,19 +1189,10 @@ class Lists extends WidgetBase
 
     /**
      * Process as number, proxy to text
+     * @return string
      */
     protected function evalNumberTypeValue($record, $column, $value)
     {
-        return $this->evalTextTypeValue($record, $column, $value);
-    }
-
-    /**
-     * Common mistake, relation is not a valid list column.
-     * @deprecated Remove if year >= 2018
-     */
-    protected function evalRelationTypeValue($record, $column, $value)
-    {
-        traceLog(sprintf('Warning: List column type "relation" for class "%s" is not valid.', get_class($record)));
         return $this->evalTextTypeValue($record, $column, $value);
     }
 
@@ -1472,7 +1482,6 @@ class Lists extends WidgetBase
     public function onSort()
     {
         if ($column = post('sortColumn')) {
-
             /*
              * Toggle the sort direction and set the sorting column
              */
@@ -1487,21 +1496,27 @@ class Lists extends WidgetBase
 
             $this->sortColumn = $sortOptions['column'] = $column;
 
-            $this->putSession('sort', $sortOptions);
-
             /*
              * Persist the page number
              */
             $this->currentPageNumber = post('page');
 
-            return $this->onRefresh();
+            /*
+             * Try to refresh the list with the new sortOptions. Put the
+             * new sortOptions in to the session if the query succeeded.
+             */
+            $result = $this->onRefresh();
+
+            $this->putSession('sort', $sortOptions);
+
+            return $result;
         }
     }
 
     /**
      * Returns the current sorting column, saved in a session or cached.
      */
-    protected function getSortColumn()
+    public function getSortColumn()
     {
         if (!$this->isSortable()) {
             return false;
@@ -1538,12 +1553,22 @@ class Lists extends WidgetBase
          */
         if ($this->sortColumn === null || !$this->isSortable($this->sortColumn)) {
             $columns = $this->visibleColumns ?: $this->getVisibleColumns();
-            $columns = array_filter($columns, function ($column) { return $column->sortable; });
+            $columns = array_filter($columns, function ($column) {
+                return $column->sortable;
+            });
             $this->sortColumn = key($columns);
             $this->sortDirection = 'desc';
         }
 
         return $this->sortColumn;
+    }
+
+    /*
+     * Returns the current sort direction or default of 'asc'
+     */
+    public function getSortDirection()
+    {
+        return $this->sortDirection ?? 'asc';
     }
 
     /**
@@ -1597,12 +1622,22 @@ class Lists extends WidgetBase
     {
         if (($visibleColumns = post('visible_columns')) && is_array($visibleColumns)) {
             $this->columnOverride = $visibleColumns;
-            $this->putSession('visible', $this->columnOverride);
+            $this->putUserPreference('visible', $this->columnOverride);
         }
 
         $this->recordsPerPage = post('records_per_page', $this->recordsPerPage);
         $this->putSession('order', post('column_order'));
-        $this->putSession('per_page', $this->recordsPerPage);
+        $this->putUserPreference('per_page', $this->recordsPerPage);
+        return $this->onRefresh();
+    }
+
+    /**
+     * Event handler to apply the list set up.
+     */
+    public function onResetSetup()
+    {
+        $this->clearUserPreference('visible');
+        $this->clearUserPreference('per_page');
         return $this->onRefresh();
     }
 

@@ -138,9 +138,8 @@ class Table extends WidgetBase
         $isClientDataSource = $this->isClientDataSource();
 
         $this->vars['clientDataSourceClass'] = $isClientDataSource ? 'client' : 'server';
-        $this->vars['data'] = json_encode($isClientDataSource
-            ? $this->dataSource->getAllRecords()
-            : []
+        $this->vars['data'] = json_encode(
+            $isClientDataSource ? $this->dataSource->getAllRecords() : []
         );
     }
 
@@ -161,22 +160,24 @@ class Table extends WidgetBase
      * Converts the columns associative array to a regular array and translates column headers and drop-down options.
      * Working with regular arrays is much faster in JavaScript.
      * References:
-     * - http://www.smashingmagazine.com/2012/11/05/writing-fast-memory-efficient-javascript/
-     * - http://jsperf.com/performance-of-array-vs-object/3
+     * - https://www.smashingmagazine.com/2012/11/05/writing-fast-memory-efficient-javascript/
+     * - https://jsperf.com/performance-of-array-vs-object/3
      */
     protected function prepareColumnsArray()
     {
         $result = [];
 
-        foreach ($this->columns as $key=>$data) {
+        foreach ($this->columns as $key => $data) {
             $data['key'] = $key;
 
-            if (isset($data['title']))
+            if (isset($data['title'])) {
                 $data['title'] = trans($data['title']);
+            }
 
             if (isset($data['options'])) {
-                foreach ($data['options'] as &$option)
+                foreach ($data['options'] as &$option) {
                     $option = trans($option);
+                }
             }
 
             if (isset($data['validation'])) {

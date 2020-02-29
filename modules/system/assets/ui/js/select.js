@@ -86,7 +86,28 @@
 
                         return $request
                     },
+                    processResults: function (data, params) {
+                        var results = data.result || data.results,
+                            options = []
 
+                        delete(data.result)
+                        if (results[0] && typeof(results[0]) === 'object') { // Pass through Select2 format
+                            options = results
+                        }
+                        else { // Key-value map
+                            for (var i in results) {
+                                if (results.hasOwnProperty(i)) {
+                                    options.push({
+                                        id: i,
+                                        text: results[i],
+                                    })
+                                }
+                            }
+                        }
+
+                        data.results = options
+                        return data
+                    },
                     dataType: 'json'
                 }
             }
@@ -102,10 +123,13 @@
                 if ($element.hasClass('select-no-dropdown')) {
                     extraOptions.selectOnClose = true
                     extraOptions.closeOnSelect = false
+                    extraOptions.minimumInputLength = 1
 
                     $element.on('select2:closing', function() {
-                        $('.select2-dropdown.select-no-dropdown:first .select2-results__option--highlighted').removeClass('select2-results__option--highlighted')
-                        $('.select2-dropdown.select-no-dropdown:first .select2-results__option:first').addClass('select2-results__option--highlighted')
+                        if ($('.select2-dropdown.select-no-dropdown:first .select2-results__option--highlighted').length > 0) {
+                            $('.select2-dropdown.select-no-dropdown:first .select2-results__option--highlighted').removeClass('select2-results__option--highlighted')
+                            $('.select2-dropdown.select-no-dropdown:first .select2-results__option:first').addClass('select2-results__option--highlighted')
+                        }
                     })
                 }
             }
