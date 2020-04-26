@@ -6,8 +6,8 @@
                     <div class="w-full lg:w-auto">
                         <v-background-text>
                             <h1 class="font-normal leading-normal text-3xl text-grey-darkest mb-2 md:mb-8 md:text-3xl">
-                                I think of myself as a frontender<br class="hidden sm:inline" />
-                                who also enjoys Laravel and Node.
+                                I think of myself as a full stack dev<br class="hidden md:inline lg:hidden" />
+                                who specializes in Laravel and Vue.
                             </h1>
                             <p class="leading-normal mb-4 text-grey-darkest lg:mb-8">
                                 <span>This page represents the universe of tools I'm currently working with.&nbsp;<br class="hidden md:inline lg:hidden" /></span>
