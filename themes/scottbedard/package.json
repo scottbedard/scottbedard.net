@@ -9,7 +9,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-plugin-prismjs": "^1.0.2",
     "body-scroll-lock": "^2.6.1",
     "dayjs": "^1.8.14",
