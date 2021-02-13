@@ -1,3 +1,14 @@
-export type Color = string | RgbColor;
+/**
+ * Hex string or RGB values
+ */
+export type Color = string | Vector3
 
-export type RgbColor = [number, number, number];
+/**
+ * Two-dimensional vector
+ */
+export type Vector2 = [number, number]
+
+/**
+ * Three-dimensional vector
+ */
+export type Vector3 = [number, number, number]
