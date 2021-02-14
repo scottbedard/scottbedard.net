@@ -3,11 +3,11 @@
 </template>
 
 <script lang="ts">
-import { blend, keys, safeSample } from '../utils'
+import { blend, keys, safeSample } from '@/utils'
 import { computed, defineComponent, ref, watchEffect } from 'vue'
 import { times } from 'lodash-es'
 import { useWindowSize } from '@vueuse/core'
-import { Vector2, Vector3 } from '../types'
+import { Vector2, Vector3 } from '@/types'
 
 const blue = '2196f3'
 const cyan = '00bcd4'
