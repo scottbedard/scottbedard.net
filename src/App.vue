@@ -11,8 +11,8 @@ html {
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import Logo from './components/logo.vue'
-import Ribbon from './components/ribbon.vue'
+import Logo from './components/Logo.vue'
+import Ribbon from './components/Ribbon.vue'
 
 export default defineComponent({
   components: {

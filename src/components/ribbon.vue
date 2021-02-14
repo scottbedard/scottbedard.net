@@ -9,6 +9,10 @@ import { times } from 'lodash-es'
 import { useWindowSize } from '@vueuse/core'
 import { Vector2, Vector3 } from '@/types'
 
+// average vertical space between points
+const deviation = 135
+
+// colors to blend between
 const blue = '2196f3'
 const cyan = '00bcd4'
 const green = '009307'
@@ -20,7 +24,6 @@ const purple = '9c27b0'
 const red = 'ff1100'
 const yellow = 'ffeb3b'
 
-// colors we'll allow the ribbon to blend between
 const colors = {
   [blue]: [green, indigo, lightGreen, purple],
   [green]: [blue, cyan, yellow],
@@ -30,9 +33,6 @@ const colors = {
 }
 
 const baseColors = keys(colors)
-
-// average vertical spacing between points
-const deviation = 135
 
 export default defineComponent({
   setup() {
@@ -60,7 +60,7 @@ export default defineComponent({
       }
     })
 
-    // play connect the dots and fill the resulting triangles
+    // play connect the dots and fill resulting triangles
     const draw = () => {
       if (canvas.value) {
         canvas.value.height = height.value
