@@ -1,5 +1,5 @@
 <template>
-  <canvas class="fixed h-full left-0 opacity-30 top-0 w-full" ref="canvas" />
+  <canvas class="fixed h-full left-0 opacity-30 pointer-events-none top-0 w-full" ref="canvas" />
 </template>
 
 <script lang="ts">

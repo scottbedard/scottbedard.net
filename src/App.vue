@@ -5,7 +5,7 @@ html {
 </style>
 
 <template>
-  <!-- <Logo size="24" /> -->
+  <h1 class="text-4xl">Soon...</h1>
   <Ribbon />
 </template>
 
