@@ -1,10 +1,10 @@
 import { times } from 'lodash-es'
-import { Color } from './types'
+import { Color, Vector3 } from './types'
 
 /**
  * Calculate gradient between two colors
  */
-export function blend(from: Color, to: Color, steps = 3) {
+export function blend(from: Color, to: Color, steps = 3): Vector3[] {
   const s = steps - 1
   const fromRgb = typeof from === 'string' ? hexToRgb(from) : from
   const toRgb = typeof to === 'string' ? hexToRgb(to) : to
@@ -32,7 +32,7 @@ export function keys<T extends Record<string, unknown>>(obj: T) {
 /**
  * Convert hex to RGB
  */
-export function hexToRgb(value: string): [number, number, number] {
+export function hexToRgb(value: string): Vector3 {
   const color = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(value)
 
   if (color === null) {
@@ -44,17 +44,6 @@ export function hexToRgb(value: string): [number, number, number] {
     parseInt(color[2], 16),
     parseInt(color[3], 16)
   ]
-}
-
-/**
- * Convert RGB to hex
- */
-export function rgbToHex(red: number, green: number, blue: number) {
-  const rHex = red.toString(16).padStart(2, '0')
-  const gHex = green.toString(16).padStart(2, '0')
-  const bHex = blue.toString(16).padStart(2, '0')
-
-  return `#${rHex}${gHex}${bHex}`
 }
 
 /**

@@ -1,46 +1,19 @@
 <template>
-  <pre class="text-xs mb-12">{{
-    {
-      count,
-      progress: progress.toFixed(4)
-    }
-  }}</pre>
-
-  <pre class="fixed top-0 left-0 text-xs">
-    <div
-      v-for="(color, i) in ribbon.colors"
-      class="flex items-center"
-      :data-index="i"
-      :key="i">
-      <div
-        class="border border-white h-4 mr-2 w-4"
-        :style="{ background: `rgb(${color[0]},${color[1]},${color[2]})` }" />
-      <div v-text="`${color[0]}, ${color[1]}, ${color[2]}`" />
-    </div>
-  </pre>
-
-  <pre class="fixed right-0 top-0 text-xs">
-    <div
-      v-for="(point, i) in ribbon.points"
-      v-text="JSON.stringify(point)"
-      :data-index="i"
-      :key="i" />
-  </pre>
-
   <canvas
     class="fixed h-full left-0 top-0 w-full"
     ref="canvas"
-    style="z-index: -1" />
-
-  <button class="bg-gray-300 cursor-pointer font-mono p-2 rounded" @click="count++">+1</button>
+    :style="{
+      opacity: 0.35,
+      zIndex: -1,
+    }" />
 </template>
 
 <script lang="ts">
-import { blend, keys, safeSample } from '../utils';
-import { computed, defineComponent, onMounted, ref } from 'vue';
-import { last, times } from 'lodash-es';
-import { useTransition, useWindowSize } from '@vueuse/core';
-import { Vector2 } from '../types';
+import { blend, keys, safeSample } from '../utils'
+import { computed, defineComponent, ref, watchEffect } from 'vue'
+import { times } from 'lodash-es'
+import { useWindowSize } from '@vueuse/core'
+import { Vector2, Vector3 } from '../types'
 
 const blue = '2196f3'
 const cyan = '00bcd4'
@@ -62,7 +35,7 @@ const colors = {
 }
 
 const baseColors = keys(colors)
-const opacity = 0.4
+
 const deviation = 135
 
 export default defineComponent({
@@ -73,12 +46,6 @@ export default defineComponent({
 
     const count = ref(0)
 
-    const transition = useTransition(count, { duration: 1000 })
-
-    const progress = computed(() => count.value ? transition.value - count.value + 1 : 0)
-
-    // const midpoint = computed(() => height.value / 2)
-
     const vertices = computed(() => Math.ceil(width.value / 40))
 
     const ribbon = computed(() => {
@@ -86,30 +53,51 @@ export default defineComponent({
       const b = safeSample(colors[a])
       const steps = vertices.value + 4
 
+      const vectors = times(steps).reduce<Vector2[]>((acc, n, i) => {
+        const x = (i * (width.value / vertices.value)) - ((width.value / vertices.value) * 2)
+        const y = (acc[i - 1]?.[1] ?? 0) + (Math.random() * deviation) - (deviation / 2)
+        return [...acc, [x, y]]
+      }, [])
+
+      const offset = (height.value / 2) - (vectors.reduce((acc, v) => acc + v[1], 0) / vectors.length)
+
       return {
         count: count.value,
-        colors: Math.random() > 0.5
-          ? blend(a, b, steps)
-          : blend(b, a, steps),
-        points: times(steps).reduce<Vector2[]>((acc, n, i) => {
-          const x = (i * width.value) - (width.value * 2)
-          const y = (last(acc)?.[1] ?? 0 + (Math.random() * deviation)) - (deviation / 2)
-          return [...acc, [x, y]]
-        }, [])
+        colors: Math.random() > 0.5 ? blend(a, b, steps) : blend(b, a, steps),
+        vectors: vectors.map<Vector2>(([x, y]) => [x, y + offset])
       }
     })
 
-    onMounted(() => {
-      // ...
-    })
+    const draw = () => {
+      if (canvas.value) {
+        canvas.value.height = height.value
+        canvas.value.width = width.value
+
+        const ctx = canvas.value.getContext('2d') as CanvasRenderingContext2D
+        ctx.clearRect(0, 0, canvas.value.width, canvas.value.height)
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)'
+
+        ribbon.value.vectors
+          .map<[Vector2[], Vector3]>((v, i, arr) => [[v, arr[i + 1], arr[i + 2]], ribbon.value.colors[i]])
+          .filter(([[a, b, c], color]) => a && b && c && color)
+          .forEach(([[a, b, c], color]) => {
+            ctx.fillStyle = `rgb(${color[0]}, ${color[1]}, ${color[2]})`
+            ctx.beginPath()
+            ctx.moveTo(a[0], a[1])
+            ctx.lineTo(b[0], b[1])
+            ctx.lineTo(c[0], c[1])
+            ctx.closePath()
+            ctx.fill()
+            ctx.stroke()
+          })
+      }
+    }
+
+    watchEffect(draw)
 
     return {
       canvas,
-      count,
-      progress,
       ribbon,
-      transition,
-      vertices
     }
   }
 })
