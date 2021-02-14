@@ -1,11 +1,5 @@
 <template>
-  <canvas
-    class="fixed h-full left-0 top-0 w-full"
-    ref="canvas"
-    :style="{
-      opacity: 0.35,
-      zIndex: -1,
-    }" />
+  <canvas class="fixed h-full left-0 opacity-30 top-0 w-full" ref="canvas" />
 </template>
 
 <script lang="ts">
@@ -26,6 +20,7 @@ const purple = '9c27b0'
 const red = 'ff1100'
 const yellow = 'ffeb3b'
 
+// colors we'll allow the ribbon to blend between
 const colors = {
   [blue]: [green, indigo, lightGreen, purple],
   [green]: [blue, cyan, yellow],
@@ -36,38 +31,36 @@ const colors = {
 
 const baseColors = keys(colors)
 
+// average vertical spacing between points
 const deviation = 135
 
 export default defineComponent({
   setup() {
-    const { height, width } = useWindowSize()
-    
     const canvas = ref<HTMLCanvasElement>()
+    const { height, width } = useWindowSize()
 
-    const count = ref(0)
-
-    const vertices = computed(() => Math.ceil(width.value / 40))
-
+    // calculate vectors for the ribbon colors and points
     const ribbon = computed(() => {
       const a = safeSample(baseColors)
       const b = safeSample(colors[a])
-      const steps = vertices.value + 4
+      const vertices = Math.ceil(width.value / 40)
+      const steps = vertices + 4
 
-      const vectors = times(steps).reduce<Vector2[]>((acc, n, i) => {
-        const x = (i * (width.value / vertices.value)) - ((width.value / vertices.value) * 2)
+      const points = times(steps).reduce<Vector2[]>((acc, n, i) => {
+        const x = (i * (width.value / vertices)) - ((width.value / vertices) * 2)
         const y = (acc[i - 1]?.[1] ?? 0) + (Math.random() * deviation) - (deviation / 2)
         return [...acc, [x, y]]
       }, [])
 
-      const offset = (height.value / 2) - (vectors.reduce((acc, v) => acc + v[1], 0) / vectors.length)
+      const offset = (height.value / 2) - (points.reduce((acc, [,y]) => acc + y, 0) / points.length)
 
       return {
-        count: count.value,
         colors: Math.random() > 0.5 ? blend(a, b, steps) : blend(b, a, steps),
-        vectors: vectors.map<Vector2>(([x, y]) => [x, y + offset])
+        points: points.map<Vector2>(([x, y]) => [x, y + offset])
       }
     })
 
+    // play connect the dots and fill the resulting triangles
     const draw = () => {
       if (canvas.value) {
         canvas.value.height = height.value
@@ -77,7 +70,7 @@ export default defineComponent({
         ctx.clearRect(0, 0, canvas.value.width, canvas.value.height)
         ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)'
 
-        ribbon.value.vectors
+        ribbon.value.points
           .map<[Vector2[], Vector3]>((v, i, arr) => [[v, arr[i + 1], arr[i + 2]], ribbon.value.colors[i]])
           .filter(([[a, b, c], color]) => a && b && c && color)
           .forEach(([[a, b, c], color]) => {
@@ -97,7 +90,7 @@ export default defineComponent({
 
     return {
       canvas,
-      ribbon,
+      ribbon
     }
   }
 })
