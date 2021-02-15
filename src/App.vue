@@ -32,7 +32,7 @@
         leave-to-class="opacity-0">
         <div
           v-if="navIsExpanded"
-          class="bg-dark-75 fixed h-full left-0 top-0 w-full"
+          class="bg-dark-75 fixed h-full left-0 top-0 w-full sm:hidden"
           @click="collapseNav">
           <nav
             class="absolute bg-gray-200 h-full p-4 right-0 shadow-xl top-0 w-72"
