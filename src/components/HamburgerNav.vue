@@ -1,5 +1,5 @@
 <style lang="scss" scoped>
-$hamburger-padding-x: 1rem !default;
+$hamburger-padding-x: 0.5rem !default;
 $hamburger-padding-y: 1rem !default;
 $hamburger-layer-width: 2rem !default;
 $hamburger-layer-height: 2px !default;
@@ -58,7 +58,7 @@ $hamburger-types: (
   <button
     aria-controls="navigation"
     aria-label="Menu"
-    class="hamburger hamburger--elastic"
+    class="hamburger hamburger--elastic focus:outline-none"
     type="button"
     :class="{
       'is-active': active

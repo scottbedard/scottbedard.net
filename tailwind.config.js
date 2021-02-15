@@ -8,7 +8,10 @@ module.exports = {
     extend: {
       colors: {
         dark: {
-          '50': 'rgba(0, 0, 0, 0.5)'
+          '0': 'rgba(0, 0, 0, 0)',
+          '50': 'rgba(0, 0, 0, 0.5)',
+          '75': 'rgba(0, 0, 0, 0.75)',
+          '100': 'rgba(0, 0, 0, 1)',
         }
       },
       fontFamily: {
