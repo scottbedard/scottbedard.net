@@ -1,15 +1,19 @@
 <style lang="postcss">
 @tailwind base;
 @tailwind utilities;
+
+a {
+  @apply text-red-500 hover:text-red-600;
+}
 </style>
 
 <template>
   <Ribbon />
 
   <Margin padded>
-    <header class="flex h-16 items-center justify-between relative">
+    <!-- <header class="flex h-16 items-center justify-between relative">
       <RouterLink
-        class="flex font-bold items-center text-xl hover:text-red-500"
+        class="flex font-bold items-center text-2xl hover:text-red-500"
         :to="{ name: 'home' }">
         <Logo class="mr-2" size="22" />
         scott bedard
@@ -20,9 +24,9 @@
       </span>
 
       <nav class="gap-x-12 hidden px-6 sm:flex lg:gap-x-16">
-        <DesktopNavLink text="Thoughts" :to="{ name: 'home' }" />
-        <DesktopNavLink text="Experiments" :to="{ name: 'home' }" />
-        <DesktopNavLink text="Contact" :to="{ name: 'home' }" />
+        <DesktopNavLink text="Thoughts" :to="{ name: 'articles' }" />
+        <DesktopNavLink text="Experiments" :to="{ name: 'articles' }" />
+        <DesktopNavLink text="Contact" :to="{ name: 'articles' }" />
       </nav>
 
       <Transition 
@@ -43,7 +47,7 @@
           </nav>
         </div>
       </Transition>
-    </header>
+    </header> -->
     
     <RouterView />
   </Margin>
@@ -52,6 +56,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
+import { useRoute } from 'vue-router';
 import DesktopNavLink from './components/DesktopNavLink.vue'
 import HamburgerNav from './components/HamburgerNav.vue'
 import Logo from './components/Logo.vue'
@@ -69,13 +74,18 @@ export default defineComponent({
     RouterView
   },
   setup() {
+    const route = useRoute()
+
     const navIsExpanded = ref(false)
-    const collapseNav = () => navIsExpanded.value = false;
+
+    const collapseNav = () => navIsExpanded.value = false
+
     const toggleNav = () => navIsExpanded.value = !navIsExpanded.value
 
     return {
       collapseNav,
       navIsExpanded,
+      route,
       toggleNav
     }
   }
