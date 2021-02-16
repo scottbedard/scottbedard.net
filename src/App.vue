@@ -19,8 +19,10 @@
         <HamburgerNav :active="navIsExpanded" />
       </span>
 
-      <nav class="hidden sm:block">
-        Hello from the desktop nav
+      <nav class="gap-x-12 hidden px-6 sm:flex lg:gap-x-16">
+        <DesktopNavLink text="Thoughts" :to="{ name: 'home' }" />
+        <DesktopNavLink text="Experiments" :to="{ name: 'home' }" />
+        <DesktopNavLink text="Contact" :to="{ name: 'home' }" />
       </nav>
 
       <Transition 
@@ -50,6 +52,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
+import DesktopNavLink from './components/DesktopNavLink.vue'
 import HamburgerNav from './components/HamburgerNav.vue'
 import Logo from './components/Logo.vue'
 import Margin from './components/Margin.vue'
@@ -57,6 +60,7 @@ import Ribbon from './components/Ribbon.vue'
 
 export default defineComponent({
   components: {
+    DesktopNavLink,
     HamburgerNav,
     Logo,
     Margin,

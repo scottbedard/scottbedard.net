@@ -2,7 +2,7 @@
   <div
     class="max-w-screen-2xl mx-auto w-full"
     :class="{
-      'px-4': padded
+      'px-6': padded
     }">
     <slot />
   </div>
