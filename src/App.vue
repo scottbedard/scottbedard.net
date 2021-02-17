@@ -8,7 +8,7 @@ a {
 </style>
 
 <template>
-  <Ribbon />
+  <Ribbon style="z-index: -1" />
 
   <Margin padded>
     <RouterView />

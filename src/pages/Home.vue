@@ -17,7 +17,7 @@
         <h2 class="font-semibold text-4xl">My name is Scott&nbsp;Bedard.</h2>
         <div class="gap-6 grid max-w-4xl mx-auto text-lg">
           <p>
-            I'm a frontend developer at <a href="https://chess.com">Chess.com</a>, welcome to my personal code playground. Most things here were just for fun, so take everything with a grain of salt. 😉
+            I'm a frontend developer at <a href="https://chess.com">Chess.com</a>, welcome to my personal code playground. Most things here are random experiments or were just for fun, take everything with a grain of salt. 😉
           </p>
           <p>
             <span class="xl:hidden">Below</span><span class="hidden xl:inline">To the right</span> represents my current universe of tools. Closest to the center are the ones I reach for every day.
