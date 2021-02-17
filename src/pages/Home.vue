@@ -25,19 +25,32 @@
         </div>
       </div>
     </div>
-    <div class="max-w-md mx-auto relative w-full xl:max-w-xl">
+    <div class="max-w-md mt-6 mx-auto relative w-full xl:mt-20 xl:max-w-xl">
       <div class="pb-full" />
-      <div class="orbit w-full"></div>
-      <div class="orbit w-2/3"></div>
-      <div class="orbit w-1/3"></div>
+
+      <UniverseOrbit
+        class="w-1/4"
+        :size="4"
+        :skills="inner" />
+
+      <UniverseOrbit
+        class="w-2/3"
+        :size="3"
+        :skills="middle" />
+
+      <UniverseOrbit
+        class="w-full"
+        :size="2"
+        :skills="outer" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import UniverseOrbit from '@/components/UniverseOrbit.vue';
 
-type Skill = {
+export type Skill = {
   href: string
   name: string
   orbit: number
@@ -45,18 +58,47 @@ type Skill = {
 }
 
 export default defineComponent({
+  components: {
+    UniverseOrbit
+  },
   setup() {
-    const skills: Skill[] = [
-      {
-        href: 'https://github.com/scottbedard/speedcube.site',
-        name: 'Vue',
-        orbit: 0,
-        src: '/assets/vue.png'
-      }
-    ]
+    const inner: Skill[] = new Array(3)
+      .fill(null)
+      .map(() => {
+        return {
+          href: 'https://github.com/scottbedard/speedcube.site',
+          name: 'Vue',
+          orbit: 0,
+          src: '/assets/vue.png'
+        }
+      })
+
+    const middle: Skill[] = new Array(5)
+      .fill(null)
+      .map(() => {
+        return {
+          href: 'https://github.com/scottbedard/speedcube.site',
+          name: 'Vue',
+          orbit: 0,
+          src: '/assets/vue.png'
+        }
+      })
+
+    const outer: Skill[] = new Array(9)
+      .fill(null)
+      .map(() => {
+        return {
+          href: 'https://github.com/scottbedard/speedcube.site',
+          name: 'Vue',
+          orbit: 0,
+          src: '/assets/vue.png'
+        }
+      })
 
     return {
-      skills
+      inner,
+      middle,
+      outer
     }
   }
 })
