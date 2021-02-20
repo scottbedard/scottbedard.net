@@ -1,14 +1,3 @@
-<style lang="postcss" scoped>
-.orbit {
-  @apply -translate-y-1/2 -translate-x-1/2 absolute border-4 border-dotted border-gray-300 left-1/2 rounded-full top-1/2 transform
-}
-
-.orbit:after {
-  @apply block pb-full w-full;
-  content: "";
-}
-</style>
-
 <template>
   <div class="gap-x-6 gap-y-12 grid py-12 xl:grid-cols-2">
     <div>
@@ -27,20 +16,22 @@
     </div>
     <div class="max-w-md mt-6 mx-auto relative w-full xl:mt-20 xl:max-w-xl">
       <div class="pb-full" />
-
       <UniverseOrbit
-        class="w-1/4"
-        :size="4"
+        :cell-radius="0.62"
+        :orbit=".25"
+        :rpm="6"
         :skills="inner" />
 
       <UniverseOrbit
-        class="w-2/3"
-        :size="3"
+        :cell-radius="0.2"
+        :orbit="0.65"
+        :rpm="8"
         :skills="middle" />
 
       <UniverseOrbit
-        class="w-full"
-        :size="2"
+        :cell-radius="0.1"
+        :orbit="1"
+        :rpm="10"
         :skills="outer" />
     </div>
   </div>
@@ -53,7 +44,6 @@ import UniverseOrbit from '@/components/UniverseOrbit.vue';
 export type Skill = {
   href: string
   name: string
-  orbit: number
   src: string
 }
 
@@ -62,38 +52,89 @@ export default defineComponent({
     UniverseOrbit
   },
   setup() {
-    const inner: Skill[] = new Array(3)
-      .fill(null)
-      .map(() => {
-        return {
-          href: 'https://github.com/scottbedard/speedcube.site',
-          name: 'Vue',
-          orbit: 0,
-          src: '/assets/vue.png'
-        }
-      })
+    const inner: Skill[] = [
+      {
+        href: '#',
+        name: '😀',
+        src: ''
+      },
+      {
+        href: '#',
+        name: '🤩',
+        src: ''
+      },
+      {
+        href: '#',
+        name: '😎',
+        src: ''
+      }
+    ]
 
-    const middle: Skill[] = new Array(5)
-      .fill(null)
-      .map(() => {
-        return {
-          href: 'https://github.com/scottbedard/speedcube.site',
-          name: 'Vue',
-          orbit: 0,
-          src: '/assets/vue.png'
-        }
-      })
+    const middle: Skill[] = [
+      {
+        href: '#',
+        name: '😏',
+        src: ''
+      },
+      {
+        href: '#',
+        name: '🤔',
+        src: ''
+      },
+      {
+        href: '#',
+        name: '🤭',
+        src: ''
+      },
+      {
+        href: '#',
+        name: '🤫',
+        src: ''
+      },
+      {
+        href: '#',
+        name: '😱',
+        src: ''
+      },
+    ]
 
-    const outer: Skill[] = new Array(9)
-      .fill(null)
-      .map(() => {
-        return {
-          href: 'https://github.com/scottbedard/speedcube.site',
-          name: 'Vue',
-          orbit: 0,
-          src: '/assets/vue.png'
-        }
-      })
+    const outer: Skill[] = [
+      {
+        href: '#',
+        name: '🙊',
+        src: ''
+      },
+      {
+        href: '#',
+        name: '🤡',
+        src: ''
+      },
+      {
+        href: '#',
+        name: '🤓',
+        src: ''
+      },
+      {
+        href: '#',
+        name: '🤬',
+        src: ''
+      },
+      {
+        href: '#',
+        name: '🤯',
+        src: ''
+      },
+      {
+        href: '#',
+        name: '👨‍🍳',
+        src: ''
+      },
+      {
+        href: '#',
+        name: '🧠',
+        src: ''
+      },
+    ]
 
     return {
       inner,

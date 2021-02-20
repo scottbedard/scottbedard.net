@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        'spin-reverse': 'spin 1s linear infinite reverse',
+      },
       colors: {
         dark: {
           '0': 'rgba(0, 0, 0, 0)',
