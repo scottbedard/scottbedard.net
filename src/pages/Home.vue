@@ -16,22 +16,20 @@
     </div>
     <div class="max-w-md mt-6 mx-auto relative w-full xl:mt-20 xl:max-w-xl">
       <div class="pb-full" />
-      <UniverseOrbit
+      <Orbit
         :cell-radius="0.62"
-        :orbit=".25"
-        :rpm="6"
-        :skills="inner" />
-
-      <UniverseOrbit
-        :cell-radius="0.2"
-        :orbit="0.65"
-        :rpm="8"
-        :skills="middle" />
-
-      <UniverseOrbit
-        :cell-radius="0.1"
-        :orbit="1"
+        :orbit-diameter=".25"
         :rpm="10"
+        :skills="inner" />
+      <Orbit
+        :cell-radius="0.2"
+        :orbit-diameter="0.65"
+        :rpm="12"
+        :skills="middle" />
+      <Orbit
+        :cell-radius="0.1"
+        :orbit-diameter="1"
+        :rpm="14"
         :skills="outer" />
     </div>
   </div>
@@ -39,7 +37,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import UniverseOrbit from '@/components/UniverseOrbit.vue';
+import Orbit from '@/components/Orbit.vue';
 
 export type Skill = {
   href: string
@@ -49,7 +47,7 @@ export type Skill = {
 
 export default defineComponent({
   components: {
-    UniverseOrbit
+    Orbit
   },
   setup() {
     const inner: Skill[] = [
@@ -126,7 +124,7 @@ export default defineComponent({
       },
       {
         href: '#',
-        name: '👨‍🍳',
+        name: '🥵',
         src: ''
       },
       {

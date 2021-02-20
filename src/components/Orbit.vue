@@ -5,10 +5,9 @@
     <div
       class="animate-spin"
       ref="orbitElement"
-      :data-width="width"
       :style="{
         animationDuration: `${rpm * 60}s`,
-        width: `${orbit * 100}%`,
+        width: `${orbitDiameter * 100}%`,
       }">
       <div class="pb-full" />
       <div
@@ -59,12 +58,13 @@ export default defineComponent({
       y
     }
   },
+  name: 'Orbit',
   props: {
     cellRadius: {
       default: 1,
       type: Number
     },
-    orbit: {
+    orbitDiameter: {
       default: 1,
       type: Number
     },
