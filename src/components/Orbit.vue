@@ -34,7 +34,7 @@
           }">
           <img
             v-if="skill.src"
-            class="h-auto max-w-1/2"
+            class="h-auto max-w-1/2 w-full"
             :src="skill.src" />
         </div>
       </component>

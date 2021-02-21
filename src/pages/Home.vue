@@ -61,8 +61,8 @@ export default defineComponent({
   setup() {
     const inner: Skill[] = shuffle([
       {
-        href: 'https://github.com/scottbedard/scottbedard.net/tree/vite#scottbedardnet',
-        name: 'My personal site is built with Vue',
+        href: 'https://github.com/scottbedard/scottbedard.net',
+        name: 'My site is built with Vue',
         src: '/assets/logos/vue.svg'
       },
       {
@@ -71,17 +71,17 @@ export default defineComponent({
         src: '/assets/logos/three.png'
       },
       {
-        href: 'https://github.com/scottbedard/scottbedard.net/blob/vite/src/components/Orbit.vue',
-        name: 'This universe component was made using Tailwind',
-        src: '/assets/logos/tailwind.svg'
+        href: 'https://github.com/scottbedard/twister',
+        name: 'A state modeling library I wrote in TypeScript',
+        src: '/assets/logos/typescript.svg'
       },
     ])
 
     const middle: Skill[] = shuffle([
       {
-        href: 'https://twister.speedcube.site/cube',
-        name: 'Twister is a library I wrote in TypeScript',
-        src: '/assets/logos/typescript.svg'
+        href: 'https://github.com/scottbedard/scottbedard.net/blob/vite/src/components/Orbit.vue',
+        name: 'This universe component was made using Tailwind',
+        src: '/assets/logos/tailwind.svg'
       },
       {
         href: 'https://speedcube.site',
@@ -89,7 +89,7 @@ export default defineComponent({
         src: '/assets/logos/laravel.svg'
       },
       {
-        href: 'https://github.com/scottbedard/twister#twister',
+        href: 'https://github.com/scottbedard/twister',
         name: 'A twisty puzzle state modeling library tested with Jest',
         src: '/assets/logos/jest.png'
       },
@@ -99,8 +99,8 @@ export default defineComponent({
         src: '/assets/logos/svelte.svg'
       },
       {
-        href: 'https://trumpquotes.wtf',
-        name: 'A list of crazy things someone really once said, built with Nuxt',
+        href: 'https://twister.speedcube.site',
+        name: 'A playground for twisty puzzle state modeling, build with Nuxt',
         src: '/assets/logos/nuxt.svg'
       },
     ])
@@ -126,24 +126,24 @@ export default defineComponent({
         },
       },
       {
-        href: '#',
-        name: '🤬',
-        src: ''
+        href: 'https://github.com/scottbedard/nuxlifaunify',
+        name: 'An experiment with serverless databases',
+        src: '/assets/logos/fauna.png'
       },
       {
-        href: '#',
-        name: '🤯',
-        src: ''
+        href: 'https://github.com/scottbedard/scottbedard.net',
+        name: 'My site is deployed with Netlify',
+        src: '/assets/logos/netlify.svg'
       },
       {
-        href: '#',
-        name: '🥵',
-        src: ''
+        href: 'https://github.com/scottbedard/scottbedard.net',
+        name: 'My site is developed with Vite',
+        src: '/assets/logos/vite.svg'
       },
       {
-        href: '#',
-        name: '🧠',
-        src: ''
+        href: 'https://vueuse.js.org/core/useTransition/',
+        name: 'A composition function I\'m somewhat proud of',
+        src: '/assets/logos/vueuse.svg'
       },
     ])
 
