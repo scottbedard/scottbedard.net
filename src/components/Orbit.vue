@@ -12,18 +12,20 @@
         animationDuration: `${rpm * 60}s`,
       }">
       <div class="pb-full pointer-events-none" />
-      <a
+      <component
         v-for="(skill, index) in skills"
         class="absolute bg-white border duration-500 flex items-center justify-center overflow-hidden rounded-full shadow-outline transform -translate-x-1/2 -translate-y-1/2 transition-shadow hover:shadow"
-        target="_blank"
-        :href="skill.href"
+        :href="skill.to ? href(skill) : skill.href"
+        :is="skill.to ? RouterLink : 'a'"
         :key="index"
         :style="{
           left: `${x(skill) * 50}%`,
           top: `${y(skill) * 50}%`,
           width: `${cellRadius * width}px`
         }"
-        :title="skill.name">
+        :target="skill.href ? '_blank' : undefined"
+        :title="skill.name"
+        :to="skill.to">
         <div class="pb-full" />
         <div
           class="animate-spin-reverse flex h-full items-center justify-center w-full"
@@ -35,7 +37,7 @@
             class="h-auto max-w-1/2"
             :src="skill.src" />
         </div>
-      </a>
+      </component>
     </div>
   </div>
 </template>
@@ -45,22 +47,43 @@ import { computed, defineComponent, PropType, ref } from 'vue'
 import { Skill } from '@/pages/Home.vue'
 import { stubArray } from 'lodash-es'
 import { useElementSize } from '@vueuse/core'
+import { RouterLink, useLink, RouteLocationRaw } from 'vue-router'
 
 export default defineComponent({
-  setup({ skills }) {
-    const angle = computed(() => 2 * Math.PI / skills.length)
+  setup(props) {
+    const angle = computed(() => 2 * Math.PI / props.skills.length)
     const orbitElement = ref<HTMLElement>()
     const { width } = useElementSize(orbitElement)
+
+    const routerLinks = props.skills
+      .filter(skill => skill.to)
+      .map(skill => {
+        return {
+          skill,
+          link: useLink({ to: skill.to as RouteLocationRaw })
+        }
+      })
     
-    const x = (obj: Skill) => 1 + Math.sin(skills.indexOf(obj) * angle.value)
-    const y = (obj: Skill) => 1 - Math.cos(skills.indexOf(obj) * angle.value)
+    const href = (skill: Skill) => routerLinks
+      .find(obj => obj.skill === skill)
+      ?.link
+      ?.href
+      ?.value
+      
+    const x = (obj: Skill) => 1 + Math.sin(props.skills.indexOf(obj) * angle.value)
+    const y = (obj: Skill) => 1 - Math.cos(props.skills.indexOf(obj) * angle.value)
 
     return {
+      href,
       orbitElement,
+      RouterLink,
       width,
       x,
       y
     }
+  },
+  components: {
+    RouterLink
   },
   name: 'Orbit',
   props: {

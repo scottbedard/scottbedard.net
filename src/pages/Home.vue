@@ -42,13 +42,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import Orbit from '@/components/Orbit.vue';
+import { defineComponent } from 'vue'
+import { RouteLocationRaw } from 'vue-router'
+import { shuffle } from 'lodash-es'
+import Orbit from '@/components/Orbit.vue'
 
 export type Skill = {
-  href: string
+  href?: string
   name: string
   src: string
+  to?: RouteLocationRaw
 }
 
 export default defineComponent({
@@ -56,7 +59,7 @@ export default defineComponent({
     Orbit
   },
   setup() {
-    const inner: Skill[] = [
+    const inner: Skill[] = shuffle([
       {
         href: 'https://github.com/scottbedard/scottbedard.net/tree/vite#scottbedardnet',
         name: 'My personal site is built with Vue',
@@ -72,9 +75,9 @@ export default defineComponent({
         name: 'This universe component was made using Tailwind',
         src: '/assets/logos/tailwind.svg'
       },
-    ]
+    ])
 
-    const middle: Skill[] = [
+    const middle: Skill[] = shuffle([
       {
         href: 'https://twister.speedcube.site/cube',
         name: 'Twister is a library I wrote in TypeScript',
@@ -100,23 +103,27 @@ export default defineComponent({
         name: 'A list of crazy things someone really once said, built with Nuxt',
         src: '/assets/logos/nuxt.svg'
       },
-    ]
+    ])
 
-    const outer: Skill[] = [
+    const outer: Skill[] = shuffle([
       {
         href: 'https://github.com/scottbedard/vuetober',
         name: 'A fun way to integrate October with Webpack',
         src: '/assets/logos/october.png'
       },
       {
-        href: '#',
-        name: '🤡',
-        src: ''
+        name: 'A fun experiment that pushed CSS a bit too far',
+        src: '/assets/logos/css.svg',
+        to: {
+          name: 'css-cube-experiment'
+        }
       },
       {
-        href: '#',
-        name: '🤓',
-        src: ''
+        name: 'Having some fun with the <canvas> element',
+        src: '/assets/logos/html.png',
+        to: {
+          name: 'canvas-ribbon-experiment',
+        },
       },
       {
         href: '#',
@@ -138,7 +145,7 @@ export default defineComponent({
         name: '🧠',
         src: ''
       },
-    ]
+    ])
 
     return {
       inner,
