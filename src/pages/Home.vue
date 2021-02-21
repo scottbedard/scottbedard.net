@@ -81,9 +81,9 @@ export default defineComponent({
         src: '/assets/logos/typescript.svg'
       },
       {
-        href: 'https://github.com/scottbedard/vuetober',
-        name: 'A fun way to integrate October with Webpack',
-        src: '/assets/logos/october.png'
+        href: 'https://speedcube.site',
+        name: 'A fun project with a Laravel backend',
+        src: '/assets/logos/laravel.svg'
       },
       {
         href: 'https://github.com/scottbedard/twister#twister',
@@ -104,9 +104,9 @@ export default defineComponent({
 
     const outer: Skill[] = [
       {
-        href: '#',
-        name: '🙊',
-        src: ''
+        href: 'https://github.com/scottbedard/vuetober',
+        name: 'A fun way to integrate October with Webpack',
+        src: '/assets/logos/october.png'
       },
       {
         href: '#',
