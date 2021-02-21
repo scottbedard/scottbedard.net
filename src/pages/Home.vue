@@ -24,17 +24,17 @@
       -->
       <Orbit
         :cell-radius="0.1"
-        :orbit-diameter="1"
+        :orbit-diameter="0.85"
         :rpm="14"
         :skills="outer" />
       <Orbit
         :cell-radius="0.2"
-        :orbit-diameter="0.65"
+        :orbit-diameter="0.58"
         :rpm="12"
         :skills="middle" />
       <Orbit
-        :cell-radius="0.62"
-        :orbit-diameter=".25"
+        :cell-radius="0.65"
+        :orbit-diameter=".23"
         :rpm="10"
         :skills="inner" />
     </div>
