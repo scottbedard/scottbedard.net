@@ -59,36 +59,36 @@ export default defineComponent({
     const inner: Skill[] = [
       {
         href: 'https://github.com/scottbedard/scottbedard.net/tree/vite#scottbedardnet',
-        name: 'See the source for this website, written mostly in Vue',
+        name: 'My personal website is written with Vue',
         src: '/assets/logos/vue.svg'
       },
       {
-        href: '#',
-        name: '🤩',
-        src: ''
+        href: 'https://speedcube.site/',
+        name: 'This project\'s rendering layer is Three.js',
+        src: '/assets/logos/three.png'
       },
       {
-        href: '#',
-        name: '😎',
-        src: ''
-      }
+        href: 'https://github.com/scottbedard/scottbedard.net/tree/vite#scottbedardnet',
+        name: 'This universe component was made using Tailwind',
+        src: '/assets/logos/tailwind.svg'
+      },
     ]
 
     const middle: Skill[] = [
       {
-        href: '#',
-        name: '😏',
-        src: ''
+        href: 'https://twister.speedcube.site/cube',
+        name: 'Twister is a library I wrote in TypeScript',
+        src: '/assets/logos/typescript.svg'
+      },
+      {
+        href: 'https://github.com/scottbedard/vuetober',
+        name: 'Vuetober was a fun way to integrate October with Webpack',
+        src: '/assets/logos/october.png'
       },
       {
         href: '#',
-        name: '🤔',
-        src: ''
-      },
-      {
-        href: '#',
-        name: '🤭',
-        src: ''
+        name: 'A tribute to the GitHub heatmap, using Svelte.js',
+        src: '/assets/logos/svelte.svg'
       },
       {
         href: '#',

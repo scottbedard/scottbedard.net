@@ -32,11 +32,8 @@
           }">
           <img
             v-if="skill.src"
-            class="h-auto max-w-2/3"
+            class="h-auto max-w-1/2"
             :src="skill.src" />
-          <span
-            v-else
-            v-text="skill.name" />
         </div>
       </a>
     </div>
