@@ -1,18 +1,21 @@
 <template>
   <div
-    class="absolute flex justify-center items-center left-0 text-2xl top-0 w-full">
-    <div class="pb-full" />
+    class="absolute flex justify-center items-center left-1/2 text-2xl top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+    :style="{
+       width: `${orbitDiameter * 100}%`,
+    }">
+    <div class="pb-full pointer-events-none" />
     <div
-      class="animate-spin"
+      class="animate-spin border border-dashed border-gray-200 rounded-full w-full"
       ref="orbitElement"
       :style="{
         animationDuration: `${rpm * 60}s`,
-        width: `${orbitDiameter * 100}%`,
       }">
-      <div class="pb-full" />
-      <div
+      <div class="pb-full pointer-events-none" />
+      <a
         v-for="(skill, index) in skills"
-        class="absolute bg-white flex items-center justify-center overflow-hidden rounded-full shadow-outline transform -translate-x-1/2 -translate-y-1/2"
+        class="absolute bg-white border flex items-center justify-center overflow-hidden pointer-events-normal rounded-full shadow-outline transform -translate-x-1/2 -translate-y-1/2"
+        :href="skill.href"
         :key="index"
         :style="{
           left: `${x(skill) * 50}%`,
@@ -31,7 +34,7 @@
             :alt="skill.name"
             :src="skill.src" /> -->
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </template>

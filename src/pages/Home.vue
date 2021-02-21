@@ -16,21 +16,27 @@
     </div>
     <div class="max-w-md mt-6 mx-auto relative w-full xl:mt-20 xl:max-w-xl">
       <div class="pb-full" />
+      <!--
+        be aware, the order of the dom matters here!
+        outer orbits must render first, otherwise they will
+        end up behind smaller orbits, and thus unclickable.
+        we could also have solved this with z-index if we wanted.
+      -->
       <Orbit
-        :cell-radius="0.62"
-        :orbit-diameter=".25"
-        :rpm="10"
-        :skills="inner" />
+        :cell-radius="0.1"
+        :orbit-diameter="1"
+        :rpm="14"
+        :skills="outer" />
       <Orbit
         :cell-radius="0.2"
         :orbit-diameter="0.65"
         :rpm="12"
         :skills="middle" />
       <Orbit
-        :cell-radius="0.1"
-        :orbit-diameter="1"
-        :rpm="14"
-        :skills="outer" />
+        :cell-radius="0.62"
+        :orbit-diameter=".25"
+        :rpm="10"
+        :skills="inner" />
     </div>
   </div>
 </template>
