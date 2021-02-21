@@ -2,14 +2,14 @@
   <div class="gap-x-6 gap-y-12 grid py-12 xl:grid-cols-2">
     <div>
       <div class="grid gap-6 text-center xl:text-left">
-        <h1 class="font-semibold text-6xl">Hello,</h1>
-        <h2 class="font-semibold text-4xl">My name is Scott&nbsp;Bedard.</h2>
+        <h1 class="font-semibold text-5xl">Hello,</h1>
+        <h2 class="font-semibold text-5xl">My name is Scott&nbsp;Bedard.</h2>
         <div class="gap-6 grid max-w-4xl mx-auto text-lg">
           <p>
-            I'm a frontend developer at <a href="https://chess.com">Chess.com</a>, welcome to my personal code playground. Most things here are experimental, and were just for fun. So take everything with a grain of salt. 😉
+            I'm a frontend developer at <a href="https://chess.com">Chess.com</a>, welcome to my personal code playground. Most things here were experimental and just for fun, so take everything with a grain of salt. 😉
           </p>
           <p>
-            <span class="xl:hidden">Below</span><span class="hidden xl:inline">To the right</span> is my &quot;universe of tools&quot;, closest to the center are the ones I reach for every day.
+            Here are some of my programming interests right now. Click them to see something fun I'm building.
           </p>
         </div>
       </div>
@@ -59,16 +59,16 @@ export default defineComponent({
     const inner: Skill[] = [
       {
         href: 'https://github.com/scottbedard/scottbedard.net/tree/vite#scottbedardnet',
-        name: 'My personal website is written with Vue',
+        name: 'My personal site is built with Vue',
         src: '/assets/logos/vue.svg'
       },
       {
         href: 'https://speedcube.site/',
-        name: 'This project\'s rendering layer is Three.js',
+        name: 'This speedcubing app was made with Three.js',
         src: '/assets/logos/three.png'
       },
       {
-        href: 'https://github.com/scottbedard/scottbedard.net/tree/vite#scottbedardnet',
+        href: 'https://github.com/scottbedard/scottbedard.net/blob/vite/src/components/Orbit.vue',
         name: 'This universe component was made using Tailwind',
         src: '/assets/logos/tailwind.svg'
       },
@@ -82,23 +82,23 @@ export default defineComponent({
       },
       {
         href: 'https://github.com/scottbedard/vuetober',
-        name: 'Vuetober was a fun way to integrate October with Webpack',
+        name: 'A fun way to integrate October with Webpack',
         src: '/assets/logos/october.png'
       },
       {
-        href: '#',
-        name: 'A tribute to the GitHub heatmap, using Svelte.js',
+        href: 'https://github.com/scottbedard/twister#twister',
+        name: 'A twisty puzzle state modeling library tested with Jest',
+        src: '/assets/logos/jest.png'
+      },
+      {
+        href: 'https://github.com/scottbedard/svelte-heatmap#svelte-heatmap',
+        name: 'The GitHub heatmap, build with Svelte',
         src: '/assets/logos/svelte.svg'
       },
       {
-        href: '#',
-        name: '🤫',
-        src: ''
-      },
-      {
-        href: '#',
-        name: '😱',
-        src: ''
+        href: 'https://trumpquotes.wtf',
+        name: 'A list of crazy things someone really once said, built with Nuxt',
+        src: '/assets/logos/nuxt.svg'
       },
     ]
 
