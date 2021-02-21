@@ -58,9 +58,9 @@ export default defineComponent({
   setup() {
     const inner: Skill[] = [
       {
-        href: '#',
-        name: '😀',
-        src: ''
+        href: 'https://github.com/scottbedard/scottbedard.net/tree/vite#scottbedardnet',
+        name: 'See the source for this website, written mostly in Vue',
+        src: '/assets/logos/vue.svg'
       },
       {
         href: '#',

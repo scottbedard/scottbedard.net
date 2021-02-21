@@ -15,13 +15,6 @@ a {
   </Margin>
 
   <!-- <header class="flex h-16 items-center justify-between relative">
-    <RouterLink
-      class="flex font-bold items-center text-2xl hover:text-red-500"
-      :to="{ name: 'home' }">
-      <Logo class="mr-2" size="22" />
-      scott bedard
-    </RouterLink>
-
     <span class="absolute right-0 z-10 sm:hidden" @click="toggleNav">
       <HamburgerNav :active="navIsExpanded" />
     </span>
@@ -59,7 +52,6 @@ import { RouterLink, RouterView } from 'vue-router'
 import { useRoute } from 'vue-router';
 import DesktopNavLink from './components/DesktopNavLink.vue'
 import HamburgerNav from './components/HamburgerNav.vue'
-import Logo from './components/Logo.vue'
 import Margin from './components/Margin.vue'
 import Ribbon from './components/Ribbon.vue'
 
@@ -67,7 +59,6 @@ export default defineComponent({
   components: {
     DesktopNavLink,
     HamburgerNav,
-    Logo,
     Margin,
     Ribbon,
     RouterLink,
