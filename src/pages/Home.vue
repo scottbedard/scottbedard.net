@@ -141,9 +141,9 @@ export default defineComponent({
         src: '/assets/logos/vite.svg'
       },
       {
-        href: 'https://vueuse.js.org/core/useTransition/',
-        name: 'A composition function I\'m somewhat proud of',
-        src: '/assets/logos/vueuse.svg'
+        href: 'https://github.com/scottbedard',
+        name: 'Visit my GitHub profile',
+        src: '/assets/logos/github.svg'
       },
     ])
 
