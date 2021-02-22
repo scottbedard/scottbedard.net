@@ -91,7 +91,7 @@ export default defineComponent({
       {
         href: 'https://github.com/scottbedard/twister',
         name: 'A twisty puzzle state modeling library tested with Jest',
-        src: '/assets/logos/jest.png'
+        src: '/assets/logos/jest.svg'
       },
       {
         href: 'https://github.com/scottbedard/svelte-heatmap#svelte-heatmap',
@@ -120,7 +120,7 @@ export default defineComponent({
       },
       {
         name: 'Having some fun with the <canvas> element',
-        src: '/assets/logos/html.png',
+        src: '/assets/logos/html.svg',
         to: {
           name: 'canvas-ribbon-experiment',
         },
