@@ -22,7 +22,7 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   props: {
     size: {
-      default: '24',
+      default: '20',
       type: String
     },
     stroke: {

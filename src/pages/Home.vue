@@ -2,16 +2,12 @@
   <div class="gap-x-6 gap-y-12 grid py-12 xl:grid-cols-2">
     <div>
       <div class="grid gap-6 text-center xl:text-left">
-        <h1 class="font-semibold text-5xl">Hello,</h1>
-        <h2 class="font-semibold text-5xl">My name is Scott&nbsp;Bedard.</h2>
-        <div class="gap-6 grid max-w-4xl mx-auto text-lg">
-          <p>
-            I'm a frontend developer at <a href="https://chess.com">Chess.com</a>, welcome to my personal code playground. Most things here were experimental and just for fun, so take everything with a grain of salt. 😉
-          </p>
-          <p>
-            Here are some of my programming interests right now. Click them to see something fun I'm building.
-          </p>
-        </div>
+        <h1 class="font-semibold text-5xl">
+          Hi,<br />my name is Scott&nbsp;Bedard.
+        </h1>
+        <p class="max-w-4xl mx-auto text-lg">
+          Welcome to my personal code playground. Most things here are experimental, and were just for fun. So take everything with a grain of salt. 😉
+        </p>
       </div>
     </div>
     <div class="max-w-md mt-6 mx-auto relative w-full xl:mt-20 xl:max-w-xl">

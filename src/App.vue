@@ -2,8 +2,8 @@
 @tailwind base;
 @tailwind utilities;
 
-a {
-  @apply text-red-500 hover:text-red-600;
+a:not(.unstyled-link) {
+  @apply text-red-400 hover:text-red-600;
 }
 </style>
 
@@ -47,7 +47,7 @@ a {
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { computed, defineComponent, ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import { useRoute } from 'vue-router';
 import DesktopNavLink from './components/DesktopNavLink.vue'
