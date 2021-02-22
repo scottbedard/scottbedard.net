@@ -12,7 +12,7 @@ import { useWindowSize } from '@vueuse/core'
 import { Vector2, Vector3 } from '@/types'
 
 // average vertical space between points
-const deviation = 135
+export const deviation = ref(135)
 
 // colors to blend between
 const blue = '2196f3'
@@ -50,7 +50,7 @@ export default defineComponent({
 
       const points = times(steps).reduce<Vector2[]>((acc, n, i) => {
         const x = (i * (width.value / vertices)) - ((width.value / vertices) * 2)
-        const y = (acc[i - 1]?.[1] ?? 0) + (Math.random() * deviation) - (deviation / 2)
+        const y = (acc[i - 1]?.[1] ?? 0) + (Math.random() * deviation.value) - (deviation.value / 2)
         return [...acc, [x, y]]
       }, [])
 
