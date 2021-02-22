@@ -109,7 +109,7 @@ export default defineComponent({
       {
         href: 'https://github.com/scottbedard/vuetober',
         name: 'A fun way to integrate October with Webpack',
-        src: '/assets/logos/october.png'
+        src: '/assets/logos/october.svg'
       },
       {
         name: 'A fun experiment that pushed CSS a bit too far',
@@ -128,7 +128,7 @@ export default defineComponent({
       {
         href: 'https://github.com/scottbedard/nuxlifaunify',
         name: 'An experiment with serverless databases',
-        src: '/assets/logos/fauna.png'
+        src: '/assets/logos/fauna.svg'
       },
       {
         href: 'https://github.com/scottbedard/scottbedard.net',
