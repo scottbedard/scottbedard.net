@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header class="border border-red-500 h-16 flex items-center">
+    <header class="h-16 flex items-center">
       <RouterLink
         class="flex items-center unstyled-link hover:text-red-500"
         :to="{ name: 'home' }">
