@@ -14,6 +14,9 @@ import { Vector2, Vector3 } from '@/types'
 // average vertical space between points
 export const deviation = ref(135)
 
+// horizontal gap between points
+export const horizontalGap = ref(40)
+
 // colors to blend between
 const blue = '2196f3'
 const cyan = '00bcd4'
@@ -40,16 +43,16 @@ export default defineComponent({
   setup() {
     const canvas = ref<HTMLCanvasElement>()
     const { height, width } = useWindowSize()
+    const vertices = computed(() => Math.ceil(width.value / horizontalGap.value))
+    const steps = computed(() => vertices.value + 4)
 
     // calculate vectors for the ribbon colors and points
     const ribbon = computed(() => {
       const a = safeSample(baseColors)
       const b = safeSample(colors[a])
-      const vertices = Math.ceil(width.value / 40)
-      const steps = vertices + 4
 
-      const points = times(steps).reduce<Vector2[]>((acc, n, i) => {
-        const x = (i * (width.value / vertices)) - ((width.value / vertices) * 2)
+      const points = times(steps.value).reduce<Vector2[]>((acc, n, i) => {
+        const x = (i * (width.value / vertices.value)) - ((width.value / vertices.value) * 2)
         const y = (acc[i - 1]?.[1] ?? 0) + (Math.random() * deviation.value) - (deviation.value / 2)
         return [...acc, [x, y]]
       }, [])
@@ -57,7 +60,7 @@ export default defineComponent({
       const offset = (height.value / 2) - (points.reduce((acc, [,y]) => acc + y, 0) / points.length)
 
       return {
-        colors: Math.random() > 0.5 ? blend(a, b, steps) : blend(b, a, steps),
+        colors: Math.random() > 0.5 ? blend(a, b, steps.value) : blend(b, a, steps.value),
         points: points.map<Vector2>(([x, y]) => [x, y + offset])
       }
     })
