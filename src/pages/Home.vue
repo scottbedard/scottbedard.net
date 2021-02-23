@@ -1,7 +1,7 @@
 <template>
-  <div class="gap-x-6 gap-y-12 grid py-12 xl:grid-cols-2">
+  <div class="gap-x-6 gap-y-12 grid py-12 lg:grid-cols-2">
     <div>
-      <div class="grid gap-6 text-center xl:text-left">
+      <div class="grid gap-6 text-center lg:text-left">
         <h1 class="font-semibold text-5xl">
           Hi,<br />my name is Scott&nbsp;Bedard.
         </h1>
@@ -10,7 +10,7 @@
         </p>
       </div>
     </div>
-    <div class="max-w-md mt-6 mx-auto relative w-full xl:mt-20 xl:max-w-xl">
+    <div class="max-w-md mt-6 mx-auto relative w-full lg:mt-20 lg:max-w-xl">
       <div class="pb-full" />
       <!--
         be aware, the order of the dom matters here!
