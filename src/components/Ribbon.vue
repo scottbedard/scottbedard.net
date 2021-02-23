@@ -31,10 +31,9 @@ const yellow = 'ffeb3b'
 
 const colors = {
   [blue]: [green, indigo, lightGreen, purple],
-  [green]: [blue, cyan, yellow],
-  [purple]: [blue, cyan, indigo, red],
-  [red]: [purple, yellow],
-  [yellow]: [green, orange, pink, red]
+  [green]: [cyan, yellow],
+  [purple]: [cyan, indigo, red],
+  [yellow]: [orange, pink, red]
 }
 
 const baseColors = keys(colors)
