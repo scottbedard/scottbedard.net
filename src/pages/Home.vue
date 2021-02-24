@@ -1,16 +1,16 @@
 <template>
-  <div class="gap-x-6 gap-y-12 grid py-12 lg:grid-cols-2">
+  <div class="gap-6 grid my-6 lg:grid-cols-2 lg:my-20">
     <div>
       <div class="grid gap-6 text-center lg:text-left">
         <h1 class="font-semibold text-5xl">
           Hi,<br />my name is Scott&nbsp;Bedard.
         </h1>
         <p class="max-w-4xl mx-auto text-lg">
-          Welcome to my personal code playground. Most things here are experimental, and were just for fun. So take everything with a grain of salt. 😉
+          Welcome to my personal code playground. Most things here were experimental and just for fun, so take it all with a grain of salt. 😉
         </p>
       </div>
     </div>
-    <div class="max-w-md mt-6 mx-auto relative w-full lg:mt-20 lg:max-w-xl">
+    <div class="max-w-sm mx-auto relative w-full lg:max-w-xl">
       <div class="pb-full" />
       <!--
         be aware, the order of the dom matters here!
@@ -20,12 +20,12 @@
       -->
       <Orbit
         :cell-radius="0.1"
-        :orbit-diameter="0.85"
+        :orbit-diameter="0.9"
         :rpm="14"
         :skills="outer" />
       <Orbit
         :cell-radius="0.2"
-        :orbit-diameter="0.58"
+        :orbit-diameter="0.6"
         :rpm="12"
         :skills="middle" />
       <Orbit

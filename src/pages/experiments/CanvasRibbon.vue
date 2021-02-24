@@ -4,8 +4,8 @@
       <div class="gap-6 grid">
         <h1 class="font-bold text-2xl">About my site background...</h1>
         <p>
-          I call it the canvas ribbon, and it's what happened one night when I was
-          playing with a function to calculate gradients. To render the canvas I'm
+          I call it my canvas ribbon, and it's what happened one night while playing
+          around with a function to calculate gradients. To render the canvas I'm
           generating points along a random horizontal path, and playing connect
           the dots. Then it's just a matter of filling the resulting triangles.
         </p>
