@@ -2,7 +2,7 @@
   <Layout>
     <div class="max-w-2xl">
       <div class="gap-6 grid">
-        <h1 class="font-bold text-2xl">About my site background...</h1>
+        <PageTitle>About my site background...</PageTitle>
         <p>
           I call it my canvas ribbon, and it's what happened one night while playing
           around with a function to calculate gradients. To render the canvas I'm
@@ -44,6 +44,7 @@
 import { defineComponent } from 'vue'
 import { deviation, horizontalGap } from '@/components/Ribbon.vue'
 import Layout from '@/components/Layout.vue'
+import PageTitle from '@/components/PageTitle.vue'
 import RangeInput from '@/components/RangeInput.vue'
 
 const originalDeviation = deviation.value
@@ -52,6 +53,7 @@ const originalPointCoint = horizontalGap.value
 export default defineComponent({
   components: {
     Layout,
+    PageTitle,
     RangeInput,
   },
   setup() {
