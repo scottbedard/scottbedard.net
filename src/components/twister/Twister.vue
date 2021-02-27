@@ -1,4 +1,5 @@
 <template>
+  <!-- idle -->
   <div class="scene">
     <div class="core">
       <div
@@ -8,7 +9,27 @@
         :key="face">
         <div
           v-for="(sticker, index) in cube.state[face]"
+          v-text="index"
           class="sticker"
+          :style="{
+            visibility: turningStickers.includes(sticker) ? 'hidden' : 'visible',
+          }"
+          :data-value="sticker.value"
+          :key="index" />
+      </div>
+      <div
+        v-for="face in faces"
+        class="face"
+        :class="currentTurn && `turn-${currentTurn.toLowerCase()}`"
+        :data-face="face"
+        :key="face">
+        <div
+          v-for="(sticker, index) in cube.state[face]"
+          v-text="index"
+          class="sticker"
+          :style="{
+            visibility: turningStickers.includes(sticker) ? 'visible' : 'hidden',
+          }"
           :data-value="sticker.value"
           :key="index" />
       </div>
@@ -17,7 +38,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, watch } from 'vue'
+import { computed, defineComponent, ref, onMounted, watch } from 'vue'
 import { Cube, CubeFace } from '@bedard/twister'
 
 const faces: CubeFace[] = ['u', 'l', 'f', 'r', 'b', 'd']
@@ -30,20 +51,32 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const cube = ref(new Cube({ size: 3 }))
-    const turning = ref(false)
+
+    const currentTurn = ref('')
+
+    const turningStickers = computed(() => {
+      return currentTurn.value
+        ? cube.value.getStickersForTurn(currentTurn.value)
+        : []
+    })
+
+    const turning = computed(() => turningStickers.value.length > 0)
 
     onMounted(() => {
       cube.value.reset()
     })
 
     watch(props, () => {
-      if (!turning.value) cube.value.scramble(15)
+      currentTurn.value = 'U'
+      // if (!turning.value) cube.value.scramble(15)
     })
 
     return {
       cube,
+      currentTurn,
       faces,
       turning,
+      turningStickers,
     }
   }
 })
@@ -57,16 +90,17 @@ $spacing: 5%;
 .scene {
   padding: 25%;
   perspective: 1000px;
+  position: relative;
   width: 100%;
 }
 
 .core {
-  font-size: 3rem;
   margin: 0 auto;
+  padding-bottom: 50%;
+  position: absolute;
   transform-style: preserve-3d;
-  transform: rotateX(-40deg) rotateY(-32deg);
-  padding-bottom: 100%;
-  width: 100%;
+  transform: rotateX(-20deg) rotateY(-30deg);
+  width: 50%;
 }
 
 .face {
@@ -76,10 +110,11 @@ $spacing: 5%;
   grid-template-rows: 1fr 1fr 1fr;
   height: 100%;
   position: absolute;
+  transition: transform 1s ease-in-out;
   width: 100%;
 
   &[data-face="u"] {
-    transform: rotateX(90deg) rotateY(-90deg) translateX($elevation) rotateY(90deg);
+    transform: rotateX(90deg) rotateZ(0deg) rotateY(-90deg) translateX($elevation) rotateY(90deg);
   }
 
   &[data-face="l"] {
@@ -91,7 +126,7 @@ $spacing: 5%;
   }
 
   &[data-face="r"] {
-    transform: rotateY( 90deg) rotateY(-90deg) translateX($elevation) rotateY(90deg);
+    transform: rotateY(90deg) rotateY(-90deg) translateX($elevation) rotateY(90deg);
   }
 
   &[data-face="b"] {
@@ -114,5 +149,13 @@ $spacing: 5%;
   &[data-value="3"] { @apply bg-red-500 }
   &[data-value="4"] { @apply bg-green-500 }
   &[data-value="5"] { @apply bg-gray-100 }
+}
+
+.turn-u {
+  &[data-face="u"] { transform: rotateX(90deg) rotateZ(90deg) rotateY(-90deg) translateX($elevation) rotateY(90deg) }
+  &[data-face="l"] { transform: rotateY(0deg) rotateY(-270deg) translateX($elevation) rotateY(90deg) }
+  &[data-face="f"] { transform: rotateY(-180deg) translateX($elevation) rotateY(90deg) }
+  &[data-face="r"] { transform: rotateY(0deg) rotateY(-90deg) translateX($elevation) rotateY(90deg) }
+  &[data-face="b"] { transform: rotateY(-270deg) rotateY(-90deg) translateX($elevation) rotateY(90deg) }
 }
 </style>
