@@ -22,15 +22,6 @@ import { Cube, CubeFace } from '@bedard/twister'
 
 const faces: CubeFace[] = ['u', 'l', 'f', 'r', 'b', 'd']
 
-// const zIndexes: Record<CubeFace, number> = {
-//   u: 1,
-//   l: 0,
-//   f: 1,
-//   r: 0,
-//   b: -1,
-//   d: -1,
-// }
-
 export default defineComponent({
   props: {
     scramble: {
@@ -53,15 +44,15 @@ export default defineComponent({
       cube,
       faces,
       turning,
-      // zIndexes
     }
   }
 })
 </script>
 
 <style lang="scss" scoped>
-$elevation: 50% + 2%;
-$spacing: 4%;
+$elevation: 50% + 3%;
+$radius: 15%;
+$spacing: 5%;
 
 .scene {
   padding: 25%;
@@ -114,16 +105,14 @@ $spacing: 4%;
 
 .sticker {
   aspect-ratio: 1 / 1;
-  background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.5);
-  border-radius: 0.5rem;
-  font-size: 1rem;
+  border-radius: $radius;
 
   &[data-value="0"] { @apply bg-yellow-300 }
   &[data-value="1"] { @apply bg-yellow-600 }
   &[data-value="2"] { @apply bg-blue-500 }
   &[data-value="3"] { @apply bg-red-500 }
   &[data-value="4"] { @apply bg-green-500 }
-  &[data-value="5"] { @apply bg-gray-300 }
+  &[data-value="5"] { @apply bg-gray-100 }
 }
 </style>
