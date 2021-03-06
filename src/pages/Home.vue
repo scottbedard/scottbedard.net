@@ -1,16 +1,14 @@
 <template>
-  <div class="gap-6 grid my-6 lg:grid-cols-2 lg:my-20">
-    <div>
-      <div class="grid gap-6 text-center lg:text-left">
-        <h1 class="font-semibold text-5xl">
-          Hi,<br />my name is Scott&nbsp;Bedard.
-        </h1>
-        <p class="max-w-4xl mx-auto text-lg">
-          Welcome to my personal code playground. Most things here were experimental and just for fun, so take it all with a grain of salt. 😉
-        </p>
-      </div>
+  <div class="gap-6 grid items-start my-6 lg:grid-cols-12 lg:my-20">
+    <div class="font-semibold grid gap-6 text-center text-lg lg:col-span-5 lg:text-left">
+      <h1 class="text-5xl">
+        Hi,<br />my name is Scott&nbsp;Bedard.
+      </h1>
+      <p class="leading-loose tracking-wide">
+        Welcome to my personal code playground. Everything here was experimental and just for fun, don't take any of it too seriously.&nbsp;😉
+      </p>
     </div>
-    <div class="max-w-sm mx-auto relative w-full lg:max-w-xl">
+    <div class="max-w-lg mx-auto relative w-full lg:col-span-6 lg:max-w-xl">
       <div class="pb-full" />
       <!--
         be aware, the order of the dom matters here!
