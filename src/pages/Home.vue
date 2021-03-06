@@ -4,8 +4,8 @@
       <h1 class="text-5xl">
         Hi,<br />my name is Scott&nbsp;Bedard.
       </h1>
-      <p class="leading-loose tracking-wide">
-        Welcome to my personal code playground. Everything here was experimental and just for fun, don't take any of it too seriously.&nbsp;😉
+      <p class="leading-loose tracking-wider">
+        Welcome to my personal code playground. These are some of the tools I've been playing with lately. Everything here was experimental and just for fun, don't take any of it too seriously.&nbsp;😉
       </p>
     </div>
     <div class="max-w-lg mx-auto relative w-full lg:col-span-6 lg:max-w-xl">
