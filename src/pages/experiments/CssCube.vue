@@ -41,7 +41,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { random } from 'lodash-es'
-import { TransitionPresets, useTransition } from '@vueuse/core'
+import { useTransition } from '@vueuse/core'
 import Button from '@/components/Button.vue'
 import Layout from '@/components/Layout.vue'
 import PageTitle from '@/components/PageTitle.vue'
@@ -77,7 +77,7 @@ export default defineComponent({
 
     const options = {
       duration: 10000,
-      transition: easeOutElastic, //TransitionPresets.easeOutExpo,
+      transition: easeOutElastic,
     }
 
     const tx = useTransition(x, options)
