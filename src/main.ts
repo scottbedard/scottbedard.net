@@ -12,7 +12,7 @@ const yellow = 'fef08a'
 
 const colors = [
   [orange, red],
-  [yellow, green],
+  [yellow, orange],
   [blue, green],
 ]
 
@@ -60,7 +60,7 @@ function draw() {
     parseInt(gradient[0].slice(2, 4), 16),
     parseInt(gradient[0].slice(4, 6), 16),
   ]
-
+  
   for (var i = 0; i < path.length; i++) {
     const alpha = i / path.length
 
@@ -86,6 +86,19 @@ function draw() {
       ctx.stroke()
     }
   }
+
+  // apply the site theme to sync styling
+  let theme = 'red'
+
+  switch (gradient[0]) {
+    case red: theme = 'red'; break
+    case yellow: theme = 'orange'; break
+    case orange: theme = 'red'; break
+    case blue: theme = 'blue'; break
+    case green: theme = 'green'; break
+  }
+
+  document.body.dataset.theme = theme
 }
 
 draw()
