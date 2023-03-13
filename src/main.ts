@@ -1,15 +1,17 @@
 import './style.css'
-import { chunk, sample, shuffle } from 'lodash-es'
+import { shuffle } from 'lodash-es'
 import { lerp } from '@bedard/utils'
 
 const canvas = document.querySelector('canvas')!
 
 const red = 'ef4444'
-
 const orange = 'fdba74'
+const blue = '60a5fa'
+const green = '0d9488'
 
 const colors = [
   [orange, red],
+  [blue, green],
 ]
 
 function draw() {
@@ -49,7 +51,7 @@ function draw() {
   }
 
   // connect the dots and fill in the path
-  const gradient = shuffle(colors)[0]
+  const gradient = shuffle(shuffle(colors)[0])
 
   const [startR, startG, startB] = [
     parseInt(gradient[0].slice(0, 2), 16),
