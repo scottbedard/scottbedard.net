@@ -8,9 +8,11 @@ const red = 'ef4444'
 const orange = 'fdba74'
 const blue = '60a5fa'
 const green = '0d9488'
+const yellow = 'fef08a'
 
 const colors = [
   [orange, red],
+  [yellow, green],
   [blue, green],
 ]
 
