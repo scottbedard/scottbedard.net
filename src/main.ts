@@ -25,7 +25,7 @@ const draw = () => {
   canvas.width = window.innerWidth
 
   // set initial values and prepare to start drawing
-  const vertices = Math.ceil(window.innerWidth / 40)
+  const vertices = Math.ceil(window.innerWidth / 35)
   let prev = 0
   let width = window.innerWidth / vertices
   let y = window.innerHeight / 2
@@ -40,7 +40,7 @@ const draw = () => {
 
   for (var i = 0; i <= vertices; i++) {
     const x = Math.floor(i * width)
-    const y2 = Math.floor(Math.random() * 145)
+    const y2 = Math.floor(Math.random() * 165)
 
     let deviation = Math.floor(Math.random() * y2 * 2) + (y2 * -1)
 
