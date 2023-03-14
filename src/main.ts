@@ -2,19 +2,21 @@ import './style.css'
 import { shuffle } from 'lodash-es'
 import { lerp } from '@bedard/utils'
 
+import {
+  blue600,
+  cyan500,
+  green600,
+  lime400,
+  orange400,
+  rose600,
+} from './tailwind'
+
 const canvas = document.querySelector('canvas')!
 
-const colors: Record<string, string> = {
-  red: '#ef4444',
-  orange: '#fdba74',
-  blue: '#60a5fa',
-  green: '#0d9488',
-  yellow: '#fef08a',
-}
-
 const themes = [
-  [colors.red, colors.orange],
-  [colors.blue, colors.green],
+  [green600, lime400],
+  [rose600, orange400],
+  [blue600, cyan500],
 ]
 
 const draw = () => {
@@ -85,12 +87,15 @@ const draw = () => {
   }
 
   // apply the site theme to sync styling
-  const anchorColor = `rgb(${gradient[0].join(',')})`
+  const [r1, g1, b1] = rgb(theme[0])
+  const [r2, g2, b2] = rgb(theme[1])
+
+  const anchorColor = `rgb(${r1},${g1},${b1})`
 
   const anchorColorHover = `rgb(${[
-    Math.floor(lerp(gradient[0][0], gradient[1][0], .4)),
-    Math.floor(lerp(gradient[0][1], gradient[1][1], .4)),
-    Math.floor(lerp(gradient[0][2], gradient[1][2], .4)),
+    Math.floor(lerp(r1, r2, .4)),
+    Math.floor(lerp(g1, g2, .4)),
+    Math.floor(lerp(b1, b2, .4)),
   ].join(',')})`
 
   document.body.style.setProperty('--anchor-color', anchorColor)
