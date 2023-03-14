@@ -4,21 +4,23 @@ import { lerp } from '@bedard/utils'
 
 const canvas = document.querySelector('canvas')!
 
-const red = 'ef4444'
-const orange = 'fdba74'
-const blue = '60a5fa'
-const green = '0d9488'
-const yellow = 'fef08a'
+const colors: Record<string, string> = {
+  red: '#ef4444',
+  orange: '#fdba74',
+  blue: '#60a5fa',
+  green: '#0d9488',
+  yellow: '#fef08a',
+}
 
-const colors = [
-  [orange, red],
-  [yellow, orange],
-  [blue, green],
+const themes = [
+  [colors.red, colors.orange],
+  [colors.blue, colors.green],
 ]
 
-function draw() {
-  canvas.width = window.innerWidth
+const draw = () => {
+  // reset the canvas
   canvas.height = window.innerHeight
+  canvas.width = window.innerWidth
 
   // set initial values and prepare to start drawing
   const vertices = Math.ceil(window.innerWidth / 40)
@@ -36,7 +38,7 @@ function draw() {
 
   for (var i = 0; i <= vertices; i++) {
     const x = Math.floor(i * width)
-    const y2 = Math.floor(Math.random() * 80) + 20
+    const y2 = Math.floor(Math.random() * 145)
 
     let deviation = Math.floor(Math.random() * y2 * 2) + (y2 * -1)
 
@@ -53,21 +55,16 @@ function draw() {
   }
 
   // connect the dots and fill in the path
-  const gradient = shuffle(shuffle(colors)[0])
+  const theme = shuffle(themes)[0]
+  const gradient = shuffle(theme).map(rgb)
 
-  const [startR, startG, startB] = [
-    parseInt(gradient[0].slice(0, 2), 16),
-    parseInt(gradient[0].slice(2, 4), 16),
-    parseInt(gradient[0].slice(4, 6), 16),
-  ]
-  
   for (var i = 0; i < path.length; i++) {
     const alpha = i / path.length
 
     const [r, g, b] = [
-      Math.floor(lerp(startR, parseInt(gradient[1].slice(0, 2), 16), alpha)),
-      Math.floor(lerp(startG, parseInt(gradient[1].slice(2, 4), 16), alpha)),
-      Math.floor(lerp(startB, parseInt(gradient[1].slice(4, 6), 16), alpha)),
+      Math.floor(lerp(gradient[0][0], gradient[1][0], alpha)),
+      Math.floor(lerp(gradient[0][1], gradient[1][1], alpha)),
+      Math.floor(lerp(gradient[0][2], gradient[1][2], alpha)),
     ]
     
     ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 0.6)`
@@ -88,20 +85,27 @@ function draw() {
   }
 
   // apply the site theme to sync styling
-  let theme = 'red'
+  const anchorColor = `rgb(${gradient[0].join(',')})`
 
-  switch (gradient[0]) {
-    case red: theme = 'red'; break
-    case yellow: theme = 'orange'; break
-    case orange: theme = 'red'; break
-    case blue: theme = 'blue'; break
-    case green: theme = 'green'; break
-  }
+  const anchorColorHover = `rgb(${[
+    Math.floor(lerp(gradient[0][0], gradient[1][0], .4)),
+    Math.floor(lerp(gradient[0][1], gradient[1][1], .4)),
+    Math.floor(lerp(gradient[0][2], gradient[1][2], .4)),
+  ].join(',')})`
 
-  document.body.dataset.theme = theme
+  document.body.style.setProperty('--anchor-color', anchorColor)
+  document.body.style.setProperty('--anchor-color-hover', anchorColorHover)
 }
+
+const rgb = (hex: string) => [
+  parseInt(hex.slice(1, 3), 16),
+  parseInt(hex.slice(3, 5), 16),
+  parseInt(hex.slice(5, 7), 16),
+]
 
 draw()
 
 window.addEventListener('resize', draw)
- 
+
+// debug helper, redraws the canvas when meta + enter is pressed
+window.addEventListener('keydown', e => e.key === 'Enter' && e.metaKey && draw())

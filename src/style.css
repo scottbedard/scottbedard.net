@@ -3,41 +3,10 @@
 @tailwind utilities;
 
 a {
-  @apply font-semibold underline;
+  color: var(--anchor-color);
+  @apply tracking-wide underline;
 }
 
 a:hover {
-  color: var(--accent-color-hover);
-}
-
-body[data-theme="red"] a {
-  @apply text-red-500/80;
-}
-
-body[data-theme="red"] a:hover {
-  @apply text-red-600/80;
-}
-
-body[data-theme="green"] a {
-  @apply text-green-500/80;
-}
-
-body[data-theme="green"] a:hover {
-  @apply text-green-600/80;
-}
-
-body[data-theme="blue"] a {
-  @apply text-blue-500/80;
-}
-
-body[data-theme="blue"] a:hover {
-  @apply text-blue-600/80;
-}
-
-body[data-theme="orange"] a {
-  @apply text-orange-400/80;
-}
-
-body[data-theme="orange"] a:hover {
-  @apply text-orange-600/80;
+  color: var(--anchor-color-hover);
 }
