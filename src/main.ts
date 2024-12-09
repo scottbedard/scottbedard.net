@@ -112,5 +112,4 @@ draw()
 
 window.addEventListener('resize', draw)
 
-// debug helper, redraws the canvas when meta + enter is pressed
-window.addEventListener('keydown', e => e.key === 'Enter' && e.metaKey && draw())
+document.querySelector('#redraw')?.addEventListener('click', draw)

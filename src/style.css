@@ -7,6 +7,7 @@ a {
   @apply tracking-wide underline;
 }
 
-a:hover {
+a:hover,
+button:hover {
   color: var(--anchor-color-hover);
 }
